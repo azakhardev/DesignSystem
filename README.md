@@ -1,73 +1,62 @@
-# React + TypeScript + Vite
+# @artemdev04/design-system
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, accessible, and strongly typed React Design System built with **Vite**, **TypeScript**, and **Storybook**.
 
-Currently, two official plugins are available:
+![Version](https://img.shields.io/github/package-json/v/artemdev04/design-system?color=blue&label=version)
+![License](https://img.shields.io/badge/license-MIT-green)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 🚀 Features
 
-## React Compiler
+- ⚛️ **React 19+** ready (compatible with React 18).
+- 📘 **TypeScript** first approach with full type definitions.
+- ⚡ **Vite** powered build for blazing fast performance.
+- 🎨 **Storybook** included for component isolation and documentation.
+- 🌳 **Tree-shakable** exports (ESM & UMD support).
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 📦 Installation
 
-## Expanding the ESLint configuration
+```bash
+# Using npm
+npm install @artemdev04/design-system
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+# Using yarn
+yarn add @artemdev04/design-system
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Using pnpm
+pnpm add @artemdev04/design-system
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 🔨 Usage
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Import components directly into your React application:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```tsx
+import { Button } from "@artemdev04/design-system";
+
+function App() {
+  return (
+    <Button variant="primary" onClick={() => console.log("Clicked!")}>
+      Click me
+    </Button>
+  );
+}
 ```
+
+### 🛠 Development
+
+Clone the repository and install dependencies:
+
+```bash
+git clone [https://github.com/artemdev04/design-system.git](https://github.com/artemdev04/design-system.git)
+cd design-system
+npm install
+```
+
+### Commands
+
+| **Command**         | **Description**                                    |
+| ------------------- | -------------------------------------------------- |
+| `npm run dev`       | Starts Vite in development mode.                   |
+| `npm run storybook` | Starts the Storybook documentation server locally. |
+| `npm run build`     | Builds the library for production (`dist` folder). |
+| `npm run lint`      | Runs ESLint to check code quality.                 |
