@@ -2,7 +2,7 @@
 
 A modern, accessible, and strongly typed React Design System built with **Vite**, **TypeScript**, and **Storybook**.
 
-![Version](https://img.shields.io/github/package-json/v/artemdev04/design-system?color=blue&label=version)
+![Version](https://img.shields.io/github/package-json/v/azakhardev/design-system?color=blue&label=version)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
 ### 🚀 Features
@@ -47,7 +47,7 @@ function App() {
 Clone the repository and install dependencies:
 
 ```bash
-git clone [https://github.com/artemdev04/design-system.git](https://github.com/artemdev04/design-system.git)
+git clone [https://github.com/azakhardev/design-system.git](https://github.com/azakhardev/design-system.git)
 cd design-system
 npm install
 ```
