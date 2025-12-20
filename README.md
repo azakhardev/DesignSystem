@@ -2,7 +2,7 @@
 
 A modern, accessible, and strongly typed React Design System built with **Vite**, **TypeScript**, and **Storybook**.
 
-![Version](https://img.shields.io/github/package-json/v/azakhardev/design-system/main?color=blue&label=version)
+![Version](https://img.shields.io/github/package-json/v/azakhardev/DesignSystem/main?label=version&color=blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
 ### 🚀 Features
