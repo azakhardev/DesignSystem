@@ -21,7 +21,7 @@ _Goal: Automate quality checks and prepare release workflow._
 
 - [ ] Component Typography (headings, texts)
 - [ ] Component Button
-- [ ] Component Card
+- [x] Component Card
 - [ ] Collor pallete, spacing, fonts
 
 ### Phase 3: Local testing
