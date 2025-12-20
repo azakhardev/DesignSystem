@@ -1,1 +1,5 @@
-export const SystemVersion = "0.0.1"; // For empty build
+import "./index.css";
+
+export * from "./components/Card";
+
+export const VERSION = "0.0.1";
