@@ -60,3 +60,6 @@ npm install
 | `npm run storybook` | Starts the Storybook documentation server locally. |
 | `npm run build`     | Builds the library for production (`dist` folder). |
 | `npm run lint`      | Runs ESLint to check code quality.                 |
+
+### Concepts in Figma
+Link to figma: [Artem's Design System](https://www.figma.com/design/NRVDKidwFggutZuAZS52ek/DesignSystem?node-id=1-3&t=ZpQ49tFkM3Rlm043-1)
