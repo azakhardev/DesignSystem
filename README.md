@@ -42,6 +42,34 @@ function App() {
 }
 ```
 
+#### 🖌️ Tailwind Styles Usage
+
+To use tailwind variables edit your `tailwind.config` file:
+
+```js
+import type { Config } from "tailwindcss";
+
+const config: Config = {
+  // Load my preset
+  presets: [require("@artemdev04/design-system/tailwind.preset")],
+  content: [
+    "./src/**/*.{js,ts,jsx,tsx}",
+    "./node_modules/@artemdev04/design-system/dist/**/*.js",
+  ],
+};
+export default config;
+```
+
+And dont forget to import my CSS styles to your main app:
+
+```tsx
+import "@artemdev04/design-system/dist/style.css";
+
+export default App(){
+  ...
+}
+```
+
 ### 🛠 Development
 
 Clone the repository and install dependencies:
@@ -62,4 +90,5 @@ npm install
 | `npm run lint`      | Runs ESLint to check code quality.                 |
 
 ### Concepts in Figma
+
 Link to figma: [Artem's Design System](https://www.figma.com/design/NRVDKidwFggutZuAZS52ek/DesignSystem?node-id=1-3&t=ZpQ49tFkM3Rlm043-1)

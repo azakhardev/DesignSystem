@@ -76,6 +76,7 @@ export const Text = forwardRef(function Text<C extends React.ElementType = "p">(
     children,
     ...props
   }: TextProps<C>,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   ref: React.ForwardedRef<any>
 ) {
   const Component = as || "p";
