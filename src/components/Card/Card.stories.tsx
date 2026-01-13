@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { Meta, StoryObj } from "@storybook/react";
 import { Card } from "./Card";
 
 const meta = {
@@ -30,7 +30,7 @@ export const WithCustomContent: Story = {
     children: (
       <div className="space-y-2">
         <p>You can insert HTML here</p>
-        <button className="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors">
+        <button className="px-3 py-1 bg-primary text-on-primary rounded hover:bg-primary-focus transition-colors">
           Click me
         </button>
       </div>

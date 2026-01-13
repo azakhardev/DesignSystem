@@ -1,6 +1,6 @@
 ### Phase 1: Core Essentials (v1.0.0)
 
-- [ ] Typography – Elastic component for text handling. Handles responsive sizing, font families, and semantic HTML tags (h1-h6, p, strong, muted, italic).
+- [x] Typography – Elastic component for text handling. Handles responsive sizing, font families, and semantic HTML tags (h1-h6, p, strong, muted, italic, underlined).
 - [ ] Button – Various variants: Primary, Secondary, Danger, Warning, Info, Alert, Ghost, and Animate.
 - [ ] Input – Text input with support for prefix/suffix icons (startAdornment / endAdornment).
 - [ ] Card – Content wrapper, ideally with sub-components like CardHeader, CardBody, and CardFooter.

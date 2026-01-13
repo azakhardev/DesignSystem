@@ -1,21 +1,20 @@
-import React from "react";
+import { type HTMLProps } from "react";
 
-export interface CardProps {
+export interface CardProps extends HTMLProps<HTMLDivElement> {
   title: string;
   children: React.ReactNode;
-  className?: string;
 }
 
-export const Card = ({ title, children, className = "" }: CardProps) => {
+export function Card({ title, children, className = "" }: CardProps) {
   return (
     <div
-      className={`bg-white rounded-xl shadow-md border border-gray-200 overflow-hidden max-w-sm ${className}`}
+      className={`bg-surface rounded-xl shadow-md border border-border overflow-hidden p-4 ${className}`}
     >
-      <div className="px-6 py-4 border-b border-gray-100 bg-gray-50">
-        <h3 className="font-bold text-lg text-gray-800">{title}</h3>
+      <div className="py-2">
+        <h3 className="font-bold text-lg ">{title}</h3>
       </div>
 
-      <div className="p-6 text-gray-600 leading-relaxed">{children}</div>
+      <div>{children}</div>
     </div>
   );
-};
+}

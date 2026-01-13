@@ -1,3 +1,121 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-background text-text antialiased transition-colors duration-200;
+  }
+}
+
+:root {
+  /* === MAIN COLORS === */
+  --app-background: #f8fafc;
+  --surface: #ffffff;
+  --surface-secondary: #f1f5f9;
+  --primary: #0ea5e9;
+  --primary-focus: #0284c7;
+  --secondary: #6366f1;
+  --secondary-focus: #4f46e5;
+
+  /* === SEMANTIC COLORS === */
+  --text-main: #0f172a;
+  --text-secondary: #64748b;
+  --border-main: #e2e8f0;
+  --border-subtle: #f1f5f9;
+  --border-strong: #cbd5e1;
+  --input-background: #ffffff;
+  --accent: #0d9488;
+  --overlay: #0f172a;
+
+  /* === ON-COLORS === */
+  --on-primary: #ffffff;
+  --on-secondary: #ffffff;
+  --on-surface: #0f172a;
+
+  /* === STATES ===  */
+  /* --- DISABLED ---*/
+  --disabled-surface: #e2e8f0;
+  --disabled-text: #94a3b8;
+  --disabled-border: #cbd5e1;
+
+  /* --- INFO --- */
+  --info-surface: #f0f9ff;
+  --info-border: #bae6fd;
+  --info-text: #075985;
+  --info-main: #0ea5e9;
+
+  /* --- SUCCESS --- */
+  --success-surface: #ecfdf5;
+  --success-border: #a7f3d0;
+  --success-text: #065f46;
+  --success-main: #10b981;
+
+  /* --- WARNING --- */
+  --warning-surface: #fffbeb;
+  --warning-border: #fde68a;
+  --warning-text: #92400e;
+  --warning-main: #f59e0b;
+
+  /* --- ERROR --- */
+  --error-surface: #fef2f2;
+  --error-border: #fecaca;
+  --error-text: #991b1b;
+  --error-main: #ef4444;
+}
+
+.dark {
+  /* === MAIN COLORS === */
+  --app-background: #0b1120;
+  --surface: #1e293b;
+  --surface-secondary: #334155;
+  --primary: #38bdf8;
+  --primary-focus: #7dd3fc;
+  --secondary: #818cf8;
+  --secondary-focus: #a5b4fc;
+
+  /* === SEMANTIC COLORS === */
+  --text-main: #f8fafc;
+  --text-secondary: #94a3b8;
+  --border-main: #334155;
+  --border-subtle: #1e293b;
+  --border-strong: #475569;
+  --input-background: #0f172a;
+  --accent: #5eead4;
+  --overlay: #0f172a;
+
+  /* === ON-COLORS === */
+  --on-primary: #0f172a;
+  --on-secondary: #0f172a;
+  --on-surface: #f8fafc;
+
+  /* === STATUSES ===  */
+  /* --- DISABLED ---*/
+  --disabled-surface: #1e293b;
+  --disabled-text: #475569;
+  --disabled-border: #334155;
+
+  /* --- INFO --- */
+  --info-surface: #082f49;
+  --info-border: #075985;
+  --info-text: #bae6fd;
+  --info-main: #38bdf8;
+
+  /* --- SUCCESS --- */
+  --success-surface: #064e3b;
+  --success-border: #065f46;
+  --success-text: #a7f3d0;
+  --success-main: #34d399;
+
+  /* --- WARNING --- */
+  --warning-surface: #451a03;
+  --warning-border: #92400e;
+  --warning-text: #fde68a;
+  --warning-main: #fbbf24;
+
+  /* --- ERROR --- */
+  --error-surface: #450a0a;
+  --error-border: #991b1b;
+  --error-text: #fecaca;
+  --error-main: #f87171;
+}

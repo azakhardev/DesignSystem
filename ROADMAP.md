@@ -19,10 +19,10 @@ _Goal: Automate quality checks and prepare release workflow._
 
 ### Phase 2: Base building blocks (Version 0.1.0 - 0.5.0)
 
-- [ ] Component Typography (headings, texts)
+- [x] Component Typography (headings, texts)
 - [ ] Component Button
-- [x] Component Card
-- [ ] Collor pallete, spacing, fonts
+- [ ] Component Card
+- [x] Collor pallete, spacing, fonts
 
 ### Phase 3: Local testing
 
