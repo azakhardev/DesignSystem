@@ -4,6 +4,9 @@ import "../src/index.css";
 
 const preview: Preview = {
   parameters: {
+    docs: {
+      codePanel: true,
+    },
     controls: {
       matchers: {
         color: /(background|color)$/i,
@@ -16,7 +19,6 @@ const preview: Preview = {
     },
     layout: "fullscreen",
   },
-
   decorators: [
     withThemeByClassName({
       themes: {
@@ -27,11 +29,12 @@ const preview: Preview = {
       parentSelector: "body",
     }),
     (Story) => (
-      <div className="w-full font-sans text-text antialiased text-text bg-background p-8 transition-colors duration-200">
+      <div className="w-full font-sans text-text antialiased bg-background p-8 transition-colors duration-200">
         <Story />
       </div>
     ),
   ],
+  tags: ["autodocs"],
 };
 
 export default preview;

@@ -21,7 +21,7 @@ _Goal: Automate quality checks and prepare release workflow._
 
 - [x] Component Typography (headings, texts)
 - [ ] Component Button
-- [ ] Component Card
+- [x] Component Card
 - [x] Collor pallete, spacing, fonts
 
 ### Phase 3: Local testing
@@ -39,7 +39,7 @@ _Goal: Automate quality checks and prepare release workflow._
 
 ### Phase 5: Support & Expand
 
-- [] Creating and publishing all the components in TODO
+- [ ] Creating and publishing all the components in TODO
 
 ### 🚀 Release Workflow
 
