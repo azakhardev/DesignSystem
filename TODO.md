@@ -1,13 +1,13 @@
 ### Phase 1: Core Essentials (v1.0.0)
 
 - [x] Typography – Elastic component for text handling. Handles responsive sizing, font families, and semantic HTML tags (h1-h6, p, strong, muted, italic, underlined).
-- [ ] Button – Various variants: Primary, Secondary, Danger, Warning, Info, Alert, Ghost, and Animate.
+- [ ] Button – Various variants: ~Primary, Secondary, Danger, Confirm, Info, Ghost~ and Animate.
 - [ ] Input – Text input with support for prefix/suffix icons (startAdornment / endAdornment).
-- [ ] Card – Content wrapper, ideally with sub-components like CardHeader, CardBody, and CardFooter.
+- [x] Card – Content wrapper, ideally with sub-components like CardHeader, CardBody, and CardFooter.
 - [ ] Modal (Dialog) – Overlay for critical actions. Includes triggers, header, content, buttons, close action, and sizing (center, side/drawer).
 - [ ] Spinner – Loading indicators: Orbital, Classic, Dots and Page Loader.
 - [ ] Alert – Static feedback messages: Error, Warning, Info, Success, No Data.
-- [ ] Container / Grid – Layout primitives. A simple system to constrain width (Container) or handle flexbox/grid layouts (Row/Col or Stack).
+- [ ] ~Container / Grid – Layout primitives. A simple system to constrain width (Container) or handle flexbox/grid layouts (Row/Col or Stack).~
 
 ### Phase 2: Form & Navigation Expansion
 

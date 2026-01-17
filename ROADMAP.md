@@ -28,7 +28,7 @@ _Goal: Automate quality checks and prepare release workflow._
 
 - [ ] Run `npm link` in project
 - [ ] Run `npm link @artemdev04/design-system` in another project
-- [ ] This enables developing design system and see the differences in app without publishing to web
+  - This enables developing design system and see the differences in app without publishing to web
 
 ### Phase 4: Version 1.0.0 and publish
 

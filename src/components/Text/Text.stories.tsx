@@ -1,14 +1,18 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Text } from "./Text";
 
+/**
+ * The **Text** component is the unified typography primitive for the application.
+ * - **Polymorphic:** Use the `as` prop to render semantic HTML (e.g., `h1` for SEO, `span` for inline, `a` for links).
+ * - **Responsive:** The `size` prop handles responsive scaling automatically (e.g., `2xl` scales up on desktop).
+ * - **Type-Safe:** Strictly typed to prevent invalid attributes (e.g., `href` is only allowed when `as="a"`).
+ */
 const meta = {
   title: "Components/Text",
   component: Text,
   parameters: {
     layout: "centered",
   },
-  tags: ["autodocs"],
-
   // Wraps every story in this file with provided div
   decorators: [
     (Story) => (
@@ -21,7 +25,19 @@ const meta = {
   argTypes: {
     as: {
       control: "select",
-      options: ["p", "h1", "h2", "h3", "span", "div", "label", "a"],
+      options: [
+        "p",
+        "h1",
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6",
+        "span",
+        "div",
+        "label",
+        "a",
+      ],
       description: "HTML tag, který se vyrenderuje",
     },
     size: {
@@ -35,6 +51,10 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
+/**
+ * **Default** renders a standard paragraph (`<p>`).
+ * This is the go-to component for body text.
+ */
 export const Default: Story = {
   args: {
     as: "p",
@@ -43,6 +63,10 @@ export const Default: Story = {
   },
 };
 
+/**
+ * **Heading** example demonstrating semantic HTML.
+ * Changing `as="h1"` ensures correct document structure for SEO, while `size` and `weight` control the visual hierarchy.
+ */
 export const Heading: Story = {
   args: {
     as: "h1",
@@ -53,6 +77,10 @@ export const Heading: Story = {
   },
 };
 
+/**
+ * **Muted Label** uses the `color="muted"` variant.
+ * Ideal for secondary information, dates, or captions that shouldn't distract from the main content.
+ */
 export const MutedLabel: Story = {
   args: {
     as: "span",
@@ -62,6 +90,10 @@ export const MutedLabel: Story = {
   },
 };
 
+/**
+ * **Link** demonstrates the component's polymorphism.
+ * By setting `as="a"`, the component accepts anchor-specific props like `href` and `target` while maintaining the design system's typography.
+ */
 export const Link: Story = {
   args: {
     as: "a",
@@ -73,8 +105,11 @@ export const Link: Story = {
   },
 };
 
+/**
+ * **Article Preview** shows a real-world composition.
+ * This example uses the `render` method to demonstrate how different variants (`muted`, `bold`, `link`) work together in a layout.
+ */
 export const ArticlePreview: Story = {
-  //Allows to render Comopnent in a different way (with wrappers, static arguments, etc.)
   render: () => (
     <div className="flex flex-col gap-2">
       <Text as="h3" size="xl" weight="bold">
