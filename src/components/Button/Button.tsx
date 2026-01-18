@@ -1,7 +1,7 @@
 import { forwardRef } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../../lib/utils";
-//import styles from "./Button.module.css";
+import styles from "./Button.module.css";
 
 const buttonVariants = cva(
   [
@@ -12,7 +12,7 @@ const buttonVariants = cva(
     //Hover effects
     "hover:scale-[1.10] active:scale-[0.95]",
     //Disabled style
-    "disabled:bg-disabled-surface disabled:border-disabled-border disabled:text-disabled-text disabled:cursor-default disabled:hover:scale-100 disabled:active:scale-100",
+    "disabled:bg-disabled-surface disabled:border-disabled-border disabled:text-disabled-text disabled:cursor-default disabled:hover:scale-100 disabled:active:scale-100 disabled:cursor-not-allowed",
   ],
   {
     variants: {
@@ -25,26 +25,27 @@ const buttonVariants = cva(
         info: "border-info text-info shadow-none disabled:bg-transparent",
         ghost:
           "shadow-none border-transparent text-info-text disabled:border-none disabled:bg-transparent hover:bg-info-surface",
-        //TODO: Animated variant
-        animated: "",
+        animated: cn(
+          "border-transparent rounded-full text-text-surface",
+          styles.animatedButton,
+        ),
       },
     },
     defaultVariants: {
       variant: "primary",
     },
-  }
+  },
 );
 
 type ButtonVariants = VariantProps<typeof buttonVariants>;
 
 export interface ButtonProps
-  extends React.ComponentProps<"button">,
-    ButtonVariants {}
+  extends React.ComponentProps<"button">, ButtonVariants {}
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   function Button(
     { className, children, variant, ...props }: ButtonProps,
-    ref
+    ref,
   ) {
     return (
       <button
@@ -55,5 +56,5 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         {children}
       </button>
     );
-  }
+  },
 );

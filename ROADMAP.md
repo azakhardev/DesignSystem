@@ -32,10 +32,11 @@ _Goal: Automate quality checks and prepare release workflow._
 
 ### Phase 4: Version 1.0.0 and publish
 
+- [ ] Complete Components from Phase 1 in TODO list
 - [ ] Check the Storybook documentation.
-- [ ] Finalization of API (So the props wont change).
-- [ ] npm run build.
-- [ ] npm publish --access public.
+- [ ] Finalization of API (So the props wont change, hopefully).
+- [ ] Release of v. 1.0.0 to npm
+  - `npm publish --access public` or with use of pipeline
 
 ### Phase 5: Support & Expand
 
@@ -43,7 +44,7 @@ _Goal: Automate quality checks and prepare release workflow._
 
 ### 🚀 Release Workflow
 
-We use **Semantic Versioning** (Major.Minor.Patch). To release a new version of the design system, follow these steps:
+Use **Semantic Versioning** (Major.Minor.Patch). To release a new version of the design system, follow these steps:
 
 #### 1. Prepare the Release
 

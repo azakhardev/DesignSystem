@@ -1,0 +1,56 @@
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.animatedButton {
+  position: relative;
+  isolation: isolate;
+  background: transparent;
+}
+
+.animatedButton::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  z-index: -2;
+  background: conic-gradient(from var(--angle), blue, red, blue);
+  animation: 3s spin linear infinite;
+  border-radius: inherit;
+  filter: blur(0.2rem);
+}
+
+.animatedButton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--surface);
+  border-radius: inherit;
+}
+
+.animatedButton:hover::after {
+  background: var(--surface-secondary);
+}
+
+.animatedButton:disabled::before,
+.animatedButton:disabled::after {
+  display: none;
+}
+
+.animatedButton:disabled {
+  background: var(--disabled-surface);
+  color: var(--disabled-text);
+  border: 2px solid var(--disabled-border, transparent);
+  transform: none;
+}
+
+@keyframes spin {
+  from {
+    --angle: 0deg;
+  }
+  to {
+    --angle: 360deg;
+  }
+}
