@@ -31,6 +31,11 @@ pnpm add @artemdev04/design-system
 Import components directly into your React application:
 
 ```tsx
+//Your imports
+
+//!IMPORTANT: Import my Stylesheet
+import "@artemdev04/design-system/style.css";
+//And now you are ready to use my comopnents
 import { Button } from "@artemdev04/design-system";
 
 function App() {
@@ -47,27 +52,22 @@ function App() {
 To use tailwind variables edit your `tailwind.config` file:
 
 ```js
-import type { Config } from "tailwindcss";
+/** @type {import('tailwindcss').Config} **/
 
-const config: Config = {
-  // Load my preset
-  presets: [require("@artemdev04/design-system/tailwind.preset")],
-  content: [
-    "./src/**/*.{js,ts,jsx,tsx}",
-    "./node_modules/@artemdev04/design-system/dist/**/*.js",
-  ],
+//Import my tailwind preset
+import designSystemPreset from "@artemdev04/design-system/tailwind.preset";
+
+export default {
+  //Insert it into the presets array
+  presets: [designSystemPreset],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  theme: {
+    extend: {
+      //Feel free to use your own styles
+    },
+  },
+  plugins: [],
 };
-export default config;
-```
-
-And dont forget to import my CSS styles to your main app:
-
-```tsx
-import "@artemdev04/design-system/dist/style.css";
-
-export default App(){
-  ...
-}
 ```
 
 ### 🛠 Development

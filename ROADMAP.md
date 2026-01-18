@@ -20,14 +20,14 @@ _Goal: Automate quality checks and prepare release workflow._
 ### Phase 2: Base building blocks (Version 0.1.0 - 0.5.0)
 
 - [x] Component Typography (headings, texts)
-- [ ] Component Button
+- [x] Component Button
 - [x] Component Card
 - [x] Collor pallete, spacing, fonts
 
 ### Phase 3: Local testing
 
-- [ ] Run `npm link` in project
-- [ ] Run `npm link @artemdev04/design-system` in another project
+- [x] Run `npm link` in project
+- [x] Run `npm link @artemdev04/design-system` in another project
   - This enables developing design system and see the differences in app without publishing to web
 
 ### Phase 4: Version 1.0.0 and publish

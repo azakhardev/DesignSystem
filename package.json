@@ -11,11 +11,17 @@
       "import": "./dist/index.mjs",
       "require": "./dist/index.umd.js"
     },
-    "./style.css": "./dist/design-system.css"
+    "./style.css": "./dist/design-system.css",
+    "./tailwind.preset": {
+      "types": "./tailwind.preset.d.ts",
+      "import": "./tailwind.preset.js",
+      "default": "./tailwind.preset.js"
+    }
   },
   "files": [
     "dist",
-    "tailwind.preset.js"
+    "tailwind.preset.js",
+    "tailwind.preset.d.ts"
   ],
   "scripts": {
     "dev": "storybook dev -p 6006",
