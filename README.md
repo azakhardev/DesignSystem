@@ -75,7 +75,7 @@ export default {
 Clone the repository and install dependencies:
 
 ```bash
-git clone [https://github.com/azakhardev/design-system.git](https://github.com/azakhardev/design-system.git)
+git clone https://github.com/azakhardev/design-system.git
 cd design-system
 npm install
 ```
