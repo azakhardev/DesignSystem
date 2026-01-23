@@ -96,7 +96,7 @@ export const BrandedThin: Story = {
   args: {
     size: 120,
     thickness: 2,
-    primaryColor: "#f1f5f9",
+    primaryColor: "var(--app-background)",
     secondaryColor: "#0ea5e9",
     duration: 1500,
     rotationsCount: 3,

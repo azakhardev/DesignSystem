@@ -29,6 +29,8 @@ function Spinner({
     <div
       className={cn("relative flex items-center justify-center", className)}
       {...props}
+      role="status"
+      aria-label="Loading"
     >
       <motion.div
         className="relative rounded-full flex items-center justify-center overflow-hidden"
