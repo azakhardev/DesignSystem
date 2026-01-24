@@ -15,7 +15,7 @@ interface SpinnerProps extends React.HTMLAttributes<HTMLDivElement> {
 function Spinner({
   className,
   size = 72,
-  duration = 2000,
+  duration = 2,
   primaryColor,
   secondaryColor,
   rotationsCount = 5,
@@ -23,7 +23,7 @@ function Spinner({
   ease = "easeInOut",
   ...props
 }: SpinnerProps) {
-  duration = duration < 250 ? 250 : duration;
+  duration = duration < 0.25 ? 0.25 : duration;
 
   return (
     <div
@@ -47,7 +47,7 @@ function Spinner({
         transition={{
           ease: ease,
           type: ease === "linear" ? undefined : "spring",
-          duration: duration / 1000,
+          duration: duration,
           repeat: Infinity,
         }}
       />

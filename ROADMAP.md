@@ -35,6 +35,7 @@ _Goal: Automate quality checks and prepare release workflow._
 - [ ] Complete Components from Phase 1 in TODO list
 - [ ] Check the Storybook documentation.
 - [ ] Finalization of API (So the props wont change, hopefully).
+- [ ] Configure testing through Storybook
 - [ ] Release of v. 1.0.0 to npm
   - `npm publish --access public` or with use of pipeline
 

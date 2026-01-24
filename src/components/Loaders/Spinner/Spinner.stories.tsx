@@ -33,7 +33,7 @@ const meta = {
       table: { defaultValue: { summary: "72" } },
     },
     duration: {
-      control: { type: "range", min: 250, max: 5000, step: 250 },
+      control: { type: "range", min: 0.25, max: 5, step: 0.25 },
       description: "Time in milliseconds to complete one full animation cycle.",
       table: { defaultValue: { summary: "2000" } },
     },
@@ -73,7 +73,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     size: 72,
-    duration: 2000,
+    duration: 2,
   },
 };
 
@@ -83,7 +83,7 @@ export const Default: Story = {
 export const ConstantRotation: Story = {
   args: {
     size: 48,
-    duration: 1000,
+    duration: 1,
     ease: "linear",
     rotationsCount: 1,
   },
@@ -98,7 +98,7 @@ export const BrandedThin: Story = {
     thickness: 2,
     primaryColor: "var(--app-background)",
     secondaryColor: "#0ea5e9",
-    duration: 1500,
+    duration: 1.5,
     rotationsCount: 3,
   },
 };

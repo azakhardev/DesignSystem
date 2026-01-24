@@ -12,12 +12,6 @@ const meta = {
   component: ScreenLoader,
   parameters: {
     layout: "centered",
-    docs: {
-      description: {
-        component:
-          "The component automatically calculates animation timings. To maintain a smooth wave effect when changing `barCount`, we recommend adjusting `duration` or `itemStagger` accordingly, although the default values work well out of the box.",
-      },
-    },
   },
   argTypes: {
     color: {
@@ -37,7 +31,7 @@ const meta = {
       description: "Total number of bars in the loader.",
     },
     duration: {
-      control: { type: "number", step: 0.1 },
+      control: { type: "range", min: 0.2, max: 5, step: 0.1 },
       description: "Duration of one full animation loop (in seconds).",
     },
     itemStagger: {
