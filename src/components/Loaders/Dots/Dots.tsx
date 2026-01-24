@@ -4,25 +4,25 @@ import type { Variants } from "framer-motion";
 
 interface DotsProps extends React.HTMLAttributes<HTMLDivElement> {
   color?: string;
-  dotRadius?: number;
   dotsCount?: number;
   duration?: number;
   gap?: number;
   itemStagger?: number;
   jumpHeight?: number;
   repeatDuration?: number;
+  size?: number;
 }
 
 function Dots({
   className,
   color,
-  dotRadius = 10,
   dotsCount = 3,
   duration = 0.7,
   gap = 6,
   itemStagger = 0.2,
   jumpHeight = 15,
   repeatDuration = 0.5,
+  size = 10,
   ...props
 }: DotsProps) {
   const containerVariants: Variants = {
@@ -65,8 +65,8 @@ function Dots({
             variants={itemVariants}
             className="rounded-full border border-border"
             style={{
-              height: dotRadius * 2,
-              width: dotRadius * 2,
+              height: size,
+              width: size,
               backgroundColor: color ?? "var(--primary)",
             }}
           />

@@ -40,9 +40,9 @@ const meta = {
       description: "Number of dots to render.",
       table: { defaultValue: { summary: "3" } },
     },
-    dotRadius: {
+    size: {
       control: { type: "range", min: 2, max: 20, step: 1 },
-      description: "Radius of each dot in pixels.",
+      description: "Diameter of each dot in pixels.",
     },
     gap: {
       control: { type: "range", min: 2, max: 20, step: 1 },
@@ -76,7 +76,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     dotsCount: 3,
-    dotRadius: 10,
+    size: 10,
     gap: 6,
   },
 };
@@ -88,7 +88,7 @@ export const Default: Story = {
 export const TypingIndicator: Story = {
   args: {
     dotsCount: 3,
-    dotRadius: 4,
+    size: 4,
     gap: 4,
     jumpHeight: 6,
     duration: 0.6,
@@ -106,7 +106,7 @@ export const TypingIndicator: Story = {
 export const SmoothWave: Story = {
   args: {
     dotsCount: 5,
-    dotRadius: 6,
+    size: 6,
     jumpHeight: 12,
     itemStagger: 0.15,
     duration: 0.8,
@@ -121,7 +121,7 @@ export const SmoothWave: Story = {
 export const LargeLoader: Story = {
   args: {
     dotsCount: 3,
-    dotRadius: 16,
+    size: 16,
     gap: 12,
     jumpHeight: 25,
     itemStagger: 0.1,
