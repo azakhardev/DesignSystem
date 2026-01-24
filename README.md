@@ -7,7 +7,7 @@ A modern, accessible, and strongly typed React Design System built with **Vite**
 
 ### 🚀 Features
 
-- ⚛️ **React 19+** ready (compatible with React 18).
+- ⚛️ **React 19+** projects support.
 - 📘 **TypeScript** first approach with full type definitions.
 - ⚡ **Vite** powered build for blazing fast performance.
 - 🎨 **Storybook** included for component isolation and documentation.

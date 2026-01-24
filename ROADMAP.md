@@ -33,6 +33,7 @@ _Goal: Automate quality checks and prepare release workflow._
 ### Phase 4: Version 1.0.0 and publish
 
 - [ ] Complete Components from Phase 1 in TODO list
+- [ ] Migrate to `ref` as Props and `React.ComponentProps`
 - [ ] Check the Storybook documentation.
 - [ ] Finalization of API (So the props wont change, hopefully).
 - [ ] Configure testing through Storybook
