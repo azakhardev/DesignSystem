@@ -4,7 +4,8 @@
 - [x] Button – Various variants: Primary, Secondary, Danger, Confirm, Info, Ghost and Animate.
 - [ ] Input – Text input with support for prefix/suffix icons (startAdornment / endAdornment).
 - [x] Card – Content wrapper, ideally with sub-components like CardHeader, CardBody, and CardFooter.
-- [ ] Modal (Dialog) – Overlay for critical actions. Includes triggers, header, content, buttons, close action, and sizing (center, side/drawer).
+- [ ] Modal (Dialog) – Overlay for critical actions. Includes triggers, header, content, buttons, close action, footer and sizing (center/drawer).
+- [ ] Sidebar - Side menu for navigation and hamburger menu for mobile phones
 - [x] Spinner – Loading indicators: Orbital, Classic, Dots and Page Loader.
 - [x] Alert – Static feedback messages: Error, Warning, Info, Success, No Data.
 - [ ] ~Container / Grid – Layout primitives. A simple system to constrain width (Container) or handle flexbox/grid layouts (Row/Col or Stack).~
@@ -48,3 +49,4 @@
 - [ ] Code Block – Syntax highlighting and formatting for code snippets.
 - [ ] Drawer – A sidebar panel that slides in from the left or right (often used instead of Modals on mobile).
 - [ ] Avatar – Profile picture component with fallbacks (initials or generic icon) if the image fails to load.
+- [ ] ImageDialog - Dialog component for displaying images with toolbar options (zoom, save, copy, etc.)

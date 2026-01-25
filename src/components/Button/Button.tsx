@@ -37,7 +37,7 @@ const buttonVariants = cva(
   },
 );
 
-type ButtonVariants = VariantProps<typeof buttonVariants>;
+export type ButtonVariants = VariantProps<typeof buttonVariants>;
 
 export interface ButtonProps
   extends React.ComponentProps<"button">, ButtonVariants {}
