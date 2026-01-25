@@ -7,3 +7,4 @@ export * from "./components/Loaders";
 export * from "./components/Alert";
 export * from "./components/Dialog";
 export * from "./components/Sidebar";
+export * from "./components/Input";

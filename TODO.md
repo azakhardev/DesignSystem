@@ -2,7 +2,7 @@
 
 - [x] Typography – Elastic component for text handling. Handles responsive sizing, font families, and semantic HTML tags (h1-h6, p, strong, muted, italic, underlined).
 - [x] Button – Various variants: Primary, Secondary, Danger, Confirm, Info, Ghost and Animate.
-- [ ] Input – Text input with support for prefix/suffix icons (startAdornment / endAdornment).
+- [x] Input – Text input with support for prefix/suffix icons (startAdornment / endAdornment).
 - [x] Card – Content wrapper, ideally with sub-components like CardHeader, CardBody, and CardFooter.
 - [x] Modal (Dialog) – Overlay for critical actions. Includes triggers, header, content, buttons, close action, footer and sizing (center/drawer).
 - [ ] Sidebar - Collapsible side menu for navigation with hamburger menu for mobile.
