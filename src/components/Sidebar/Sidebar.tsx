@@ -8,6 +8,7 @@ import React, {
 import { useIsMobile } from "../../hooks/useIsMobile";
 import { cn } from "../../lib/utils";
 import { Dialog, DialogContent } from "../Dialog";
+import { Minus } from "lucide-react";
 
 interface SidebarContextType {
   collapsed: boolean;
@@ -20,7 +21,7 @@ interface SidebarContextType {
 
 const SidebarContext = createContext<SidebarContextType | null>(null);
 
-export function useSidebarContext() {
+function useSidebarContext() {
   const context = useContext(SidebarContext);
   if (!context) {
     throw new Error("useSidebar must be used within a <Sidebar> provider.");
@@ -163,8 +164,9 @@ function SidebarContent({
       ref={ref}
       data-collapsed={collapsed}
       className={cn(
-        "group/sidebar overflow-hidden inset-y-0 z-30 flex flex-col h-screen bg-surface border-border-strong transition-[width] duration-300 ease-in-out p-4",
+        "group/sidebar overflow-hidden inset-y-0 z-30 flex flex-col h-screen bg-surface border-border-strong transition-[width] duration-300 ease-in-out",
         side === "left" ? "border-r left-0" : "border-l right-0",
+        collapsed ? "p-2" : "p-4",
         className,
       )}
       style={{
@@ -186,16 +188,73 @@ function SidebarBody() {
   return <div className="flex flex-col gap-2 flex-1"></div>;
 }
 
-function SidebarItem() {
-  return <div></div>;
+interface SidebarItemProps extends React.ComponentProps<"div"> {
+  icon?: React.ReactNode;
+  categoryTitle?: boolean;
+}
+
+function SidebarItem({
+  className,
+  children,
+  categoryTitle,
+  icon,
+  ...props
+}: SidebarItemProps) {
+  return (
+    <div
+      className={cn(
+        "flex flex-row gap-1 group-data-[collapsed=true]/sidebar:justify-center items-center rounded-md p-1",
+        !categoryTitle && "cursor-pointer hover:bg-info-surface",
+        className,
+      )}
+      {...props}
+    >
+      {categoryTitle ? (
+        <>
+          <h4 className="group-data-[collapsed=true]/sidebar:hidden font-bold text-lg mt-1">
+            {children}
+          </h4>
+          <Minus
+            className="group-data-[collapsed=false]/sidebar:hidden font-bold text-lg mt-1"
+            size={32}
+          />
+        </>
+      ) : (
+        <>
+          {icon}
+          <span className="group-data-[collapsed=true]/sidebar:hidden">
+            {children}
+          </span>
+        </>
+      )}
+    </div>
+  );
 }
 
 function SidebarFooter() {
   return <div></div>;
 }
 
-function SidebarTrigger() {
-  return <div></div>;
+function SidebarTrigger({
+  className,
+  children,
+  ...props
+}: React.ComponentProps<"button">) {
+  const { toggleSidebar } = useSidebarContext();
+
+  return (
+    <button
+      title="Toggle sidebar"
+      className={cn(
+        "p-2 rounded border border-border hover:bg-border transition-colors bg-border-subtle",
+        className,
+      )}
+      onClick={() => toggleSidebar()}
+      {...props}
+    >
+      {children}
+    </button>
+  );
 }
 
 export {

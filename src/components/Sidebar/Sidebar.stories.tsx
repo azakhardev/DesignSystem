@@ -1,5 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Sidebar, SidebarContent } from "./Sidebar";
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarItem,
+  SidebarTrigger,
+} from "./Sidebar";
+import { Home, Settings, SidebarClose, User } from "lucide-react";
 
 const meta = {
   title: "Layout/Sidebar",
@@ -40,25 +46,19 @@ export const Playground: Story = {
   },
   render: (args) => (
     <div className="flex flex-row">
-      <Sidebar {...args}>
-        <SidebarContent className="bg-blue-100 border-r-2 border-blue-500">
-          <div className="p-4">
-            <h2 className="font-bold text-blue-900">TEST OBSAH</h2>
-            <p className="mt-2 text-sm text-blue-700">Aktuální stav props:</p>
-            <pre className="text-xs mt-2 bg-white/50 p-2 rounded">
-              {JSON.stringify(
-                {
-                  collapsed: args.collapsed,
-                  mobileOpen: args.mobileOpen,
-                },
-                null,
-                2,
-              )}
-            </pre>
-          </div>
+      <Sidebar>
+        <SidebarContent className="gap-2">
+          <SidebarItem categoryTitle icon={<Home />}>
+            Domů
+          </SidebarItem>
+          <SidebarItem icon={<User size={28} />}>Profil</SidebarItem>
+          <SidebarItem icon={<Settings size={28} />}>Nastavení</SidebarItem>
         </SidebarContent>
+        <SidebarTrigger className="fixed bottom-2 right-2">
+          <SidebarClose />
+        </SidebarTrigger>
       </Sidebar>
-      <div className="min-h-screen bg-gray-50 flex-1">
+      <div className="min-h-screen bg-app-background flex-1">
         <h1 className="text-2xl text-gray-300 font-bold uppercase">
           Zbytek stránky
         </h1>
