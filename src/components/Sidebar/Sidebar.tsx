@@ -148,12 +148,14 @@ function SidebarContent({
           closeButton={false}
           {...dialogProps}
           className={cn(
-            "h-full p-4 bg-surface text-text border-border border-r",
+            "h-full bg-surface text-text border-border border-r",
             className,
             dialogProps?.className,
           )}
         >
-          {children}
+          <div className="group/sidebar h-full" data-collapsed="false">
+            {children}
+          </div>
         </DialogContent>
       </Dialog>
     );
@@ -166,7 +168,6 @@ function SidebarContent({
       className={cn(
         "group/sidebar overflow-hidden inset-y-0 z-30 flex flex-col h-screen bg-surface border-border-strong transition-[width] duration-300 ease-in-out",
         side === "left" ? "border-r left-0" : "border-l right-0",
-        collapsed ? "p-2" : "p-4",
         className,
       )}
       style={{
@@ -200,10 +201,15 @@ function SidebarItem({
   icon,
   ...props
 }: SidebarItemProps) {
+  const hideWhenCollapsed = "group-data-[collapsed=true]/sidebar:hidden";
+  const showOnlyWhenCollapsed =
+    "hidden group-data-[collapsed=true]/sidebar:block";
+
   return (
     <div
       className={cn(
-        "flex flex-row gap-1 group-data-[collapsed=true]/sidebar:justify-center items-center rounded-md p-1",
+        "flex items-center gap-2 rounded-md p-2 transition-colors",
+        "justify-start group-data-[collapsed=true]/sidebar:justify-center",
         !categoryTitle && "cursor-pointer hover:bg-info-surface",
         className,
       )}
@@ -211,18 +217,29 @@ function SidebarItem({
     >
       {categoryTitle ? (
         <>
-          <h4 className="group-data-[collapsed=true]/sidebar:hidden font-bold text-lg mt-1">
+          <h4
+            className={cn(
+              "font-bold text-lg whitespace-nowrap overflow-hidden",
+              hideWhenCollapsed,
+            )}
+          >
             {children}
           </h4>
-          <Minus
-            className="group-data-[collapsed=false]/sidebar:hidden font-bold text-lg mt-1"
-            size={32}
-          />
+          <div className={showOnlyWhenCollapsed}>
+            <Minus size={28} />
+          </div>
         </>
       ) : (
         <>
-          {icon}
-          <span className="group-data-[collapsed=true]/sidebar:hidden">
+          <span className="shrink-0 flex items-center justify-center">
+            {icon}
+          </span>
+          <span
+            className={cn(
+              "whitespace-nowrap overflow-hidden transition-opacity duration-200",
+              hideWhenCollapsed,
+            )}
+          >
             {children}
           </span>
         </>
