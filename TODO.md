@@ -5,7 +5,8 @@
 - [x] Input – Text input with support for prefix/suffix icons (startAdornment / endAdornment).
 - [x] Card – Content wrapper, ideally with sub-components like CardHeader, CardBody, and CardFooter.
 - [x] Modal (Dialog) – Overlay for critical actions. Includes triggers, header, content, buttons, close action, footer and sizing (center/drawer).
-- [ ] Sidebar - Collapsible side menu for navigation with hamburger menu for mobile.
+- [x] Sidebar - Collapsible side menu for navigation with hamburger menu for mobile.
+  - [ ] Allow Tooltip on `SidebarItem` hover after creating `Tooltip` Component
 - [x] Spinner – Loading indicators: Orbital, Classic, Dots and Page Loader.
 - [x] Alert – Static feedback messages: Error, Warning, Info, Success, No Data.
 - [ ] ~Container / Grid – Layout primitives. A simple system to constrain width (Container) or handle flexbox/grid layouts (Row/Col or Stack).~
