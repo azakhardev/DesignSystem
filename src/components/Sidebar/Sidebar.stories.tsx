@@ -128,7 +128,7 @@ export const LeftPanel: Story = {
   args: {
     defaultCollapsed: false,
   },
-  play: async function ({ args, canvas, userEvent }) {
+  play: async function ({ canvas, userEvent }) {
     const toggle = canvas.getByRole("button");
 
     await userEvent.click(toggle);
