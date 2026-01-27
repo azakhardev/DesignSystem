@@ -7,6 +7,7 @@ import {
   Settings,
   User,
 } from "lucide-react";
+import { expect, screen } from "storybook/test";
 
 import {
   Sidebar,
@@ -127,6 +128,19 @@ export const LeftPanel: Story = {
   args: {
     defaultCollapsed: false,
   },
+  play: async function ({ args, canvas, userEvent }) {
+    const toggle = canvas.getByRole("button");
+
+    await userEvent.click(toggle);
+
+    const sidebar = canvas.getByRole("complementary");
+
+    expect(sidebar).toHaveAttribute("data-collapsed", "true");
+
+    await userEvent.click(toggle);
+
+    expect(sidebar).toHaveAttribute("data-collapsed", "false");
+  },
   render: (args) => (
     <div className="flex h-screen w-full bg-app-background overflow-hidden">
       <Sidebar {...args}>
@@ -160,6 +174,23 @@ export const LeftPanel: Story = {
 export const RightPanel: Story = {
   args: {
     defaultCollapsed: false,
+  },
+  parameters: {
+    layout: "fullscreen",
+    viewport: {
+      defaultViewport: "mobile1",
+    },
+  },
+  play: async function ({ canvas, userEvent }) {
+    const toggle = canvas.getByRole("button");
+
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+
+    await userEvent.click(toggle);
+
+    const mobileMenu = await screen.findByRole("dialog");
+
+    expect(mobileMenu).toBeInTheDocument();
   },
   render: (args) => (
     <div className="flex h-screen w-full bg-app-background overflow-hidden">

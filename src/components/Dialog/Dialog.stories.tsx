@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { expect, screen, waitForElementToBeRemoved } from "storybook/test";
 
 import { Button } from "../Button";
 import {
@@ -79,15 +80,30 @@ export const Default: Story = {
     position: "center",
     showCloseButton: true,
   },
+  play: async function ({ canvas, userEvent }) {
+    const button = canvas.getByRole("button", { name: /open center/i });
+
+    await userEvent.click(button);
+
+    expect(await screen.findByRole("dialog")).toBeInTheDocument();
+
+    await userEvent.keyboard("{Escape}");
+
+    await waitForElementToBeRemoved(() => screen.queryByRole("dialog"));
+  },
   render: ({ position, showCloseButton, ...args }) => (
     <Dialog {...args}>
-      <DialogContent closeButton={showCloseButton} position={position}>
+      <DialogContent
+        className="md:w-2/3 md:h-3/4"
+        closeButton={showCloseButton}
+        position={position}
+      >
         <DialogHeader
           subtitle="Change controls to see magic"
           title="Dynamic Dialog"
         />
 
-        <DialogBody>
+        <DialogBody className="h-28">
           <div className="flex flex-col gap-4 text-text">
             <div className="p-4 bg-primary/10 rounded-md border border-primary/20">
               <h4 className="font-semibold text-primary mb-1">
@@ -178,7 +194,7 @@ export const ScrollableContent: Story = {
 export const EditProfile: Story = {
   render: () => (
     <Dialog>
-      <DialogContent className="sm:max-w-[500px]">
+      <DialogContent className="sm:max-w-[500px] w-[1500px]">
         <DialogHeader
           subtitle="Update your personal details"
           title="Edit Profile"
@@ -194,6 +210,58 @@ export const EditProfile: Story = {
                 className="col-span-3 p-2 border rounded-md bg-transparent"
                 defaultValue="Artem Zakharchenko"
                 id="name"
+              />
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <label
+                className="text-right text-sm font-medium"
+                htmlFor="username"
+              >
+                Username
+              </label>
+              <input
+                className="col-span-3 p-2 border rounded-md bg-transparent"
+                defaultValue="@azakhardev"
+                id="username"
+              />
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <label
+                className="text-right text-sm font-medium"
+                htmlFor="username"
+              >
+                Username
+              </label>
+              <input
+                className="col-span-3 p-2 border rounded-md bg-transparent"
+                defaultValue="@azakhardev"
+                id="username"
+              />
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <label
+                className="text-right text-sm font-medium"
+                htmlFor="username"
+              >
+                Username
+              </label>
+              <input
+                className="col-span-3 p-2 border rounded-md bg-transparent"
+                defaultValue="@azakhardev"
+                id="username"
+              />
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <label
+                className="text-right text-sm font-medium"
+                htmlFor="username"
+              >
+                Username
+              </label>
+              <input
+                className="col-span-3 p-2 border rounded-md bg-transparent"
+                defaultValue="@azakhardev"
+                id="username"
               />
             </div>
             <div className="grid grid-cols-4 items-center gap-4">

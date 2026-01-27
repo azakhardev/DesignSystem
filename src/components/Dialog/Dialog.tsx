@@ -105,7 +105,8 @@ const dialogContentVariants = cva(
     variants: {
       position: {
         bottom: "w-full h-3/4 md:h-1/3 rounded-t-lg bottom-0",
-        center: "relative w-[90%] h-[90%] md:w-1/2 md:h-1/3 rounded-lg",
+        center:
+          "relative w-[90%] max-h-[95vh] md:w-1/2 md:h-1/3 h-fit rounded-lg",
         left: "w-[85%] md:w-1/3 h-full rounded-r-lg left-0 px-3",
         right: "w-[85%] md:w-1/3 h-full rounded-l-lg right-0 px-3",
         top: "w-full h-3/4 md:h-1/3 rounded-b-lg top-0",
