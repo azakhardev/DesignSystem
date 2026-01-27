@@ -37,24 +37,21 @@ const buttonVariants = cva(
   },
 );
 
-export type ButtonVariants = VariantProps<typeof buttonVariants>;
+type ButtonVariants = VariantProps<typeof buttonVariants>;
 
-export interface ButtonProps
-  extends React.ComponentProps<"button">, ButtonVariants {}
+interface ButtonProps extends React.ComponentProps<"button">, ButtonVariants {}
 
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  function Button(
-    { className, children, variant, ...props }: ButtonProps,
-    ref,
-  ) {
-    return (
-      <button
-        ref={ref}
-        className={cn(buttonVariants({ variant }), className)}
-        {...props}
-      >
-        {children}
-      </button>
-    );
-  },
-);
+function Button({ className, children, ref, variant, ...props }: ButtonProps) {
+  return (
+    <button
+      ref={ref}
+      className={cn(buttonVariants({ variant }), className)}
+      {...props}
+    >
+      {children}
+    </button>
+  );
+}
+
+export { Button };
+export type { ButtonProps, ButtonVariants };

@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../../lib/utils";
 
@@ -38,59 +38,62 @@ const textVariants = cva("m-0 leading-normal transition-colors", {
       true: "italic",
       false: "",
     },
-    unfrtline: {
-      ture: "underline",
+    underline: {
+      true: "underline",
       false: "",
     },
   },
-
   defaultVariants: {
     size: "base",
     weight: "normal",
     color: "default",
     align: "left",
     italic: false,
+    underline: false,
   },
 });
 
+//creates variant props from the textVariant function args
 type TextVariantsProps = VariantProps<typeof textVariants>;
 
-//generic variant of props, that shold be a valid html element
-export type TextProps<C extends React.ElementType> = {
+type TextProps<C extends React.ElementType> = {
+  //Automatically sets generic type C after developer sets as props (otherwise falls back to p)
   as?: C;
   className?: string;
   children?: React.ReactNode;
-} & TextVariantsProps & //extends props of the CVA Variants, so developer cant use unsupported variants
-  React.ComponentPropsWithoutRef<C>; //extends other props based on type C
+  // Explicilty tells that the ref has a type of element C
+  ref?: React.ComponentPropsWithRef<C>["ref"];
+} & TextVariantsProps &
+  React.ComponentPropsWithoutRef<C>;
 
-//uses ref to support polymorph properties on elements (if user types 'a', it will support href, target, etc.)
-export const Text = forwardRef(function Text<C extends React.ElementType = "p">(
-  {
-    as,
-    className,
-    size,
-    weight,
-    color,
-    align,
-    italic,
-    children,
-    ...props
-  }: TextProps<C>,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  ref: React.ForwardedRef<any>
-) {
+function Text<C extends React.ElementType = "p">({
+  as,
+  className,
+  children,
+  ref,
+  size,
+  weight,
+  color,
+  align,
+  italic,
+  underline,
+  ...props
+}: TextProps<C>) {
   const Component = as || "p";
 
   return (
     <Component
       ref={ref}
       className={cn(
-        textVariants({ size, weight, color, align, italic }),
-        className
+        textVariants({ size, weight, color, align, italic, underline }),
+        className,
       )}
       {...props}
     >
       {children}
     </Component>
   );
-});
+}
+
+export { Text };
+export type { TextProps, TextVariantsProps };

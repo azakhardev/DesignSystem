@@ -327,4 +327,4 @@ export {
   SidebarFooter,
   SidebarTrigger,
 };
-export type { SidebarProps };
+export type { SidebarProps, SidebarContentProps };

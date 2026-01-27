@@ -100,7 +100,7 @@ export const Link: Story = {
     children: "Click me (link)",
     href: "https://github.com/azakhardev/DesignSystem",
     target: "_blank",
-    color: "primary",
+    color: "default",
     className: "hover:underline cursor-pointer text-info-text",
   },
 };
@@ -131,7 +131,7 @@ export const ArticlePreview: Story = {
         states.
       </Text>
 
-      <Text as="a" href="#" color="primary" size="sm" weight="medium">
+      <Text as="a" href="#" color="default" size="sm" weight="medium">
         Read whole article →
       </Text>
     </div>
