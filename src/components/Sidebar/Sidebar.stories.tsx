@@ -1,5 +1,14 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
+  Home,
+  LogOut,
+  PanelLeft,
+  PanelRight,
+  Settings,
+  User,
+} from "lucide-react";
+
+import {
   Sidebar,
   SidebarBody,
   SidebarContent,
@@ -8,14 +17,6 @@ import {
   SidebarItem,
   SidebarTrigger,
 } from "./Sidebar";
-import {
-  Home,
-  Settings,
-  PanelLeft,
-  User,
-  PanelRight,
-  LogOut,
-} from "lucide-react";
 
 /**
  * A responsive, compound component suite for building application sidebars.
@@ -27,34 +28,21 @@ import {
  * - **Animation:** Includes smooth transitions for width resizing and mobile drawer entry.
  */
 const meta = {
-  title: "Layout/Sidebar",
-  component: Sidebar,
-  parameters: {
-    // 'fullscreen' removes the default 1rem padding from Storybook,
-    // allowing the sidebar to touch the edges of the window.
-    layout: "fullscreen",
-  },
-  subcomponents: {
-    SidebarContent,
-    SidebarHeader,
-    SidebarBody,
-    SidebarFooter,
-    SidebarItem,
-  } as Record<string, React.ComponentType<unknown>>,
   argTypes: {
+    children: { table: { disable: true } },
     collapsed: {
       control: "boolean",
       description: "Controls the collapsed state on Desktop.",
       table: { category: "State" },
     },
-    mobileOpen: {
-      control: "boolean",
-      description: "Controls the visibility of the Dialog on Mobile.",
-      table: { category: "State" },
-    },
     defaultCollapsed: {
       control: false,
       description: "Initial state for uncontrolled mode.",
+      table: { category: "State" },
+    },
+    mobileOpen: {
+      control: "boolean",
+      description: "Controls the visibility of the Dialog on Mobile.",
       table: { category: "State" },
     },
     onCollapsedChange: {
@@ -65,9 +53,22 @@ const meta = {
       action: "mobileOpen changed",
       table: { category: "Events" },
     },
-    children: { table: { disable: true } },
   },
+  component: Sidebar,
+  parameters: {
+    // 'fullscreen' removes the default 1rem padding from Storybook,
+    // allowing the sidebar to touch the edges of the window.
+    layout: "fullscreen",
+  },
+  subcomponents: {
+    SidebarBody,
+    SidebarContent,
+    SidebarFooter,
+    SidebarHeader,
+    SidebarItem,
+  } as Record<string, React.ComponentType<unknown>>,
   tags: ["autodocs"],
+  title: "Layout/Sidebar",
 } satisfies Meta<typeof Sidebar>;
 
 export default meta;
@@ -95,15 +96,15 @@ const DemoSidebarContent = () => (
 
     <SidebarFooter>
       <SidebarItem
-        icon={<LogOut />}
         className="text-error-text mt-auto hover:bg-red-600/30"
+        icon={<LogOut />}
       >
         Log out
       </SidebarItem>
       <div className="border-t border-border my-2" />
       <SidebarItem
-        icon={<User />}
         className="mt-auto hover:bg-transparent cursor-default"
+        icon={<User />}
       >
         <div className="flex flex-col text-sm text-left">
           <span className="font-bold">John Doe</span>

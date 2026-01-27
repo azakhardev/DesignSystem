@@ -1,55 +1,56 @@
-import React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
+import React from "react";
+
 import { cn } from "../../lib/utils";
 
 const textVariants = cva("m-0 leading-normal transition-colors", {
+  defaultVariants: {
+    align: "left",
+    color: "default",
+    italic: false,
+    size: "base",
+    underline: false,
+    weight: "normal",
+  },
   variants: {
-    size: {
-      xs: "text-xs",
-      sm: "text-sm",
-      base: "text-base",
-      lg: "text-lg",
-      xl: "text-xl",
-      "2xl": "text-2xl md:text-3xl",
-      "3xl": "text-3xl md:text-4xl",
-      "4xl": "text-4xl md:text-5xl",
-    },
-    weight: {
-      normal: "font-normal",
-      medium: "font-medium",
-      semibold: "font-semibold",
-      bold: "font-bold",
+    align: {
+      center: "text-center",
+      justify: "text-justify",
+      left: "text-left",
+      right: "text-right",
     },
     color: {
       default: "text-text",
+      error: "text-error-text",
+      info: "text-info-text",
       muted: "text-text-secondary dark:text-slate-400",
       success: "text-success-text",
-      error: "text-error-text",
       warning: "text-warning-text",
-      info: "text-info-text",
-    },
-    align: {
-      left: "text-left",
-      center: "text-center",
-      right: "text-right",
-      justify: "text-justify",
     },
     italic: {
-      true: "italic",
       false: "",
+      true: "italic",
+    },
+    size: {
+      "2xl": "text-2xl md:text-3xl",
+      "3xl": "text-3xl md:text-4xl",
+      "4xl": "text-4xl md:text-5xl",
+      base: "text-base",
+      lg: "text-lg",
+      sm: "text-sm",
+      xl: "text-xl",
+      xs: "text-xs",
     },
     underline: {
-      true: "underline",
       false: "",
+      true: "underline",
     },
-  },
-  defaultVariants: {
-    size: "base",
-    weight: "normal",
-    color: "default",
-    align: "left",
-    italic: false,
-    underline: false,
+    weight: {
+      bold: "font-bold",
+      medium: "font-medium",
+      normal: "font-normal",
+      semibold: "font-semibold",
+    },
   },
 });
 
@@ -67,27 +68,27 @@ type TextProps<C extends React.ElementType> = {
   React.ComponentPropsWithoutRef<C>;
 
 function Text<C extends React.ElementType = "p">({
+  align,
   as,
-  className,
   children,
+  className,
+  color,
+  italic,
   ref,
   size,
-  weight,
-  color,
-  align,
-  italic,
   underline,
+  weight,
   ...props
 }: TextProps<C>) {
   const Component = as || "p";
 
   return (
     <Component
-      ref={ref}
       className={cn(
-        textVariants({ size, weight, color, align, italic, underline }),
+        textVariants({ align, color, italic, size, underline, weight }),
         className,
       )}
+      ref={ref}
       {...props}
     >
       {children}

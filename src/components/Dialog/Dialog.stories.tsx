@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Button } from "../Button";
 
+import { Button } from "../Button";
 import {
   Dialog,
   DialogBody,
@@ -29,25 +29,17 @@ type StoryProps = React.ComponentProps<typeof Dialog> & {
  * - 📱 **Responsive**: `DialogBody` handles scrolling automatically while keeping buttons sticky.
  */
 const meta = {
-  title: "Layout/Dialog",
-  component: Dialog,
-  parameters: {
-    layout: "centered",
-  },
-  subcomponents: {
-    DialogContent,
-    DialogTrigger,
-    DialogBody,
-    DialogFooter,
-    DialogButtons,
-    DialogHeader,
-  } as Record<string, React.ComponentType<unknown>>,
-
   argTypes: {
+    children: { table: { disable: true } },
+    defaultOpen: {
+      control: "boolean",
+      description: "Initial state of the dialog",
+      table: { category: "Dialog Props" },
+    },
     position: {
       control: "select",
-      options: ["center", "left", "right", "top", "bottom"],
       description: "Controls the animation and position of the content",
+      options: ["center", "left", "right", "top", "bottom"],
       table: { category: "DialogContent Props" },
     },
     showCloseButton: {
@@ -55,13 +47,21 @@ const meta = {
       description: "Show or hide the X close button",
       table: { category: "DialogContent Props" },
     },
-    defaultOpen: {
-      control: "boolean",
-      description: "Initial state of the dialog",
-      table: { category: "Dialog Props" },
-    },
-    children: { table: { disable: true } },
   },
+  component: Dialog,
+  parameters: {
+    layout: "centered",
+  },
+  subcomponents: {
+    DialogBody,
+    DialogButtons,
+    DialogContent,
+    DialogFooter,
+    DialogHeader,
+    DialogTrigger,
+  } as Record<string, React.ComponentType<unknown>>,
+
+  title: "Layout/Dialog",
 } satisfies Meta<StoryProps>;
 
 export default meta;
@@ -75,16 +75,16 @@ type Story = StoryObj<StoryProps>;
  */
 export const Default: Story = {
   args: {
-    position: "center",
     defaultOpen: false,
+    position: "center",
     showCloseButton: true,
   },
   render: ({ position, showCloseButton, ...args }) => (
     <Dialog {...args}>
-      <DialogContent position={position} closeButton={showCloseButton}>
+      <DialogContent closeButton={showCloseButton} position={position}>
         <DialogHeader
-          title="Dynamic Dialog"
           subtitle="Change controls to see magic"
+          title="Dynamic Dialog"
         />
 
         <DialogBody>
@@ -130,16 +130,16 @@ export const Default: Story = {
  */
 export const ScrollableContent: Story = {
   args: {
-    position: "right",
     defaultOpen: false,
+    position: "right",
     showCloseButton: true,
   },
   render: ({ position, showCloseButton, ...args }) => (
     <Dialog {...args}>
       <DialogContent closeButton={showCloseButton} position={position}>
         <DialogHeader
-          title="Terms and Conditions"
           subtitle="Please read carefully"
+          title="Terms and Conditions"
         />
 
         <DialogBody>
@@ -158,10 +158,10 @@ export const ScrollableContent: Story = {
         </DialogBody>
 
         <DialogButtons className="bg-surface pt-4 border-t border-border">
-          <Button variant="danger" className="w-full sm:w-auto">
+          <Button className="w-full sm:w-auto" variant="danger">
             Decline
           </Button>
-          <Button variant="confirm" className="w-full sm:w-auto">
+          <Button className="w-full sm:w-auto" variant="confirm">
             Accept Terms
           </Button>
         </DialogButtons>
@@ -180,33 +180,33 @@ export const EditProfile: Story = {
     <Dialog>
       <DialogContent className="sm:max-w-[500px]">
         <DialogHeader
-          title="Edit Profile"
           subtitle="Update your personal details"
+          title="Edit Profile"
         />
 
         <DialogBody>
           <div className="grid gap-4 py-4">
             <div className="grid grid-cols-4 items-center gap-4">
-              <label htmlFor="name" className="text-right text-sm font-medium">
+              <label className="text-right text-sm font-medium" htmlFor="name">
                 Name
               </label>
               <input
-                id="name"
-                defaultValue="Artem Zakharchenko"
                 className="col-span-3 p-2 border rounded-md bg-transparent"
+                defaultValue="Artem Zakharchenko"
+                id="name"
               />
             </div>
             <div className="grid grid-cols-4 items-center gap-4">
               <label
-                htmlFor="username"
                 className="text-right text-sm font-medium"
+                htmlFor="username"
               >
                 Username
               </label>
               <input
-                id="username"
-                defaultValue="@azakhardev"
                 className="col-span-3 p-2 border rounded-md bg-transparent"
+                defaultValue="@azakhardev"
+                id="username"
               />
             </div>
           </div>

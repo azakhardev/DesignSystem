@@ -1,19 +1,20 @@
 import * as React from "react";
+
 import { cn } from "../../lib/utils";
 
 function Card({
-  className,
   children,
+  className,
   ref,
   ...props
 }: React.ComponentProps<"div">) {
   return (
     <div
-      ref={ref}
       className={cn(
         "rounded-md border bg-surface border-border shadow-sm ",
         className,
       )}
+      ref={ref}
       {...props}
     >
       {children}
@@ -22,15 +23,15 @@ function Card({
 }
 
 function CardHeader({
-  className,
   children,
+  className,
   ref,
   ...props
 }: React.ComponentProps<"div">) {
   return (
     <div
-      ref={ref}
       className={cn("flex flex-col p-4 pb-3 ", className)}
+      ref={ref}
       {...props}
     >
       {children}
@@ -40,18 +41,18 @@ function CardHeader({
 }
 
 function CardTitle({
-  className,
   children,
+  className,
   ref,
   ...props
 }: React.ComponentProps<"h3">) {
   return (
     <h3
-      ref={ref}
       className={cn(
         "font-semibold leading-none tracking-tight text-xl",
         className,
       )}
+      ref={ref}
       {...props}
     >
       {children}
@@ -60,15 +61,15 @@ function CardTitle({
 }
 
 function CardDescription({
-  className,
   children,
+  className,
   ref,
   ...props
 }: React.ComponentProps<"p">) {
   return (
     <p
-      ref={ref}
       className={cn("font-semibold text-text-secondary", className)}
+      ref={ref}
       {...props}
     >
       {children}
@@ -77,31 +78,31 @@ function CardDescription({
 }
 
 function CardContent({
-  className,
   children,
+  className,
   ref,
   ...props
 }: React.ComponentProps<"div">) {
   return (
-    <div ref={ref} className={cn("p-4", className)} {...props}>
+    <div className={cn("p-4", className)} ref={ref} {...props}>
       {children}
     </div>
   );
 }
 
 function CardFooter({
-  className,
   children,
+  className,
   ref,
   ...props
 }: React.ComponentProps<"div">) {
   return (
     <div
-      ref={ref}
       className={cn(
         "flex flex-col gap-2 p-4 pt-0 text-text-secondary text-sm",
         className,
       )}
+      ref={ref}
       {...props}
     >
       <div className="h-[1px] w-full bg-border" />
@@ -112,9 +113,9 @@ function CardFooter({
 
 export {
   Card,
-  CardHeader,
-  CardFooter,
-  CardTitle,
-  CardDescription,
   CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
 };

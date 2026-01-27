@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+
 import { ScreenLoader } from "./ScreenLoader";
 
 /**
@@ -8,38 +9,33 @@ import { ScreenLoader } from "./ScreenLoader";
  * individual bars. It is fully responsive, accessible, and highly configurable.
  */
 const meta = {
-  title: "Components/Loaders/ScreenLoader",
-  component: ScreenLoader,
-  parameters: {
-    layout: "centered",
-  },
   argTypes: {
-    color: {
-      control: "color",
-      description: "Color of the bars (CSS color or hex).",
+    barCount: {
+      control: { max: 20, min: 3, type: "range" },
+      description: "Total number of bars in the loader.",
     },
     barHeight: {
-      control: { type: "range", min: 20, max: 200 },
+      control: { max: 200, min: 20, type: "range" },
       description: "Maximum height of a bar during the animation peak.",
     },
     barWidth: {
       control: "number",
       description: "Width of a single bar (in px).",
     },
-    barCount: {
-      control: { type: "range", min: 3, max: 20 },
-      description: "Total number of bars in the loader.",
+    color: {
+      control: "color",
+      description: "Color of the bars (CSS color or hex).",
     },
     duration: {
-      control: { type: "range", min: 0.2, max: 5, step: 0.1 },
+      control: { max: 5, min: 0.2, step: 0.1, type: "range" },
       description: "Duration of one full animation loop (in seconds).",
     },
     itemStagger: {
-      control: { type: "number", step: 0.05 },
+      control: { step: 0.05, type: "number" },
       description: "Delay between the start of each bar's animation.",
     },
   },
-
+  component: ScreenLoader,
   decorators: [
     (Story, context) => {
       const key = JSON.stringify(context.args);
@@ -50,6 +46,11 @@ const meta = {
       );
     },
   ],
+  parameters: {
+    layout: "centered",
+  },
+
+  title: "Components/Loaders/ScreenLoader",
 } satisfies Meta<typeof ScreenLoader>;
 
 export default meta;
@@ -71,12 +72,12 @@ export const Default: Story = {
  */
 export const SmoothFlow: Story = {
   args: {
+    barCount: 12,
     barHeight: 40,
     barWidth: 6,
-    barCount: 12,
+    color: "#3b82f6", // Blue example
     duration: 0.8,
     itemStagger: 0.08,
-    color: "#3b82f6", // Blue example
   },
 };
 
@@ -87,12 +88,12 @@ export const SmoothFlow: Story = {
  */
 export const CalmLoading: Story = {
   args: {
+    barCount: 5,
     barHeight: 100,
     barWidth: 16,
-    barCount: 5,
+    color: "#10b981", // Green example
     duration: 2,
     itemStagger: 0.3,
-    color: "#10b981", // Green example
   },
 };
 
@@ -102,8 +103,8 @@ export const CalmLoading: Story = {
  */
 export const BrandColor: Story = {
   args: {
-    barHeight: 80,
     barCount: 7,
+    barHeight: 80,
     color: "#f43f5e", // Pink/Red example
   },
 };

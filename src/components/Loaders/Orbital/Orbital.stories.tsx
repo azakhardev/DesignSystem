@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+
 import { Orbital } from "./Orbital";
 
 /**
@@ -11,11 +12,34 @@ import { Orbital } from "./Orbital";
  * Ideal for "processing" states or when you need a loader that feels more organic than a standard spinner.
  */
 const meta = {
-  title: "Components/Loaders/Orbital",
-  component: Orbital,
-  parameters: {
-    layout: "centered",
+  argTypes: {
+    primaryColor: {
+      control: "color",
+      description: "Color of the larger outer dot.",
+      table: { defaultValue: { summary: "var(--primary)" } },
+    },
+    primaryDuration: {
+      control: { max: 10, min: 0.5, step: 0.1, type: "range" },
+      description: "Rotation speed of the primary dot (in seconds).",
+      table: { defaultValue: { summary: "1" } },
+    },
+    secondaryColor: {
+      control: "color",
+      description: "Color of the smaller inner dot.",
+      table: { defaultValue: { summary: "var(--secondary)" } },
+    },
+    secondaryDuration: {
+      control: { max: 10, min: 0.5, step: 0.1, type: "range" },
+      description: "Rotation speed of the secondary dot (in seconds).",
+      table: { defaultValue: { summary: "0.8" } },
+    },
+    size: {
+      control: { max: 200, min: 24, step: 4, type: "range" },
+      description: "The total diameter of the orbital path in pixels.",
+      table: { defaultValue: { summary: "48" } },
+    },
   },
+  component: Orbital,
   decorators: [
     (Story, context) => {
       const key = JSON.stringify(context.args);
@@ -26,33 +50,10 @@ const meta = {
       );
     },
   ],
-  argTypes: {
-    size: {
-      control: { type: "range", min: 24, max: 200, step: 4 },
-      description: "The total diameter of the orbital path in pixels.",
-      table: { defaultValue: { summary: "48" } },
-    },
-    primaryColor: {
-      control: "color",
-      description: "Color of the larger outer dot.",
-      table: { defaultValue: { summary: "var(--primary)" } },
-    },
-    secondaryColor: {
-      control: "color",
-      description: "Color of the smaller inner dot.",
-      table: { defaultValue: { summary: "var(--secondary)" } },
-    },
-    primaryDuration: {
-      control: { type: "range", min: 0.5, max: 10, step: 0.1 },
-      description: "Rotation speed of the primary dot (in seconds).",
-      table: { defaultValue: { summary: "1" } },
-    },
-    secondaryDuration: {
-      control: { type: "range", min: 0.5, max: 10, step: 0.1 },
-      description: "Rotation speed of the secondary dot (in seconds).",
-      table: { defaultValue: { summary: "0.8" } },
-    },
+  parameters: {
+    layout: "centered",
   },
+  title: "Components/Loaders/Orbital",
 } satisfies Meta<typeof Orbital>;
 
 export default meta;
@@ -73,9 +74,9 @@ export const Default: Story = {
  */
 export const Large: Story = {
   args: {
-    size: 128,
     primaryDuration: 2,
     secondaryDuration: 1.5,
+    size: 128,
   },
 };
 
@@ -85,11 +86,11 @@ export const Large: Story = {
  */
 export const SlowAmbient: Story = {
   args: {
-    size: 64,
-    primaryDuration: 4,
-    secondaryDuration: 3,
     primaryColor: "#3b82f6",
+    primaryDuration: 4,
     secondaryColor: "#60a5fa",
+    secondaryDuration: 3,
+    size: 64,
   },
 };
 
@@ -99,11 +100,11 @@ export const SlowAmbient: Story = {
  */
 export const FastProcessing: Story = {
   args: {
-    size: 40,
-    primaryDuration: 0.6,
-    secondaryDuration: 0.4,
     primaryColor: "#ef4444",
+    primaryDuration: 0.6,
     secondaryColor: "#f87171",
+    secondaryDuration: 0.4,
+    size: 40,
   },
 };
 
@@ -113,8 +114,8 @@ export const FastProcessing: Story = {
  */
 export const Monochrome: Story = {
   args: {
-    size: 48,
     primaryColor: "#333333",
     secondaryColor: "#666666",
+    size: 48,
   },
 };

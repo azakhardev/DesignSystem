@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Input } from "./Input";
 import { Eye, EyeClosed, KeyRound, Mail, Search, User } from "lucide-react";
 import { useState } from "react";
+
+import { Input } from "./Input";
 
 /**
  * ### 🖊️ Input Component
@@ -14,17 +15,17 @@ import { useState } from "react";
  * - **Animations**: Smooth transitions for error messages using Framer Motion.
  */
 const meta = {
-  title: "Form/Input",
+  argTypes: {
+    disabled: { control: "boolean" },
+    errorText: { control: "text" },
+    icon: { control: { disable: true } },
+    suffix: { control: { disable: true } },
+  },
   component: Input,
   parameters: {
     layout: "centered",
   },
-  argTypes: {
-    icon: { control: { disable: true } },
-    suffix: { control: { disable: true } },
-    disabled: { control: "boolean" },
-    errorText: { control: "text" },
-  },
+  title: "Form/Input",
 } satisfies Meta<typeof Input>;
 
 export default meta;
@@ -47,8 +48,8 @@ export const Default: Story = {
  */
 export const WithIcon: Story = {
   args: {
-    placeholder: "Search anything...",
     icon: <Search />,
+    placeholder: "Search anything...",
   },
 };
 
@@ -68,8 +69,8 @@ export const WithSuffix: Story = {
  */
 export const EmailExample: Story = {
   args: {
-    placeholder: "john.doe",
     icon: <Mail />,
+    placeholder: "john.doe",
     suffix: <span className="text-sm text-text-secondary">@gmail.com</span>,
   },
 };
@@ -83,10 +84,10 @@ export const EmailExample: Story = {
  */
 export const WithError: Story = {
   args: {
-    placeholder: "Email address",
-    icon: <Mail />,
     defaultValue: "invalid-email@",
     errorText: "Please enter a valid email address.",
+    icon: <Mail />,
+    placeholder: "Email address",
   },
 };
 
@@ -97,9 +98,9 @@ export const WithError: Story = {
  */
 export const Disabled: Story = {
   args: {
-    placeholder: "You cannot type here...",
-    icon: <User />,
     disabled: true,
+    icon: <User />,
+    placeholder: "You cannot type here...",
   },
 };
 
@@ -120,19 +121,19 @@ export const PasswordInput: Story = {
     return (
       <Input
         {...args}
-        type={showPassword ? "text" : "password"}
-        placeholder="Enter your password"
         icon={<KeyRound />}
+        placeholder="Enter your password"
         suffix={
           <button
-            type="button"
-            onClick={() => setShowPassword(!showPassword)}
             className="focus:outline-none text-text-secondary hover:text-text transition-colors"
+            onClick={() => setShowPassword(!showPassword)}
             tabIndex={-1}
+            type="button"
           >
             <ToggleIcon />
           </button>
         }
+        type={showPassword ? "text" : "password"}
       />
     );
   },

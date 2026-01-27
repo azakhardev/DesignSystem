@@ -1,21 +1,22 @@
-import { cn } from "../../lib/utils";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence,motion } from "framer-motion";
 import { useId } from "react";
 
+import { cn } from "../../lib/utils";
+
 interface InputProps extends React.ComponentProps<"input"> {
-  icon?: React.ReactNode;
   errorText?: string;
+  icon?: React.ReactNode;
   suffix?: React.ReactNode;
 }
 
 function Input({
   className,
-  icon,
-  errorText,
-  suffix,
   disabled,
-  ref,
+  errorText,
+  icon,
   id,
+  ref,
+  suffix,
   ...props
 }: InputProps) {
   const generatedId = useId();
@@ -42,11 +43,11 @@ function Input({
           </div>
         )}
         <input
-          ref={ref}
-          aria-invalid={!!errorText}
           aria-describedby={errorText ? errorId : undefined}
+          aria-invalid={!!errorText}
           className={`flex-1 w-full h-full bg-transparent outline-none placeholder:text-text-secondary file:bg-transparent file:border-0 file:text-sm file:font-medium ${disabled && "cursor-not-allowed"}`}
           disabled={disabled}
+          ref={ref}
           {...props}
         />
         {suffix && (
@@ -56,11 +57,11 @@ function Input({
       <AnimatePresence mode="wait">
         {errorText && (
           <motion.p
-            id={errorId}
-            initial={{ opacity: 0, y: -10, height: 0 }}
-            animate={{ opacity: 1, y: 0, height: "auto" }}
-            exit={{ opacity: 0, y: -10, height: 0 }}
+            animate={{ height: "auto", opacity: 1, y: 0 }}
             className="mt-1 text-sm text-error-text font-medium ml-1"
+            exit={{ height: 0, opacity: 0, y: -10 }}
+            id={errorId}
+            initial={{ height: 0, opacity: 0, y: -10 }}
             role="alert"
           >
             {errorText}
