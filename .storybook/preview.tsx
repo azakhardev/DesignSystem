@@ -28,11 +28,19 @@ const preview: Preview = {
       defaultTheme: "light",
       parentSelector: "body",
     }),
-    (Story) => (
-      <div className="w-full font-sans text-text antialiased bg-background p-8 transition-colors duration-200">
-        <Story />
-      </div>
-    ),
+    (Story, context) => {
+      const isFullscreen = context.parameters.layout === "fullscreen";
+
+      return (
+        <div
+          className={`w-full font-sans text-text antialiased bg-background transition-colors duration-200 ${
+            isFullscreen ? "p-0" : "p-8"
+          }`}
+        >
+          <Story />
+        </div>
+      );
+    },
   ],
   tags: ["autodocs"],
 };
