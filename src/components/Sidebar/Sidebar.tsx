@@ -131,7 +131,7 @@ function SidebarContent({
   className,
   side = "left",
   width = "16rem",
-  collapsedWidth = "4rem",
+  collapsedWidth = "3.5rem",
   dialogProps,
   ref,
   style,
@@ -153,7 +153,10 @@ function SidebarContent({
             dialogProps?.className,
           )}
         >
-          <div className="group/sidebar h-full" data-collapsed="false">
+          <div
+            className="group/sidebar h-full flex flex-col"
+            data-collapsed="false"
+          >
             {children}
           </div>
         </DialogContent>
@@ -181,12 +184,39 @@ function SidebarContent({
   );
 }
 
-function SidebarHeader() {
-  return <div></div>;
+function SidebarHeader({
+  className,
+  children,
+  ...props
+}: React.ComponentProps<"div">) {
+  return (
+    <div
+      className={cn(
+        "flex flex-col p-2 shrink-0 border-b-2 border-border",
+        className,
+      )}
+      {...props}
+    >
+      {children}
+    </div>
+  );
 }
 
-function SidebarBody() {
-  return <div className="flex flex-col gap-2 flex-1"></div>;
+function SidebarBody({
+  className,
+  ref,
+  children,
+  ...props
+}: React.ComponentProps<"div">) {
+  return (
+    <div
+      ref={ref}
+      className={cn("flex flex-col gap-2 flex-1 p-2", className)}
+      {...props}
+    >
+      {children}
+    </div>
+  );
 }
 
 interface SidebarItemProps extends React.ComponentProps<"div"> {
@@ -208,9 +238,9 @@ function SidebarItem({
   return (
     <div
       className={cn(
-        "flex items-center gap-2 rounded-md p-2 transition-colors",
-        "justify-start group-data-[collapsed=true]/sidebar:justify-center",
-        !categoryTitle && "cursor-pointer hover:bg-info-surface",
+        "flex flex-row items-center gap-2 rounded-md p-2 transition-all",
+        "justify-start",
+        !categoryTitle ? "cursor-pointer hover:bg-info-surface" : "mt-2",
         className,
       )}
       {...props}
@@ -225,31 +255,45 @@ function SidebarItem({
           >
             {children}
           </h4>
-          <div className={showOnlyWhenCollapsed}>
-            <Minus size={28} />
+          <div className={cn(showOnlyWhenCollapsed)}>
+            {icon ?? <Minus strokeWidth={3} />}
           </div>
         </>
       ) : (
         <>
-          <span className="shrink-0 flex items-center justify-center">
+          <div className="shrink-0 flex items-center justify-center">
             {icon}
-          </span>
-          <span
+          </div>
+          <div
             className={cn(
               "whitespace-nowrap overflow-hidden transition-opacity duration-200",
               hideWhenCollapsed,
             )}
           >
             {children}
-          </span>
+          </div>
         </>
       )}
     </div>
   );
 }
 
-function SidebarFooter() {
-  return <div></div>;
+function SidebarFooter({
+  className,
+  children,
+  ...props
+}: React.ComponentProps<"div">) {
+  return (
+    <div
+      className={cn(
+        "flex flex-col p-2 mt-auto shrink-0 border-t-2 border-border",
+        className,
+      )}
+      {...props}
+    >
+      {children}
+    </div>
+  );
 }
 
 function SidebarTrigger({

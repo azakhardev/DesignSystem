@@ -50,3 +50,4 @@
 - [ ] Drawer – A sidebar panel that slides in from the left or right (often used instead of Modals on mobile).
 - [ ] Avatar – Profile picture component with fallbacks (initials or generic icon) if the image fails to load.
 - [ ] ImageDialog - Dialog component for displaying images with toolbar options (zoom, save, copy, etc.)
+- [ ] ToolPanel - For selectiong tools/funcitons on hover with stacking ability.
