@@ -7,17 +7,27 @@ const preview: Preview = {
     docs: {
       codePanel: true,
     },
+
     controls: {
       matchers: {
         color: /(background|color)$/i,
         date: /Date$/i,
       },
     },
+
     // sets the background of the component DEMO
     backgrounds: {
-      disable: true, // disables default grid
+      disabled: true,
     },
+
     layout: "fullscreen",
+
+    a11y: {
+      // 'todo' - show a11y violations in the test UI only
+      // 'error' - fail CI on a11y violations
+      // 'off' - skip a11y checks entirely
+      test: "todo"
+    }
   },
   decorators: [
     withThemeByClassName({

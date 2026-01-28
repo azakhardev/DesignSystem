@@ -11,6 +11,7 @@ A modern, accessible, and strongly typed React Design System built with **Vite**
 - 📘 **TypeScript** first approach with full type definitions.
 - ⚡ **Vite** powered build for blazing fast performance.
 - 🎨 **Storybook** included for component isolation and documentation.
+- 🧪 **Vitest** integrated through Storybook also with Playwright.
 - 🌳 **Tree-shakable** exports (ESM & UMD support).
 
 ### 📦 Installation
@@ -69,6 +70,23 @@ export default {
   plugins: [],
 };
 ```
+
+**Tailwind v4.0** imports:
+
+```js
+//Your index.css
+@import "tailwindcss";
+
+@import "@artemdev04/design-system/style.css";
+@config "@artemdev04/design-system/tailwind.preset";
+@source "@artemdev04/design-system/dist";
+
+//The rest of your styles
+```
+
+> [!CAUTION]
+> Border styles are for now quite buggy - I didn't manage how to change the default border color
+> in Tailwind v4.0 projects, so it will fallback to the gray and override any color.
 
 ### 🛠 Development
 

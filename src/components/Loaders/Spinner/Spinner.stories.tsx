@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+
 import { Spinner } from "./Spinner";
 
 /**
@@ -7,11 +8,43 @@ import { Spinner } from "./Spinner";
  * - It automatically calculates the border width based on size if not provided.
  */
 const meta = {
-  title: "Components/Loaders/Spinner",
-  component: Spinner,
-  parameters: {
-    layout: "centered",
+  argTypes: {
+    duration: {
+      control: { max: 5, min: 0.25, step: 0.25, type: "range" },
+      description: "Time in milliseconds to complete one full animation cycle.",
+      table: { defaultValue: { summary: "2000" } },
+    },
+    ease: {
+      control: { type: "radio" },
+      description: "The timing function of the animation.",
+      options: ["linear", "easeInOut"],
+      table: { defaultValue: { summary: "easeInOut" } },
+    },
+    primaryColor: {
+      control: "color",
+      description: "The main color of the spinner track (CSS variable or hex).",
+    },
+    rotationsCount: {
+      control: { max: 20, min: 1, type: "number" },
+      description:
+        "How many 360° turns are performed within one duration cycle.",
+      table: { defaultValue: { summary: "5" } },
+    },
+    secondaryColor: {
+      control: "color",
+      description: "The color of the rotating 'head' of the spinner.",
+    },
+    size: {
+      control: { max: 256, min: 16, step: 4, type: "range" },
+      description: "The diameter of the spinner in pixels.",
+      table: { defaultValue: { summary: "72" } },
+    },
+    thickness: {
+      control: { type: "number" },
+      description: "Thickness of the spinner's stroke. Defaults to `size / 6`.",
+    },
   },
+  component: Spinner,
   decorators: [
     (Story, context) => {
       const key = JSON.stringify([
@@ -26,42 +59,10 @@ const meta = {
       );
     },
   ],
-  argTypes: {
-    size: {
-      control: { type: "range", min: 16, max: 256, step: 4 },
-      description: "The diameter of the spinner in pixels.",
-      table: { defaultValue: { summary: "72" } },
-    },
-    duration: {
-      control: { type: "range", min: 0.25, max: 5, step: 0.25 },
-      description: "Time in milliseconds to complete one full animation cycle.",
-      table: { defaultValue: { summary: "2000" } },
-    },
-    thickness: {
-      control: { type: "number" },
-      description: "Thickness of the spinner's stroke. Defaults to `size / 6`.",
-    },
-    rotationsCount: {
-      control: { type: "number", min: 1, max: 20 },
-      description:
-        "How many 360° turns are performed within one duration cycle.",
-      table: { defaultValue: { summary: "5" } },
-    },
-    primaryColor: {
-      control: "color",
-      description: "The main color of the spinner track (CSS variable or hex).",
-    },
-    secondaryColor: {
-      control: "color",
-      description: "The color of the rotating 'head' of the spinner.",
-    },
-    ease: {
-      options: ["linear", "easeInOut"],
-      control: { type: "radio" },
-      description: "The timing function of the animation.",
-      table: { defaultValue: { summary: "easeInOut" } },
-    },
+  parameters: {
+    layout: "centered",
   },
+  title: "Components/Loaders/Spinner",
 } satisfies Meta<typeof Spinner>;
 
 export default meta;
@@ -72,8 +73,8 @@ type Story = StoryObj<typeof meta>;
  */
 export const Default: Story = {
   args: {
-    size: 72,
     duration: 2,
+    size: 72,
   },
 };
 
@@ -82,10 +83,10 @@ export const Default: Story = {
  */
 export const ConstantRotation: Story = {
   args: {
-    size: 48,
     duration: 1,
     ease: "linear",
     rotationsCount: 1,
+    size: 48,
   },
 };
 
@@ -94,11 +95,11 @@ export const ConstantRotation: Story = {
  */
 export const BrandedThin: Story = {
   args: {
+    duration: 1.5,
+    primaryColor: "var(--app-background)",
+    rotationsCount: 3,
+    secondaryColor: "#0ea5e9",
     size: 120,
     thickness: 2,
-    primaryColor: "var(--app-background)",
-    secondaryColor: "#0ea5e9",
-    duration: 1.5,
-    rotationsCount: 3,
   },
 };

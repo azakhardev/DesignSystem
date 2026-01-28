@@ -1,5 +1,15 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
+  Home,
+  LogOut,
+  PanelLeft,
+  PanelRight,
+  Settings,
+  User,
+} from "lucide-react";
+import { expect, screen } from "storybook/test";
+
+import {
   Sidebar,
   SidebarBody,
   SidebarContent,
@@ -8,14 +18,6 @@ import {
   SidebarItem,
   SidebarTrigger,
 } from "./Sidebar";
-import {
-  Home,
-  Settings,
-  PanelLeft,
-  User,
-  PanelRight,
-  LogOut,
-} from "lucide-react";
 
 /**
  * A responsive, compound component suite for building application sidebars.
@@ -27,34 +29,21 @@ import {
  * - **Animation:** Includes smooth transitions for width resizing and mobile drawer entry.
  */
 const meta = {
-  title: "Layout/Sidebar",
-  component: Sidebar,
-  parameters: {
-    // 'fullscreen' removes the default 1rem padding from Storybook,
-    // allowing the sidebar to touch the edges of the window.
-    layout: "fullscreen",
-  },
-  subcomponents: {
-    SidebarContent,
-    SidebarHeader,
-    SidebarBody,
-    SidebarFooter,
-    SidebarItem,
-  } as Record<string, React.ComponentType<unknown>>,
   argTypes: {
+    children: { table: { disable: true } },
     collapsed: {
       control: "boolean",
       description: "Controls the collapsed state on Desktop.",
       table: { category: "State" },
     },
-    mobileOpen: {
-      control: "boolean",
-      description: "Controls the visibility of the Dialog on Mobile.",
-      table: { category: "State" },
-    },
     defaultCollapsed: {
       control: false,
       description: "Initial state for uncontrolled mode.",
+      table: { category: "State" },
+    },
+    mobileOpen: {
+      control: "boolean",
+      description: "Controls the visibility of the Dialog on Mobile.",
       table: { category: "State" },
     },
     onCollapsedChange: {
@@ -65,9 +54,22 @@ const meta = {
       action: "mobileOpen changed",
       table: { category: "Events" },
     },
-    children: { table: { disable: true } },
   },
+  component: Sidebar,
+  parameters: {
+    // 'fullscreen' removes the default 1rem padding from Storybook,
+    // allowing the sidebar to touch the edges of the window.
+    layout: "fullscreen",
+  },
+  subcomponents: {
+    SidebarBody,
+    SidebarContent,
+    SidebarFooter,
+    SidebarHeader,
+    SidebarItem,
+  } as Record<string, React.ComponentType<unknown>>,
   tags: ["autodocs"],
+  title: "Layout/Sidebar",
 } satisfies Meta<typeof Sidebar>;
 
 export default meta;
@@ -95,15 +97,15 @@ const DemoSidebarContent = () => (
 
     <SidebarFooter>
       <SidebarItem
-        icon={<LogOut />}
         className="text-error-text mt-auto hover:bg-red-600/30"
+        icon={<LogOut />}
       >
         Log out
       </SidebarItem>
       <div className="border-t border-border my-2" />
       <SidebarItem
-        icon={<User />}
         className="mt-auto hover:bg-transparent cursor-default"
+        icon={<User />}
       >
         <div className="flex flex-col text-sm text-left">
           <span className="font-bold">John Doe</span>
@@ -125,6 +127,19 @@ const DemoSidebarContent = () => (
 export const LeftPanel: Story = {
   args: {
     defaultCollapsed: false,
+  },
+  play: async function ({ canvas, userEvent }) {
+    const toggle = canvas.getByRole("button");
+
+    await userEvent.click(toggle);
+
+    const sidebar = canvas.getByRole("complementary");
+
+    expect(sidebar).toHaveAttribute("data-collapsed", "true");
+
+    await userEvent.click(toggle);
+
+    expect(sidebar).toHaveAttribute("data-collapsed", "false");
   },
   render: (args) => (
     <div className="flex h-screen w-full bg-app-background overflow-hidden">
@@ -159,6 +174,23 @@ export const LeftPanel: Story = {
 export const RightPanel: Story = {
   args: {
     defaultCollapsed: false,
+  },
+  parameters: {
+    layout: "fullscreen",
+    viewport: {
+      defaultViewport: "mobile1",
+    },
+  },
+  play: async function ({ canvas, userEvent }) {
+    const toggle = canvas.getByRole("button");
+
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+
+    await userEvent.click(toggle);
+
+    const mobileMenu = await screen.findByRole("dialog");
+
+    expect(mobileMenu).toBeInTheDocument();
   },
   render: (args) => (
     <div className="flex h-screen w-full bg-app-background overflow-hidden">

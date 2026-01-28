@@ -1,94 +1,121 @@
 import * as React from "react";
+
 import { cn } from "../../lib/utils";
 
-const Card = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn(
-      "rounded-md border bg-surface border-border shadow-sm ",
-      className
-    )}
-    {...props}
-  />
-));
-Card.displayName = "Card";
+function Card({
+  children,
+  className,
+  ref,
+  ...props
+}: React.ComponentProps<"div">) {
+  return (
+    <div
+      className={cn(
+        "rounded-md border bg-surface border-border shadow-sm ",
+        className,
+      )}
+      ref={ref}
+      {...props}
+    >
+      {children}
+    </div>
+  );
+}
 
-const CardHeader = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, children, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn("flex flex-col p-4 pb-3 ", className)}
-    {...props}
-  >
-    {children}
-    <div className="h-[2px] w-full bg-border-strong mt-2" />
-  </div>
-));
-CardHeader.displayName = "CardHeader";
+function CardHeader({
+  children,
+  className,
+  ref,
+  ...props
+}: React.ComponentProps<"div">) {
+  return (
+    <div
+      className={cn("flex flex-col p-4 pb-3 ", className)}
+      ref={ref}
+      {...props}
+    >
+      {children}
+      <div className="h-[2px] w-full bg-border-strong mt-2" />
+    </div>
+  );
+}
 
-const CardTitle = React.forwardRef<
-  HTMLParagraphElement,
-  React.HTMLAttributes<HTMLHeadingElement>
->(({ className, ...props }, ref) => (
-  <h3
-    ref={ref}
-    className={cn(
-      "font-semibold leading-none tracking-tight text-xl",
-      className
-    )}
-    {...props}
-  />
-));
-CardTitle.displayName = "CardTitle";
+function CardTitle({
+  children,
+  className,
+  ref,
+  ...props
+}: React.ComponentProps<"h3">) {
+  return (
+    <h3
+      className={cn(
+        "font-semibold leading-none tracking-tight text-xl",
+        className,
+      )}
+      ref={ref}
+      {...props}
+    >
+      {children}
+    </h3>
+  );
+}
 
-const CardDescription = React.forwardRef<
-  HTMLParagraphElement,
-  React.HTMLAttributes<HTMLParagraphElement>
->(({ className, ...props }, ref) => (
-  <p
-    ref={ref}
-    className={cn("font-semibold text-text-secondary", className)}
-    {...props}
-  />
-));
-CardDescription.displayName = "CardDescription";
+function CardDescription({
+  children,
+  className,
+  ref,
+  ...props
+}: React.ComponentProps<"p">) {
+  return (
+    <p
+      className={cn("font-semibold text-text-secondary", className)}
+      ref={ref}
+      {...props}
+    >
+      {children}
+    </p>
+  );
+}
 
-const CardContent = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn("p-4", className)} {...props} />
-));
-CardContent.displayName = "CardContent";
+function CardContent({
+  children,
+  className,
+  ref,
+  ...props
+}: React.ComponentProps<"div">) {
+  return (
+    <div className={cn("p-4", className)} ref={ref} {...props}>
+      {children}
+    </div>
+  );
+}
 
-const CardFooter = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, children, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn(
-      "flex flex-col gap-2 p-4 pt-0 text-text-secondary text-sm",
-      className
-    )}
-    {...props}
-  >
-    <div className="h-[1px] w-full bg-border" />
-    {children}
-  </div>
-));
-CardFooter.displayName = "CardFooter";
+function CardFooter({
+  children,
+  className,
+  ref,
+  ...props
+}: React.ComponentProps<"div">) {
+  return (
+    <div
+      className={cn(
+        "flex flex-col gap-2 p-4 pt-0 text-text-secondary text-sm",
+        className,
+      )}
+      ref={ref}
+      {...props}
+    >
+      <div className="h-[1px] w-full bg-border" />
+      {children}
+    </div>
+  );
+}
 
 export {
   Card,
-  CardHeader,
-  CardFooter,
-  CardTitle,
-  CardDescription,
   CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
 };

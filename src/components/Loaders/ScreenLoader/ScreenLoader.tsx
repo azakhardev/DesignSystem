@@ -1,51 +1,52 @@
-import { cn } from "../../../lib/utils";
-import { motion, stagger } from "framer-motion";
 import type { Variants } from "framer-motion";
+import { motion, stagger } from "framer-motion";
+
+import { cn } from "../../../lib/utils";
 
 interface ScreenLoaderProps extends React.HTMLAttributes<HTMLDivElement> {
+  barCount?: number;
   barHeight: number;
   barWidth?: number;
   color?: string;
   duration?: number;
-  barCount?: number;
   itemStagger?: number;
 }
 
 function ScreenLoader({
-  className,
+  barCount = 5,
   barHeight,
   barWidth = 16,
+  className,
   color,
   duration,
-  barCount = 5,
   itemStagger = 0.15,
   ...props
 }: ScreenLoaderProps) {
   const minHeight = Math.max(10, barHeight / 4);
 
   const containerVariants: Variants = {
-    initial: {
-      opacity: 0,
-    },
     animate: {
       opacity: 1,
       transition: {
         delayChildren: stagger(itemStagger),
       },
     },
+    initial: {
+      opacity: 0,
+    },
   };
 
   const itemVariants: Variants = {
-    initial: {
-      height: minHeight,
-    },
     animate: {
       height: [minHeight, barHeight, minHeight],
       transition: {
+        duration: duration ? duration : barCount * 0.3,
         ease: "easeInOut",
         repeat: Infinity,
-        duration: duration ? duration : barCount * 0.3,
       },
+    },
+    initial: {
+      height: minHeight,
     },
   };
 
@@ -53,27 +54,27 @@ function ScreenLoader({
 
   return (
     <div
+      aria-label="Loading"
       className={cn("relative flex items-center justify-center", className)}
       role="status"
-      aria-label="Loading"
       {...props}
     >
       <motion.ul
-        variants={containerVariants}
-        initial="initial"
         animate="animate"
         className="flex flex-row gap-4 h-full w-full items-center justify-center"
+        initial="initial"
         style={{ height: barHeight }}
+        variants={containerVariants}
       >
         {bars.map((i) => (
           <motion.li
-            variants={itemVariants}
+            key={i}
             style={{
               backgroundColor: color ?? "var(--primary)",
-              width: barWidth,
               borderRadius: barWidth / 2,
+              width: barWidth,
             }}
-            key={i}
+            variants={itemVariants}
           ></motion.li>
         ))}
       </motion.ul>

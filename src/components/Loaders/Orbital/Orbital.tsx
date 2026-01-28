@@ -1,12 +1,13 @@
-import { cn } from "../../../lib/utils";
 import { motion } from "framer-motion";
 
+import { cn } from "../../../lib/utils";
+
 interface OrbitalProps extends React.HTMLAttributes<HTMLDivElement> {
-  size?: number;
   primaryColor?: string;
   primaryDuration?: number;
   secondaryColor?: string;
   secondaryDuration?: number;
+  size?: number;
 }
 
 function Orbital({
@@ -27,39 +28,39 @@ function Orbital({
     <div
       className={cn("relative flex justify-center items-center", className)}
       {...props}
-      style={{ width: size, height: size }}
+      style={{ height: size, width: size }}
     >
       <motion.div
+        animate={{ rotate: 360 }}
         className="absolute top-0 left-1/2 rounded-full"
         style={{
-          width: primaryDotSize,
-          height: primaryDotSize,
           backgroundColor: primaryColor ?? "var(--primary)",
-          x: "-50%",
+          height: primaryDotSize,
           transformOrigin: `50% ${radius}px`,
+          width: primaryDotSize,
+          x: "-50%",
         }}
-        animate={{ rotate: 360 }}
         transition={{
           duration: primaryDuration,
-          repeat: Infinity,
           ease: "linear",
+          repeat: Infinity,
         }}
       />
 
       <motion.div
+        animate={{ rotate: -360 }}
         className="absolute top-0 left-1/2 rounded-full"
         style={{
-          width: secondaryDotSize,
-          height: secondaryDotSize,
           backgroundColor: secondaryColor ?? "var(--secondary)",
-          x: "-50%",
+          height: secondaryDotSize,
           transformOrigin: `50% ${radius}px`,
+          width: secondaryDotSize,
+          x: "-50%",
         }}
-        animate={{ rotate: -360 }}
         transition={{
           duration: secondaryDuration,
-          repeat: Infinity,
           ease: "linear",
+          repeat: Infinity,
         }}
       />
     </div>

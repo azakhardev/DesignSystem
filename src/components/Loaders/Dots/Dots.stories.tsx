@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+
 import { Dots } from "./Dots";
 
 /**
@@ -14,11 +15,43 @@ import { Dots } from "./Dots";
  * The component allows full control over the animation timing, geometry, and colors.
  */
 const meta = {
-  title: "Components/Loaders/Dots",
-  component: Dots,
-  parameters: {
-    layout: "centered",
+  argTypes: {
+    color: {
+      control: "color",
+      description: "Color of the dots. Accepts CSS variables or hex codes.",
+      table: { defaultValue: { summary: "var(--primary)" } },
+    },
+    dotsCount: {
+      control: { max: 10, min: 2, step: 1, type: "range" },
+      description: "Number of dots to render.",
+      table: { defaultValue: { summary: "3" } },
+    },
+    duration: {
+      control: { max: 2, min: 0.2, step: 0.1, type: "range" },
+      description: "Duration of one jump cycle per dot (in seconds).",
+    },
+    gap: {
+      control: { max: 20, min: 2, step: 1, type: "range" },
+      description: "Space between individual dots.",
+    },
+    itemStagger: {
+      control: { step: 0.05, type: "number" },
+      description: "Delay between the start of each dot's animation.",
+    },
+    jumpHeight: {
+      control: { max: 50, min: 5, step: 1, type: "number" },
+      description: "How high (in pixels) the dots jump.",
+    },
+    repeatDuration: {
+      control: { max: 2, min: 0, step: 0.1, type: "range" },
+      description: "Pause time between animation loops.",
+    },
+    size: {
+      control: { max: 20, min: 2, step: 1, type: "range" },
+      description: "Diameter of each dot in pixels.",
+    },
   },
+  component: Dots,
   decorators: [
     (Story, context) => {
       const key = JSON.stringify(context.args);
@@ -29,42 +62,10 @@ const meta = {
       );
     },
   ],
-  argTypes: {
-    color: {
-      control: "color",
-      description: "Color of the dots. Accepts CSS variables or hex codes.",
-      table: { defaultValue: { summary: "var(--primary)" } },
-    },
-    dotsCount: {
-      control: { type: "range", min: 2, max: 10, step: 1 },
-      description: "Number of dots to render.",
-      table: { defaultValue: { summary: "3" } },
-    },
-    size: {
-      control: { type: "range", min: 2, max: 20, step: 1 },
-      description: "Diameter of each dot in pixels.",
-    },
-    gap: {
-      control: { type: "range", min: 2, max: 20, step: 1 },
-      description: "Space between individual dots.",
-    },
-    jumpHeight: {
-      control: { type: "number", min: 5, max: 50, step: 1 },
-      description: "How high (in pixels) the dots jump.",
-    },
-    duration: {
-      control: { type: "range", min: 0.2, max: 2, step: 0.1 },
-      description: "Duration of one jump cycle per dot (in seconds).",
-    },
-    itemStagger: {
-      control: { type: "number", step: 0.05 },
-      description: "Delay between the start of each dot's animation.",
-    },
-    repeatDuration: {
-      control: { type: "range", min: 0, max: 2, step: 0.1 },
-      description: "Pause time between animation loops.",
-    },
+  parameters: {
+    layout: "centered",
   },
+  title: "Components/Loaders/Dots",
 } satisfies Meta<typeof Dots>;
 
 export default meta;
@@ -76,8 +77,8 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     dotsCount: 3,
-    size: 10,
     gap: 6,
+    size: 10,
   },
 };
 
@@ -87,14 +88,14 @@ export const Default: Story = {
  */
 export const TypingIndicator: Story = {
   args: {
-    dotsCount: 3,
-    size: 4,
-    gap: 4,
-    jumpHeight: 6,
-    duration: 0.6,
-    itemStagger: 0.1,
-    color: "#64748b",
     className: "opacity-80",
+    color: "#64748b",
+    dotsCount: 3,
+    duration: 0.6,
+    gap: 4,
+    itemStagger: 0.1,
+    jumpHeight: 6,
+    size: 4,
   },
 };
 
@@ -105,12 +106,12 @@ export const TypingIndicator: Story = {
  */
 export const SmoothWave: Story = {
   args: {
-    dotsCount: 5,
-    size: 6,
-    jumpHeight: 12,
-    itemStagger: 0.15,
-    duration: 0.8,
     color: "#3b82f6",
+    dotsCount: 5,
+    duration: 0.8,
+    itemStagger: 0.15,
+    jumpHeight: 12,
+    size: 6,
   },
 };
 
@@ -120,11 +121,11 @@ export const SmoothWave: Story = {
  */
 export const LargeLoader: Story = {
   args: {
-    dotsCount: 3,
-    size: 16,
-    gap: 12,
-    jumpHeight: 25,
-    itemStagger: 0.1,
     color: "#ef4444",
+    dotsCount: 3,
+    gap: 12,
+    itemStagger: 0.1,
+    jumpHeight: 25,
+    size: 16,
   },
 };

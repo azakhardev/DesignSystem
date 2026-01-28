@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+
 import { Button } from "./Button";
 
 /**
@@ -12,11 +13,6 @@ import { Button } from "./Button";
  * - **Polymorphic:** Can receive a `ref` and passes all standard HTML button attributes.
  */
 const meta = {
-  title: "Components/Button",
-  component: Button,
-  parameters: {
-    layout: "centered",
-  },
   argTypes: {
     variant: {
       control: "select",
@@ -31,6 +27,11 @@ const meta = {
       ],
     },
   },
+  component: Button,
+  parameters: {
+    layout: "centered",
+  },
+  title: "Components/Button",
 } satisfies Meta<typeof Button>;
 
 export default meta;
@@ -47,9 +48,9 @@ export const Default: Story = {
   args: {
     children: "Click me",
     className: "",
+    disabled: false,
     onClick: () => {
       alert("Thanks!");
     },
-    disabled: false,
   },
 };

@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Alert, AlertTitle, AlertMessage } from "./Alert";
 import { Terminal } from "lucide-react";
+
+import { Alert, AlertMessage,AlertTitle } from "./Alert";
 
 /**
  * A distinctive alert component with **absolute positioning** for icons.
@@ -10,36 +11,36 @@ import { Terminal } from "lucide-react";
  * * **Composition:** Build the content using `AlertTitle` and `AlertMessage` subcomponents.
  */
 const meta = {
-  title: "Components/Alert",
-  component: Alert,
-  subcomponents: { AlertTitle, AlertMessage } as Record<
-    string,
-    React.ComponentType<unknown>
-  >,
-  parameters: {
-    layout: "centered",
-  },
   argTypes: {
-    variant: {
-      control: "select",
-      options: ["info", "warning", "error", "success", "noData"],
-      description: "Visual style of the alert.",
-      table: { defaultValue: { summary: "warning" } },
-    },
     children: {
       control: false,
-    },
-    showIcon: {
-      control: "boolean",
-      description:
-        "If true, displays the default icon for the selected variant in the top-right corner.",
     },
     icon: {
       control: false,
       description:
         "Overrides the default icon. Implicitly enables icon display when provided.",
     },
+    showIcon: {
+      control: "boolean",
+      description:
+        "If true, displays the default icon for the selected variant in the top-right corner.",
+    },
+    variant: {
+      control: "select",
+      description: "Visual style of the alert.",
+      options: ["info", "warning", "error", "success", "noData"],
+      table: { defaultValue: { summary: "warning" } },
+    },
   },
+  component: Alert,
+  parameters: {
+    layout: "centered",
+  },
+  subcomponents: { AlertMessage, AlertTitle } as Record<
+    string,
+    React.ComponentType<unknown>
+  >,
+  title: "Components/Alert",
 } satisfies Meta<typeof Alert>;
 
 export default meta;
@@ -50,7 +51,6 @@ type Story = StoryObj<typeof meta>;
  */
 export const Default: Story = {
   args: {
-    variant: "warning",
     children: (
       <>
         <AlertTitle>Warning</AlertTitle>
@@ -59,6 +59,7 @@ export const Default: Story = {
         </AlertMessage>
       </>
     ),
+    variant: "warning",
   },
 };
 
@@ -67,8 +68,6 @@ export const Default: Story = {
  */
 export const WithIcon: Story = {
   args: {
-    variant: "info",
-    showIcon: true,
     children: (
       <>
         <AlertTitle>New Feature</AlertTitle>
@@ -77,6 +76,8 @@ export const WithIcon: Story = {
         </AlertMessage>
       </>
     ),
+    showIcon: true,
+    variant: "info",
   },
 };
 
@@ -85,8 +86,6 @@ export const WithIcon: Story = {
  */
 export const Error: Story = {
   args: {
-    variant: "error",
-    showIcon: true,
     children: (
       <>
         <AlertTitle>Critical Error</AlertTitle>
@@ -95,6 +94,8 @@ export const Error: Story = {
         </AlertMessage>
       </>
     ),
+    showIcon: true,
+    variant: "error",
   },
 };
 
@@ -103,8 +104,6 @@ export const Error: Story = {
  */
 export const Success: Story = {
   args: {
-    variant: "success",
-    showIcon: true,
     children: (
       <>
         <AlertTitle>Order Confirmed</AlertTitle>
@@ -113,6 +112,8 @@ export const Success: Story = {
         </AlertMessage>
       </>
     ),
+    showIcon: true,
+    variant: "success",
   },
 };
 
@@ -121,8 +122,6 @@ export const Success: Story = {
  */
 export const CustomIcon: Story = {
   args: {
-    variant: "noData",
-    icon: <Terminal className="size-5" />,
     children: (
       <>
         <AlertTitle>System Log</AlertTitle>
@@ -131,6 +130,8 @@ export const CustomIcon: Story = {
         </AlertMessage>
       </>
     ),
+    icon: <Terminal className="size-5" />,
+    variant: "noData",
   },
 };
 
@@ -140,9 +141,6 @@ export const CustomIcon: Story = {
  */
 export const HandlingLongText: Story = {
   args: {
-    variant: "info",
-    showIcon: true,
-    className: "pr-12",
     children: (
       <>
         <AlertMessage>
@@ -152,5 +150,8 @@ export const HandlingLongText: Story = {
         </AlertMessage>
       </>
     ),
+    className: "pr-12",
+    showIcon: true,
+    variant: "info",
   },
 };

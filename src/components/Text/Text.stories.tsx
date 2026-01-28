@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+
 import { Text } from "./Text";
 
 /**
@@ -8,23 +9,11 @@ import { Text } from "./Text";
  * - **Type-Safe:** Strictly typed to prevent invalid attributes (e.g., `href` is only allowed when `as="a"`).
  */
 const meta = {
-  title: "Components/Text",
-  component: Text,
-  parameters: {
-    layout: "centered",
-  },
-  // Wraps every story in this file with provided div
-  decorators: [
-    (Story) => (
-      <div className="max-w-[500px] border-2 border-dashed border-slate-300 p-4">
-        <Story />
-      </div>
-    ),
-  ],
   // Defines the options for different props of our component
   argTypes: {
     as: {
       control: "select",
+      description: "HTML tag, který se vyrenderuje",
       options: [
         "p",
         "h1",
@@ -38,13 +27,25 @@ const meta = {
         "label",
         "a",
       ],
-      description: "HTML tag, který se vyrenderuje",
     },
     size: {
       control: "select",
       options: ["xs", "sm", "base", "lg", "xl", "2xl", "3xl", "4xl"],
     },
   },
+  component: Text,
+  // Wraps every story in this file with provided div
+  decorators: [
+    (Story) => (
+      <div className="max-w-[500px] border-2 border-dashed border-slate-300 p-4">
+        <Story />
+      </div>
+    ),
+  ],
+  parameters: {
+    layout: "centered",
+  },
+  title: "Components/Text",
 } satisfies Meta<typeof Text>;
 
 export default meta;
@@ -69,11 +70,11 @@ export const Default: Story = {
  */
 export const Heading: Story = {
   args: {
+    align: "center",
     as: "h1",
     children: "Main heading",
     size: "3xl",
     weight: "bold",
-    align: "center",
   },
 };
 
@@ -85,8 +86,8 @@ export const MutedLabel: Story = {
   args: {
     as: "span",
     children: "Muted text - for additional information",
-    size: "sm",
     color: "muted",
+    size: "sm",
   },
 };
 
@@ -98,10 +99,10 @@ export const Link: Story = {
   args: {
     as: "a",
     children: "Click me (link)",
+    className: "hover:underline cursor-pointer text-info-text",
+    color: "default",
     href: "https://github.com/azakhardev/DesignSystem",
     target: "_blank",
-    color: "primary",
-    className: "hover:underline cursor-pointer text-info-text",
   },
 };
 
@@ -117,21 +118,21 @@ export const ArticlePreview: Story = {
       </Text>
 
       <div className="flex justify-between">
-        <Text as="span" size="xs" color="muted">
+        <Text as="span" color="muted" size="xs">
           Author: Gemini
         </Text>
-        <Text as="span" size="xs" color="muted">
+        <Text as="span" color="muted" size="xs">
           13.01.2026
         </Text>
       </div>
 
-      <Text as="p" size="sm" align="justify">
+      <Text align="justify" as="p" size="sm">
         Storybook is a tool for developing UI Components in isolation. It allows
         documenting Component with <strong>autodocs</strong> and test different
         states.
       </Text>
 
-      <Text as="a" href="#" color="primary" size="sm" weight="medium">
+      <Text as="a" color="default" href="#" size="sm" weight="medium">
         Read whole article →
       </Text>
     </div>

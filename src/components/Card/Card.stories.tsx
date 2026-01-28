@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+
 import {
   Card,
   CardContent,
@@ -15,11 +16,11 @@ import {
  * `CardHeader`, `CardContent`, and `CardFooter` to build diverse UI variations.
  */
 const meta = {
-  title: "Components/Card",
   component: Card,
   parameters: {
     layout: "centered",
   },
+  title: "Components/Card",
 } satisfies Meta<typeof Card>;
 
 export default meta;
