@@ -36,10 +36,10 @@ _Goal: Automate quality checks and prepare release workflow._
 - [x] Migrate to `ref` as Props and `React.ComponentProps`
 - [x] Properly setup linting
 - [ ] ~~Migrate to Tailwind CSS v4.0?~~
-- [ ] Check the Storybook documentation.
-- [ ] Finalization of API (So the props wont change, hopefully).
+- [x] Check the Storybook documentation.
+- [x] Finalization of API (So the props wont change, hopefully).
 - [x] Configure testing through Storybook
-- [ ] Release of v1.0.0 to npm
+- [x] Release of v1.0.0 to npm
   - `npm publish --access public` or with use of pipeline
 
 ### Phase 5: Support & Expand

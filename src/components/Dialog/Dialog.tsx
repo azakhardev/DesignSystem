@@ -97,7 +97,7 @@ function DialogTrigger({
 }
 
 const dialogContentVariants = cva(
-  "absolute flex flex-col bg-surface p-6 z-10 border-2 border-border",
+  "absolute flex flex-col bg-surface p-6 z-10 border-2 border-border overflow-hidden",
   {
     defaultVariants: {
       position: "center",

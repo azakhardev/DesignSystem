@@ -48,6 +48,7 @@ export const Default: Story = {
  */
 export const WithIcon: Story = {
   args: {
+    "aria-label": "Search",
     icon: <Search />,
     placeholder: "Search anything...",
   },
@@ -59,6 +60,7 @@ export const WithIcon: Story = {
  */
 export const WithSuffix: Story = {
   args: {
+    "aria-label": "website",
     placeholder: "your-site",
     suffix: <span className="text-sm font-medium">.com</span>,
   },
@@ -69,6 +71,7 @@ export const WithSuffix: Story = {
  */
 export const EmailExample: Story = {
   args: {
+    "aria-label": "email",
     icon: <Mail />,
     placeholder: "john.doe",
     suffix: <span className="text-sm text-text-secondary">@gmail.com</span>,
@@ -84,6 +87,7 @@ export const EmailExample: Story = {
  */
 export const WithError: Story = {
   args: {
+    "aria-label": "email",
     defaultValue: "invalid-email@",
     errorText: "Please enter a valid email address.",
     icon: <Mail />,
@@ -98,6 +102,7 @@ export const WithError: Story = {
  */
 export const Disabled: Story = {
   args: {
+    "aria-label": "disabled",
     disabled: true,
     icon: <User />,
     placeholder: "You cannot type here...",
@@ -121,10 +126,12 @@ export const PasswordInput: Story = {
     return (
       <Input
         {...args}
+        aria-label="password"
         icon={<KeyRound />}
         placeholder="Enter your password"
         suffix={
           <button
+            aria-label="show-password"
             className="focus:outline-none text-text-secondary hover:text-text transition-colors"
             onClick={() => setShowPassword(!showPassword)}
             tabIndex={-1}
