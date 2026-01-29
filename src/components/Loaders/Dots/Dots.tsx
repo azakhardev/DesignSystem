@@ -1,6 +1,7 @@
-import { cn } from "../../../lib/utils";
-import { motion, stagger } from "framer-motion";
 import type { Variants } from "framer-motion";
+import { motion, stagger } from "framer-motion";
+
+import { cn } from "../../../lib/utils";
 
 interface DotsProps extends React.HTMLAttributes<HTMLDivElement> {
   color?: string;
@@ -35,13 +36,13 @@ function Dots({
 
   const itemVariants: Variants = {
     animate: {
-      y: [0, -jumpHeight, 0],
       transition: {
+        duration: duration,
         ease: "easeInOut",
         repeat: Infinity,
-        duration: duration,
         repeatDelay: repeatDuration,
       },
+      y: [0, -jumpHeight, 0],
     },
   };
 
@@ -49,26 +50,26 @@ function Dots({
     <div
       className={cn("flex items-center justify-center", className)}
       {...props}
-      role="status"
       aria-label="Loading"
+      role="status"
     >
       <motion.div
+        animate="animate"
         className="flex flex-row w-full h-full"
+        initial="initial"
         style={{ gap: gap }}
         variants={containerVariants}
-        initial="initial"
-        animate="animate"
       >
         {Array.from({ length: dotsCount }).map((_, i) => (
           <motion.div
-            key={i}
-            variants={itemVariants}
             className="rounded-full border border-border"
+            key={i}
             style={{
+              backgroundColor: color ?? "var(--primary)",
               height: size,
               width: size,
-              backgroundColor: color ?? "var(--primary)",
             }}
+            variants={itemVariants}
           />
         ))}
       </motion.div>

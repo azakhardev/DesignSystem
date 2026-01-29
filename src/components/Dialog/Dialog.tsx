@@ -1,21 +1,22 @@
+import { cva, type VariantProps } from "class-variance-authority";
+import type { HTMLMotionProps } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import { X } from "lucide-react";
 import {
-  useContext,
-  useState,
   createContext,
   useCallback,
+  useContext,
   useEffect,
+  useState,
 } from "react";
-import { cn } from "../../lib/utils";
 import { createPortal } from "react-dom";
-import { X } from "lucide-react";
-import { AnimatePresence, motion } from "framer-motion";
-import type { HTMLMotionProps } from "framer-motion";
+
+import { cn } from "../../lib/utils";
 import { Button, type ButtonVariants } from "../Button";
-import { cva, type VariantProps } from "class-variance-authority";
 
 interface DialogContextType {
-  open: boolean;
   onOpenChange: (open: boolean) => void;
+  open: boolean;
 }
 
 const DialogContext = createContext<DialogContextType | null>(null);
@@ -34,16 +35,16 @@ function useDialogContext() {
 
 interface DialogProps {
   children: React.ReactNode;
-  open?: boolean;
-  onOpenChange?: (open: boolean) => void;
   defaultOpen?: boolean;
+  onOpenChange?: (open: boolean) => void;
+  open?: boolean;
 }
 
 function Dialog({
   children,
-  open: controlledOpen,
-  onOpenChange: controlledOnOpenChange,
   defaultOpen = false,
+  onOpenChange: controlledOnOpenChange,
+  open: controlledOpen,
 }: DialogProps) {
   // Internal state for uncontrolled mode
   const [uncontrolledOpen, setUncontrolledOpen] = useState(defaultOpen);
@@ -66,7 +67,7 @@ function Dialog({
 
   //Initialize context with values for used mode
   return (
-    <DialogContext.Provider value={{ open, onOpenChange }}>
+    <DialogContext.Provider value={{ onOpenChange, open }}>
       {children}
     </DialogContext.Provider>
   );
@@ -96,19 +97,20 @@ function DialogTrigger({
 }
 
 const dialogContentVariants = cva(
-  "absolute flex flex-col bg-surface p-6 z-10 border-2 border-border",
+  "absolute flex flex-col bg-surface p-6 z-10 border-2 border-border overflow-hidden",
   {
+    defaultVariants: {
+      position: "center",
+    },
     variants: {
       position: {
         bottom: "w-full h-3/4 md:h-1/3 rounded-t-lg bottom-0",
-        center: "relative w-[90%] h-[90%] md:w-1/2 md:h-1/3 rounded-lg",
+        center:
+          "relative w-[90%] max-h-[95vh] md:w-1/2 md:h-1/3 h-fit rounded-lg",
         left: "w-[85%] md:w-1/3 h-full rounded-r-lg left-0 px-3",
         right: "w-[85%] md:w-1/3 h-full rounded-l-lg right-0 px-3",
         top: "w-full h-3/4 md:h-1/3 rounded-b-lg top-0",
       },
-    },
-    defaultVariants: {
-      position: "center",
     },
   },
 );
@@ -117,52 +119,52 @@ type DialogContentVariantsType = VariantProps<typeof dialogContentVariants>;
 
 interface DialogContentProps
   extends Omit<HTMLMotionProps<"div">, "children">, DialogContentVariantsType {
-  closeButton?: boolean;
   children?: React.ReactNode;
+  closeButton?: boolean;
 }
 
 const dialogAnimations: Record<string, HTMLMotionProps<"div">> = {
-  center: {
-    initial: { opacity: 0, scale: 0.95 },
-    animate: { opacity: 1, scale: [0, 1.05, 1] },
-    exit: { opacity: 0, scale: 0.95 },
-    transition: { duration: 0.35, ease: "easeOut" },
-  },
   bottom: {
-    initial: { y: "100%" },
     animate: { y: 0 },
     exit: { y: "100%" },
+    initial: { y: "100%" },
     transition: { duration: 0.3, ease: "easeInOut" },
   },
-  top: {
-    initial: { y: "-100%" },
-    animate: { y: 0 },
-    exit: { y: "-100%" },
-    transition: { duration: 0.3, ease: "easeInOut" },
+  center: {
+    animate: { opacity: 1, scale: [0, 1.05, 1] },
+    exit: { opacity: 0, scale: 0.95 },
+    initial: { opacity: 0, scale: 0.95 },
+    transition: { duration: 0.35, ease: "easeOut" },
   },
   left: {
-    initial: { x: "-100%" },
     animate: { x: 0 },
     exit: { x: "-100%" },
+    initial: { x: "-100%" },
     transition: { duration: 0.3, ease: "easeInOut" },
   },
   right: {
-    initial: { x: "100%" },
     animate: { x: 0 },
     exit: { x: "100%" },
+    initial: { x: "100%" },
+    transition: { duration: 0.3, ease: "easeInOut" },
+  },
+  top: {
+    animate: { y: 0 },
+    exit: { y: "-100%" },
+    initial: { y: "-100%" },
     transition: { duration: 0.3, ease: "easeInOut" },
   },
 };
 
 function DialogContent({
-  className,
-  ref,
   children,
-  position,
+  className,
   closeButton = false,
+  position,
+  ref,
   ...props
 }: DialogContentProps) {
-  const { open, onOpenChange } = useDialogContext();
+  const { onOpenChange, open } = useDialogContext();
 
   useEffect(() => {
     function closeOnEsc(ev: KeyboardEvent) {
@@ -180,21 +182,27 @@ function DialogContent({
     <AnimatePresence>
       {open && (
         <motion.div
-          transition={{ duration: 0.2 }}
-          initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
           className="fixed inset-0 z-50 flex items-center justify-center"
+          exit={{ opacity: 0 }}
+          initial={{ opacity: 0 }}
+          transition={{ duration: 0.2 }}
         >
           <div
+            aria-label="Close overlay"
             className="fixed inset-0 bg-black/70"
             onClick={() => onOpenChange(false)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") onOpenChange(false);
+            }}
+            role="button"
+            tabIndex={-1}
           />
           <motion.div
+            aria-modal="true"
             className={cn(dialogContentVariants({ position }), className)}
             onClick={(e) => e.stopPropagation()}
             role="dialog"
-            aria-modal="true"
             {...animationProps}
             ref={ref}
             {...props}
@@ -202,9 +210,9 @@ function DialogContent({
             {children}
             {closeButton && (
               <button
+                aria-label="Close dialog"
                 className="absolute top-4 right-4 hover:scale-105 hover:text-primary transition-all cursor-pointer"
                 onClick={() => onOpenChange(false)}
-                aria-label="Close dialog"
               >
                 <X size={32} />
               </button>
@@ -218,16 +226,16 @@ function DialogContent({
 }
 
 interface DialogHeaderProps extends React.ComponentProps<"div"> {
-  title?: string;
   subtitle?: string;
+  title?: string;
 }
 
 function DialogHeader({
-  className,
   children,
+  className,
   ref,
-  title,
   subtitle,
+  title,
   ...props
 }: DialogHeaderProps) {
   return (
@@ -251,8 +259,8 @@ interface DialogFooterProps extends React.ComponentProps<"div"> {
 }
 
 function DialogFooter({
-  className,
   children,
+  className,
   ref,
   text,
   ...props
@@ -270,8 +278,8 @@ function DialogFooter({
 }
 
 function DialogBody({
-  className,
   children,
+  className,
   ...props
 }: React.ComponentProps<"div">) {
   return (
@@ -282,8 +290,8 @@ function DialogBody({
 }
 
 function DialogButtons({
-  className,
   children,
+  className,
   ref,
   ...props
 }: React.ComponentProps<"div">) {
@@ -303,18 +311,18 @@ function DialogButtons({
 
 export {
   Dialog,
-  DialogTrigger,
-  DialogContent,
-  DialogHeader,
-  DialogFooter,
-  DialogButtons,
   DialogBody,
+  DialogButtons,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTrigger,
 };
 export type {
-  DialogProps,
-  DialogTriggerProps,
   DialogContentProps,
   DialogContentVariantsType,
-  DialogHeaderProps,
   DialogFooterProps,
+  DialogHeaderProps,
+  DialogProps,
+  DialogTriggerProps,
 };

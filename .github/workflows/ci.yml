@@ -9,6 +9,8 @@ on:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.58.0-noble
 
     steps:
       - name: Checkout code
@@ -28,6 +30,9 @@ jobs:
 
       - name: Type Check
         run: npm run type-check
+
+      - name: Run tests
+        run: npm run test-storybook
 
       - name: Build Library
         run: npm run build

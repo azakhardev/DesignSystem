@@ -1,22 +1,23 @@
+import { Minus } from "lucide-react";
 import React, {
   createContext,
   useCallback,
   useContext,
-  useState,
   useMemo,
+  useState,
 } from "react";
+
 import { useIsMobile } from "../../hooks/useIsMobile";
 import { cn } from "../../lib/utils";
 import { Dialog, DialogContent } from "../Dialog";
-import { Minus } from "lucide-react";
 
 interface SidebarContextType {
   collapsed: boolean;
+  isMobile: boolean;
   mobileOpen: boolean;
   setCollapsed: (value: boolean) => void;
   setMobileOpen: (value: boolean) => void;
   toggleSidebar: () => void;
-  isMobile: boolean;
 }
 
 const SidebarContext = createContext<SidebarContextType | null>(null);
@@ -33,19 +34,19 @@ interface SidebarProps {
   children: React.ReactNode;
   // Desktop State
   collapsed?: boolean;
-  onCollapsedChange?: (collapsed: boolean) => void;
   defaultCollapsed?: boolean;
   // Mobile State
   mobileOpen?: boolean;
+  onCollapsedChange?: (collapsed: boolean) => void;
   onMobileOpenChange?: (open: boolean) => void;
 }
 
 function Sidebar({
   children,
   collapsed: controlledCollapsed,
-  onCollapsedChange: controlledOnCollapsedChange,
   defaultCollapsed = false,
   mobileOpen: controlledMobileOpen,
+  onCollapsedChange: controlledOnCollapsedChange,
   onMobileOpenChange: controlledOnMobileOpenChange,
 }: SidebarProps) {
   const isMobile = useIsMobile();
@@ -96,11 +97,11 @@ function Sidebar({
   const contextValue = useMemo(
     () => ({
       collapsed,
+      isMobile,
       mobileOpen,
       setCollapsed,
       setMobileOpen,
       toggleSidebar,
-      isMobile,
     }),
     [
       collapsed,
@@ -120,32 +121,32 @@ function Sidebar({
 }
 
 interface SidebarContentProps extends React.ComponentProps<"aside"> {
-  side?: "left" | "right";
-  width?: string;
   collapsedWidth?: string;
   dialogProps?: Partial<React.ComponentProps<typeof DialogContent>>;
+  side?: "left" | "right";
+  width?: string;
 }
 
 function SidebarContent({
   children,
   className,
-  side = "left",
-  width = "16rem",
   collapsedWidth = "3.5rem",
   dialogProps,
   ref,
+  side = "left",
   style,
+  width = "16rem",
   ...props
 }: SidebarContentProps) {
-  const { isMobile, collapsed, mobileOpen, setMobileOpen } =
+  const { collapsed, isMobile, mobileOpen, setMobileOpen } =
     useSidebarContext();
 
   if (isMobile) {
     return (
-      <Dialog open={mobileOpen} onOpenChange={setMobileOpen}>
+      <Dialog onOpenChange={setMobileOpen} open={mobileOpen}>
         <DialogContent
-          position={side}
           closeButton={false}
+          position={side}
           {...dialogProps}
           className={cn(
             "h-full bg-surface text-text border-border border-r",
@@ -166,13 +167,13 @@ function SidebarContent({
 
   return (
     <aside
-      ref={ref}
-      data-collapsed={collapsed}
       className={cn(
         "group/sidebar overflow-hidden inset-y-0 z-30 flex flex-col h-screen bg-surface border-border-strong transition-[width] duration-300 ease-in-out",
         side === "left" ? "border-r left-0" : "border-l right-0",
         className,
       )}
+      data-collapsed={collapsed}
+      ref={ref}
       style={{
         width: collapsed ? collapsedWidth : width,
         ...style,
@@ -185,8 +186,8 @@ function SidebarContent({
 }
 
 function SidebarHeader({
-  className,
   children,
+  className,
   ...props
 }: React.ComponentProps<"div">) {
   return (
@@ -203,15 +204,15 @@ function SidebarHeader({
 }
 
 function SidebarBody({
+  children,
   className,
   ref,
-  children,
   ...props
 }: React.ComponentProps<"div">) {
   return (
     <div
-      ref={ref}
       className={cn("flex flex-col gap-2 flex-1 p-2", className)}
+      ref={ref}
       {...props}
     >
       {children}
@@ -220,14 +221,14 @@ function SidebarBody({
 }
 
 interface SidebarItemProps extends React.ComponentProps<"div"> {
-  icon?: React.ReactNode;
   categoryTitle?: boolean;
+  icon?: React.ReactNode;
 }
 
 function SidebarItem({
-  className,
-  children,
   categoryTitle,
+  children,
+  className,
   icon,
   ...props
 }: SidebarItemProps) {
@@ -279,8 +280,8 @@ function SidebarItem({
 }
 
 function SidebarFooter({
-  className,
   children,
+  className,
   ...props
 }: React.ComponentProps<"div">) {
   return (
@@ -297,20 +298,20 @@ function SidebarFooter({
 }
 
 function SidebarTrigger({
-  className,
   children,
+  className,
   ...props
 }: React.ComponentProps<"button">) {
   const { toggleSidebar } = useSidebarContext();
 
   return (
     <button
-      title="Toggle sidebar"
       className={cn(
         "p-2 rounded border border-border hover:bg-border transition-colors bg-border-subtle",
         className,
       )}
       onClick={() => toggleSidebar()}
+      title="Toggle sidebar"
       {...props}
     >
       {children}
@@ -320,11 +321,11 @@ function SidebarTrigger({
 
 export {
   Sidebar,
-  SidebarContent,
-  SidebarHeader,
   SidebarBody,
-  SidebarItem,
+  SidebarContent,
   SidebarFooter,
+  SidebarHeader,
+  SidebarItem,
   SidebarTrigger,
 };
-export type { SidebarProps };
+export type { SidebarContentProps, SidebarProps };
