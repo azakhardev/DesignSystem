@@ -27,7 +27,9 @@ export default {
           subtle: "var(--border-subtle)",
           strong: "var(--border-strong)",
         },
-        "input-background": "var(--input-background)",
+        input: {
+          background: "var(--input-background)",
+        },
         accent: "var(--accent)",
         overlay: "var(--overlay)",
         on: {
