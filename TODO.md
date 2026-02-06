@@ -13,9 +13,9 @@
 
 ### Phase 2: Form & Navigation Expansion
 
-- [ ] Checkbox – Standard boolean selection.
-- [ ] Radio Group – Single selection from a set.
+- [x] Checkbox – Standard boolean selection.
 - [ ] Switch – Toggle switch (alternative to checkbox).
+- [ ] Radio Group – Single selection from a set.
 - [ ] Textarea – Multi-line text input.
 - [ ] Select – Dropdown selection, ideally with Multi-select support.
 - [ ] Tabs – Switching between views with animation. Support for horizontal/vertical alignment.
@@ -37,6 +37,7 @@
 - [ ] Progress Bar – Linear indicator (dynamic for loading or static for capacity).
 - [ ] Table – Data grid with styling and "copy value" functionality.
 - [ ] Empty State – A component to display when data is missing (e.g., "No items found") with an illustration and a CTA button.
+- [ ] KBD - A simple component for displaying keyboard shortcuts
 
 ### Phase 4: Advanced Components (Complex Logic)
 
@@ -52,3 +53,4 @@
 - [ ] Avatar – Profile picture component with fallbacks (initials or generic icon) if the image fails to load.
 - [ ] ImageDialog - Dialog component for displaying images with toolbar options (zoom, save, copy, etc.)
 - [ ] ToolPanel - For selectiong tools/funcitons on hover with stacking ability.
+- [ ] Carousel - Component for dispalying items with auto-scroll or manual scroll.
