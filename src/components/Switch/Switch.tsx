@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import React from "react";
 
 import { cn } from "../../lib/utils";
+import { Label } from "../Label";
 
 interface SwitchProps extends React.ComponentProps<"input"> {
   checked: boolean;
@@ -20,6 +21,7 @@ function Switch({
   label,
   onChange,
   onCheckedChange,
+  ref,
   switchIcon,
   ...props
 }: SwitchProps) {
@@ -53,6 +55,7 @@ function Switch({
           disabled={disabled}
           id={inputId}
           onChange={handleChange}
+          ref={ref}
           type="checkbox"
           {...props}
         />
@@ -82,16 +85,9 @@ function Switch({
         </motion.div>
       </label>
       {label && (
-        <label
-          className={cn(
-            "text-sm font-medium leading-none select-none cursor-pointer",
-            disabled && "cursor-not-allowed opacity-70",
-            error && "text-error-text",
-          )}
-          htmlFor={inputId}
-        >
+        <Label disabled={disabled} error={error} htmlFor={inputId}>
           {label}
-        </label>
+        </Label>
       )}
     </>
   );

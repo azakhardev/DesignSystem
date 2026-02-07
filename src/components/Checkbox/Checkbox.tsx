@@ -2,6 +2,7 @@ import { Check } from "lucide-react";
 import React from "react";
 
 import { cn } from "../../lib/utils";
+import { Label } from "../Label";
 
 interface CheckboxProps extends React.ComponentProps<"input"> {
   boxClassName?: string;
@@ -73,16 +74,9 @@ function Checkbox({
       </div>
 
       {label && (
-        <label
-          className={cn(
-            "text-sm font-medium leading-none select-none cursor-pointer",
-            disabled && "cursor-not-allowed opacity-70",
-            error && "text-error-text",
-          )}
-          htmlFor={inputId}
-        >
+        <Label disabled={disabled} error={error} htmlFor={inputId}>
           {label}
-        </label>
+        </Label>
       )}
     </div>
   );
