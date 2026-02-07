@@ -14,7 +14,8 @@
 ### Phase 2: Form & Navigation Expansion
 
 - [x] Checkbox – Standard boolean selection.
-- [ ] Switch – Toggle switch (alternative to checkbox).
+- [x] Switch – Toggle switch (alternative to checkbox).
+- [x] Label - Simple label for form elements.
 - [ ] Radio Group – Single selection from a set.
 - [ ] Textarea – Multi-line text input.
 - [ ] Select – Dropdown selection, ideally with Multi-select support.
