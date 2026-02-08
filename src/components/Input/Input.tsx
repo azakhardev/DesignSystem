@@ -47,6 +47,7 @@ function Input({
           aria-invalid={!!errorText}
           className={`flex-1 w-full h-full bg-transparent outline-none placeholder:text-text-secondary file:bg-transparent file:border-0 file:text-sm file:font-medium ${disabled && "cursor-not-allowed"}`}
           disabled={disabled}
+          id={inputId}
           ref={ref}
           {...props}
         />
