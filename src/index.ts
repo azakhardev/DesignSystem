@@ -11,3 +11,4 @@ export * from "./components/Loaders";
 export * from "./components/Sidebar";
 export * from "./components/Switch";
 export * from "./components/Text";
+export * from "./components/Textarea";
