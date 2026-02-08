@@ -24,7 +24,7 @@ function Input({
 
   const errorId = `${inputId}-error`;
   return (
-    <>
+    <div className="flex flex-col relative">
       <div
         className={cn(
           "flex flex-row items-center gap-2 px-2 py-2 rounded-md border transition-all",
@@ -69,7 +69,7 @@ function Input({
           </motion.p>
         )}
       </AnimatePresence>
-    </>
+    </div>
   );
 }
 
