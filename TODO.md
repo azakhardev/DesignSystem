@@ -16,8 +16,8 @@
 - [x] Checkbox – Standard boolean selection.
 - [x] Switch – Toggle switch (alternative to checkbox).
 - [x] Label - Simple label for form elements.
-- [ ] Radio Group – Single selection from a set.
-- [ ] Textarea – Multi-line text input.
+- [x] Radio Group – Single selection from a set.
+- [x] Textarea – Multi-line text input.
 - [ ] Select – Dropdown selection, ideally with Multi-select support.
 - [ ] Tabs – Switching between views with animation. Support for horizontal/vertical alignment.
 - [ ] Breadcrumbs – For navigation hierarchy and URL destructurization.
