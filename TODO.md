@@ -20,7 +20,7 @@
 - [x] Textarea – Multi-line text input.
 - [ ] Select – Dropdown selection, ideally with Multi-select support.
 - [ ] Tabs – Switching between views with animation. Support for horizontal/vertical alignment.
-- [ ] Breadcrumbs – For navigation hierarchy and URL destructurization.
+- [x] Breadcrumbs – For navigation hierarchy and URL destructurization.
 - [ ] Dropdown Menu – Action menu lists (often used inside buttons).
 - [ ] Divider (Separator) – Visual separation of content.
 - [ ] Icon Wrapper – A standardized component to render icons (SVG) with consistent sizing and coloring props.
@@ -55,3 +55,4 @@
 - [ ] ImageDialog - Dialog component for displaying images with toolbar options (zoom, save, copy, etc.)
 - [ ] ToolPanel - For selectiong tools/funcitons on hover with stacking ability.
 - [ ] Carousel - Component for dispalying items with auto-scroll or manual scroll.
+- [ ] asChild - Create asChild property for some elements to be more accessible

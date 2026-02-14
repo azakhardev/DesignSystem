@@ -49,6 +49,9 @@ function BreadcrumbItem({
 }
 
 interface BreadcrumbLinkProps extends React.ComponentProps<"a"> {
+  /**
+   * Defines if the link is the current page
+   */
   current?: boolean;
 }
 
@@ -58,15 +61,17 @@ function BreadcrumbLink({
   current,
   ...props
 }: BreadcrumbLinkProps) {
+  if (current) {
+    return (
+      <span aria-current="page" className={cn("text-sm text-text", className)}>
+        {children}
+      </span>
+    );
+  }
+
   return (
     <a
-      className={cn(
-        "text-sm",
-        current
-          ? "text-text"
-          : "text-text-secondary hover:text-text hover:cursor-pointer",
-        className,
-      )}
+      className={cn("text-sm text-text-secondary hover:text-text", className)}
       {...props}
     >
       {children}
@@ -87,6 +92,9 @@ function BreadcrumbMenu({
 }
 
 interface BreadcrumbSeparatorProps extends React.ComponentProps<"span"> {
+  /**
+   * Sets the displayed icon to separator (can be any ReactNode)
+   */
   icon?: React.ReactNode;
 }
 
@@ -96,8 +104,8 @@ function BreadcrumbSeparator({
   ...props
 }: BreadcrumbSeparatorProps) {
   return (
-    <span className={cn("", className)} {...props}>
-      {icon ?? <Slash />}
+    <span className={cn("text-text-secondary", className)} {...props}>
+      {icon ?? <Slash className="size-4" />}
     </span>
   );
 }
