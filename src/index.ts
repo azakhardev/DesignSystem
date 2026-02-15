@@ -1,7 +1,7 @@
 import "./index.css";
 
 export * from "./components/Alert";
-export * from "./components/Breadcrumbs";
+export * from "./components/Breadcrumb";
 export * from "./components/Button";
 export * from "./components/Card";
 export * from "./components/Checkbox";

@@ -1,5 +1,7 @@
-import { Slash } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+import { ChevronDown, Ellipsis, Slash } from "lucide-react";
 import type React from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { cn } from "../../lib/utils";
 
@@ -9,7 +11,7 @@ function Breadcrumb({
   ...props
 }: React.ComponentProps<"nav">) {
   return (
-    <nav className={cn("w-full", className)} {...props}>
+    <nav aria-label="Breadcrumb" className={cn("w-full", className)} {...props}>
       {children}
     </nav>
   );
@@ -79,19 +81,88 @@ function BreadcrumbLink({
   );
 }
 
+interface BreadcrumbMenuProps extends Omit<
+  React.ComponentProps<"button">,
+  "onClick"
+> {
+  /**
+   * Sets the title of the menu button
+   */
+  text?: string;
+}
+
 function BreadcrumbMenu({
   children,
   className,
+  text,
   ...props
-}: Omit<React.ComponentProps<"button">, "onClick">) {
+}: BreadcrumbMenuProps) {
+  const [open, setOpen] = useState<boolean>(false);
+
+  const menuRef = useRef<HTMLLIElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (!open || !menuRef.current) return;
+
+      if (!menuRef.current.contains(event.target as Node)) {
+        setOpen(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") setOpen(false);
+    }
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [open]);
+
+  function handleOpen() {
+    setOpen((old) => !old);
+  }
+
   return (
-    <button className={cn("", className)} {...props}>
-      {children}
-    </button>
+    <li className="flex flex-col gap-1 relative" ref={menuRef}>
+      <button
+        aria-expanded={open}
+        aria-haspopup="true"
+        aria-label="More options"
+        className={cn(
+          "flex flex-row gap-1 items-center justify-center rounded-md text-sm text-text-secondary px-2 hover:bg-surface-secondary hover:text-text transition-colors",
+          className,
+        )}
+        onClick={handleOpen}
+        {...props}
+      >
+        {text ? text : <Ellipsis />}
+        <motion.span animate={{ rotate: open ? 180 : 0 }}>
+          <ChevronDown />
+        </motion.span>
+      </button>
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            className="absolute left-0 top-full mt-1 z-50 flex flex-col gap-1 rounded-md border border-border-subtle bg-surface px-2 py-1 shadow-md"
+            exit={{ opacity: 0, scale: 0.95, y: -5 }}
+            initial={{ opacity: 0, scale: 0.95, y: -5 }}
+            transition={{ duration: 0.1 }}
+          >
+            {children}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </li>
   );
 }
 
-interface BreadcrumbSeparatorProps extends React.ComponentProps<"span"> {
+interface BreadcrumbSeparatorProps extends React.ComponentProps<"li"> {
   /**
    * Sets the displayed icon to separator (can be any ReactNode)
    */
@@ -104,9 +175,14 @@ function BreadcrumbSeparator({
   ...props
 }: BreadcrumbSeparatorProps) {
   return (
-    <span className={cn("text-text-secondary", className)} {...props}>
+    <li
+      aria-hidden="true"
+      className={cn("text-text-secondary", className)}
+      role="presentation"
+      {...props}
+    >
       {icon ?? <Slash className="size-4" />}
-    </span>
+    </li>
   );
 }
 
@@ -119,4 +195,8 @@ export {
   BreadcrumbSeparator,
 };
 
-export type { BreadcrumbLinkProps, BreadcrumbSeparatorProps };
+export type {
+  BreadcrumbLinkProps,
+  BreadcrumbMenuProps,
+  BreadcrumbSeparatorProps,
+};
