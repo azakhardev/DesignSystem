@@ -52,7 +52,7 @@ function Tabs({
   return (
     <TabsContext.Provider value={contextState}>
       <div
-        className={cn("flex w-full rounded-lg bg-surface", className)}
+        className={cn("flex flex-col w-full rounded-lg bg-surface", className)}
         {...props}
       >
         {children}
@@ -74,13 +74,13 @@ function useTabsContext() {
 }
 
 interface TabsListProps extends React.ComponentProps<"div"> {
-  tabsDirection: "horizontal" | "vertical";
+  tabsDirection?: "horizontal" | "vertical";
 }
 
 function TabsList({
   children,
   className,
-  tabsDirection,
+  tabsDirection = "horizontal",
   ...props
 }: TabsListProps) {
   useTabsContext(); //Context validation
