@@ -8,6 +8,7 @@ export default {
         background: "var(--app-background)",
         surface: {
           DEFAULT: "var(--surface)",
+          subtle: "var(--surface-subtle)",
           secondary: "var(--surface-secondary)",
         },
         primary: {

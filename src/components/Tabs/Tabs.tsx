@@ -13,6 +13,7 @@ interface TabsContextType {
   activeTab: string;
   baseId: string;
   setActiveTab: (value: string) => void;
+  tabsDirection?: "horizontal" | "vertical";
 }
 
 const TabsContext = createContext<TabsContextType | null>(null);
@@ -20,6 +21,7 @@ const TabsContext = createContext<TabsContextType | null>(null);
 interface TabsProps extends React.ComponentProps<"div"> {
   defaultValue?: string;
   onValueChange?: (value: string) => void;
+  tabsDirection?: "horizontal" | "vertical";
 }
 
 function Tabs({
@@ -27,6 +29,7 @@ function Tabs({
   className,
   defaultValue,
   onValueChange,
+  tabsDirection = "horizontal",
   ...props
 }: TabsProps) {
   const [current, setCurrent] = useState<string>(defaultValue ?? "");
@@ -45,14 +48,19 @@ function Tabs({
       activeTab: current,
       baseId,
       setActiveTab: handleTabChange,
+      tabsDirection,
     }),
-    [current, baseId, handleTabChange],
+    [current, baseId, handleTabChange, tabsDirection],
   );
 
   return (
     <TabsContext.Provider value={contextState}>
       <div
-        className={cn("flex flex-col w-full rounded-lg bg-surface", className)}
+        className={cn(
+          "flex gap-3 w-full rounded-lg bg-surface p-4",
+          tabsDirection === "horizontal" ? "flex-col items-center" : "flex-row",
+          className,
+        )}
         {...props}
       >
         {children}
@@ -74,25 +82,39 @@ function useTabsContext() {
 }
 
 interface TabsListProps extends React.ComponentProps<"div"> {
-  tabsDirection?: "horizontal" | "vertical";
+  /**
+   * Determines if the tabs should grow to fill the whole width of the tabslist
+   */
+  grow?: boolean;
+  /**
+   * Defines the justification of the tabs
+   */
+  justify?: "start" | "center" | "end" | "between";
 }
 
 function TabsList({
   children,
   className,
-  tabsDirection = "horizontal",
+  grow = false,
+  justify = "start",
   ...props
 }: TabsListProps) {
-  useTabsContext(); //Context validation
+  const { tabsDirection } = useTabsContext();
+  const isHorizontal = tabsDirection === "horizontal";
 
   return (
     <div
       aria-orientation={tabsDirection}
       className={cn(
-        "flex gap-2 border-text-secondary",
-        tabsDirection === "horizontal"
-          ? "flex-row border-b"
-          : "flex-col border-r ",
+        "flex border-text-secondary",
+        isHorizontal
+          ? "flex-row border-b w-full"
+          : "flex-col border-r shrink-0",
+        justify === "center" && "justify-center",
+        justify === "end" && "justify-end",
+        justify === "between" && "justify-between",
+        grow && "[&>*]:flex-1",
+
         className,
       )}
       role="tablist"
@@ -104,18 +126,33 @@ function TabsList({
 }
 
 interface TabProps extends Omit<React.ComponentProps<"button">, "onClick"> {
+  /**
+   * The value that sets which TabContent should be shown
+   */
   value: string;
 }
 
 function Tab({ children, className, disabled, value, ...props }: TabProps) {
-  const { activeTab, baseId, setActiveTab } = useTabsContext();
+  const { activeTab, baseId, setActiveTab, tabsDirection } = useTabsContext();
   const isActive = activeTab === value;
 
   return (
     <button
       aria-controls={`${baseId}-content-${value}`}
       aria-selected={isActive}
-      className={cn("", className)}
+      className={cn(
+        "flex items-center px-1.5 text-text text-xl border-transparent transition-colors duration-200",
+        disabled && "text-text-secondary cursor-default",
+        !disabled &&
+          !isActive &&
+          "hover:bg-surface-subtle hover:border-border-strong",
+        isActive && "bg-info-surface border-primary",
+        tabsDirection === "horizontal"
+          ? "rounded-t-md -mb-px border-b pt-1"
+          : "rounded-l-md -mr-px border-r py-1",
+        className,
+      )}
+      disabled={disabled}
       id={`${baseId}-tab-${value}`}
       onClick={() => {
         setActiveTab(value);
@@ -131,6 +168,9 @@ function Tab({ children, className, disabled, value, ...props }: TabProps) {
 }
 
 interface TabContentProps extends React.ComponentProps<"div"> {
+  /**
+   * The value for which the TabContent should be displayed
+   */
   value: string;
 }
 
@@ -143,7 +183,7 @@ function TabContent({ children, className, value, ...props }: TabContentProps) {
   return (
     <div
       aria-labelledby={`${baseId}-tab-${value}`}
-      className={cn("bg-surface-secondary", className)}
+      className={cn("p-2 rounded-md flex-1 w-full", className)}
       id={`${baseId}-content-${value}`}
       role="tabpanel"
       tabIndex={0}

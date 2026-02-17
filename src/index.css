@@ -48,6 +48,7 @@
   /* === MAIN COLORS === */
   --app-background: #f8fafc;
   --surface: #ffffff;
+  --surface-subtle: #f8f8f8;
   --surface-secondary: #f1f5f9;
   --primary: #0ea5e9;
   --primary-focus: #0284c7;
@@ -104,6 +105,7 @@
   /* === MAIN COLORS === */
   --app-background: #0b1120;
   --surface: #1e293b;
+  --surface-subtle: #243042;
   --surface-secondary: #334155;
   --primary: #38bdf8;
   --primary-focus: #7dd3fc;
