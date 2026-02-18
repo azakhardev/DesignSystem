@@ -10,6 +10,7 @@ export * from "./components/Input";
 export * from "./components/Label";
 export * from "./components/Loaders";
 export * from "./components/Radio";
+export * from "./components/Separator";
 export * from "./components/Sidebar";
 export * from "./components/Switch";
 export * from "./components/Tabs";

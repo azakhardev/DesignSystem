@@ -68,7 +68,6 @@ const meta = {
     SidebarHeader,
     SidebarItem,
   } as Record<string, React.ComponentType<unknown>>,
-  tags: ["autodocs"],
   title: "Layout/Sidebar",
 } satisfies Meta<typeof Sidebar>;
 
