@@ -30,6 +30,8 @@ export default {
         },
         input: {
           background: "var(--input-background)",
+          focus: "var(--input-focus)",
+          hover: "var(--input-hover)",
         },
         accent: "var(--accent)",
         overlay: "var(--overlay)",
