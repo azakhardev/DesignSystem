@@ -18,11 +18,12 @@
 - [x] Label - Simple label for form elements.
 - [x] Radio Group – Single selection from a set.
 - [x] Textarea – Multi-line text input.
-- [ ] Select – Dropdown selection, ideally with Multi-select support.
+- [x] Select – Dropdown selection, ideally with Multi-select support.
+  - [] `SelectGroup` - Component for grouping items inside `SelectContent`.
 - [x] Tabs – Switching between views with animation. Support for horizontal/vertical alignment.
 - [x] Breadcrumbs – For navigation hierarchy and URL destructurization.
 - [ ] Dropdown Menu – Action menu lists (often used inside buttons).
-- [ ] Divider (Separator) – Visual separation of content.
+- [x] Divider (Separator) – Visual separation of content.
 - [ ] Icon Wrapper – A standardized component to render icons (SVG) with consistent sizing and coloring props.
 
 ### Phase 3: Feedback & Data Display
@@ -60,3 +61,4 @@
 
 - [ ] asChild - Create asChild property for some elements to be more flexible for developers
 - [ ] Keyboard Accessibility - Add support for arrows navigation, keyboard loop, etc...
+- [ ] Change hover/select color of inputs based on new CSS variable.
