@@ -19,7 +19,7 @@
 - [x] Radio Group – Single selection from a set.
 - [x] Textarea – Multi-line text input.
 - [x] Select – Dropdown selection, ideally with Multi-select support.
-  - [] SelectGroup - Component for grouping items inside SelectContent.
+  - [] `SelectGroup` - Component for grouping items inside `SelectContent`.
 - [x] Tabs – Switching between views with animation. Support for horizontal/vertical alignment.
 - [x] Breadcrumbs – For navigation hierarchy and URL destructurization.
 - [ ] Dropdown Menu – Action menu lists (often used inside buttons).
