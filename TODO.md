@@ -19,7 +19,7 @@
 - [x] Radio Group – Single selection from a set.
 - [x] Textarea – Multi-line text input.
 - [x] Select – Dropdown selection, ideally with Multi-select support.
-  - [] `SelectGroup` - Component for grouping items inside `SelectContent`.
+  - [ ] `SelectGroup` - Component for grouping items inside `SelectContent`.
 - [x] Tabs – Switching between views with animation. Support for horizontal/vertical alignment.
 - [x] Breadcrumbs – For navigation hierarchy and URL destructurization.
 - [ ] Dropdown Menu – Action menu lists (often used inside buttons).
@@ -39,6 +39,7 @@
 - [ ] Progress Bar – Linear indicator (dynamic for loading or static for capacity).
 - [ ] Table – Data grid with styling and "copy value" functionality.
 - [ ] Empty State – A component to display when data is missing (e.g., "No items found") with an illustration and a CTA button.
+- [ ] Callout - Provides presentation of content in a visually distinct manner
 - [ ] KBD - A simple component for displaying keyboard shortcuts
 
 ### Phase 4: Advanced Components (Complex Logic)
@@ -51,7 +52,6 @@
 - [ ] Sortable List – List with Drag & Drop reordering capabilities.
 - [ ] Pagination (Pager) – Logic and UI for navigating large datasets.
 - [ ] Code Block – Syntax highlighting and formatting for code snippets.
-- [ ] Drawer – A sidebar panel that slides in from the left or right (often used instead of Modals on mobile).
 - [ ] Avatar – Profile picture component with fallbacks (initials or generic icon) if the image fails to load.
 - [ ] ImageDialog - Dialog component for displaying images with toolbar options (zoom, save, copy, etc.)
 - [ ] ToolPanel - For selectiong tools/funcitons on hover with stacking ability.
