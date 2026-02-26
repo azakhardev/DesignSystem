@@ -21,6 +21,7 @@
 - [x] Select – Dropdown selection, ideally with Multi-select support.
   - [ ] `SelectGroup` - Component for grouping items inside `SelectContent`.
 - [x] Tabs – Switching between views with animation. Support for horizontal/vertical alignment.
+  - [ ] Change to Activity component
 - [x] Breadcrumbs – For navigation hierarchy and URL destructurization.
 - [ ] Dropdown Menu – Action menu lists (often used inside buttons).
 - [x] Divider (Separator) – Visual separation of content.
@@ -62,3 +63,4 @@
 - [ ] asChild - Create asChild property for some elements to be more flexible for developers
 - [ ] Keyboard Accessibility - Add support for arrows navigation, keyboard loop, etc...
 - [ ] Change hover/select color of inputs based on new CSS variable.
+- [ ] Create and use hooks for closing popovers on Clicking Outside/Escape
