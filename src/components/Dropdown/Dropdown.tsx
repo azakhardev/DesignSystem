@@ -1,5 +1,4 @@
 import { cva, type VariantProps } from "class-variance-authority";
-import { AnimatePresence, motion } from "framer-motion";
 import { CheckIcon, ChevronRightIcon, CircleDotIcon } from "lucide-react";
 import { createContext, use, useEffect, useRef, useState } from "react";
 
