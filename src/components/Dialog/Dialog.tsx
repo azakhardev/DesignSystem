@@ -2,15 +2,10 @@ import { cva, type VariantProps } from "class-variance-authority";
 import type { HTMLMotionProps } from "framer-motion";
 import { AnimatePresence, motion } from "framer-motion";
 import { X } from "lucide-react";
-import {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { createContext, useCallback, useContext, useState } from "react";
 import { createPortal } from "react-dom";
 
+import { useEscapeKey } from "../../hooks/useEscapeKey";
 import { cn } from "../../lib/utils";
 import { Button, type ButtonVariants } from "../Button";
 
@@ -166,15 +161,7 @@ function DialogContent({
 }: DialogContentProps) {
   const { onOpenChange, open } = useDialogContext();
 
-  useEffect(() => {
-    function closeOnEsc(ev: KeyboardEvent) {
-      if (ev.key === "Escape") onOpenChange(false);
-    }
-
-    document.body.addEventListener("keydown", closeOnEsc);
-
-    return () => document.body.removeEventListener("keydown", closeOnEsc);
-  }, [onOpenChange]);
+  useEscapeKey(() => onOpenChange(false));
 
   const animationProps = dialogAnimations[position ?? "center"];
 
@@ -190,7 +177,7 @@ function DialogContent({
         >
           <div
             aria-label="Close overlay"
-            className="fixed inset-0 bg-black/70"
+            className="fixed inset-0 bg-black/70 hover:cursor-default"
             onClick={() => onOpenChange(false)}
             onKeyDown={(e) => {
               if (e.key === "Enter" || e.key === " ") onOpenChange(false);

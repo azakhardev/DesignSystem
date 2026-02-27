@@ -63,4 +63,4 @@
 - [ ] asChild - Create asChild property for some elements to be more flexible for developers
 - [ ] Keyboard Accessibility - Add support for arrows navigation, keyboard loop, etc...
 - [ ] Change hover/select color of inputs based on new CSS variable.
-- [ ] Create and use hooks for closing popovers on Clicking Outside/Escape
+- [x] Create and use hooks for closing popovers on Clicking Outside/Escape

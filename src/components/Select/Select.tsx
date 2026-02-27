@@ -9,6 +9,7 @@ import {
 } from "react";
 
 import { useIsMobile } from "../../hooks/useIsMobile";
+import { useOnClickOutside } from "../../hooks/useOnClickOutside";
 import { cn } from "../../lib/utils";
 
 type SelectContextType = {
@@ -191,6 +192,7 @@ function SelectContent({
   const isMobile = useIsMobile();
   const ref = useRef<HTMLDivElement>(null);
 
+  useOnClickOutside(ref, () => onOpenChange(false));
   useEffect(() => {
     if (!open) return;
 
@@ -230,23 +232,9 @@ function SelectContent({
       }
     }
 
-    function closeOnMouseDown(ev: MouseEvent) {
-      if (!ref.current) return;
-
-      const target = ev.target as Node;
-
-      if (ref.current.contains(target)) {
-        return;
-      }
-
-      onOpenChange(false);
-    }
-
-    document.body.addEventListener("mousedown", closeOnMouseDown);
     document.body.addEventListener("keydown", handleKeyDown);
 
     return () => {
-      document.body.removeEventListener("mousedown", closeOnMouseDown);
       document.body.removeEventListener("keydown", handleKeyDown);
     };
   }, [open, onOpenChange]);
