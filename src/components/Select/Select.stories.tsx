@@ -121,6 +121,13 @@ export const Multiple: Story = {
 
     expect(trigger).toHaveTextContent(/Apple, Banana/i);
 
+    await userEvent.keyboard("${ArrowDown}");
+    await userEvent.keyboard("${Enter}");
+    await userEvent.keyboard("${ArrowUp}");
+    await userEvent.keyboard("${Enter}");
+
+    expect(trigger).toHaveTextContent(/Apple, Orange/i);
+
     await userEvent.keyboard("{Escape}");
 
     expect(content).not.toBeInTheDocument();

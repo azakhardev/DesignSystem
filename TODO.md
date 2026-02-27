@@ -23,7 +23,7 @@
 - [x] Tabs – Switching between views with animation. Support for horizontal/vertical alignment.
   - [ ] Change to Activity component
 - [x] Breadcrumbs – For navigation hierarchy and URL destructurization.
-- [ ] Dropdown Menu – Action menu lists (often used inside buttons).
+- [x] Dropdown Menu – Action menu lists (often used inside buttons).
 - [x] Divider (Separator) – Visual separation of content.
 - [ ] Icon Wrapper – A standardized component to render icons (SVG) with consistent sizing and coloring props.
 

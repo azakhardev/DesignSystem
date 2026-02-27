@@ -1,4 +1,5 @@
 import { cva, type VariantProps } from "class-variance-authority";
+import { AnimatePresence, motion } from "framer-motion";
 import { CheckIcon, ChevronRightIcon, CircleDotIcon } from "lucide-react";
 import { createContext, use, useEffect, useRef, useState } from "react";
 
@@ -39,6 +40,7 @@ function Dropdown({
 }: DropdownProps) {
   const [isOpen, setIsOpen] = useState<boolean>(open ?? false);
 
+  const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const isControlled = open !== undefined;
 
   function handleOpen(v: boolean) {
@@ -50,14 +52,33 @@ function Dropdown({
 
   const dropdownIsOpen = isControlled ? open : isOpen;
 
+  function handleMouseEnter() {
+    if (triggerAction !== "hover") return;
+    if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current);
+    handleOpen(true);
+  }
+
+  function handleMouseLeave() {
+    if (triggerAction !== "hover") return;
+    hoverTimeoutRef.current = setTimeout(() => {
+      handleOpen(false);
+    }, 250);
+  }
+
+  useEffect(() => {
+    return () => {
+      if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current);
+    };
+  }, []);
+
   return (
     <DropdownContext.Provider
       value={{ onOpenChange: handleOpen, open: dropdownIsOpen, triggerAction }}
     >
       <div
         className={cn("relative flex flex-col gap-1", className)}
-        onMouseEnter={() => triggerAction === "hover" && handleOpen(true)}
-        onMouseLeave={() => triggerAction === "hover" && handleOpen(false)}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
         {...props}
       >
         {children}
@@ -140,7 +161,6 @@ function DropdownItem<T extends React.ElementType = "button">({
         className,
       )}
       role={role}
-      tabIndex={-1}
       type={isButton ? "button" : undefined}
       {...props}
     >
@@ -254,6 +274,7 @@ function DropdownMenu({
       className={cn(dropdownMenuVariants({ position }), className)}
       ref={ref}
       role="menu"
+      tabIndex={-1}
       {...props}
     >
       {children}
