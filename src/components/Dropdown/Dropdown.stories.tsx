@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { useArgs } from "storybook/internal/preview-api";
 
+import { Button } from "../Button";
 import {
   Dropdown,
   DropdownItem,
@@ -22,6 +24,11 @@ const meta = {
     open: {
       control: "boolean",
       description: "Controls if the DropdownMenu is shown or not.",
+    },
+    triggerAction: {
+      control: "radio",
+      description:
+        "Selects the mode if the dropdown should open on hover on on click",
     },
   },
   component: Dropdown,
@@ -50,11 +57,17 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {},
-  render: (args) => {
+  render: () => {
+    const [{ open, triggerAction }, updateArgs] = useArgs();
+
     return (
-      <Dropdown>
-        <DropdownTrigger triggerAction="hover">Trigger</DropdownTrigger>
-        <DropdownMenu>
+      <Dropdown
+        onOpenChange={(b) => updateArgs({ open: b })}
+        open={open}
+        triggerAction={triggerAction}
+      >
+        <DropdownTrigger>Trigger</DropdownTrigger>
+        <DropdownMenu position="right-center">
           <DropdownItem onClick={() => alert("hello")}>
             Some item 1
           </DropdownItem>
