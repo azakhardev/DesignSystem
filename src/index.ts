@@ -14,6 +14,7 @@ export * from "./components/Radio";
 export * from "./components/Select";
 export * from "./components/Separator";
 export * from "./components/Sidebar";
+export * from "./components/Skeleton";
 export * from "./components/Switch";
 export * from "./components/Tabs";
 export * from "./components/Text";

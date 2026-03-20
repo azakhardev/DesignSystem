@@ -22,6 +22,7 @@
   - [ ] `SelectGroup` - Component for grouping items inside `SelectContent`.
 - [x] Tabs – Switching between views with animation. Support for horizontal/vertical alignment.
   - [ ] Change to Activity component
+  - [ ] Add support for navigation between tabs with arrows + style focus mode
 - [x] Breadcrumbs – For navigation hierarchy and URL destructurization.
 - [x] Dropdown Menu – Action menu lists (often used inside buttons).
 - [x] Divider (Separator) – Visual separation of content.
@@ -29,7 +30,7 @@
 
 ### Phase 3: Feedback & Data Display
 
-- [ ] Skeleton – Loading placeholder with shine/pulse animation and color customization.
+- [x] Skeleton – Loading placeholder with shine/pulse animation and color customization.
 - [ ] Badge – Small count/status indicator, possibly with icon support.
 - [ ] Tag (Chip) – Similar to Badge but interactive (clickable, deletable). Often used for filters.
 - [ ] Tooltip – Text hint on hover.
