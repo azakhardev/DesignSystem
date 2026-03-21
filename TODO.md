@@ -31,7 +31,7 @@
 ### Phase 3: Feedback & Data Display
 
 - [x] Skeleton – Loading placeholder with shine/pulse animation and color customization.
-- [ ] Badge – Small count/status indicator, possibly with icon support.
+- [x] Badge – Small count/status indicator, possibly with icon support.
 - [ ] Tag (Chip) – Similar to Badge but interactive (clickable, deletable). Often used for filters.
 - [ ] Tooltip – Text hint on hover.
 - [ ] Popover – Like a tooltip, but rich content (HTML) that appears on click/hover.
