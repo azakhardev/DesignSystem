@@ -32,7 +32,7 @@
 
 - [x] Skeleton – Loading placeholder with shine/pulse animation and color customization.
 - [x] Badge – Small count/status indicator, possibly with icon support.
-- [ ] Tag (Chip) – Similar to Badge but interactive (clickable, deletable). Often used for filters.
+- [x] Tag (Chip) – Similar to Badge but interactive (clickable, deletable). Often used for filters.
 - [ ] Tooltip – Text hint on hover.
 - [ ] Popover – Like a tooltip, but rich content (HTML) that appears on click/hover.
 - [ ] Toast (Notification) – Temporary status messages (snackbars) appearing at the edge of the screen.

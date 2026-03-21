@@ -18,5 +18,6 @@ export * from "./components/Sidebar";
 export * from "./components/Skeleton";
 export * from "./components/Switch";
 export * from "./components/Tabs";
+export * from "./components/Tag";
 export * from "./components/Text";
 export * from "./components/Textarea";
