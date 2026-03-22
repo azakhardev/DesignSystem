@@ -1,0 +1,45 @@
+.status {
+  position: relative;
+}
+
+.heartbeat {
+  animation: inner-pulse var(--status-duration, 1.3s) ease-out infinite;
+}
+
+.status::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  content: "";
+  display: inline-block;
+  opacity: 0.5;
+  background-color: inherit;
+  transform: translate(-50%, -50%);
+  animation: pulse var(--status-duration, 1.3s) ease-out infinite;
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+}
+
+@keyframes pulse {
+  from {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  to {
+    transform: translate(-50%, -50%) scale(2.5);
+    opacity: 0;
+  }
+}
+
+@keyframes inner-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.15);
+  }
+  50% {
+    transform: scale(1);
+  }
+}

@@ -36,13 +36,13 @@
 - [ ] Tooltip – Text hint on hover.
 - [ ] Popover – Like a tooltip, but rich content (HTML) that appears on click/hover.
 - [ ] Toast (Notification) – Temporary status messages (snackbars) appearing at the edge of the screen.
-- [ ] Status Indicator – Pulsing dot/circle with customizable status colors (Online, Busy, Offline).
+- [x] Status Indicator – Pulsing dot/circle with customizable status colors (Online, Busy, Offline).
 - [ ] Accordion – Collapsible content panels. Support for Single (one open at a time) or Multi mode.
 - [ ] Progress Bar – Linear indicator (dynamic for loading or static for capacity).
 - [ ] Table – Data grid with styling and "copy value" functionality.
 - [ ] Empty State – A component to display when data is missing (e.g., "No items found") with an illustration and a CTA button.
-- [ ] Callout - Provides presentation of content in a visually distinct manner
-- [ ] KBD - A simple component for displaying keyboard shortcuts
+- [ ] Callout - Provides presentation of content in a visually distinct manner.
+- [x] KBD - A simple component for displaying keyboard shortcuts.
 
 ### Phase 4: Advanced Components (Complex Logic)
 
@@ -61,7 +61,8 @@
 
 ### Other: TODO and overall improvements
 
-- [ ] asChild - Create asChild property for some elements to be more flexible for developers
+- [ ] asChild - Create asChild property for some elements to be more flexible for developers.
 - [ ] Keyboard Accessibility - Add support for arrows navigation, keyboard loop, etc...
 - [ ] Change hover/select color of inputs based on new CSS variable.
-- [x] Create and use hooks for closing popovers on Clicking Outside/Escape
+- [x] Create and use hooks for closing popovers on Clicking Outside/Escape.
+- [ ] Add custom animations to the Tailwind config.
