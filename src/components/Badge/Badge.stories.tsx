@@ -4,8 +4,7 @@ import { CheckCircle, Tag, XCircle } from "lucide-react";
 import { Badge } from "./Badge";
 
 /**
- * **Badge Component**
- * * A versatile badge used to highlight status, categories, or counts.
+ * A versatile badge used to highlight status, categories, or counts.
  * Supports different semantic variants, sizes, and custom HTML elements via the `as` prop.
  */
 const meta = {
