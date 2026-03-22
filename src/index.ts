@@ -1,6 +1,7 @@
 import "./index.css";
 
 export * from "./components/Alert";
+export * from "./components/Badge";
 export * from "./components/Breadcrumb";
 export * from "./components/Button";
 export * from "./components/Card";
@@ -8,6 +9,7 @@ export * from "./components/Checkbox";
 export * from "./components/Dialog";
 export * from "./components/Dropdown";
 export * from "./components/Input";
+export * from "./components/Kbd";
 export * from "./components/Label";
 export * from "./components/Loaders";
 export * from "./components/Radio";
@@ -15,7 +17,9 @@ export * from "./components/Select";
 export * from "./components/Separator";
 export * from "./components/Sidebar";
 export * from "./components/Skeleton";
+export * from "./components/Status";
 export * from "./components/Switch";
 export * from "./components/Tabs";
+export * from "./components/Tag";
 export * from "./components/Text";
 export * from "./components/Textarea";
