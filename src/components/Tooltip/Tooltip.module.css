@@ -1,0 +1,42 @@
+.content {
+  position: fixed;
+
+  max-width: min(300px, calc(100vw - 2rem));
+  width: max-content;
+  white-space: normal;
+  word-wrap: break-word;
+  z-index: 100;
+  pointer-events: none;
+
+  /* Fallbacks: If the element wont fit to the selected side, it will try another*/
+  position-try-fallbacks: flip-block, flip-inline;
+}
+
+.content[data-side="top"] {
+  bottom: anchor(top);
+  left: anchor(center);
+  align-self: center;
+  margin-bottom: var(--side-offset);
+  transform: translateX(-50%);
+}
+
+.content[data-side="bottom"] {
+  top: anchor(bottom);
+  left: anchor(center);
+  margin-top: var(--side-offset);
+  transform: translateX(-50%);
+}
+
+.content[data-side="left"] {
+  right: anchor(left);
+  top: anchor(center);
+  margin-right: var(--side-offset);
+  transform: translateY(-50%);
+}
+
+.content[data-side="right"] {
+  left: anchor(right);
+  top: anchor(center);
+  margin-left: var(--side-offset);
+  transform: translateY(-50%);
+}

@@ -1,73 +1,151 @@
-import { createContext, use, useId } from "react";
-import { cn } from "../../lib/utils";
+import { createContext, use, useId, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 
-const TooltipContext = createContext<TooltipContext | null>(null)
+import { cn } from "../../lib/utils";
+import { Card } from "../Card";
+import styles from "./Tooltip.module.css";
+
+const TooltipContext = createContext<TooltipContext | null>(null);
 
 type TooltipContext = {
-    visible: boolean;
-    setVisible: (v: boolean) => void;
-    id: string;
-}
+  visible: boolean;
+  setVisible: (v: boolean) => void;
+  id: string;
+};
 
 function useTooltip() {
-    const context = use(TooltipContext);
+  const context = use(TooltipContext);
 
-    if (!context) {
-        throw new Error(
-            "Components like Tooltip, TooltipContent and TooltipTrigger must be used within <TooltipProvider> component.",
-        );
-    }
+  if (!context) {
+    throw new Error(
+      "Components like TooltipContent and TooltipTrigger must be used within <Tooltip> component.",
+    );
+  }
 
-    return context;
-}
-
-
-
-function TooltipProvider() {
-    const id = useId();
-
-    return <TooltipContext.Provider value={{ visible: false, setVisible: () => { }, id }}>
-        { }
-    </TooltipContext.Provider>
+  return context;
 }
 
 interface TooltipProps extends React.ComponentProps<"div"> {
-
+  defaultOpen?: boolean;
 }
 
-function Tooltip({ children, className, ...props }: TooltipProps) {
-    return <div className={cn("relative", className)} {...props}>
+function Tooltip({
+  children,
+  className,
+  defaultOpen = false,
+  ...props
+}: TooltipProps) {
+  const [visible, setVisible] = useState(defaultOpen);
+  const id = useId().replace(/:/g, "");
+
+  return (
+    <TooltipContext.Provider value={{ id, setVisible, visible }}>
+      <div className="inline-block relative" {...props}>
         {children}
-    </div>
+      </div>
+    </TooltipContext.Provider>
+  );
 }
 
 interface TooltipContentProps extends React.ComponentProps<"div"> {
-    preferredPosition?: "top" | "bottom" | "left" | "right";
+  maxWidth?: number | string;
+  side?: "top" | "bottom" | "left" | "right";
+  sideOffset?: number;
 }
 
-//preffered-position?
-function TooltipContent({ children, className, preferredPosition, ...props }: TooltipContentProps) {
-    const { id, visible } = useTooltip();
+function TooltipContent({
+  children,
+  className,
+  maxWidth = 300,
+  side = "top",
+  sideOffset = 8,
+  style,
+  ...props
+}: TooltipContentProps) {
+  const { id, visible } = useTooltip();
 
-    return <div id={`tooltip-content-${id}`} role="tooltip" {...props}> {children} </div>
+  if (!visible) return null;
+
+  return createPortal(
+    <Card
+      className={cn(styles.content, "shadow-sm p-2", className)}
+      data-side={side}
+      id={`tooltip-content-${id}`}
+      role="tooltip"
+      style={
+        {
+          "--side-offset": `${sideOffset}px`,
+          "max-width":
+            typeof maxWidth === "number" ? `${maxWidth}px` : maxWidth,
+          "position-anchor": `--anchor-${id}`,
+          ...style,
+        } as React.CSSProperties
+      }
+      {...props}
+    >
+      {children}
+    </Card>,
+    document.body,
+  );
 }
 
 interface TooltipTriggerProps extends React.ComponentProps<"button"> {
-    delay?: number;
+  delay?: number;
 }
 
-//delay
-function TooltipTrigger({ children, className, delay, ...props }: TooltipTriggerProps) {
-    const { id, setVisible } = useTooltip();
+function TooltipTrigger({
+  children,
+  className,
+  delay = 200,
+  style,
+  ...props
+}: TooltipTriggerProps) {
+  const { id, setVisible } = useTooltip();
+  // useRef saves reference to "survive" re-renders
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-    function setToVisible() {
+  const handleEnter = () => {
+    if (timerRef.current) clearTimeout(timerRef.current);
 
+    timerRef.current = setTimeout(() => {
+      setVisible(true);
+    }, delay);
+  };
+
+  const handleLeave = () => {
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+      timerRef.current = null;
     }
+    // setVisible(false);
+  };
 
-    return <button className={cn("", className)} aria-describedby={`tooltip-content-${id}`} onMouseEnter={setToVisible} onMouseLeave={() => setVisible(false)} {...props} >
-        {children}
+  return (
+    <button
+      aria-describedby={`tooltip-${id}`}
+      className={cn(styles.trigger, className)}
+      onBlur={() => setVisible(false)}
+      onFocus={() => setVisible(true)}
+      onMouseEnter={handleEnter}
+      onMouseLeave={handleLeave}
+      style={
+        {
+          "--tooltip-anchor": `--anchor-${id}`,
+          "anchor-name": `--anchor-${id}`,
+          ...style,
+        } as React.CSSProperties
+      }
+      {...props}
+    >
+      {children}
     </button>
+  );
 }
 
-export { Tooltip, TooltipProvider, TooltipContent, TooltipTrigger }
-export type { TooltipContext, TooltipContentProps, TooltipTriggerProps, TooltipProps }
+export { Tooltip, TooltipContent, TooltipTrigger };
+export type {
+  TooltipContentProps,
+  TooltipContext,
+  TooltipProps,
+  TooltipTriggerProps,
+};
