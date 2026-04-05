@@ -89,7 +89,13 @@ const TRANSFORM_ORIGINS: Record<string, string> = {
 };
 
 interface TooltipContentProps extends HTMLMotionProps<"div"> {
+  /**
+   * Side at which Tooltip will appear
+   */
   side?: "top" | "bottom" | "left" | "right";
+  /**
+   * Offset of the Tooltip from the trigger
+   */
   sideOffset?: number;
 }
 
@@ -145,6 +151,9 @@ function TooltipContent({
 }
 
 interface TooltipTriggerProps extends React.ComponentProps<"button"> {
+  /**
+   * Allows cloning the child element
+   */
   asChild?: boolean;
 }
 

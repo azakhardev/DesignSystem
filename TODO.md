@@ -34,7 +34,7 @@
 - [x] Skeleton – Loading placeholder with shine/pulse animation and color customization.
 - [x] Badge – Small count/status indicator, possibly with icon support.
 - [x] Tag (Chip) – Similar to Badge but interactive (clickable, deletable). Often used for filters.
-- [ ] Tooltip – Text hint on hover.
+- [x] Tooltip – Text hint on hover.
 - [ ] Popover – Like a tooltip, but rich content (HTML) that appears on click/hover.
 - [ ] Toast (Notification) – Temporary status messages (snackbars) appearing at the edge of the screen.
 - [x] Status Indicator – Pulsing dot/circle with customizable status colors (Online, Busy, Offline).
@@ -63,6 +63,7 @@
 ### Other: TODO and overall improvements
 
 - [ ] asChild - Create asChild property for some elements to be more flexible for developers.
+  - With use of new Slot Component
 - [ ] Keyboard Accessibility - Add support for arrows navigation, keyboard loop, etc...
 - [ ] Change hover/select color of inputs based on new CSS variable.
 - [x] Create and use hooks for closing popovers on Clicking Outside/Escape.
