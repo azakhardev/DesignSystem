@@ -15,14 +15,16 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: {},
+  args: {
+    children: <div></div>,
+  },
   render: () => {
     return (
       <div className="w-full flex flex-row gap-10 items-end justify-end">
         <div className="font-bold">ALSO NOT A TOOLTIP</div>
         <Tooltip>
           <TooltipTrigger>Trigger</TooltipTrigger>
-          <TooltipContent side="left">
+          <TooltipContent side="top">
             A content of the tooltip with very very long text for size testing.
           </TooltipContent>
         </Tooltip>
