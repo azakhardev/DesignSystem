@@ -18,11 +18,18 @@ export const Default: Story = {
   args: {},
   render: () => {
     return (
-      <div className="w-[400px] flex items-end justify-start">
+      <div className="w-full flex flex-row gap-10 items-end justify-end">
+        <div className="font-bold">ALSO NOT A TOOLTIP</div>
         <Tooltip>
           <TooltipTrigger>Trigger</TooltipTrigger>
-          <TooltipContent side="top">A content of the tooltip</TooltipContent>
+          <TooltipContent side="left">
+            A content of the tooltip with very very long text for size testing.
+          </TooltipContent>
         </Tooltip>
+        <div className="font-bold">ALSO NOT A TOOLTIP</div>
+        <div className="font-bold">ALSO NOT A TOOLTIP</div>
+        <div className="font-bold">ALSO NOT A TOOLTIP</div>
+        <div className="font-bold">ALSO NOT A TOOLTIP</div>
       </div>
     );
   },

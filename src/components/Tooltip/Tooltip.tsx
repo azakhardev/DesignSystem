@@ -48,7 +48,6 @@ function Tooltip({
 }
 
 interface TooltipContentProps extends React.ComponentProps<"div"> {
-  maxWidth?: number | string;
   side?: "top" | "bottom" | "left" | "right";
   sideOffset?: number;
 }
@@ -56,7 +55,6 @@ interface TooltipContentProps extends React.ComponentProps<"div"> {
 function TooltipContent({
   children,
   className,
-  maxWidth = 300,
   side = "top",
   sideOffset = 8,
   style,
@@ -75,9 +73,7 @@ function TooltipContent({
       style={
         {
           "--side-offset": `${sideOffset}px`,
-          "max-width":
-            typeof maxWidth === "number" ? `${maxWidth}px` : maxWidth,
-          "position-anchor": `--anchor-${id}`,
+          positionAnchor: `--anchor-${id}`,
           ...style,
         } as React.CSSProperties
       }
@@ -117,7 +113,7 @@ function TooltipTrigger({
       clearTimeout(timerRef.current);
       timerRef.current = null;
     }
-    // setVisible(false);
+    setVisible(false);
   };
 
   return (
@@ -131,7 +127,7 @@ function TooltipTrigger({
       style={
         {
           "--tooltip-anchor": `--anchor-${id}`,
-          "anchor-name": `--anchor-${id}`,
+          anchorName: `--anchor-${id}`,
           ...style,
         } as React.CSSProperties
       }
