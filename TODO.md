@@ -6,7 +6,8 @@
 - [x] Card – Content wrapper, ideally with sub-components like CardHeader, CardBody, and CardFooter.
 - [x] Modal (Dialog) – Overlay for critical actions. Includes triggers, header, content, buttons, close action, footer and sizing (center/drawer).
 - [x] Sidebar - Collapsible side menu for navigation with hamburger menu for mobile.
-  - [ ] Allow Tooltip on `SidebarItem` hover after creating `Tooltip` Component
+  - [ ] Allow Tooltip on `SidebarItem` hover after creating `Tooltip` Component.
+  - [ ] Make groups expendable + add animations upon clicking.
 - [x] Spinner – Loading indicators: Orbital, Classic, Dots and Page Loader.
 - [x] Alert – Static feedback messages: Error, Warning, Info, Success, No Data.
 - [ ] ~Container / Grid – Layout primitives. A simple system to constrain width (Container) or handle flexbox/grid layouts (Row/Col or Stack).~
@@ -33,7 +34,7 @@
 - [x] Skeleton – Loading placeholder with shine/pulse animation and color customization.
 - [x] Badge – Small count/status indicator, possibly with icon support.
 - [x] Tag (Chip) – Similar to Badge but interactive (clickable, deletable). Often used for filters.
-- [ ] Tooltip – Text hint on hover.
+- [x] Tooltip – Text hint on hover.
 - [ ] Popover – Like a tooltip, but rich content (HTML) that appears on click/hover.
 - [ ] Toast (Notification) – Temporary status messages (snackbars) appearing at the edge of the screen.
 - [x] Status Indicator – Pulsing dot/circle with customizable status colors (Online, Busy, Offline).
@@ -62,6 +63,7 @@
 ### Other: TODO and overall improvements
 
 - [ ] asChild - Create asChild property for some elements to be more flexible for developers.
+  - With use of new Slot Component
 - [ ] Keyboard Accessibility - Add support for arrows navigation, keyboard loop, etc...
 - [ ] Change hover/select color of inputs based on new CSS variable.
 - [x] Create and use hooks for closing popovers on Clicking Outside/Escape.
