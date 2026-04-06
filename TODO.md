@@ -35,11 +35,12 @@
 - [x] Badge – Small count/status indicator, possibly with icon support.
 - [x] Tag (Chip) – Similar to Badge but interactive (clickable, deletable). Often used for filters.
 - [x] Tooltip – Text hint on hover.
+  - [ ] Keep the Tooltip visible while hovering TooltipContent
 - [ ] Popover – Like a tooltip, but rich content (HTML) that appears on click/hover.
 - [ ] Toast (Notification) – Temporary status messages (snackbars) appearing at the edge of the screen.
 - [x] Status Indicator – Pulsing dot/circle with customizable status colors (Online, Busy, Offline).
 - [ ] Accordion – Collapsible content panels. Support for Single (one open at a time) or Multi mode.
-- [ ] Progress Bar – Linear indicator (dynamic for loading or static for capacity).
+- [x] Progress Bar – Linear indicator (dynamic for loading or static for capacity).
 - [ ] Table – Data grid with styling and "copy value" functionality.
 - [ ] Empty State – A component to display when data is missing (e.g., "No items found") with an illustration and a CTA button.
 - [ ] Callout - Provides presentation of content in a visually distinct manner.

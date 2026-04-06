@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { expect, screen } from "storybook/test";
 
 import { Tooltip, TooltipContent, TooltipTrigger } from "./Tooltip";
-
 /**
  * A lightweight, accessible tooltip built on the CSS Anchor Positioning API
  * with Framer Motion animations. Supports all four sides with smart overflow
@@ -48,6 +48,16 @@ export const Default: Story = {
   args: {
     closeDelayDuration: 0,
     delayDuration: 200,
+  },
+  play: async function ({ canvas, userEvent }) {
+    expect(screen.queryByRole("tooltip")).not.toBeInTheDocument();
+
+    const trigger = canvas.getByRole("button", { name: "Hover me" });
+    await userEvent.hover(trigger);
+
+    const tooltip = await screen.findByRole("tooltip");
+    expect(tooltip).toBeInTheDocument();
+    expect(tooltip).toHaveTextContent("This is a tooltip");
   },
   render: (args) => (
     <Tooltip {...args}>
