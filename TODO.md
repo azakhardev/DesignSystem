@@ -2,6 +2,7 @@
 
 - [x] Typography – Elastic component for text handling. Handles responsive sizing, font families, and semantic HTML tags (h1-h6, p, strong, muted, italic, underlined).
 - [x] Button – Various variants: Primary, Secondary, Danger, Confirm, Info, Ghost and Animate.
+  - [ ] Change Button scaling on hover (or remove it)
 - [x] Input – Text input with support for prefix/suffix icons (startAdornment / endAdornment).
 - [x] Card – Content wrapper, ideally with sub-components like CardHeader, CardBody, and CardFooter.
 - [x] Modal (Dialog) – Overlay for critical actions. Includes triggers, header, content, buttons, close action, footer and sizing (center/drawer).
@@ -43,7 +44,7 @@
 - [x] Progress Bar – Linear indicator (dynamic for loading or static for capacity).
 - [ ] Table – Data grid with styling and "copy value" functionality.
 - [ ] Empty State – A component to display when data is missing (e.g., "No items found") with an illustration and a CTA button.
-- [ ] Callout - Provides presentation of content in a visually distinct manner.
+- [x] Callout - Provides presentation of content in a visually distinct manner.
 - [x] KBD - A simple component for displaying keyboard shortcuts.
 
 ### Phase 4: Advanced Components (Complex Logic)
