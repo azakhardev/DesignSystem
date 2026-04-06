@@ -1,9 +1,10 @@
 import { type HTMLMotionProps, motion } from "framer-motion";
-import { createContext, use } from "react";
+import { createContext, use, useId } from "react";
 
 import { cn } from "../../lib/utils";
 
 const ProgressContext = createContext<{
+  id: string;
   value: number;
   maxValue: number;
 } | null>(null);
@@ -20,8 +21,12 @@ function Progress({
   value = 0,
   ...props
 }: ProgressProps) {
+  const generatedId = useId().replace(/:/g, "");
+
+  const id = props.id || `progress-${generatedId}`;
+
   return (
-    <ProgressContext.Provider value={{ maxValue, value }}>
+    <ProgressContext.Provider value={{ id, maxValue, value }}>
       <div className={cn("flex flex-col gap-1 w-full", className)} {...props}>
         {children}
       </div>
@@ -44,9 +49,15 @@ function ProgressLabel({
   className,
   ...props
 }: React.ComponentProps<"span">) {
+  const { id } = useProgressContext();
+
   return (
     <span
-      className={cn("font-bold text-sm text-text capitalize", className)}
+      className={cn(
+        "ml-0.5 inline-block font-bold text-sm text-text capitalize",
+        className,
+      )}
+      id={`${id}-progress-label`}
       {...props}
     >
       {children}
@@ -71,13 +82,13 @@ function ProgressValue({
   const content = autofill
     ? format === "numbers"
       ? `${value}/${maxValue}`
-      : (value / maxValue) * 100 + "%"
+      : Math.round((value / maxValue) * 100) + "%"
     : children;
 
   return (
     <span
       className={cn(
-        "text-text-secondary text-xs font-medium self-end",
+        "inline-block text-text-secondary text-xs font-medium self-end mr-1.5",
         className,
       )}
       {...props}
@@ -91,10 +102,11 @@ interface ProgressBarProps extends React.ComponentProps<"div"> {
 }
 
 function ProgressBar({ children, className, ...props }: ProgressBarProps) {
-  const { maxValue, value } = useProgressContext();
+  const { id, maxValue, value } = useProgressContext();
 
   return (
     <div
+      aria-labelledby={`${id}-progress-label`}
       aria-valuemax={maxValue}
       aria-valuemin={0}
       aria-valuenow={value}
@@ -116,7 +128,7 @@ interface ProgressIndicatorProps extends Omit<
 > {
   delay?: number;
   duration?: number;
-  type?: "keyframes" | "decay" | "spring" | "tween" | "inertia";
+  type?: "spring" | "tween";
 }
 
 function ProgressIndicator({

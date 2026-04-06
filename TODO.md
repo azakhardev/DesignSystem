@@ -35,6 +35,7 @@
 - [x] Badge – Small count/status indicator, possibly with icon support.
 - [x] Tag (Chip) – Similar to Badge but interactive (clickable, deletable). Often used for filters.
 - [x] Tooltip – Text hint on hover.
+  - [ ] Keep the Tooltip visible while hovering TooltipContent
 - [ ] Popover – Like a tooltip, but rich content (HTML) that appears on click/hover.
 - [ ] Toast (Notification) – Temporary status messages (snackbars) appearing at the edge of the screen.
 - [x] Status Indicator – Pulsing dot/circle with customizable status colors (Online, Busy, Offline).
