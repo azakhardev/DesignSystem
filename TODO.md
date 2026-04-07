@@ -2,9 +2,14 @@
 
 - [x] Typography – Elastic component for text handling. Handles responsive sizing, font families, and semantic HTML tags (h1-h6, p, strong, muted, italic, underlined).
 - [x] Button – Various variants: Primary, Secondary, Danger, Confirm, Info, Ghost and Animate.
+  - [x] Change Button scaling on hover (or remove it)
+  - [ ] Popup explanation for disabled Button (when defined)
+  - [ ] Loading state of Button (disable + Spinner)
+  - [ ] Rain drop animation on clicking variant
 - [x] Input – Text input with support for prefix/suffix icons (startAdornment / endAdornment).
 - [x] Card – Content wrapper, ideally with sub-components like CardHeader, CardBody, and CardFooter.
 - [x] Modal (Dialog) – Overlay for critical actions. Includes triggers, header, content, buttons, close action, footer and sizing (center/drawer).
+  - [ ] Improve Dialog visuals?
 - [x] Sidebar - Collapsible side menu for navigation with hamburger menu for mobile.
   - [ ] Allow Tooltip on `SidebarItem` hover after creating `Tooltip` Component.
   - [ ] Make groups expendable + add animations upon clicking.
@@ -21,6 +26,7 @@
 - [x] Textarea – Multi-line text input.
 - [x] Select – Dropdown selection, ideally with Multi-select support.
   - [ ] `SelectGroup` - Component for grouping items inside `SelectContent`.
+  - [ ] Improve hover styling
 - [x] Tabs – Switching between views with animation. Support for horizontal/vertical alignment.
   - [ ] Change to Activity component
   - [ ] Add support for navigation between tabs with arrows + style focus mode
@@ -43,7 +49,7 @@
 - [x] Progress Bar – Linear indicator (dynamic for loading or static for capacity).
 - [ ] Table – Data grid with styling and "copy value" functionality.
 - [ ] Empty State – A component to display when data is missing (e.g., "No items found") with an illustration and a CTA button.
-- [ ] Callout - Provides presentation of content in a visually distinct manner.
+- [x] Callout - Provides presentation of content in a visually distinct manner.
 - [x] KBD - A simple component for displaying keyboard shortcuts.
 
 ### Phase 4: Advanced Components (Complex Logic)
@@ -69,3 +75,5 @@
 - [ ] Change hover/select color of inputs based on new CSS variable.
 - [x] Create and use hooks for closing popovers on Clicking Outside/Escape.
 - [ ] Add custom animations to the Tailwind config.
+- [x] Change CSS color variables to RGB/HSL format
+  - [ ] Apply new HSL values to Components with bad contrast and ugly hover states like: Badge, KBD, _?Button?_, _?Tabs?_

@@ -26,12 +26,12 @@
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: var(--surface);
+  background: hsl(var(--surface));
   border-radius: inherit;
 }
 
 .animatedButton:hover::after {
-  background: var(--surface-secondary);
+  background: hsl(var(--surface-secondary));
 }
 
 .animatedButton:disabled::before,
@@ -40,9 +40,9 @@
 }
 
 .animatedButton:disabled {
-  background: var(--disabled-surface);
-  color: var(--disabled-text);
-  border: 2px solid var(--disabled-border, transparent);
+  background: hsl(var(--disabled-surface));
+  color: hsl(var(--disabled-text));
+  border: 2px solid hsl(var(--disabled-border, transparent));
   transform: none;
 }
 

@@ -65,7 +65,7 @@ function Dots({
             className="rounded-full border border-border"
             key={i}
             style={{
-              backgroundColor: color ?? "var(--primary)",
+              backgroundColor: color ?? "hsl(var(--primary))",
               height: size,
               width: size,
             }}

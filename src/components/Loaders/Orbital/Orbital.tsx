@@ -34,7 +34,7 @@ function Orbital({
         animate={{ rotate: 360 }}
         className="absolute top-0 left-1/2 rounded-full"
         style={{
-          backgroundColor: primaryColor ?? "var(--primary)",
+          backgroundColor: primaryColor ?? "hsl(var(--primary))",
           height: primaryDotSize,
           transformOrigin: `50% ${radius}px`,
           width: primaryDotSize,
@@ -51,7 +51,7 @@ function Orbital({
         animate={{ rotate: -360 }}
         className="absolute top-0 left-1/2 rounded-full"
         style={{
-          backgroundColor: secondaryColor ?? "var(--secondary)",
+          backgroundColor: secondaryColor ?? "hsl(var(--secondary))",
           height: secondaryDotSize,
           transformOrigin: `50% ${radius}px`,
           width: secondaryDotSize,

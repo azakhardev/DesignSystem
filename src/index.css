@@ -46,118 +46,118 @@
 
 :root {
   /* === MAIN COLORS === */
-  --app-background: #f8fafc;
-  --surface: #ffffff;
-  --surface-subtle: #f8f8f8;
-  --surface-secondary: #f1f5f9;
-  --primary: #0ea5e9;
-  --primary-focus: #0284c7;
-  --secondary: #6366f1;
-  --secondary-focus: #4f46e5;
+  --app-background: 210 40% 98%;
+  --surface: 0 0% 100%;
+  --surface-subtle: 0 0% 97%;
+  --surface-secondary: 210 40% 96%;
+  --primary: 199 89% 48%;
+  --primary-focus: 199 98% 39%;
+  --secondary: 239 84% 67%;
+  --secondary-focus: 243 75% 59%;
 
   /* === SEMANTIC COLORS === */
-  --text-main: #0f172a;
-  --text-secondary: #64748b;
-  --border-main: #e2e8f0;
-  --border-subtle: #f1f5f9;
-  --border-strong: #cbd5e1;
-  --input-background: #ffffff;
-  --input-focus: #4bbef3;
-  --input-hover: #f1f5f9;
-  --accent: #0d9488;
-  --overlay: #0f172a;
+  --text-main: 222 47% 11%;
+  --text-secondary: 215 16% 47%;
+  --border-main: 214 32% 91%;
+  --border-subtle: 210 40% 96%;
+  --border-strong: 212 33% 84%;
+  --input-background: 0 0% 100%;
+  --input-focus: 198 86% 62%;
+  --input-hover: 210 40% 96%;
+  --accent: 175 84% 32%;
+  --overlay: 222 47% 11%;
 
   /* === ON-COLORS === */
-  --on-primary: #ffffff;
-  --on-secondary: #ffffff;
-  --on-surface: #0f172a;
+  --on-primary: 0 0% 100%;
+  --on-secondary: 0 0% 100%;
+  --on-surface: 222 47% 11%;
 
   /* === STATES ===  */
   /* --- DISABLED ---*/
-  --disabled-surface: #e2e8f0;
-  --disabled-text: #94a3b8;
-  --disabled-border: #cbd5e1;
+  --disabled-surface: 214 32% 91%;
+  --disabled-text: 215 20% 65%;
+  --disabled-border: 212 33% 84%;
 
   /* --- INFO --- */
-  --info-surface: #f0f9ff;
-  --info-border: #bae6fd;
-  --info-text: #075985;
-  --info-main: #0ea5e9;
+  --info-surface: 202 100% 97%;
+  --info-border: 199 91% 86%;
+  --info-text: 201 90% 27%;
+  --info-main: 199 89% 48%;
 
   /* --- SUCCESS --- */
-  --success-surface: #ecfdf5;
-  --success-border: #a7f3d0;
-  --success-text: #065f46;
-  --success-main: #10b981;
+  --success-surface: 150 100% 96%;
+  --success-border: 152 76% 80%;
+  --success-text: 163 88% 20%;
+  --success-main: 158 82% 39%;
 
   /* --- WARNING --- */
-  --warning-surface: #fffbeb;
-  --warning-border: #fde68a;
-  --warning-text: #92400e;
-  --warning-main: #f59e0b;
+  --warning-surface: 48 100% 96%;
+  --warning-border: 48 94% 77%;
+  --warning-text: 25 83% 31%;
+  --warning-main: 38 93% 50%;
 
   /* --- ERROR --- */
-  --error-surface: #fef2f2;
-  --error-border: #fecaca;
-  --error-text: #991b1b;
-  --error-main: #ef4444;
+  --error-surface: 0 100% 97%;
+  --error-border: 0 93% 89%;
+  --error-text: 0 70% 35%;
+  --error-main: 0 84% 60%;
 }
 
 .dark {
   /* === MAIN COLORS === */
-  --app-background: #0b1120;
-  --surface: #1e293b;
-  --surface-subtle: #2b3a50;
-  --surface-secondary: #334155;
-  --primary: #38bdf8;
-  --primary-focus: #7dd3fc;
-  --secondary: #818cf8;
-  --secondary-focus: #a5b4fc;
+  --app-background: 222 48% 8%;
+  --surface: 217 33% 17%;
+  --surface-subtle: 216 30% 24%;
+  --surface-secondary: 215 25% 27%;
+  --primary: 199 89% 60%;
+  --primary-focus: 199 92% 74%;
+  --secondary: 235 89% 74%;
+  --secondary-focus: 231 92% 82%;
 
   /* === SEMANTIC COLORS === */
-  --text-main: #f8fafc;
-  --text-secondary: #94a3b8;
-  --border-main: #334155;
-  --border-subtle: #1e293b;
-  --border-strong: #475569;
-  --input-background: #0f172a;
-  --input-focus: #38bdf8;
-  --input-hover: #1e293b;
-  --accent: #5eead4;
-  --overlay: #0f172a;
+  --text-main: 210 40% 98%;
+  --text-secondary: 215 20% 65%;
+  --border-main: 215 25% 27%;
+  --border-subtle: 217 33% 17%;
+  --border-strong: 215 19% 35%;
+  --input-background: 222 47% 11%;
+  --input-focus: 199 89% 60%;
+  --input-hover: 217 33% 17%;
+  --accent: 172 82% 66%;
+  --overlay: 222 47% 11%;
 
   /* === ON-COLORS === */
-  --on-primary: #0f172a;
-  --on-secondary: #0f172a;
-  --on-surface: #f8fafc;
+  --on-primary: 222 47% 11%;
+  --on-secondary: 222 47% 11%;
+  --on-surface: 210 40% 98%;
 
   /* === STATUSES ===  */
   /* --- DISABLED ---*/
-  --disabled-surface: #1e293b;
-  --disabled-text: #475569;
-  --disabled-border: #334155;
+  --disabled-surface: 217 33% 17%;
+  --disabled-text: 215 19% 35%;
+  --disabled-border: 215 25% 27%;
 
   /* --- INFO --- */
-  --info-surface: #082f49;
-  --info-border: #075985;
-  --info-text: #bae6fd;
-  --info-main: #38bdf8;
+  --info-surface: 203 80% 16%;
+  --info-border: 201 90% 27%;
+  --info-text: 199 91% 86%;
+  --info-main: 199 89% 60%;
 
   /* --- SUCCESS --- */
-  --success-surface: #064e3b;
-  --success-border: #065f46;
-  --success-text: #a7f3d0;
-  --success-main: #34d399;
+  --success-surface: 164 86% 16%;
+  --success-border: 163 88% 20%;
+  --success-text: 152 76% 80%;
+  --success-main: 158 64% 52%;
 
   /* --- WARNING --- */
-  --warning-surface: #451a03;
-  --warning-border: #92400e;
-  --warning-text: #fde68a;
-  --warning-main: #fbbf24;
+  --warning-surface: 20 92% 14%;
+  --warning-border: 25 83% 31%;
+  --warning-text: 48 94% 77%;
+  --warning-main: 43 96% 56%;
 
   /* --- ERROR --- */
-  --error-surface: #450a0a;
-  --error-border: #991b1b;
-  --error-text: #fecaca;
-  --error-main: #f87171;
+  --error-surface: 0 75% 15%;
+  --error-border: 0 70% 35%;
+  --error-text: 0 93% 89%;
+  --error-main: 0 91% 71%;
 }
