@@ -2,7 +2,7 @@
 
 - [x] Typography – Elastic component for text handling. Handles responsive sizing, font families, and semantic HTML tags (h1-h6, p, strong, muted, italic, underlined).
 - [x] Button – Various variants: Primary, Secondary, Danger, Confirm, Info, Ghost and Animate.
-  - [ ] Change Button scaling on hover (or remove it)
+  - [x] Change Button scaling on hover (or remove it)
   - [ ] Popup explanation for disabled Button (when defined)
   - [ ] Loading state of Button (disable + Spinner)
   - [ ] Rain drop animation on clicking variant
@@ -76,4 +76,4 @@
 - [x] Create and use hooks for closing popovers on Clicking Outside/Escape.
 - [ ] Add custom animations to the Tailwind config.
 - [x] Change CSS color variables to RGB/HSL format
-  - [ ] Apply new HSL values to Components with bad contrast and hover states like: Badge, KBD, Button?
+  - [ ] Apply new HSL values to Components with bad contrast and ugly hover states like: Badge, KBD, _?Button?_, _?Tabs?_

@@ -10,7 +10,7 @@ const buttonVariants = cva(
     //Transitons style
     "transition-all duration-150 ease-in-out",
     //Hover effects
-    "hover:scale-[1.10] active:scale-[0.95]",
+    "hover:scale-[1.02] active:scale-[0.98]",
     //Disabled style
     "disabled:bg-disabled-surface disabled:border-disabled-border disabled:text-disabled-text disabled:cursor-default disabled:hover:scale-100 disabled:active:scale-100 disabled:cursor-not-allowed",
   ],
