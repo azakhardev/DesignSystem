@@ -96,7 +96,7 @@ export const ConstantRotation: Story = {
 export const BrandedThin: Story = {
   args: {
     duration: 1.5,
-    primaryColor: "var(--app-background)",
+    primaryColor: "hsl(var(--app-background))",
     rotationsCount: 3,
     secondaryColor: "#0ea5e9",
     size: 120,

@@ -39,8 +39,8 @@ function Spinner({
         }}
         className="relative rounded-full flex items-center justify-center overflow-hidden"
         style={{
-          borderColor: primaryColor ?? "var(--primary)",
-          borderTopColor: secondaryColor ?? "var(--secondary)",
+          borderColor: primaryColor ?? "hsl(var(--primary))",
+          borderTopColor: secondaryColor ?? "hsl(var(--secondary))",
           borderWidth: thickness ? thickness : size / 6,
           height: size,
           width: size,

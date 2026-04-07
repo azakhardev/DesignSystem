@@ -70,7 +70,7 @@ function ScreenLoader({
           <motion.li
             key={i}
             style={{
-              backgroundColor: color ?? "var(--primary)",
+              backgroundColor: color ?? "hsl(var(--primary))",
               borderRadius: barWidth / 2,
               width: barWidth,
             }}

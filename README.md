@@ -4,7 +4,7 @@ A modern, accessible, and strongly typed React Design System built with **Vite**
 
 ![Version](https://img.shields.io/github/package-json/v/azakhardev/DesignSystem/main?label=version&color=blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
-![Progress](https://progress-bar.xyz/50?title=Progress)
+![Progress](https://progress-bar.xyz/60?title=Progress)
 
 ### 🚀 Features
 
