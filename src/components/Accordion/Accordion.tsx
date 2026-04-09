@@ -98,6 +98,9 @@ function useAccordionItemContext() {
 }
 
 interface AccordionItemProps extends React.ComponentProps<"div"> {
+  /**
+   *  A unique string identifier for this accordion item.
+   */
   value: string;
 }
 
@@ -167,8 +170,17 @@ function AccordionHeader({
 }
 
 interface AccordionTriggerProps extends React.ComponentProps<"button"> {
+  /**
+   * Custom icon element to replace the default chevron.
+   */
   icon?: React.ReactNode;
+  /**
+   *  Size of the chevron icon in pixels. Defaults to 26.
+   */
   iconSize?: number;
+  /**
+   *  Whether to show the expansion indicator icon. Defaults to true.
+   */
   showIcon?: boolean;
 }
 
@@ -238,4 +250,9 @@ export {
   AccordionItem,
   AccordionTrigger,
 };
-export type { AccordionContextType, AccordionItemProps, AccordionTriggerProps };
+export type {
+  AccordionContextType,
+  AccordionItemContextType,
+  AccordionItemProps,
+  AccordionTriggerProps,
+};
