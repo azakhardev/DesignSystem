@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import React, { useState } from "react";
-import { expect, screen } from "storybook/test";
+import { expect } from "storybook/test";
 
 import { Status } from "../Status";
 import { Tag } from "../Tag";
