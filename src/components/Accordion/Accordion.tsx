@@ -1,4 +1,6 @@
-import { createContext, use, useState } from "react";
+import { motion } from "framer-motion";
+import { ChevronDown } from "lucide-react";
+import { createContext, use, useId, useState } from "react";
 
 import { cn } from "../../lib/utils";
 
@@ -75,6 +77,8 @@ function Accordion({
 }
 
 type AccordionItemContextType = {
+  id: string;
+  isOpen: boolean;
   itemValue: string;
   changeState: () => void;
 };
@@ -84,7 +88,7 @@ const AccordionItemContext = createContext<AccordionItemContextType | null>(
 );
 
 function useAccordionItemContext() {
-  const context = use(AccordionContext);
+  const context = use(AccordionItemContext);
   if (!context) {
     throw new Error(
       "Subcomponents of AccordionItem like AccordionTrigger and AccordionContent must be used within a <AccordionItem> Component.",
@@ -106,6 +110,7 @@ function AccordionItem({
   const { collapsible, mode, setValue, value } = useAccordionContext();
   const isArray = Array.isArray(value);
 
+  const id = useId().replace(/:/g, "");
   let isOpen = false;
 
   if (isArray) {
@@ -132,29 +137,98 @@ function AccordionItem({
   }
 
   return (
-    <AccordionItemContext.Provider value={{ changeState, itemValue }}>
-      <div className={cn("", className)} {...props}>
+    <AccordionItemContext.Provider
+      value={{ changeState, id, isOpen, itemValue }}
+    >
+      <div className={cn("flex flex-col gap-1 w-full", className)} {...props}>
         {children}
       </div>
     </AccordionItemContext.Provider>
   );
 }
 
-interface AccordionHeaderProps extends React.ComponentProps<"div"> {
+function AccordionHeader({
+  children,
+  className,
+  ...props
+}: React.ComponentProps<"div">) {
+  return (
+    <div
+      className={cn(
+        "flex flex-row justify-between items-center",
+        "font-bold p-1 pb-2 text-lg border-b-2 border-text-secondary",
+        className,
+      )}
+      {...props}
+    >
+      {children}
+    </div>
+  );
+}
+
+interface AccordionTriggerProps extends React.ComponentProps<"button"> {
   icon?: React.ReactNode;
+  iconSize?: number;
   showIcon?: boolean;
 }
 
-function AccordionHeader(props: AccordionHeaderProps) {
-  return <div></div>;
+function AccordionTrigger({
+  children,
+  className,
+  icon,
+  iconSize = 26,
+  showIcon = true,
+  ...props
+}: AccordionTriggerProps) {
+  const { changeState, id, isOpen } = useAccordionItemContext();
+
+  return (
+    <button
+      aria-controls={`accordion-item-content-${id}`}
+      aria-expanded={isOpen}
+      className={cn(
+        "flex items-center gap-1 justify-between",
+        "text-start transition-opacity hover:opacity-70 focus-visible:outline-2 focus-visible:outline-primary-focus",
+        className,
+      )}
+      id={`accordion-item-trigger-${id}`}
+      onClick={changeState}
+      {...props}
+    >
+      {children}
+      {showIcon && (
+        <motion.span animate={{ rotate: isOpen ? 180 : 0 }}>
+          {icon ? icon : <ChevronDown size={iconSize} />}
+        </motion.span>
+      )}
+    </button>
+  );
 }
 
-function AccordionTrigger(props: React.ComponentProps<"button">) {
-  return <button></button>;
-}
+function AccordionContent({
+  children,
+  className,
+  ...props
+}: React.ComponentProps<"div">) {
+  const { id, isOpen } = useAccordionItemContext();
 
-function AccordionContent(props: React.ComponentProps<"div">) {
-  return <div></div>;
+  return (
+    <motion.div
+      animate={{ height: isOpen ? "auto" : 0, opacity: 1 }}
+      className="overflow-hidden"
+      initial={{ height: 0, opacity: 0 }}
+    >
+      <div
+        aria-labelledby={`accordion-item-trigger-${id}`}
+        className={cn("p-2", className)}
+        id={`accordion-item-content-${id}`}
+        role="region"
+        {...props}
+      >
+        {children}
+      </div>
+    </motion.div>
+  );
 }
 
 export {
@@ -164,4 +238,4 @@ export {
   AccordionItem,
   AccordionTrigger,
 };
-export type { AccordionContextType, AccordionHeaderProps, AccordionItemProps };
+export type { AccordionContextType, AccordionItemProps, AccordionTriggerProps };

@@ -27,10 +27,12 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   render: () => (
-    <Accordion>
+    <Accordion mode="multiple">
       <AccordionItem value="acc1">
         <AccordionHeader>
-          Accordion Header 1<AccordionTrigger></AccordionTrigger>
+          <AccordionTrigger className="w-full">
+            Accordion Header 1
+          </AccordionTrigger>
         </AccordionHeader>
         <AccordionContent>
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aut autem
@@ -41,7 +43,17 @@ export const Default: Story = {
       </AccordionItem>
       <AccordionItem value="acc2">
         <AccordionHeader>
-          Accordion Header 2<AccordionTrigger></AccordionTrigger>
+          <div className="flex flex-row gap-4">
+            <span className="inline-block">Accordion Header 2</span>
+            <span className="inline-block">|</span>
+            <a
+              className="inline-block text-primary hover:text-primary/80"
+              href="/"
+            >
+              Link
+            </a>
+          </div>
+          <AccordionTrigger>Click me</AccordionTrigger>
         </AccordionHeader>
         <AccordionContent>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum
