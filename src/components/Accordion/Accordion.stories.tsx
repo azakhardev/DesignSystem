@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import React, { useState } from "react";
+import { expect, screen } from "storybook/test";
 
 import { Status } from "../Status";
 import { Tag } from "../Tag";
@@ -66,6 +67,17 @@ export const SingleMode: Story = {
     defaultValue: "item-1",
     mode: "single",
   },
+  play: async function ({ canvas, userEvent }) {
+    const accordionTrigger2 = canvas.getByRole("button", { name: /privacy/i });
+
+    expect(
+      canvas.getByRole("region", { name: /privacy/i }),
+    ).toBeInTheDocument();
+
+    await userEvent.click(accordionTrigger2);
+
+    expect(canvas.getByText(/two-factor/i)).toBeInTheDocument();
+  },
   render: (args) => (
     <div className="w-[500px]">
       <Accordion {...args}>
@@ -100,6 +112,16 @@ export const SingleMode: Story = {
  * Multiple items can be expanded simultaneously. Useful for FAQs or filters.
  */
 export const MultipleMode: Story = {
+  play: async function ({ canvas, userEvent }) {
+    const accordionTrigger2 = canvas.getByRole("button", {
+      name: /mobile app/i,
+    });
+
+    await userEvent.click(accordionTrigger2);
+
+    expect(canvas.getByText(/login page and click/i)).toBeInTheDocument();
+    expect(canvas.getByText(/download our app/i)).toBeInTheDocument();
+  },
   render: () => (
     <div className="w-[500px]">
       <Accordion defaultValue={["faq-1"]} mode="multiple">
@@ -135,6 +157,21 @@ export const MultipleMode: Story = {
  * where at least one item must remain open at all times.
  */
 export const NonCollapsible: Story = {
+  play: async function ({ canvas, userEvent }) {
+    const accordionTrigger1 = canvas.getByRole("button", {
+      name: /database/i,
+    });
+
+    const accordionTrigger2 = canvas.getByRole("button", { name: /api/i });
+
+    await userEvent.click(accordionTrigger1);
+
+    expect(canvas.getByText(/this step is mandatory /i)).toBeInTheDocument();
+
+    await userEvent.click(accordionTrigger2);
+
+    expect(canvas.getByText(/register your application/i)).toBeInTheDocument();
+  },
   render: () => (
     <div className="w-[500px]">
       <p className="mb-4 text-xs text-text-secondary italic underline">
