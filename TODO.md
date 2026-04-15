@@ -42,8 +42,8 @@
 - [x] Tag (Chip) – Similar to Badge but interactive (clickable, deletable). Often used for filters.
 - [x] Tooltip – Text hint on hover.
   - [ ] Keep the Tooltip visible while hovering TooltipContent
-- [x] Popover – Like a tooltip, but rich content (HTML) that appears on click/hover.
-- [ ] Toast (Notification) – Temporary status messages (snackbars) appearing at the edge of the screen.
+- [ ] Popover – Like a tooltip, but rich content (HTML) that appears on click/hover.
+- [x] Toast (Notification) – Temporary status messages (snackbars) appearing at the edge of the screen.
 - [x] Status Indicator – Pulsing dot/circle with customizable status colors (Online, Busy, Offline).
 - [x] Accordion – Collapsible content panels. Support for Single (one open at a time) or Multi mode.
 - [x] Progress Bar – Linear indicator (dynamic for loading or static for capacity).
