@@ -47,7 +47,7 @@
 - [x] Status Indicator – Pulsing dot/circle with customizable status colors (Online, Busy, Offline).
 - [x] Accordion – Collapsible content panels. Support for Single (one open at a time) or Multi mode.
 - [x] Progress Bar – Linear indicator (dynamic for loading or static for capacity).
-- [ ] Table – Data grid with styling and "copy value" functionality.
+- [x] Table – Data grid with styling and "copy value" functionality.
 - [ ] Empty State – A component to display when data is missing (e.g., "No items found") with an illustration and a CTA button.
 - [x] Callout - Provides presentation of content in a visually distinct manner.
 - [x] KBD - A simple component for displaying keyboard shortcuts.
