@@ -32,16 +32,26 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render: (args) => {
     return (
-      <Table {...args}>
+      <Table className="w-[800px]" {...args}>
         <TableHeader>
-          <TableHead></TableHead>
-          <TableHead></TableHead>
-          <TableHead></TableHead>
+          <TableHead>ID</TableHead>
+          <TableHead>Name</TableHead>
+          <TableHead>Surname</TableHead>
         </TableHeader>
         <TableRow>
-          <TableCell></TableCell>
-          <TableCell></TableCell>
-          <TableCell></TableCell>
+          <TableCell>1</TableCell>
+          <TableCell>Anthony</TableCell>
+          <TableCell>Starr</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>2</TableCell>
+          <TableCell>Home</TableCell>
+          <TableCell>Lander</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>3</TableCell>
+          <TableCell>George</TableCell>
+          <TableCell>Washington</TableCell>
         </TableRow>
       </Table>
     );

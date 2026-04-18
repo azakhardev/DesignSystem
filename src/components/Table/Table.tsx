@@ -1,4 +1,5 @@
 import { cn } from "../../lib/utils";
+import styles from "./Table.module.css";
 
 function Table({
   children,
@@ -6,9 +7,11 @@ function Table({
   ...props
 }: React.ComponentProps<"table">) {
   return (
-    <table className={cn("", className)} {...props}>
-      {children}
-    </table>
+    <div className="w-full rounded-md border border-border overflow-hidden">
+      <table className={cn("w-full", className)} {...props}>
+        {children}
+      </table>
+    </div>
   );
 }
 
@@ -18,7 +21,7 @@ function TableHeader({
   ...props
 }: React.ComponentProps<"thead">) {
   return (
-    <thead className={cn("", className)} {...props}>
+    <thead className={cn("bg-primary", className)} {...props}>
       {children}
     </thead>
   );
@@ -30,7 +33,14 @@ function TableHead({
   ...props
 }: React.ComponentProps<"th">) {
   return (
-    <th className={cn("", className)} {...props}>
+    <th
+      className={cn(
+        "relative text-start font-bold px-2.5 py-1.5 text-on-primary",
+        styles["table-head"],
+        className,
+      )}
+      {...props}
+    >
       {children}
     </th>
   );
@@ -42,7 +52,14 @@ function TableRow({
   ...props
 }: React.ComponentProps<"tr">) {
   return (
-    <tr className={cn("", className)} {...props}>
+    <tr
+      className={cn(
+        "bg-surface hover:bg-info-surface",
+        styles["table-row"],
+        className,
+      )}
+      {...props}
+    >
       {children}
     </tr>
   );
@@ -54,7 +71,14 @@ function TableCell({
   ...props
 }: React.ComponentProps<"td">) {
   return (
-    <td className={cn("", className)} {...props}>
+    <td
+      className={cn(
+        "relative text-start px-3 py-0.5",
+        styles["table-cell"],
+        className,
+      )}
+      {...props}
+    >
       {children}
     </td>
   );
@@ -66,7 +90,7 @@ function TableBody({
   ...props
 }: React.ComponentProps<"tbody">) {
   return (
-    <tbody className={cn("", className)} {...props}>
+    <tbody className={cn("overflow-x-auto", className)} {...props}>
       {children}
     </tbody>
   );

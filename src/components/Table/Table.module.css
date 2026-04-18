@@ -1,0 +1,42 @@
+.table-head::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  right: 0px;
+  width: 2px;
+  background-color: hsl(var(--on-primary));
+}
+
+.table-head:last-child::after {
+  display: none;
+}
+
+.table-row {
+  position: relative;
+}
+
+.table-cell {
+  position: relative;
+  border-bottom: 1px solid hsl(var(--text-secondary));
+}
+
+.table-row:last-child .table-cell {
+  border: transparent;
+}
+
+.table-cell::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0.25rem;
+  bottom: 0.25rem;
+  right: 0px;
+  width: 2px;
+  background-color: hsl(var(--border-main));
+}
+
+.table-cell:last-child::after {
+  display: none;
+}
