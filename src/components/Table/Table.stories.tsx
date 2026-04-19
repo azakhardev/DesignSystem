@@ -6,6 +6,7 @@ import {
   TableCell,
   TableHead,
   TableHeader,
+  TableInput,
   TableRow,
 } from "./Table";
 
@@ -32,7 +33,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render: (args) => {
     return (
-      <Table className="w-[800px]" {...args}>
+      <Table className="w-[800px]" stripped {...args}>
         <TableHeader>
           <TableHead>ID</TableHead>
           <TableHead>Name</TableHead>
@@ -44,14 +45,20 @@ export const Default: Story = {
           <TableCell>Starr</TableCell>
         </TableRow>
         <TableRow>
-          <TableCell>2</TableCell>
+          <TableCell allowCopy>2</TableCell>
           <TableCell>Home</TableCell>
           <TableCell>Lander</TableCell>
         </TableRow>
         <TableRow>
-          <TableCell>3</TableCell>
-          <TableCell>George</TableCell>
-          <TableCell>Washington</TableCell>
+          <TableCell>
+            <TableInput />
+          </TableCell>
+          <TableCell>
+            <TableInput placeholder="Enter name" />
+          </TableCell>
+          <TableCell>
+            <TableInput placeholder="Enter surname" />
+          </TableCell>
         </TableRow>
       </Table>
     );

@@ -40,8 +40,8 @@ type Story = StoryObj<typeof meta>;
 /**
  * The **Default** story showcases the standard `primary` appearance used for main actions.
  * * Try interacting with it to see the **micro-animations**:
- * - **Hover:** Slight scale up (`1.10x`) + background darken.
- * - **Active:** Slight scale down (`0.95x`) for tactile feedback.
+ * - **Hover:** Slight scale up (`1.02x`) + background darken.
+ * - **Active:** Slight scale down (`0.98x`) for tactile feedback.
  * - **Focus:** Accessible outline ring (default browser behavior).
  */
 export const Default: Story = {
