@@ -98,6 +98,9 @@ function TableRow({
 }
 
 interface TableCellProps extends React.ComponentProps<"td"> {
+  /**
+   * Allows copying text content from cell
+   */
   allowCopy?: boolean;
 }
 
@@ -171,23 +174,24 @@ function TableCell({
   );
 }
 
-interface TableInputProps extends React.ComponentProps<"input"> {
-  editable?: boolean;
-}
-
-function TableInput({ className, placeholder, ...props }: TableInputProps) {
+function TableInput({
+  className,
+  placeholder,
+  ...props
+}: React.ComponentProps<"input">) {
   const hasRealPlaceholder = Boolean(placeholder);
 
   return (
     <input
       className={cn(
-        "w-full bg-inherit placeholder:text-text-secondary",
+        "w-full bg-inherit placeholder:text-text-secondary hover:bg-surface-subtle",
         "border-b border-transparent focus-within:outline-none focus-within:border-text-secondary focus-within:border-solid",
         !hasRealPlaceholder &&
           "placeholder-shown:border-dashed placeholder-shown:border-b-border",
+        "disabled:opacity-50",
         className,
       )}
-      placeholder={placeholder || " "}
+      placeholder={placeholder || "NULL"}
       {...props}
     />
   );
