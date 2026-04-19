@@ -22,6 +22,7 @@ export * from "./components/Sidebar";
 export * from "./components/Skeleton";
 export * from "./components/Status";
 export * from "./components/Switch";
+export * from "./components/Table";
 export * from "./components/Tabs";
 export * from "./components/Tag";
 export * from "./components/Text";

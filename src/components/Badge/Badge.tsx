@@ -18,10 +18,10 @@ const badgeVariants = cva(
       variant: {
         default:
           "bg-transparent border-2 border-border-strong text-text-secondary hover:bg-surface-secondary hover:text-text",
-        error: "bg-error text-white border border-border",
-        info: "bg-info text-white border border-border dark:text-gray-700",
-        success: "bg-success text-white dark:text-gray-700 ",
-        warning: "bg-warning text-white dark:text-gray-700",
+        error: "bg-error text-white border border-border hover:bg-error/80",
+        info: "bg-info text-white border border-border dark:text-gray-800 hover:bg-info/80",
+        success: "bg-success text-white dark:text-gray-800 hover:bg-success/80",
+        warning: "bg-warning text-white dark:text-gray-800 hover:bg-warning/80",
       },
     },
   },

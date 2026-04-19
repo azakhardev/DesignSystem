@@ -26,7 +26,7 @@
 - [x] Textarea – Multi-line text input.
 - [x] Select – Dropdown selection, ideally with Multi-select support.
   - [ ] `SelectGroup` - Component for grouping items inside `SelectContent`.
-  - [ ] Improve hover styling
+  - [x] Improve hover styling
 - [x] Tabs – Switching between views with animation. Support for horizontal/vertical alignment.
   - [ ] Change to Activity component
   - [ ] Add support for navigation between tabs with arrows + style focus mode
@@ -47,7 +47,7 @@
 - [x] Status Indicator – Pulsing dot/circle with customizable status colors (Online, Busy, Offline).
 - [x] Accordion – Collapsible content panels. Support for Single (one open at a time) or Multi mode.
 - [x] Progress Bar – Linear indicator (dynamic for loading or static for capacity).
-- [ ] Table – Data grid with styling and "copy value" functionality.
+- [x] Table – Data grid with styling and "copy value" functionality.
 - [ ] Empty State – A component to display when data is missing (e.g., "No items found") with an illustration and a CTA button.
 - [x] Callout - Provides presentation of content in a visually distinct manner.
 - [x] KBD - A simple component for displaying keyboard shortcuts.
@@ -76,4 +76,5 @@
 - [x] Create and use hooks for closing popovers on Clicking Outside/Escape.
 - [ ] Add custom animations to the Tailwind config.
 - [x] Change CSS color variables to RGB/HSL format
-  - [ ] Apply new HSL values to Components with bad contrast and ugly hover states like: Badge, KBD, _?Button?_, _?Tabs?_
+  - [ ] Apply new HSL values to Components with bad contrast and ugly hover states like: ~~Badge~~, _?Button?_, _?Tabs?_
+- [ ] Change the structure of the Storybook folders
