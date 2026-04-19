@@ -77,3 +77,4 @@
 - [ ] Add custom animations to the Tailwind config.
 - [x] Change CSS color variables to RGB/HSL format
   - [ ] Apply new HSL values to Components with bad contrast and ugly hover states like: ~~Badge~~, _?Button?_, _?Tabs?_
+- [ ] Change the structure of the Storybook folders
