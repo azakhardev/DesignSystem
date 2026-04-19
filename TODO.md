@@ -26,7 +26,7 @@
 - [x] Textarea – Multi-line text input.
 - [x] Select – Dropdown selection, ideally with Multi-select support.
   - [ ] `SelectGroup` - Component for grouping items inside `SelectContent`.
-  - [ ] Improve hover styling
+  - [x] Improve hover styling
 - [x] Tabs – Switching between views with animation. Support for horizontal/vertical alignment.
   - [ ] Change to Activity component
   - [ ] Add support for navigation between tabs with arrows + style focus mode
@@ -76,4 +76,4 @@
 - [x] Create and use hooks for closing popovers on Clicking Outside/Escape.
 - [ ] Add custom animations to the Tailwind config.
 - [x] Change CSS color variables to RGB/HSL format
-  - [ ] Apply new HSL values to Components with bad contrast and ugly hover states like: Badge, KBD, _?Button?_, _?Tabs?_
+  - [ ] Apply new HSL values to Components with bad contrast and ugly hover states like: ~~Badge~~, _?Button?_, _?Tabs?_
