@@ -6,16 +6,16 @@ import { useEscapeKey } from "../../hooks/useEscapeKey";
 import { useOnClickOutside } from "../../hooks/useOnClickOutside";
 import { cn } from "../../lib/utils";
 
-type DropdownContext = {
+type DropdownContextType = {
   open: boolean;
   onOpenChange: (v: boolean) => void;
   triggerAction: "click" | "hover";
 };
 
-const DropdownContext = createContext<DropdownContext | null>(null);
+const DropdownContextType = createContext<DropdownContextType | null>(null);
 
 function useDropdown() {
-  const context = use(DropdownContext);
+  const context = use(DropdownContextType);
   if (!context)
     throw new Error(
       "Components like DropdownTrigger, DropdownItem and DropdownMenu must be used within <Dropdown> component.",
@@ -71,7 +71,7 @@ function Dropdown({
   }, []);
 
   return (
-    <DropdownContext.Provider
+    <DropdownContextType.Provider
       value={{ onOpenChange: handleOpen, open: dropdownIsOpen, triggerAction }}
     >
       <div
@@ -82,7 +82,7 @@ function Dropdown({
       >
         {children}
       </div>
-    </DropdownContext.Provider>
+    </DropdownContextType.Provider>
   );
 }
 

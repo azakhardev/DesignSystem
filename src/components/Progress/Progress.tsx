@@ -3,11 +3,13 @@ import { createContext, use, useId } from "react";
 
 import { cn } from "../../lib/utils";
 
-const ProgressContext = createContext<{
+type ProgressContextType = {
   id: string;
   value: number;
   maxValue: number;
-} | null>(null);
+};
+
+const ProgressContext = createContext<ProgressContextType | null>(null);
 
 interface ProgressProps extends React.ComponentProps<"div"> {
   maxValue?: number;
@@ -171,6 +173,7 @@ export {
 
 export type {
   ProgressBarProps,
+  ProgressContextType,
   ProgressIndicatorProps,
   ProgressProps,
   ProgressValueProps,
