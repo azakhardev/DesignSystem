@@ -62,7 +62,7 @@ export const Default: Story = {
   render: (args) => (
     <Tooltip {...args}>
       <TooltipTrigger>Hover me</TooltipTrigger>
-      <TooltipContent side="top">This is a tooltip</TooltipContent>
+      <TooltipContent side="top" text="This is a tooltip" />
     </Tooltip>
   ),
 };
@@ -77,24 +77,24 @@ export const AllSides: Story = {
       <div />
       <Tooltip>
         <TooltipTrigger>Top</TooltipTrigger>
-        <TooltipContent side="top">Appears above</TooltipContent>
+        <TooltipContent side="top" text="Appears above" />
       </Tooltip>
       <div />
 
       <Tooltip>
         <TooltipTrigger>Left</TooltipTrigger>
-        <TooltipContent side="left">Appears left</TooltipContent>
+        <TooltipContent side="left" text="Appears left" />
       </Tooltip>
       <div />
       <Tooltip>
         <TooltipTrigger>Right</TooltipTrigger>
-        <TooltipContent side="right">Appears right</TooltipContent>
+        <TooltipContent side="right" text="Appears right" />
       </Tooltip>
 
       <div />
       <Tooltip>
         <TooltipTrigger>Bottom</TooltipTrigger>
-        <TooltipContent side="bottom">Appears below</TooltipContent>
+        <TooltipContent side="bottom" text="Appears below" />
       </Tooltip>
       <div />
     </div>
@@ -112,7 +112,7 @@ export const Timing: Story = {
       <div className="flex flex-col items-center gap-3">
         <Tooltip closeDelayDuration={0} delayDuration={0}>
           <TooltipTrigger>Instant</TooltipTrigger>
-          <TooltipContent side="top">Opens immediately</TooltipContent>
+          <TooltipContent side="top" text="Opens immediately" />
         </Tooltip>
         <span className="text-xs text-text-secondary font-mono">
           delay: 0ms
@@ -122,7 +122,7 @@ export const Timing: Story = {
       <div className="flex flex-col items-center gap-3">
         <Tooltip closeDelayDuration={0} delayDuration={200}>
           <TooltipTrigger>Default</TooltipTrigger>
-          <TooltipContent side="top">Opens after 200ms</TooltipContent>
+          <TooltipContent side="top" text="Opens after 200ms" />
         </Tooltip>
         <span className="text-xs text-text-secondary font-mono">
           delay: 200ms
@@ -132,7 +132,7 @@ export const Timing: Story = {
       <div className="flex flex-col items-center gap-3">
         <Tooltip closeDelayDuration={0} delayDuration={600}>
           <TooltipTrigger>Slow</TooltipTrigger>
-          <TooltipContent side="top">Opens after 600ms</TooltipContent>
+          <TooltipContent side="top" text="Opens after 600ms" />
         </Tooltip>
         <span className="text-xs text-text-secondary font-mono">
           delay: 600ms
@@ -142,9 +142,7 @@ export const Timing: Story = {
       <div className="flex flex-col items-center gap-3">
         <Tooltip closeDelayDuration={300} delayDuration={200}>
           <TooltipTrigger>Sticky</TooltipTrigger>
-          <TooltipContent side="top">
-            Stays for 300ms after leave
-          </TooltipContent>
+          <TooltipContent side="top" text="Stays for 300ms after leave" />
         </Tooltip>
         <span className="text-xs text-text-secondary font-mono">
           close: 300ms
@@ -174,7 +172,7 @@ export const AsChild: Story = {
               A link
             </a>
           </TooltipTrigger>
-          <TooltipContent side="top">Tooltip on an anchor tag</TooltipContent>
+          <TooltipContent side="top" text="Tooltip on an anchor tag" />
         </Tooltip>
         <span className="text-xs text-text-secondary font-mono">
           asChild + &lt;a&gt;
@@ -192,9 +190,7 @@ export const AsChild: Story = {
               Custom div
             </div>
           </TooltipTrigger>
-          <TooltipContent side="top">
-            Tooltip on a custom element
-          </TooltipContent>
+          <TooltipContent side="top" text="Tooltip on a custom element" />
         </Tooltip>
         <span className="text-xs text-text-secondary font-mono">
           asChild + &lt;div&gt;
@@ -214,9 +210,11 @@ export const DefaultIcon: Story = {
       <span className="text-sm font-medium">API Rate Limit</span>
       <Tooltip>
         <TooltipTrigger />
-        <TooltipContent side="right" sideOffset={6}>
-          The maximum number of requests allowed per minute for your plan.
-        </TooltipContent>
+        <TooltipContent
+          side="right"
+          sideOffset={6}
+          text="The maximum number of requests allowed per minute for your plan."
+        />
       </Tooltip>
     </div>
   ),
@@ -235,16 +233,18 @@ export const OverflowFallback: Story = {
     <div className="w-full h-screen flex items-center justify-between px-4">
       <Tooltip>
         <TooltipTrigger>Near left edge</TooltipTrigger>
-        <TooltipContent side="left">
-          Falls back to bottom or top if left side overflows
-        </TooltipContent>
+        <TooltipContent
+          side="left"
+          text="Falls back to bottom or top if left side overflows"
+        />
       </Tooltip>
 
       <Tooltip>
         <TooltipTrigger>Near right edge</TooltipTrigger>
-        <TooltipContent side="right">
-          Falls back to bottom or top if right side overflows
-        </TooltipContent>
+        <TooltipContent
+          side="right"
+          text="Falls back to bottom or top if right side overflows"
+        />
       </Tooltip>
     </div>
   ),

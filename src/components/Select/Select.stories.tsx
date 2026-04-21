@@ -3,7 +3,7 @@ import { useState } from "react";
 import { expect } from "storybook/test";
 
 import { Label } from "../Label";
-import { Select, SelectContent, SelectItem, SelectTrigger } from "./Select";
+import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger } from "./Select";
 
 /**
  * A highly customizable, accessible, and native-form-ready Select component built using the **Compound Components** pattern.
@@ -50,6 +50,7 @@ const meta = {
   },
   subcomponents: {
     SelectContent,
+    SelectGroup,
     SelectItem,
     SelectTrigger,
   } as Record<string, React.ComponentType<unknown>>,
@@ -88,9 +89,16 @@ export const Default: Story = {
             valueFormatter={(v) => <span className="capitalize">{v}</span>}
           />
           <SelectContent>
-            <SelectItem value="apple">Apple 🍎</SelectItem>
-            <SelectItem value="banana">Banana 🍌</SelectItem>
-            <SelectItem value="orange">Orange 🍊</SelectItem>
+            <SelectGroup title="Fruits">
+              <SelectItem value="apple">Apple 🍎</SelectItem>
+              <SelectItem value="banana">Banana 🍌</SelectItem>
+              <SelectItem value="orange">Orange 🍊</SelectItem>
+            </SelectGroup>
+            <SelectGroup title="Vegetables">
+              <SelectItem value="carrot">Carrot 🥕</SelectItem>
+              <SelectItem value="potato">Potato 🥔</SelectItem>
+              <SelectItem value="cucumber">Cucumber 🥒</SelectItem>
+            </SelectGroup>
           </SelectContent>
         </Select>
       </div>

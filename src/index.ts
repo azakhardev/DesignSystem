@@ -14,6 +14,7 @@ export * from "./components/Input";
 export * from "./components/Kbd";
 export * from "./components/Label";
 export * from "./components/Loaders";
+export * from "./components/Popover";
 export * from "./components/Progress";
 export * from "./components/Radio";
 export * from "./components/Select";

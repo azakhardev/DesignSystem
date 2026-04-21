@@ -12,9 +12,9 @@ import Slot from "../../lib/Slot";
 import { cn } from "../../lib/utils";
 import styles from "./Tooltip.module.css";
 
-const TooltipContext = createContext<TooltipContext | null>(null);
+const TooltipContextType = createContext<TooltipContextType | null>(null);
 
-type TooltipContext = {
+type TooltipContextType = {
   visible: boolean;
   setVisible: (v: boolean) => void;
   id: string;
@@ -23,7 +23,7 @@ type TooltipContext = {
 };
 
 function useTooltip() {
-  const context = use(TooltipContext);
+  const context = use(TooltipContextType);
 
   if (!context) {
     throw new Error(
@@ -66,11 +66,11 @@ function Tooltip({
   }, []);
 
   return (
-    <TooltipContext.Provider
+    <TooltipContextType.Provider
       value={{ handleEnter, handleLeave, id, setVisible, visible }}
     >
       {children}
-    </TooltipContext.Provider>
+    </TooltipContextType.Provider>
   );
 }
 
@@ -88,7 +88,7 @@ const TRANSFORM_ORIGINS: Record<string, string> = {
   top: "bottom center",
 };
 
-interface TooltipContentProps extends HTMLMotionProps<"div"> {
+interface TooltipContentProps extends Omit<HTMLMotionProps<"div">, "children"> {
   /**
    * Side at which Tooltip will appear
    */
@@ -97,14 +97,15 @@ interface TooltipContentProps extends HTMLMotionProps<"div"> {
    * Offset of the Tooltip from the trigger
    */
   sideOffset?: number;
+  text: string;
 }
 
 function TooltipContent({
-  children,
   className,
   side = "top",
   sideOffset = 8,
   style,
+  text,
   ...props
 }: TooltipContentProps) {
   const { id, visible } = useTooltip();
@@ -142,7 +143,7 @@ function TooltipContent({
           }}
           {...props}
         >
-          {children}
+          {text}
         </motion.div>
       )}
     </AnimatePresence>,
@@ -200,7 +201,7 @@ function TooltipTrigger({
 export { Tooltip, TooltipContent, TooltipTrigger };
 export type {
   TooltipContentProps,
-  TooltipContext,
+  TooltipContextType as TooltipContext,
   TooltipProps,
   TooltipTriggerProps,
 };
