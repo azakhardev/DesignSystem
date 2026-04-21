@@ -267,11 +267,20 @@ interface SelectGroupProps extends React.ComponentProps<"div"> {
   title: string;
 }
 
-function SelectGroup({ className, children, title, ...props }: SelectGroupProps) {
-  return <>
-    <div className="font-bold p-2 pb-1">{title}</div>
-    <div className={cn("pl-2 pr-1", className)} {...props}>{children}</div>
-  </>
+function SelectGroup({
+  children,
+  className,
+  title,
+  ...props
+}: SelectGroupProps) {
+  return (
+    <>
+      <div className="font-bold p-2 pb-1">{title}</div>
+      <div className={cn("pl-2 pr-1", className)} {...props}>
+        {children}
+      </div>
+    </>
+  );
 }
 
 interface SelectItemProps extends React.ComponentProps<"div"> {
@@ -331,4 +340,9 @@ function SelectItem({ children, className, value, ...props }: SelectItemProps) {
 }
 
 export { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger };
-export type { SelectGroupProps, SelectItemProps, SelectProps, SelectTriggerProps };
+export type {
+  SelectGroupProps,
+  SelectItemProps,
+  SelectProps,
+  SelectTriggerProps,
+};

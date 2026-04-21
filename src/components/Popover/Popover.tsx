@@ -78,7 +78,6 @@ function Popover({
     };
   }, []);
 
-
   const handleEnter = () => {
     if (mode === "hover") {
       if (timerRef.current) clearTimeout(timerRef.current);
@@ -97,28 +96,24 @@ function Popover({
   };
 
   const handleBlur = (e: React.FocusEvent) => {
-    if (e.relatedTarget &&
-      !wrapperRef.current?.contains(e.relatedTarget as Node)) {
+    if (
+      e.relatedTarget &&
+      !wrapperRef.current?.contains(e.relatedTarget as Node)
+    ) {
       setVisible(false);
     }
   };
 
   return (
     <PopoverContext.Provider
-      value={{ handleEnter, handleLeave, mode, id, setVisible, visible }}
+      value={{ handleEnter, handleLeave, id, mode, setVisible, visible }}
     >
-      <div
-        ref={wrapperRef}
-        onBlur={handleBlur}
-        {...props}
-      >
+      <div onBlur={handleBlur} ref={wrapperRef} {...props}>
         {children}
       </div>
     </PopoverContext.Provider>
   );
 }
-
-//TODO: Select default position
 
 interface PopoverContentProps extends HTMLMotionProps<"div"> {
   position?: "top" | "bottom" | "left" | "right";
@@ -128,9 +123,10 @@ function PopoverContent({
   children,
   className,
   position,
+  style,
   ...props
 }: PopoverContentProps) {
-  const { id, visible, handleEnter, handleLeave } = usePopover();
+  const { handleEnter, handleLeave, id, visible } = usePopover();
 
   return (
     <AnimatePresence>
@@ -140,7 +136,7 @@ function PopoverContent({
           className={cn(
             styles.content,
             "flex flex-col gap-1",
-            "rounded-md border bg-surface border-border shadow-sm p-2",
+            "rounded-md border bg-surface border-border shadow-sm p-2 m-1",
             className,
           )}
           data-position={position}
@@ -149,6 +145,13 @@ function PopoverContent({
           initial={{ opacity: 0, scale: 0.5 }}
           onMouseEnter={handleEnter}
           onMouseLeave={handleLeave}
+          style={
+            {
+              "--popover-anchor": `--anchor-${id}`,
+              positionAnchor: `--anchor-${id}`,
+              ...style,
+            } as React.CSSProperties
+          }
           {...props}
         >
           {children}
@@ -174,7 +177,7 @@ function PopoverTrigger({
   style,
   ...props
 }: PopoverTriggerProps) {
-  const { handleEnter, handleLeave, id, setVisible, mode } = usePopover();
+  const { handleEnter, handleLeave, id, mode, setVisible } = usePopover();
 
   const Comp = asChild ? Slot : "button";
 
@@ -182,24 +185,24 @@ function PopoverTrigger({
     if (mode === "click") {
       setVisible(true);
     }
-    if (onClick) onClick(e as any);
+    if (onClick) onClick(e);
   };
 
   const handleFocus = (e: React.FocusEvent<HTMLButtonElement, Element>) => {
     if (mode === "hover") {
       setVisible(true);
     }
-    if (onFocus) onFocus(e as any);
+    if (onFocus) onFocus(e);
   };
 
   return (
     <Comp
       aria-describedby={`popover-${id}`}
       className={cn(className)}
-      onMouseEnter={handleEnter}
-      onMouseLeave={handleLeave}
       onClick={handleClick}
       onFocus={handleFocus}
+      onMouseEnter={handleEnter}
+      onMouseLeave={handleLeave}
       style={
         {
           "--popover-anchor": `--anchor-${id}`,
