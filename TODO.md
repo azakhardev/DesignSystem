@@ -6,6 +6,7 @@
   - [ ] Popup explanation for disabled Button (when defined)
   - [ ] Loading state of Button (disable + Spinner)
   - [ ] Rain drop animation on clicking variant
+  - [ ] Change variant styles and names
 - [x] Input – Text input with support for prefix/suffix icons (startAdornment / endAdornment).
 - [x] Card – Content wrapper, ideally with sub-components like CardHeader, CardBody, and CardFooter.
 - [x] Modal (Dialog) – Overlay for critical actions. Includes triggers, header, content, buttons, close action, footer and sizing (center/drawer).
