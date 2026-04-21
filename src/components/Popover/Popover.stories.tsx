@@ -22,7 +22,7 @@ export const Default: Story = {
   args: {},
   render: () => {
     return (
-      <Popover>
+      <Popover mode="click" delayDuration={200} closeDelayDuration={500}>
         <PopoverTrigger>Trigger</PopoverTrigger>
         <PopoverContent>
           <h3 className="font-bold text-xl">Title</h3>
