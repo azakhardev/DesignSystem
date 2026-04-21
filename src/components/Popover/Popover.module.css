@@ -2,7 +2,7 @@
   position: absolute;
   position-anchor: var(--popover-anchor);
 
-  max-width: min(500px, calc(100vw - 2rem));
+  max-width: min(1200px, calc(100vw - 2rem));
   width: max-content;
   z-index: 100;
 
@@ -13,21 +13,21 @@
   inset: auto;
 }
 
-.content[data-side="top"] {
+.content[data-position="top"] {
   bottom: anchor(top);
   margin-bottom: var(--side-offset);
   justify-self: anchor-center;
   position-try-fallbacks: --top-end, --top-start, flip-block;
 }
 
-.content[data-side="bottom"] {
+.content[data-position="bottom"] {
   top: anchor(bottom);
   margin-top: var(--side-offset);
   justify-self: anchor-center;
   position-try-fallbacks: --bottom-start, --bottom-end, flip-block;
 }
 
-.content[data-side="left"] {
+.content[data-position="left"] {
   right: anchor(left);
   align-self: anchor-center;
   margin-right: var(--side-offset);
@@ -35,7 +35,7 @@
     flip-inline, --bottom-center, --top-center, --bottom-end, --top-end;
 }
 
-.content[data-side="right"] {
+.content[data-position="right"] {
   left: anchor(right);
   align-self: anchor-center;
   margin-left: var(--side-offset);

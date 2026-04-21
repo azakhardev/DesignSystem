@@ -22,13 +22,13 @@ export const Default: Story = {
   args: {},
   render: () => {
     return (
-      <Popover mode="click" delayDuration={200} closeDelayDuration={500}>
+      <Popover delayDuration={200} closeDelayDuration={500}>
         <PopoverTrigger>Trigger</PopoverTrigger>
-        <PopoverContent>
+        <PopoverContent position="bottom">
           <h3 className="font-bold text-xl">Title</h3>
           <div>Content of the box</div>
           <div className="flex flex-row justify-end items-center">
-            <button>submit</button>
+            <button>Submit</button>
           </div>
         </PopoverContent>
       </Popover>

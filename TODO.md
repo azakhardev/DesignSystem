@@ -25,7 +25,7 @@
 - [x] Radio Group – Single selection from a set.
 - [x] Textarea – Multi-line text input.
 - [x] Select – Dropdown selection, ideally with Multi-select support.
-  - [ ] `SelectGroup` - Component for grouping items inside `SelectContent`.
+  - [x] `SelectGroup` - Component for grouping items inside `SelectContent`.
   - [x] Improve hover styling
 - [x] Tabs – Switching between views with animation. Support for horizontal/vertical alignment.
   - [ ] Change to Activity component
@@ -42,7 +42,7 @@
 - [x] Tag (Chip) – Similar to Badge but interactive (clickable, deletable). Often used for filters.
 - [x] Tooltip – Text hint on hover.
   - [ ] Keep the Tooltip visible while hovering TooltipContent
-- [ ] Popover – Like a tooltip, but rich content (HTML) that appears on click/hover.
+- [x] Popover – Like a tooltip, but rich content (HTML) that appears on click/hover.
 - [x] Toast (Notification) – Temporary status messages (snackbars) appearing at the edge of the screen.
 - [x] Status Indicator – Pulsing dot/circle with customizable status colors (Online, Busy, Offline).
 - [x] Accordion – Collapsible content panels. Support for Single (one open at a time) or Multi mode.

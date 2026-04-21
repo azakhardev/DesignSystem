@@ -119,11 +119,17 @@ function Popover({
 }
 
 //TODO: Select default position
+
+interface PopoverContentProps extends HTMLMotionProps<"div"> {
+  position?: "top" | "bottom" | "left" | "right";
+}
+
 function PopoverContent({
   children,
   className,
+  position,
   ...props
-}: HTMLMotionProps<"div">) {
+}: PopoverContentProps) {
   const { id, visible, handleEnter, handleLeave } = usePopover();
 
   return (
@@ -137,6 +143,7 @@ function PopoverContent({
             "rounded-md border bg-surface border-border shadow-sm p-2",
             className,
           )}
+          data-position={position}
           exit={{ opacity: 0, scale: 0.5 }}
           id={`popover-content-${id}`}
           initial={{ opacity: 0, scale: 0.5 }}
