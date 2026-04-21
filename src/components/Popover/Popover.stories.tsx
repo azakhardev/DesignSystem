@@ -1,8 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { MotionGlobalConfig } from "framer-motion";
 import { Settings, User } from "lucide-react";
 import React from "react";
-import { expect, screen, userEvent, waitFor, within } from "storybook/test";
 
 import { Button } from "../Button";
 import { Popover, PopoverContent, PopoverTrigger } from "./Popover";
