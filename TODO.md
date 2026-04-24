@@ -4,9 +4,10 @@
 - [x] Button – Various variants: Primary, Secondary, Danger, Confirm, Info, Ghost and Animate.
   - [x] Change Button scaling on hover (or remove it)
   - [ ] Popup explanation for disabled Button (when defined)
-  - [ ] Loading state of Button (disable + Spinner)
-  - [ ] Rain drop animation on clicking variant
-  - [ ] Change variant styles and names
+  - [x] Loading state of Button (disable + Spinner)
+  - [x] Rain drop animation on clicking variant
+  - [x] Change variant styles and names
+  - [ ] Fix ripple animation
 - [x] Input – Text input with support for prefix/suffix icons (startAdornment / endAdornment).
 - [x] Card – Content wrapper, ideally with sub-components like CardHeader, CardBody, and CardFooter.
 - [x] Modal (Dialog) – Overlay for critical actions. Includes triggers, header, content, buttons, close action, footer and sizing (center/drawer).

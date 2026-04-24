@@ -151,7 +151,7 @@ export const Placements: Story = {
       <div className="flex flex-col gap-16 p-8 justify-center items-center">
         <Popover>
           <PopoverTrigger asChild>
-            <Button variant="info">Position: Top</Button>
+            <Button variant="outline">Position: Top</Button>
           </PopoverTrigger>
           <PopoverContent className="text-sm px-3 py-1" position="top">
             I appear above the trigger!
@@ -160,7 +160,7 @@ export const Placements: Story = {
 
         <Popover>
           <PopoverTrigger asChild>
-            <Button variant="info">Position: Bottom</Button>
+            <Button variant="outline">Position: Bottom</Button>
           </PopoverTrigger>
           <PopoverContent className="text-sm px-3 py-1" position="bottom">
             I appear below the trigger!
@@ -169,7 +169,7 @@ export const Placements: Story = {
 
         <Popover>
           <PopoverTrigger asChild>
-            <Button variant="info">Position: Right</Button>
+            <Button variant="outline">Position: Right</Button>
           </PopoverTrigger>
           <PopoverContent className="text-sm px-3 py-1" position="right">
             I appear to the right!
@@ -178,7 +178,7 @@ export const Placements: Story = {
 
         <Popover>
           <PopoverTrigger asChild>
-            <Button variant="info">Position: Left</Button>
+            <Button variant="outline">Position: Left</Button>
           </PopoverTrigger>
           <PopoverContent className="text-sm px-3 py-1" position="left">
             I appear to the left!

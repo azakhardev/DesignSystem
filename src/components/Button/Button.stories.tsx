@@ -14,15 +14,33 @@ import { Button } from "./Button";
  */
 const meta = {
   argTypes: {
+    children: {
+      control: "text",
+      description: "Obsah tlačítka",
+    },
+    disabled: {
+      control: "boolean",
+    },
+    loading: {
+      control: "boolean",
+      description: "Přepne tlačítko do stavu načítání",
+    },
+    loadingText: {
+      control: "text",
+      description: "Text zobrazený vedle spinneru při načítání",
+    },
+    onClick: { action: "clicked" },
     variant: {
       control: "select",
+      description: "Vizuální styl tlačítka",
       options: [
         "primary",
-        "secondary",
-        "danger",
-        "confirm",
-        "info",
+        "destructive",
         "ghost",
+        "link",
+        "outline",
+        "ripple",
+        "success",
         "animated",
       ],
     },
@@ -47,10 +65,9 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     children: "Click me",
-    className: "",
     disabled: false,
-    onClick: () => {
-      alert("Thanks!");
-    },
+    loading: false,
+    loadingText: "Loading...",
+    variant: "primary",
   },
 };

@@ -1,4 +1,5 @@
 import { cva, type VariantProps } from "class-variance-authority";
+import { LoaderCircle } from "lucide-react";
 
 import { cn } from "../../lib/utils";
 import styles from "./Button.module.css";
@@ -6,7 +7,7 @@ import styles from "./Button.module.css";
 const buttonVariants = cva(
   [
     //Base style
-    "py-2 px-4 rounded border-border cursor-pointer border text-on-primary shadow-md",
+    "py-2 px-4 rounded border-border cursor-pointer border text-on-primary shadow-md flex flex-row gap-1",
     //Transitons style
     "transition-all duration-150 ease-in-out",
     //Hover effects
@@ -24,14 +25,20 @@ const buttonVariants = cva(
           "border-transparent rounded-full text-text-surface",
           styles.animatedButton,
         ),
-        confirm: "bg-success border-success-border",
-        danger:
-          "border-error-border bg-error dark:bg-transparent dark:border-error dark:border-2 dark:font-bold dark:text-error dark:disabled:text-disabled-text dark:disabled:border-disabled-border",
+        destructive:
+          "bg-error text-white shadow-sm hover:bg-error-focus active:scale-95",
         ghost:
           "shadow-none border-transparent text-info-text disabled:border-none disabled:bg-transparent hover:bg-info-surface",
-        info: "border-info text-info shadow-none disabled:bg-transparent",
+        link: "bg-transparent border-none shadow-none text-primary underline-offset-4 hover:underline px-0 py-0 h-auto",
+        outline: "border-info text-info shadow-none disabled:bg-transparent",
         primary: "bg-primary hover:bg-primary-focus",
+        ripple: cn(
+          "bg-surface text-on-surface border-none shadow-md hover:shadow-lg",
+          styles.ripple,
+        ),
         secondary: "bg-secondary hover:bg-secondary-focus",
+        success:
+          "bg-success border-success-border text-white hover:shadow-[0_0_15px_rgba(var(--success-rgb),0.4)]",
       },
     },
   },
@@ -39,16 +46,35 @@ const buttonVariants = cva(
 
 type ButtonVariants = VariantProps<typeof buttonVariants>;
 
-interface ButtonProps extends React.ComponentProps<"button">, ButtonVariants {}
+interface ButtonProps extends React.ComponentProps<"button">, ButtonVariants {
+  loading?: boolean;
+  loadingText?: string;
+}
 
-function Button({ children, className, ref, variant, ...props }: ButtonProps) {
+function Button({
+  children,
+  className,
+  loading,
+  loadingText,
+  ref,
+  variant,
+  ...props
+}: ButtonProps) {
   return (
     <button
       className={cn(buttonVariants({ variant }), className)}
+      disabled={loading}
       ref={ref}
       {...props}
     >
-      {children}
+      {loading ? (
+        <>
+          <LoaderCircle className="animate-spin" />{" "}
+          <span>{loadingText}</span>{" "}
+        </>
+      ) : (
+        children
+      )}
     </button>
   );
 }
