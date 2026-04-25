@@ -74,7 +74,7 @@
 - [ ] asChild - Create asChild property for some elements to be more flexible for developers.
   - With use of new Slot Component
 - [ ] Keyboard Accessibility - Add support for arrows navigation, keyboard loop, etc...
-- [ ] Change hover/select color of inputs based on new CSS variable.
+- [x] Change hover/select color of inputs based on new CSS variable.
 - [x] Create and use hooks for closing popovers on Clicking Outside/Escape.
 - [ ] Add custom animations to the Tailwind config.
 - [x] Change CSS color variables to RGB/HSL format

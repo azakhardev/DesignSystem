@@ -168,7 +168,7 @@ function SelectTrigger({
   return (
     <button
       className={cn(
-        "flex min-w-[150px] items-center justify-between p-2 border-border border bg-input-background cursor-pointer rounded focus:outline-none focus:ring-2 focus:ring-input-focus hover:bg-input-focus/60 transition-colors",
+        "flex min-w-[150px] items-center justify-between p-2 border-border border bg-input-background cursor-pointer rounded focus:outline-none focus:ring-2 focus:ring-input-focus hover:bg-input-hover transition-colors",
         !hasValue && "text-text-secondary",
         className,
       )}

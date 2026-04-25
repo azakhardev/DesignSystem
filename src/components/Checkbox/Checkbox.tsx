@@ -50,7 +50,7 @@ function Checkbox({
             "border-border",
             !disabled &&
               "group-hover:border-primary group-hover:ring-4 group-hover:ring-primary/10",
-            "peer-focus-visible:ring-2 peer-focus-visible:ring-offset-2 peer-focus-visible:ring-primary-focus peer-focus-visible:outline-none ring-offset-background",
+            "peer-focus-visible:ring-2 peer-focus-visible:ring-offset-2 peer-focus-visible:ring-input-focus peer-focus-visible:outline-none ring-offset-background",
             checked &&
               "bg-primary border-primary text-on-primary group-hover:ring-primary/20",
             error && "border-error-border group-hover:ring-error/10 ",

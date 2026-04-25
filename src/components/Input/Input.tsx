@@ -28,12 +28,12 @@ function Input({
       <div
         className={cn(
           "flex flex-row items-center gap-2 px-2 py-2 rounded-md border transition-all",
-          "bg-input-background text-text",
+          "bg-input-background text-text hover:bg-input-hover",
           "focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-1 focus-within:ring-offset-background",
           disabled && "opacity-50 cursor-not-allowed bg-disabled-surface",
           errorText && !disabled
             ? "border-error focus-within:ring-error"
-            : "border-border focus-within:ring-primary-focus",
+            : "border-border focus-within:ring-input-focus",
           className,
         )}
       >

@@ -44,7 +44,7 @@ function Switch({
           checked ? "bg-primary" : "bg-border-strong",
           disabled && "cursor-not-allowed opacity-50",
           checked ? "justify-end" : "justify-start",
-          "has-[:focus-visible]:outline-none has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-primary-focus has-[:focus-visible]:ring-offset-2",
+          "has-[:focus-visible]:outline-none has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-input-focus has-[:focus-visible]:ring-offset-2",
           className,
         )}
         htmlFor={inputId}
