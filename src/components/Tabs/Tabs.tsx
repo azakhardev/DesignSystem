@@ -100,7 +100,7 @@ function TabsList({
   justify = "start",
   ...props
 }: TabsListProps) {
-  const { setActiveTab, tabsDirection } = useTabsContext();
+  const { tabsDirection } = useTabsContext();
   const isHorizontal = tabsDirection === "horizontal";
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
