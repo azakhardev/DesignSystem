@@ -14,7 +14,7 @@
   - [ ] Improve Dialog visuals?
 - [x] Sidebar - Collapsible side menu for navigation with hamburger menu for mobile.
   - [ ] Allow Tooltip on `SidebarItem` hover after creating `Tooltip` Component.
-  - [ ] Make groups expendable + add animations upon clicking.
+  - [x] Make groups expendable + add animations upon clicking.
 - [x] Spinner – Loading indicators: Orbital, Classic, Dots and Page Loader.
 - [x] Alert – Static feedback messages: Error, Warning, Info, Success, No Data.
 - [ ] ~Container / Grid – Layout primitives. A simple system to constrain width (Container) or handle flexbox/grid layouts (Row/Col or Stack).~

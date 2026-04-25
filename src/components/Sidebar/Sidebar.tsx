@@ -1,4 +1,5 @@
-import { Minus } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+import { ChevronDown, ChevronUp, Minus } from "lucide-react";
 import React, {
   createContext,
   useCallback,
@@ -220,61 +221,101 @@ function SidebarBody({
   );
 }
 
+interface SidebarGroupProps extends React.ComponentProps<"div"> {
+  defaultOpen?: boolean;
+  icon?: React.ReactNode;
+  title: string;
+}
+
+function SidebarGroup({
+  children,
+  className,
+  defaultOpen,
+  icon,
+  title,
+  ...props
+}: SidebarGroupProps) {
+  const [expanded, setExpanded] = useState(defaultOpen);
+
+  return (
+    <div
+      className={cn("flex flex-col gap-2 items-start mb-2", className)}
+      {...props}
+    >
+      <button
+        className={cn(
+          "relative flex flex-row gap-1 items-center justify-start w-full font-bold ",
+          "group-data-[collapsed=true]/sidebar:pl-2 group/group-title",
+        )}
+        onClick={() => setExpanded((old) => !old)}
+      >
+        {icon ?? (
+          <Minus className="group-data-[collapsed=false]/sidebar:hidden" />
+        )}
+        <h4 className="group-data-[collapsed=true]/sidebar:hidden">{title}</h4>
+        <div
+          className={cn(
+            "absolute right-0 top-1/2 -translate-y-1/2 opacity-0 group-hover/group-title:opacity-100",
+            "transition-all duration-200 pointer-events-none group-data-[collapsed=true]/sidebar:hidden",
+          )}
+        >
+          {expanded ? <ChevronUp /> : <ChevronDown />}
+        </div>
+      </button>
+      <AnimatePresence>
+        {expanded && (
+          <motion.div
+            animate={{
+              height: "auto",
+              opacity: 1,
+            }}
+            className="group-data-[collapsed=false]/sidebar:pl-1 flex flex-col gap-1 w-full overflow-y-hidden"
+            exit={{
+              height: 0,
+              opacity: 0.1,
+            }}
+            initial={{ height: 0, opacity: 0.1 }}
+          >
+            {children}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
 interface SidebarItemProps extends React.ComponentProps<"div"> {
-  categoryTitle?: boolean;
   icon?: React.ReactNode;
 }
 
 function SidebarItem({
-  categoryTitle,
   children,
   className,
   icon,
   ...props
 }: SidebarItemProps) {
   const hideWhenCollapsed = "group-data-[collapsed=true]/sidebar:hidden";
-  const showOnlyWhenCollapsed =
-    "hidden group-data-[collapsed=true]/sidebar:block";
 
   return (
     <div
       className={cn(
         "flex flex-row items-center gap-2 rounded-md p-2 transition-all",
-        "justify-start",
-        !categoryTitle ? "cursor-pointer hover:bg-info-surface" : "mt-2",
+        "justify-start cursor-pointer hover:bg-info-surface",
         className,
       )}
       {...props}
     >
-      {categoryTitle ? (
-        <>
-          <h4
-            className={cn(
-              "font-bold text-lg whitespace-nowrap overflow-hidden",
-              hideWhenCollapsed,
-            )}
-          >
-            {children}
-          </h4>
-          <div className={cn(showOnlyWhenCollapsed)}>
-            {icon ?? <Minus strokeWidth={3} />}
-          </div>
-        </>
-      ) : (
-        <>
-          <div className="shrink-0 flex items-center justify-center">
-            {icon}
-          </div>
-          <div
-            className={cn(
-              "whitespace-nowrap overflow-hidden transition-opacity duration-200",
-              hideWhenCollapsed,
-            )}
-          >
-            {children}
-          </div>
-        </>
-      )}
+      <div className="shrink-0 flex items-center justify-center group-data-[collapsed=true]/sidebar:text-text/80">
+        {icon}
+      </div>
+      <div
+        className={cn(
+          "whitespace-nowrap overflow-hidden transition-opacity duration-200",
+          hideWhenCollapsed,
+        )}
+      >
+        {children}
+      </div>
     </div>
   );
 }
@@ -324,8 +365,9 @@ export {
   SidebarBody,
   SidebarContent,
   SidebarFooter,
+  SidebarGroup,
   SidebarHeader,
   SidebarItem,
   SidebarTrigger,
 };
-export type { SidebarContentProps, SidebarProps };
+export type { SidebarContentProps, SidebarGroupProps, SidebarProps };

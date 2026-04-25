@@ -1,5 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
+  Banknote,
+  ChartColumn,
+  ChartPie,
   Home,
   LogOut,
   PanelLeft,
@@ -14,6 +17,7 @@ import {
   SidebarBody,
   SidebarContent,
   SidebarFooter,
+  SidebarGroup,
   SidebarHeader,
   SidebarItem,
   SidebarTrigger,
@@ -65,6 +69,7 @@ const meta = {
     SidebarBody,
     SidebarContent,
     SidebarFooter,
+    SidebarGroup,
     SidebarHeader,
     SidebarItem,
   } as Record<string, React.ComponentType<unknown>>,
@@ -88,10 +93,15 @@ const DemoSidebarContent = () => (
     </SidebarHeader>
 
     <SidebarBody>
-      <SidebarItem categoryTitle>General</SidebarItem>
-      <SidebarItem icon={<Home />}>Dashboard</SidebarItem>
-      <SidebarItem icon={<User />}>Team Members</SidebarItem>
-      <SidebarItem icon={<Settings />}>Settings</SidebarItem>
+      <SidebarGroup defaultOpen title="General">
+        <SidebarItem icon={<Home />}>Dashboard</SidebarItem>
+        <SidebarItem icon={<User />}>Team Members</SidebarItem>
+        <SidebarItem icon={<Settings />}>Settings</SidebarItem>
+      </SidebarGroup>
+      <SidebarGroup icon={<ChartColumn />} title="Statistics">
+        <SidebarItem icon={<ChartPie />}>Reports</SidebarItem>
+        <SidebarItem icon={<Banknote />}>Revenue</SidebarItem>
+      </SidebarGroup>
     </SidebarBody>
 
     <SidebarFooter>
