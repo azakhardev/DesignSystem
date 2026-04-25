@@ -138,7 +138,7 @@ export const LeftPanel: Story = {
     defaultCollapsed: false,
   },
   play: async function ({ canvas, userEvent }) {
-    const toggle = canvas.getByRole("button");
+    const toggle = canvas.getByTestId("trigger");
 
     await userEvent.click(toggle);
 
@@ -160,7 +160,7 @@ export const LeftPanel: Story = {
         </SidebarContent>
         <main className="flex-1 p-8 overflow-auto transition-all duration-300">
           <header className="flex items-center gap-4 mb-6">
-            <SidebarTrigger>
+            <SidebarTrigger data-testid="trigger">
               <PanelLeft />
             </SidebarTrigger>
             <h1 className="text-2xl font-bold text-text">Dashboard</h1>
@@ -191,7 +191,7 @@ export const RightPanel: Story = {
     },
   },
   play: async function ({ canvas, userEvent }) {
-    const toggle = canvas.getByRole("button");
+    const toggle = canvas.getByTestId("trigger");
 
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
 
@@ -207,8 +207,7 @@ export const RightPanel: Story = {
         <main className="flex-1 p-8 overflow-auto mr-0">
           <header className="flex items-center justify-between mb-6">
             <h1 className="text-2xl font-bold text-text">Settings</h1>
-            {/* Trigger placed on the right for context */}
-            <SidebarTrigger>
+            <SidebarTrigger data-testid="trigger">
               <PanelRight />
             </SidebarTrigger>
           </header>

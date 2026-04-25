@@ -1,4 +1,5 @@
 import {
+  Activity,
   createContext,
   use,
   useCallback,
@@ -99,10 +100,41 @@ function TabsList({
   justify = "start",
   ...props
 }: TabsListProps) {
-  const { tabsDirection } = useTabsContext();
+  const { setActiveTab, tabsDirection } = useTabsContext();
   const isHorizontal = tabsDirection === "horizontal";
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    const list = e.currentTarget;
+    const tabs = Array.from(
+      list.querySelectorAll<HTMLButtonElement>('[role="tab"]:not([disabled])'),
+    );
+
+    const currentIndex = tabs.findIndex(
+      (tab) => tab === document.activeElement,
+    );
+
+    if (currentIndex === -1) return;
+
+    let nextIndex: number | null = null;
+
+    if (e.key === "ArrowRight" || e.key === "ArrowDown")
+      nextIndex = (currentIndex + 1) % tabs.length;
+    if (e.key === "ArrowLeft" || e.key === "ArrowUp")
+      nextIndex = (currentIndex - 1 + tabs.length) % tabs.length;
+
+    if (e.key === "Home") nextIndex = 0;
+    if (e.key === "End") nextIndex = tabs.length - 1;
+
+    if (nextIndex !== null) {
+      e.preventDefault();
+      const nextTab = tabs[nextIndex];
+
+      nextTab.focus();
+    }
+  };
+
   return (
+    // eslint-disable-next-line jsx-a11y/interactive-supports-focus
     <div
       aria-orientation={tabsDirection}
       className={cn(
@@ -117,6 +149,7 @@ function TabsList({
 
         className,
       )}
+      onKeyDown={handleKeyDown}
       role="tablist"
       {...props}
     >
@@ -178,19 +211,19 @@ function TabContent({ children, className, value, ...props }: TabContentProps) {
   const { activeTab, baseId } = useTabsContext();
   const isActive = activeTab === value;
 
-  if (!isActive) return null;
-
   return (
-    <div
-      aria-labelledby={`${baseId}-tab-${value}`}
-      className={cn("p-2 rounded-md flex-1 w-full", className)}
-      id={`${baseId}-content-${value}`}
-      role="tabpanel"
-      tabIndex={0}
-      {...props}
-    >
-      {children}
-    </div>
+    <Activity mode={isActive ? "visible" : "hidden"}>
+      <div
+        aria-labelledby={`${baseId}-tab-${value}`}
+        className={cn("p-2 rounded-md flex-1 w-full", className)}
+        id={`${baseId}-content-${value}`}
+        role="tabpanel"
+        tabIndex={0}
+        {...props}
+      >
+        {children}
+      </div>
+    </Activity>
   );
 }
 

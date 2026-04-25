@@ -30,8 +30,8 @@
   - [x] `SelectGroup` - Component for grouping items inside `SelectContent`.
   - [x] Improve hover styling
 - [x] Tabs – Switching between views with animation. Support for horizontal/vertical alignment.
-  - [ ] Change to Activity component
-  - [ ] Add support for navigation between tabs with arrows + style focus mode
+  - [x] Change to Activity component
+  - [x] Add support for navigation between tabs with arrows + style focus mode
 - [x] Breadcrumbs – For navigation hierarchy and URL destructurization.
 - [x] Dropdown Menu – Action menu lists (often used inside buttons).
 - [x] Divider (Separator) – Visual separation of content.
