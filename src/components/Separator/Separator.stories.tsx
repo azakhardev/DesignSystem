@@ -85,7 +85,7 @@ export const CustomStyle: Story = {
     thickness: 3,
   },
   render: (args) => (
-    <div className="w-[300px] space-y-4">
+    <div className="w-75 space-y-4">
       <div className="text-center font-bold text-primary">Section Header</div>
       <Separator {...args} />
       <p className="text-sm text-text-secondary">

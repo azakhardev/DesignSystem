@@ -66,7 +66,7 @@ export const HoverMode: Story = {
         <PopoverTrigger asChild>
           <Button variant="secondary">Hover me</Button>
         </PopoverTrigger>
-        <PopoverContent className="w-[280px]" position="bottom">
+        <PopoverContent className="w-70" position="bottom">
           <div className="space-y-2">
             <h4 className="font-medium leading-none">Dimensions</h4>
             <p className="text-sm text-text-secondary">
@@ -119,7 +119,7 @@ export const ClickMode: Story = {
             Open Profile
           </Button>
         </PopoverTrigger>
-        <PopoverContent className="w-[200px]" position="bottom">
+        <PopoverContent className="w-50" position="bottom">
           <div className="flex flex-col gap-2">
             <div className="px-1 pb-2 border-b border-border">
               <h4 className="font-semibold text-sm">John Doe</h4>

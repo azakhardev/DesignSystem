@@ -88,7 +88,7 @@ export const FormExample: Story = {
     gap: 4,
   },
   render: (args) => (
-    <div className="w-80 border p-6 rounded-xl bg-surface shadow-md">
+    <div className="w-80 border border-border p-6 rounded-xl bg-surface shadow-md">
       <Stack {...args}>
         <h3 className="font-bold text-lg mb-2">Login</h3>
         <Stack gap={2}>
@@ -96,7 +96,7 @@ export const FormExample: Story = {
             Email Address
           </label>
           <input
-            className="border rounded-sm p-2 text-sm"
+            className="border border-border rounded-sm p-2 text-sm"
             id="email"
             placeholder="user@example.com"
           />
@@ -106,7 +106,7 @@ export const FormExample: Story = {
             Password
           </label>
           <input
-            className="border rounded-sm p-2 text-sm"
+            className="border border-border rounded-sm p-2"
             id="pswd"
             placeholder="••••••••"
             type="password"
@@ -130,12 +130,12 @@ export const VerticalDistribution: Story = {
     justify: "between",
   },
   render: (args) => (
-    <div className="h-48 w-64 border p-4 rounded-lg bg-surface-subtle flex">
+    <div className="h-48 w-64 border border-border p-4 rounded-lg bg-surface-subtle flex">
       <Stack {...args} className="w-full">
-        <div className="p-3 bg-surface border rounded-sm shadow-xs">
+        <div className="p-3 bg-surface border border-border rounded-sm shadow-xs">
           Top Header
         </div>
-        <div className="p-3 bg-surface border rounded-sm shadow-xs">
+        <div className="p-3 bg-surface border border-border rounded-sm shadow-xs">
           Navigation
         </div>
         <div className="p-3 bg-error/10 text-error border border-error rounded-sm shadow-xs">

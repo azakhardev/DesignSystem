@@ -89,9 +89,11 @@ export const GrowingItems: Story = {
     grow: true,
   },
   render: (args) => (
-    <div className="w-[500px] border p-2 rounded-lg">
+    <div className="w-125 border border-border p-2 rounded-lg">
       <Group {...args}>
-        <button className="bg-surface-subtle p-2 border rounded-sm">Cancel</button>
+        <button className="bg-surface-subtle p-2 border border-border rounded-sm">
+          Cancel
+        </button>
         <button className="bg-primary text-white p-2 rounded-sm">
           Save Changes
         </button>
@@ -109,7 +111,7 @@ export const SpaceBetween: Story = {
     justify: "between",
   },
   render: (args) => (
-    <div className="w-[400px] border p-4 rounded-lg bg-surface">
+    <div className="w-100 border border-border p-4 rounded-lg bg-surface">
       <Group {...args}>
         <div className="font-bold">Card Title</div>
         <div className="text-xs text-text-secondary italic">Updated 2m ago</div>
@@ -126,14 +128,14 @@ export const PolymorphicList: Story = {
   args: {
     asChild: true,
     children: (
-      <ul className="list-none m-0 p-4 border rounded-sm bg-surface-subtle">
-        <li className="px-3 py-1 bg-white border rounded-full text-xs">
+      <ul className="list-none m-0 p-4 border border-border rounded-sm bg-surface-subtle">
+        <li className="px-3 py-1 bg-surface border border-border rounded-full text-xs">
           React
         </li>
-        <li className="px-3 py-1 bg-white border rounded-full text-xs">
+        <li className="px-3 py-1 bg-surface border border-border rounded-full text-xs">
           TypeScript
         </li>
-        <li className="px-3 py-1 bg-white border rounded-full text-xs">
+        <li className="px-3 py-1 bg-surface border border-border rounded-full text-xs">
           Tailwind
         </li>
       </ul>
