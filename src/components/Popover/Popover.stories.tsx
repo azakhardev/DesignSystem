@@ -43,7 +43,7 @@ const meta = {
     string,
     React.ComponentType<unknown>
   >,
-  title: "Components/Popover",
+  title: "Overlays/Popover",
 } satisfies Meta<typeof Popover>;
 
 export default meta;

@@ -19,7 +19,7 @@ const meta = {
   parameters: {
     layout: "centered",
   },
-  title: "Components/Kbd",
+  title: "Primitives/Kbd",
 } satisfies Meta<typeof Kbd>;
 
 export default meta;

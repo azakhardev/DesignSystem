@@ -41,7 +41,7 @@ const meta = {
     ProgressLabel,
     ProgressValue,
   } as Record<string, React.ComponentType<unknown>>,
-  title: "Components/Progress",
+  title: "Feedback/Progress",
 } satisfies Meta<typeof Progress>;
 
 export default meta;

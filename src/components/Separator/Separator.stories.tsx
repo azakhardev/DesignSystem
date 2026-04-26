@@ -32,7 +32,7 @@ const meta = {
   parameters: {
     layout: "centered",
   },
-  title: "Components/Separator",
+  title: "Primitives/Separator",
 } satisfies Meta<typeof Separator>;
 
 export default meta;

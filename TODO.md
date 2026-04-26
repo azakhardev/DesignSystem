@@ -17,7 +17,8 @@
   - [x] Make groups expendable + add animations upon clicking.
 - [x] Spinner – Loading indicators: Orbital, Classic, Dots and Page Loader.
 - [x] Alert – Static feedback messages: Error, Warning, Info, Success, No Data.
-- [ ] ~Container / Grid – Layout primitives. A simple system to constrain width (Container) or handle flexbox/grid layouts (Row/Col or Stack).~
+- [x] Layout primitives - A simple system to constrain width (Container) or handle flexbox layouts (Group or Stack).\
+  - [ ] Add Grid layout support
 
 ### Phase 2: Form & Navigation Expansion
 
@@ -79,4 +80,4 @@
 - [x] Add custom animations to the Tailwind config.
 - [x] Change CSS color variables to RGB/HSL format
   - [ ] Apply new HSL values to Components with bad contrast and ugly hover states like: ~~Badge~~, _?Button?_, _?Tabs?_
-- [ ] Change the structure of the Storybook folders
+- [x] Change the structure of the Storybook folders

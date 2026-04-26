@@ -42,7 +42,7 @@ const meta = {
   parameters: {
     layout: "centered",
   },
-  title: "Components/Tag",
+  title: "Primitives/Tag",
 } satisfies Meta<typeof Tag>;
 
 export default meta;

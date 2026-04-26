@@ -53,7 +53,7 @@ const meta = {
   parameters: {
     layout: "centered",
   },
-  title: "Components/Button",
+  title: "Primitives/Button",
 } satisfies Meta<typeof Button>;
 
 export default meta;

@@ -20,7 +20,7 @@ const meta = {
   parameters: {
     layout: "centered",
   },
-  title: "Components/Card",
+  title: "Data Display/Card",
 } satisfies Meta<typeof Card>;
 
 export default meta;

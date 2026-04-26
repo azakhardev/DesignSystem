@@ -52,7 +52,7 @@ const meta = {
     AccordionItem,
     AccordionTrigger,
   } as Record<string, React.ComponentType<unknown>>,
-  title: "Components/Accordion",
+  title: "Data Display/Accordion",
 } satisfies Meta<typeof Accordion>;
 
 export default meta;

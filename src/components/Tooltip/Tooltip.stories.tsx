@@ -35,7 +35,7 @@ const meta = {
     string,
     React.ComponentType<unknown>
   >,
-  title: "Components/Tooltip",
+  title: "Feedback/Tooltip",
 } satisfies Meta<typeof Tooltip>;
 
 export default meta;

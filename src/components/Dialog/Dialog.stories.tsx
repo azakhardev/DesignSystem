@@ -62,7 +62,7 @@ const meta = {
     DialogTrigger,
   } as Record<string, React.ComponentType<unknown>>,
 
-  title: "Layout/Dialog",
+  title: "Overlays/Dialog",
 } satisfies Meta<StoryProps>;
 
 export default meta;

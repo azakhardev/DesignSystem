@@ -47,7 +47,7 @@ const meta = {
     TabContent,
     TabsList,
   } as Record<string, React.ComponentType<unknown>>,
-  title: "Layout/Tabs",
+  title: "Navigation/Tabs",
 } satisfies Meta<typeof Tabs>;
 
 export default meta;
