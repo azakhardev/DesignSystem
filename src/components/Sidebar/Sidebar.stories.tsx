@@ -94,12 +94,18 @@ const DemoSidebarContent = () => (
 
     <SidebarBody>
       <SidebarGroup defaultOpen title="General">
-        <SidebarItem icon={<Home />}>Dashboard</SidebarItem>
+        <SidebarItem icon={<Home />} title="Dashboard">
+          Dashboard
+        </SidebarItem>
         <SidebarItem icon={<User />}>Team Members</SidebarItem>
-        <SidebarItem icon={<Settings />}>Settings</SidebarItem>
+        <SidebarItem icon={<Settings />} title="Settings">
+          Settings
+        </SidebarItem>
       </SidebarGroup>
       <SidebarGroup icon={<ChartColumn />} title="Statistics">
-        <SidebarItem icon={<ChartPie />}>Reports</SidebarItem>
+        <SidebarItem icon={<ChartPie />} title="Reports">
+          Reports
+        </SidebarItem>
         <SidebarItem icon={<Banknote />}>Revenue</SidebarItem>
       </SidebarGroup>
     </SidebarBody>

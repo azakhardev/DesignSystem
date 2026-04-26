@@ -12,6 +12,7 @@ import { useIsMobile } from "../../hooks/useIsMobile";
 import Slot from "../../lib/Slot";
 import { cn } from "../../lib/utils";
 import { Dialog, DialogContent } from "../Dialog";
+import { Tooltip, TooltipContent, TooltipTrigger } from "../Tooltip";
 
 interface SidebarContextType {
   collapsed: boolean;
@@ -294,6 +295,10 @@ interface SidebarItemProps extends React.ComponentProps<"div"> {
    * Defines an icon of the Item
    */
   icon?: React.ReactNode;
+  /**
+   * Title of the item, used for tooltip when sidebar is collapsed
+   */
+  title?: string;
 }
 
 function SidebarItem({
@@ -301,33 +306,43 @@ function SidebarItem({
   children,
   className,
   icon,
+  title,
   ...props
 }: SidebarItemProps) {
+  const { collapsed } = useSidebarContext();
+
   const Comp = asChild ? Slot : "div";
 
-  const hideWhenCollapsed = "group-data-[collapsed=true]/sidebar:hidden";
-
   return (
-    <Comp
-      className={cn(
-        "flex flex-row items-center gap-2 rounded-md p-2 transition-all",
-        "justify-start cursor-pointer hover:bg-info-surface",
-        className,
+    <Tooltip closeDelayDuration={50} delayDuration={150}>
+      <TooltipTrigger asChild>
+        <Comp
+          className={cn(
+            "flex flex-row items-center gap-2 rounded-md p-2 transition-all",
+            "justify-start cursor-pointer hover:bg-info-surface",
+            className,
+          )}
+          {...props}
+        >
+          <div className="shrink-0 flex items-center justify-center group-data-[collapsed=true]/sidebar:text-text/80">
+            {icon}
+          </div>
+
+          <div
+            className={cn(
+              "whitespace-nowrap overflow-hidden transition-all duration-300",
+              "group-data-[collapsed=true]/sidebar:w-0 group-data-[collapsed=true]/sidebar:opacity-0",
+              "group-data-[collapsed=false]/sidebar:w-auto group-data-[collapsed=false]/sidebar:opacity-100",
+            )}
+          >
+            {children}
+          </div>
+        </Comp>
+      </TooltipTrigger>
+      {collapsed && title && (
+        <TooltipContent side="right" sideOffset={12} text={title} />
       )}
-      {...props}
-    >
-      <div className="shrink-0 flex items-center justify-center group-data-[collapsed=true]/sidebar:text-text/80">
-        {icon}
-      </div>
-      <div
-        className={cn(
-          "whitespace-nowrap overflow-hidden transition-opacity duration-200",
-          hideWhenCollapsed,
-        )}
-      >
-        {children}
-      </div>
-    </Comp>
+    </Tooltip>
   );
 }
 
