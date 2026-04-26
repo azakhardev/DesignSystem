@@ -183,7 +183,7 @@ export const AsChild: Story = {
         <Tooltip>
           <TooltipTrigger asChild>
             <div
-              className="px-3 py-1.5 rounded bg-surface border border-border text-sm cursor-pointer"
+              className="px-3 py-1.5 rounded-sm bg-surface border border-border text-sm cursor-pointer"
               role="button"
               tabIndex={0}
             >

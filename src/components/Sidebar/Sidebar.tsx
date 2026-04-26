@@ -369,7 +369,7 @@ function SidebarTrigger({
   return (
     <Comp
       className={cn(
-        "p-2 rounded border border-border hover:bg-border transition-colors bg-border-subtle",
+        "p-2 rounded-sm border border-border hover:bg-border transition-colors bg-border-subtle",
         className,
       )}
       onClick={() => toggleSidebar()}

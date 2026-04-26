@@ -78,7 +78,7 @@ export const HoverMode: Story = {
                   Width
                 </label>
                 <input
-                  className="col-span-2 h-8 rounded border px-2 text-sm"
+                  className="col-span-2 h-8 rounded-sm border px-2 text-sm"
                   defaultValue="100%"
                   id="width"
                 />
@@ -88,7 +88,7 @@ export const HoverMode: Story = {
                   Height
                 </label>
                 <input
-                  className="col-span-2 h-8 rounded border px-2 text-sm"
+                  className="col-span-2 h-8 rounded-sm border px-2 text-sm"
                   defaultValue="25px"
                   id="height"
                 />

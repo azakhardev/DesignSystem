@@ -50,7 +50,7 @@ function Badge<T extends React.ElementType>({
       className={cn(badgeVariants({ size, variant }), className)}
       {...props}
     >
-      {icon && <span className="mr-1.5 flex-shrink-0">{icon}</span>}
+      {icon && <span className="mr-1.5 shrink-0">{icon}</span>}
       {children}
     </Component>
   );

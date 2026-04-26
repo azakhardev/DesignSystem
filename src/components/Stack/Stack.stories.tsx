@@ -57,13 +57,13 @@ type Story = StoryObj<typeof meta>;
 // Helper to visualize stack items
 const DemoItems = () => (
   <>
-    <div className="h-10 w-32 rounded bg-primary/20 border border-primary flex items-center justify-center text-xs">
+    <div className="h-10 w-32 rounded-sm bg-primary/20 border border-primary flex items-center justify-center text-xs">
       Item 1
     </div>
-    <div className="h-10 w-48 rounded bg-secondary/20 border border-secondary flex items-center justify-center text-xs">
+    <div className="h-10 w-48 rounded-sm bg-secondary/20 border border-secondary flex items-center justify-center text-xs">
       Item 2
     </div>
-    <div className="h-10 w-32 rounded bg-info/20 border border-info flex items-center justify-center text-xs">
+    <div className="h-10 w-32 rounded-sm bg-info/20 border border-info flex items-center justify-center text-xs">
       Item 3
     </div>
   </>
@@ -96,7 +96,7 @@ export const FormExample: Story = {
             Email Address
           </label>
           <input
-            className="border rounded p-2 text-sm"
+            className="border rounded-sm p-2 text-sm"
             id="email"
             placeholder="user@example.com"
           />
@@ -106,7 +106,7 @@ export const FormExample: Story = {
             Password
           </label>
           <input
-            className="border rounded p-2 text-sm"
+            className="border rounded-sm p-2 text-sm"
             id="pswd"
             placeholder="••••••••"
             type="password"
@@ -132,13 +132,13 @@ export const VerticalDistribution: Story = {
   render: (args) => (
     <div className="h-48 w-64 border p-4 rounded-lg bg-surface-subtle flex">
       <Stack {...args} className="w-full">
-        <div className="p-3 bg-surface border rounded shadow-sm">
+        <div className="p-3 bg-surface border rounded-sm shadow-xs">
           Top Header
         </div>
-        <div className="p-3 bg-surface border rounded shadow-sm">
+        <div className="p-3 bg-surface border rounded-sm shadow-xs">
           Navigation
         </div>
-        <div className="p-3 bg-error/10 text-error border border-error rounded shadow-sm">
+        <div className="p-3 bg-error/10 text-error border border-error rounded-sm shadow-xs">
           Logout Action
         </div>
       </Stack>
@@ -154,13 +154,13 @@ export const SemanticList: Story = {
     asChild: true,
     children: (
       <ul className="list-none m-0 p-4 border rounded-lg bg-surface">
-        <li className="p-2 hover:bg-surface-subtle rounded cursor-pointer">
+        <li className="p-2 hover:bg-surface-subtle rounded-sm cursor-pointer">
           Profile Settings
         </li>
-        <li className="p-2 hover:bg-surface-subtle rounded cursor-pointer">
+        <li className="p-2 hover:bg-surface-subtle rounded-sm cursor-pointer">
           Security
         </li>
-        <li className="p-2 hover:bg-surface-subtle rounded cursor-pointer">
+        <li className="p-2 hover:bg-surface-subtle rounded-sm cursor-pointer">
           Billing
         </li>
       </ul>

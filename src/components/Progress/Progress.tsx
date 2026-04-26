@@ -113,7 +113,7 @@ function ProgressBar({ children, className, ...props }: ProgressBarProps) {
       aria-valuemin={0}
       aria-valuenow={value}
       className={cn(
-        "rounded overflow-hidden relative border border-border bg-border h-4",
+        "rounded-sm overflow-hidden relative border border-border bg-border h-4",
         className,
       )}
       role="progressbar"
@@ -149,7 +149,7 @@ function ProgressIndicator({
   return (
     <motion.div
       animate={{ width: `${percentage}%` }}
-      className={cn("h-full bg-primary rounded", className)}
+      className={cn("h-full bg-primary rounded-sm", className)}
       initial={initial}
       transition={{
         delay: delay,

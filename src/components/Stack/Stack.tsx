@@ -33,8 +33,8 @@ const stackVariants = cva("flex flex-col", {
       12: "gap-12",
     },
     grow: {
-      false: "[&>*]:flex-none",
-      true: "[&>*]:flex-1",
+      false: "*:flex-none",
+      true: "*:flex-1",
     },
     justify: {
       around: "justify-around",

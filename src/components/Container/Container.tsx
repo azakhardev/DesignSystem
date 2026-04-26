@@ -22,12 +22,12 @@ const containerVariants = cva("w-full", {
       sm: "px-4",
     },
     size: {
-      "2xl": "max-w-screen-2xl",
+      "2xl": "max-w-(--breakpoint-2xl)",
       fluid: "max-w-full",
-      lg: "max-w-screen-lg",
-      md: "max-w-screen-md",
-      sm: "max-w-screen-sm",
-      xl: "max-w-screen-xl",
+      lg: "max-w-(--breakpoint-lg)",
+      md: "max-w-(--breakpoint-md)",
+      sm: "max-w-(--breakpoint-sm)",
+      xl: "max-w-(--breakpoint-xl)",
     },
   },
 });

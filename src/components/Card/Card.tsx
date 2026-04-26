@@ -11,7 +11,7 @@ function Card({
   return (
     <div
       className={cn(
-        "rounded-md border bg-surface border-border shadow-sm ",
+        "rounded-md border bg-surface border-border shadow-xs ",
         className,
       )}
       ref={ref}
@@ -105,7 +105,7 @@ function CardFooter({
       ref={ref}
       {...props}
     >
-      <div className="h-[1px] w-full bg-border" />
+      <div className="h-px w-full bg-border" />
       {children}
     </div>
   );

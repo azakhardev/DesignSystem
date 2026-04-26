@@ -165,7 +165,7 @@ function DropdownItem<T extends React.ElementType = "button">({
         variant === "checkbox" || variant === "radio" ? active : undefined
       }
       className={cn(
-        "px-2 py-1 gap-2 flex flex-row items-center justify-between text-nowrap group hover:bg-surface-secondary focus:bg-surface-secondary outline-none",
+        "px-2 py-1 gap-2 flex flex-row items-center justify-between text-nowrap group hover:bg-surface-secondary focus:bg-surface-secondary outline-hidden",
         active && "font-bold",
         props.disabled && "opacity-50 cursor-not-allowed",
         className,
@@ -198,7 +198,7 @@ function DropdownItem<T extends React.ElementType = "button">({
 }
 
 const dropdownMenuVariants = cva(
-  "absolute flex flex-col p-1 gap-1 bg-surface rounded border border-border shadow z-20 min-w-max",
+  "absolute flex flex-col p-1 gap-1 bg-surface rounded-sm border border-border shadow-sm z-20 min-w-max",
   {
     defaultVariants: {
       position: "bottom-start",

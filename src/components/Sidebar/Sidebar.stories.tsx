@@ -83,7 +83,7 @@ const DemoSidebarContent = () => (
   <>
     <SidebarHeader>
       <div className="flex items-center gap-2 p-2 text-primary group-data-[collapsed=true]/sidebar:justify-center">
-        <div className="size-8 rounded bg-primary text-on-primary flex items-center justify-center font-bold shrink-0">
+        <div className="size-8 rounded-sm bg-primary text-on-primary flex items-center justify-center font-bold shrink-0">
           A
         </div>
         <div className="font-bold text-lg whitespace-nowrap overflow-hidden group-data-[collapsed=true]/sidebar:hidden transition-all duration-300 opacity-100 group-data-[collapsed=true]/sidebar:opacity-0">

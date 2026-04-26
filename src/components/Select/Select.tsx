@@ -176,7 +176,7 @@ function SelectTrigger({
   return (
     <Comp
       className={cn(
-        "flex min-w-[150px] items-center justify-between p-2 border-border border bg-input-background cursor-pointer rounded focus:outline-none focus:ring-2 focus:ring-input-focus hover:bg-input-hover transition-colors",
+        "flex min-w-37.5 items-center justify-between p-2 border-border border bg-input-background cursor-pointer rounded-sm focus:outline-hidden focus:ring-2 focus:ring-input-focus hover:bg-input-hover transition-colors",
         !hasValue && "text-text-secondary",
         className,
       )}
@@ -257,7 +257,7 @@ function SelectContent({
     <div
       className={cn(
         "bg-input-background border rounded-md border-border overflow-y-auto z-50",
-        "focus:outline-none",
+        "focus:outline-hidden",
         style,
         className,
       )}
@@ -331,7 +331,7 @@ function SelectItem({ children, className, value, ...props }: SelectItemProps) {
       className={cn(
         "cursor-pointer p-1 ",
         "hover:bg-input-hover focus:bg-input-hover",
-        "focus:outline-none focus:ring-2 ring-input-focus",
+        "focus:outline-hidden focus:ring-2 ring-input-focus",
         isSelected && "font-bold text-primary",
         className,
       )}

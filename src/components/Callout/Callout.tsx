@@ -34,7 +34,7 @@ function Callout({
     <CalloutContext.Provider value={{ variant }}>
       <div
         className={cn(
-          "flex flex-col gap-2 border-l-4 p-4 shadow-sm rounded-r-md transition-colors duration-200",
+          "flex flex-col gap-2 border-l-4 p-4 shadow-xs rounded-r-md transition-colors duration-200",
           variantStyles[variant],
           className,
         )}
@@ -109,7 +109,7 @@ function CalloutButtonPrimary({
   return (
     <button
       className={cn(
-        "px-4 py-1.5 rounded text-sm font-medium transition-all active:scale-95 shadow-sm",
+        "px-4 py-1.5 rounded-sm text-sm font-medium transition-all active:scale-95 shadow-xs",
         bgColors[variant],
         className,
       )}
@@ -135,7 +135,7 @@ function CalloutButtonSecondary({
   return (
     <button
       className={cn(
-        "px-4 py-1.5 rounded text-sm font-medium border bg-surface transition-all active:scale-95",
+        "px-4 py-1.5 rounded-sm text-sm font-medium border bg-surface transition-all active:scale-95",
         borderStyles[variant],
         className,
       )}

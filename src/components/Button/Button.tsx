@@ -8,7 +8,7 @@ import styles from "./Button.module.css";
 const buttonVariants = cva(
   [
     //Base style
-    "py-2 px-4 rounded border-border cursor-pointer border text-on-primary shadow-md flex flex-row gap-1",
+    "py-2 px-4 rounded-sm border-border cursor-pointer border text-on-primary shadow-md flex flex-row gap-1",
     //Transitons style
     "transition-all duration-150 ease-in-out",
     //Hover effects
@@ -27,7 +27,7 @@ const buttonVariants = cva(
           styles.animatedButton,
         ),
         destructive:
-          "bg-error text-white shadow-sm hover:bg-error-focus active:scale-95",
+          "bg-error text-white shadow-xs hover:bg-error-focus active:scale-95",
         ghost:
           "shadow-none border-transparent text-info-text disabled:border-none disabled:bg-transparent hover:bg-info-surface",
         link: "bg-transparent border-none shadow-none text-primary underline-offset-4 hover:underline px-0 py-0 h-auto",

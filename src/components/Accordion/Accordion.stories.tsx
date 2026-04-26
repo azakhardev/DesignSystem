@@ -326,19 +326,19 @@ export const ExternallyControlled: Story = {
       <div className="w-[500px] space-y-4">
         <div className="flex gap-2">
           <button
-            className="px-2 py-1 text-xs border rounded bg-surface"
+            className="px-2 py-1 text-xs border rounded-sm bg-surface"
             onClick={() => setVal("tab-1")}
           >
             Open 1
           </button>
           <button
-            className="px-2 py-1 text-xs border rounded bg-surface"
+            className="px-2 py-1 text-xs border rounded-sm bg-surface"
             onClick={() => setVal("tab-2")}
           >
             Open 2
           </button>
           <button
-            className="px-2 py-1 text-xs border rounded bg-surface text-error-text"
+            className="px-2 py-1 text-xs border rounded-sm bg-surface text-error-text"
             onClick={() => setVal("")}
           >
             Close All

@@ -145,7 +145,7 @@ function TabsList({
         justify === "center" && "justify-center",
         justify === "end" && "justify-end",
         justify === "between" && "justify-between",
-        grow && "[&>*]:flex-1",
+        grow && "*:flex-1",
 
         className,
       )}

@@ -23,7 +23,7 @@ function Separator({
     <div
       aria-orientation={orientation}
       className={cn(
-        "shrink-0 bg-text rounded",
+        "shrink-0 bg-text rounded-sm",
         isHorizontal ? "w-full" : "h-full",
         className,
       )}

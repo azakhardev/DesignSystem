@@ -102,7 +102,7 @@ function RadioButton({
       />
       <div
         className={cn(
-          "h-4 w-4 rounded-full border border-border flex items-center justify-center transition-all shadow-sm p-0.5",
+          "h-4 w-4 rounded-full border border-border flex items-center justify-center transition-all shadow-xs p-0.5",
           "bg-input-background",
           !isDisabled &&
             " group-hover:ring-2 group-hover:ring-input-focus group-hover:ring-offset-0",

@@ -136,7 +136,7 @@ function PopoverContent({
           className={cn(
             styles.content,
             "flex flex-col gap-1",
-            "rounded-md border bg-surface border-border shadow-sm p-2 m-1",
+            "rounded-md border bg-surface border-border shadow p-2 m-1",
             className,
           )}
           data-position={position}

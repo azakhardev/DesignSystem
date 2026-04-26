@@ -45,12 +45,12 @@ function Checkbox({
 
         <label
           className={cn(
-            "h-5 w-5 shrink-0 rounded border bg-surface transition-all cursor-pointer",
+            "h-5 w-5 shrink-0 rounded-sm border bg-surface transition-all cursor-pointer",
             "flex items-center justify-center",
             "border-border",
             !disabled &&
               "group-hover:border-primary group-hover:ring-4 group-hover:ring-primary/10",
-            "peer-focus-visible:ring-2 peer-focus-visible:ring-offset-2 peer-focus-visible:ring-input-focus peer-focus-visible:outline-none ring-offset-background",
+            "peer-focus-visible:ring-2 peer-focus-visible:ring-offset-2 peer-focus-visible:ring-input-focus peer-focus-visible:outline-hidden ring-offset-background",
             checked &&
               "bg-primary border-primary text-on-primary group-hover:ring-primary/20",
             error && "border-error-border group-hover:ring-error/10 ",

@@ -56,13 +56,13 @@ type Story = StoryObj<typeof meta>;
 
 const DemoBoxes = () => (
   <>
-    <div className="h-10 w-20 rounded bg-primary/20 border border-primary flex items-center justify-center text-xs">
+    <div className="h-10 w-20 rounded-sm bg-primary/20 border border-primary flex items-center justify-center text-xs">
       Box 1
     </div>
-    <div className="h-14 w-20 rounded bg-secondary/20 border border-secondary flex items-center justify-center text-xs">
+    <div className="h-14 w-20 rounded-sm bg-secondary/20 border border-secondary flex items-center justify-center text-xs">
       Box 2
     </div>
-    <div className="h-10 w-20 rounded bg-info/20 border border-info flex items-center justify-center text-xs">
+    <div className="h-10 w-20 rounded-sm bg-info/20 border border-info flex items-center justify-center text-xs">
       Box 3
     </div>
   </>
@@ -91,8 +91,8 @@ export const GrowingItems: Story = {
   render: (args) => (
     <div className="w-[500px] border p-2 rounded-lg">
       <Group {...args}>
-        <button className="bg-surface-subtle p-2 border rounded">Cancel</button>
-        <button className="bg-primary text-white p-2 rounded">
+        <button className="bg-surface-subtle p-2 border rounded-sm">Cancel</button>
+        <button className="bg-primary text-white p-2 rounded-sm">
           Save Changes
         </button>
       </Group>
@@ -126,7 +126,7 @@ export const PolymorphicList: Story = {
   args: {
     asChild: true,
     children: (
-      <ul className="list-none m-0 p-4 border rounded bg-surface-subtle">
+      <ul className="list-none m-0 p-4 border rounded-sm bg-surface-subtle">
         <li className="px-3 py-1 bg-white border rounded-full text-xs">
           React
         </li>

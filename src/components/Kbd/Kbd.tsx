@@ -5,8 +5,8 @@ function Kbd({ children, className, ...props }: React.ComponentProps<"kbd">) {
     <kbd
       className={cn(
         "inline-flex items-center justify-center font-mono select-none",
-        "h-5 min-w-[1.5rem] px-1.5 text-sm font-medium leading-none",
-        "bg-surface-subtle rounded shadow",
+        "h-5 min-w-6 px-1.5 text-sm font-medium leading-none",
+        "bg-surface-subtle rounded-sm shadow-sm",
         className,
       )}
       {...props}

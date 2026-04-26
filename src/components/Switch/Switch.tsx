@@ -40,11 +40,11 @@ function Switch({
     <>
       <label
         className={cn(
-          "flex h-8 w-[60px] cursor-pointer items-center rounded-full p-1 transition-colors duration-300 shadow",
+          "flex h-8 w-15 cursor-pointer items-center rounded-full p-1 transition-colors duration-300 shadow-sm",
           checked ? "bg-primary" : "bg-border-strong",
           disabled && "cursor-not-allowed opacity-50",
           checked ? "justify-end" : "justify-start",
-          "has-[:focus-visible]:outline-none has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-input-focus has-[:focus-visible]:ring-offset-2",
+          "has-focus-visible:outline-hidden has-focus-visible:ring-2 has-focus-visible:ring-input-focus has-focus-visible:ring-offset-2",
           className,
         )}
         htmlFor={inputId}
@@ -62,7 +62,7 @@ function Switch({
 
         <motion.div
           className={cn(
-            "aspect-square h-full rounded-full bg-white shadow-sm",
+            "aspect-square h-full rounded-full bg-white shadow-xs",
             "flex items-center justify-center text-xs",
           )}
           layout

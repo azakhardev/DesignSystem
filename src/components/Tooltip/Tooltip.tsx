@@ -117,7 +117,7 @@ function TooltipContent({
           animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
           className={cn(
             styles.content,
-            "rounded-md border bg-surface border-border shadow-sm p-2",
+            "rounded-md border bg-surface border-border shadow-xs p-2",
             className,
           )}
           data-side={side}
