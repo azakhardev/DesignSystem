@@ -247,7 +247,7 @@ function SidebarGroup({
       <button
         className={cn(
           "relative flex flex-row gap-1 items-center justify-start w-full font-bold ",
-          "group-data-[collapsed=true]/sidebar:pl-2 group/group-title",
+          "group-data-[collapsed=true]/sidebar:pl-2 group/group-title outline-primary-focus",
         )}
         onClick={() => setExpanded((old) => !old)}
       >
@@ -286,7 +286,7 @@ function SidebarGroup({
   );
 }
 
-interface SidebarItemProps extends React.ComponentProps<"div"> {
+interface SidebarItemProps extends React.ComponentProps<"button"> {
   /**
    * Uses React composition capabilities to merge components
    */
@@ -311,7 +311,7 @@ function SidebarItem({
 }: SidebarItemProps) {
   const { collapsed } = useSidebarContext();
 
-  const Comp = asChild ? Slot : "div";
+  const Comp = asChild ? Slot : "button";
 
   return (
     <Tooltip closeDelayDuration={50} delayDuration={150}>
@@ -320,6 +320,7 @@ function SidebarItem({
           className={cn(
             "flex flex-row items-center gap-2 rounded-md p-2 transition-all",
             "justify-start cursor-pointer hover:bg-info-surface",
+            "focus:outline-none focus:bg-info-surface",
             className,
           )}
           {...props}

@@ -15,7 +15,7 @@
 - [x] Sidebar - Collapsible side menu for navigation with hamburger menu for mobile.
   - [x] Allow Tooltip on `SidebarItem` hover after creating `Tooltip` Component.
   - [x] Make groups expendable + add animations upon clicking.
-  - [ ] Make SidebarItem focusable and navigatable using keys
+  - [x] Make SidebarItem focusable and ~~navigatable using keys~~.
 - [x] Spinner – Loading indicators: Orbital, Classic, Dots and Page Loader.
 - [x] Alert – Static feedback messages: Error, Warning, Info, Success, No Data.
 - [x] Layout primitives - A simple system to constrain width (Container) or handle flexbox layouts (Group or Stack).

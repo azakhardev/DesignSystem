@@ -114,6 +114,7 @@ const DemoSidebarContent = () => (
       <SidebarItem
         className="text-error-text mt-auto hover:bg-red-600/30"
         icon={<LogOut />}
+        title="Log out"
       >
         Log out
       </SidebarItem>
