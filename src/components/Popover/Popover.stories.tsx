@@ -18,7 +18,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "./Popover";
  */
 const meta = {
   argTypes: {
-    children: { table: { disable: true } },
+    children: { disable: true },
     closeDelayDuration: {
       control: "number",
       description:

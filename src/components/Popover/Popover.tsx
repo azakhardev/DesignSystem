@@ -163,7 +163,7 @@ function PopoverContent({
 
 interface PopoverTriggerProps extends React.ComponentProps<"button"> {
   /**
-   * Allows cloning the child element
+   * Uses React composition capabilities to merge components
    */
   asChild?: boolean;
 }

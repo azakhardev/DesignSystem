@@ -9,6 +9,7 @@ import React, {
 } from "react";
 
 import { useIsMobile } from "../../hooks/useIsMobile";
+import Slot from "../../lib/Slot";
 import { cn } from "../../lib/utils";
 import { Dialog, DialogContent } from "../Dialog";
 
@@ -285,19 +286,29 @@ function SidebarGroup({
 }
 
 interface SidebarItemProps extends React.ComponentProps<"div"> {
+  /**
+   * Uses React composition capabilities to merge components
+   */
+  asChild?: boolean;
+  /**
+   * Defines an icon of the Item
+   */
   icon?: React.ReactNode;
 }
 
 function SidebarItem({
+  asChild,
   children,
   className,
   icon,
   ...props
 }: SidebarItemProps) {
+  const Comp = asChild ? Slot : "div";
+
   const hideWhenCollapsed = "group-data-[collapsed=true]/sidebar:hidden";
 
   return (
-    <div
+    <Comp
       className={cn(
         "flex flex-row items-center gap-2 rounded-md p-2 transition-all",
         "justify-start cursor-pointer hover:bg-info-surface",
@@ -316,7 +327,7 @@ function SidebarItem({
       >
         {children}
       </div>
-    </div>
+    </Comp>
   );
 }
 
@@ -338,15 +349,25 @@ function SidebarFooter({
   );
 }
 
+interface SidebarTriggerProps extends React.ComponentProps<"button"> {
+  /**
+   * Uses React composition capabilities to merge components
+   */
+  asChild?: boolean;
+}
+
 function SidebarTrigger({
+  asChild,
   children,
   className,
   ...props
-}: React.ComponentProps<"button">) {
+}: SidebarTriggerProps) {
   const { toggleSidebar } = useSidebarContext();
 
+  const Comp = asChild ? Slot : "button";
+
   return (
-    <button
+    <Comp
       className={cn(
         "p-2 rounded border border-border hover:bg-border transition-colors bg-border-subtle",
         className,
@@ -356,7 +377,7 @@ function SidebarTrigger({
       {...props}
     >
       {children}
-    </button>
+    </Comp>
   );
 }
 
@@ -370,4 +391,9 @@ export {
   SidebarItem,
   SidebarTrigger,
 };
-export type { SidebarContentProps, SidebarGroupProps, SidebarProps };
+export type {
+  SidebarContentProps,
+  SidebarGroupProps,
+  SidebarProps,
+  SidebarTriggerProps,
+};

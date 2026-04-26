@@ -43,7 +43,7 @@
 - [x] Badge – Small count/status indicator, possibly with icon support.
 - [x] Tag (Chip) – Similar to Badge but interactive (clickable, deletable). Often used for filters.
 - [x] Tooltip – Text hint on hover.
-  - [ ] Keep the Tooltip visible while hovering TooltipContent
+  - [x] Keep the Tooltip visible while hovering TooltipContent
 - [x] Popover – Like a tooltip, but rich content (HTML) that appears on click/hover.
 - [x] Toast (Notification) – Temporary status messages (snackbars) appearing at the edge of the screen.
 - [x] Status Indicator – Pulsing dot/circle with customizable status colors (Online, Busy, Offline).
@@ -71,12 +71,12 @@
 
 ### Other: TODO and overall improvements
 
-- [ ] asChild - Create asChild property for some elements to be more flexible for developers.
+- [x] asChild - Create asChild property for some elements to be more flexible for developers.
   - With use of new Slot Component
-- [ ] Keyboard Accessibility - Add support for arrows navigation, keyboard loop, etc...
+- [ ] Keyboard Accessibility - Add support for ~~arrows navigation~~, keyboard loop, etc...
 - [x] Change hover/select color of inputs based on new CSS variable.
 - [x] Create and use hooks for closing popovers on Clicking Outside/Escape.
-- [ ] Add custom animations to the Tailwind config.
+- [x] Add custom animations to the Tailwind config.
 - [x] Change CSS color variables to RGB/HSL format
   - [ ] Apply new HSL values to Components with bad contrast and ugly hover states like: ~~Badge~~, _?Button?_, _?Tabs?_
 - [ ] Change the structure of the Storybook folders

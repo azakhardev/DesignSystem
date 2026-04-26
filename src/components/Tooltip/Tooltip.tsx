@@ -42,7 +42,7 @@ interface TooltipProps {
 
 function Tooltip({
   children,
-  closeDelayDuration = 0,
+  closeDelayDuration = 100,
   delayDuration = 200,
 }: TooltipProps) {
   const [visible, setVisible] = useState(false);
@@ -108,7 +108,7 @@ function TooltipContent({
   text,
   ...props
 }: TooltipContentProps) {
-  const { id, visible } = useTooltip();
+  const { handleEnter, handleLeave, id, visible } = useTooltip();
 
   return createPortal(
     <AnimatePresence>
@@ -127,6 +127,8 @@ function TooltipContent({
           }}
           id={`tooltip-content-${id}`}
           initial={ANIMATIONS[side]}
+          onMouseEnter={handleEnter}
+          onMouseLeave={handleLeave}
           role="tooltip"
           style={
             {

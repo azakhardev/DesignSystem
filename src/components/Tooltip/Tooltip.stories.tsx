@@ -46,7 +46,7 @@ type Story = StoryObj<typeof meta>;
  */
 export const Default: Story = {
   args: {
-    closeDelayDuration: 0,
+    closeDelayDuration: 100,
     delayDuration: 200,
   },
   play: async function ({ canvas, userEvent }) {
@@ -110,7 +110,7 @@ export const Timing: Story = {
   render: () => (
     <div className="flex gap-10 items-center">
       <div className="flex flex-col items-center gap-3">
-        <Tooltip closeDelayDuration={0} delayDuration={0}>
+        <Tooltip delayDuration={0}>
           <TooltipTrigger>Instant</TooltipTrigger>
           <TooltipContent side="top" text="Opens immediately" />
         </Tooltip>
@@ -120,7 +120,7 @@ export const Timing: Story = {
       </div>
 
       <div className="flex flex-col items-center gap-3">
-        <Tooltip closeDelayDuration={0} delayDuration={200}>
+        <Tooltip delayDuration={200}>
           <TooltipTrigger>Default</TooltipTrigger>
           <TooltipContent side="top" text="Opens after 200ms" />
         </Tooltip>
@@ -130,7 +130,7 @@ export const Timing: Story = {
       </div>
 
       <div className="flex flex-col items-center gap-3">
-        <Tooltip closeDelayDuration={0} delayDuration={600}>
+        <Tooltip delayDuration={600}>
           <TooltipTrigger>Slow</TooltipTrigger>
           <TooltipContent side="top" text="Opens after 600ms" />
         </Tooltip>

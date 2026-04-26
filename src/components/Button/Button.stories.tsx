@@ -14,6 +14,10 @@ import { Button } from "./Button";
  */
 const meta = {
   argTypes: {
+    asChild: {
+      control: "check",
+      description: "Uses React composition capabilities to merge components",
+    },
     children: {
       control: "text",
       description: "Obsah tlačítka",

@@ -1,6 +1,7 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import { LoaderCircle } from "lucide-react";
 
+import Slot from "../../lib/Slot";
 import { cn } from "../../lib/utils";
 import styles from "./Button.module.css";
 
@@ -47,11 +48,13 @@ const buttonVariants = cva(
 type ButtonVariants = VariantProps<typeof buttonVariants>;
 
 interface ButtonProps extends React.ComponentProps<"button">, ButtonVariants {
+  asChild?: boolean;
   loading?: boolean;
   loadingText?: string;
 }
 
 function Button({
+  asChild,
   children,
   className,
   loading,
@@ -60,8 +63,10 @@ function Button({
   variant,
   ...props
 }: ButtonProps) {
+  const Comp = asChild ? Slot : "button";
+
   return (
-    <button
+    <Comp
       className={cn(buttonVariants({ variant }), className)}
       disabled={loading}
       ref={ref}
@@ -75,7 +80,7 @@ function Button({
       ) : (
         children
       )}
-    </button>
+    </Comp>
   );
 }
 

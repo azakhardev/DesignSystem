@@ -4,6 +4,7 @@ import { createContext, use, useEffect, useRef, useState } from "react";
 
 import { useEscapeKey } from "../../hooks/useEscapeKey";
 import { useOnClickOutside } from "../../hooks/useOnClickOutside";
+import Slot from "../../lib/Slot";
 import { cn } from "../../lib/utils";
 
 type DropdownContextType = {
@@ -86,13 +87,23 @@ function Dropdown({
   );
 }
 
+interface DropdownTriggerProps extends React.ComponentProps<"button"> {
+  /**
+   * Uses React composition capabilities to merge components
+   */
+  asChild?: boolean;
+}
+
 function DropdownTrigger({
+  asChild,
   children,
   className,
   onClick,
   ...props
-}: React.ComponentProps<"button">) {
+}: DropdownTriggerProps) {
   const { onOpenChange, open, triggerAction } = useDropdown();
+
+  const Comp = asChild ? Slot : "button";
 
   function handleClick(ev: React.MouseEvent<HTMLButtonElement>) {
     onClick?.(ev);
@@ -103,7 +114,7 @@ function DropdownTrigger({
   }
 
   return (
-    <button
+    <Comp
       aria-expanded={open}
       aria-haspopup="menu"
       className={cn(
@@ -115,7 +126,7 @@ function DropdownTrigger({
       {...props}
     >
       {children}
-    </button>
+    </Comp>
   );
 }
 
@@ -282,4 +293,4 @@ function DropdownMenu({
 }
 
 export { Dropdown, DropdownItem, DropdownMenu, DropdownTrigger };
-export type { DropdownItemProps, DropdownProps };
+export type { DropdownItemProps, DropdownProps, DropdownTriggerProps };
