@@ -18,7 +18,7 @@
 - [x] Spinner – Loading indicators: Orbital, Classic, Dots and Page Loader.
 - [x] Alert – Static feedback messages: Error, Warning, Info, Success, No Data.
 - [x] Layout primitives - A simple system to constrain width (Container) or handle flexbox layouts (Group or Stack).\
-  - [ ] Add Grid layout support
+  - [ ] Add Component for Grid layout
 
 ### Phase 2: Form & Navigation Expansion
 
