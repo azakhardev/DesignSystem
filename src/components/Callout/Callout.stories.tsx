@@ -43,7 +43,7 @@ const meta = {
     CalloutButtonSecondary,
     CalloutTitle,
   } as Record<string, React.ComponentType<unknown>>,
-  title: "Components/Callout",
+  title: "Feedback/Callout",
 } satisfies Meta<typeof Callout>;
 
 export default meta;

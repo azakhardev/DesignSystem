@@ -1,5 +1,7 @@
 import { cloneElement, isValidElement, type SyntheticEvent } from "react";
 
+import { cn } from "./utils";
+
 function mergeEventHandlers<T extends SyntheticEvent<unknown, Event>>(
   original?: React.EventHandler<T>,
   override?: React.EventHandler<T>,
@@ -36,9 +38,10 @@ function Slot({ children, ...slotProps }: SlotProps) {
         slotProps[key as keyof typeof slotProps] as React.EventHandler<never>,
       );
     } else if (key === "className") {
-      mergedProps.className = [slotProps.className, childProps.className]
-        .filter(Boolean)
-        .join(" ");
+      mergedProps.className = cn(
+        slotProps.className,
+        childProps.className as string,
+      );
     } else if (key === "style") {
       mergedProps.style = {
         ...(slotProps.style ?? {}),

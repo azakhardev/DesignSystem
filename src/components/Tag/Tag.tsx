@@ -39,7 +39,7 @@ function Tag({
         <IconWrapper
           aria-label={onIconClick ? iconAriaLabel : undefined}
           className={cn(
-            "flex items-center justify-center shrink-0 transition-colors p-0.5 rounded-sm",
+            "flex items-center justify-center shrink-0 transition-colors p-0.5 rounded-xs",
             "text-text-secondary",
             onIconClick
               ? "cursor-pointer hover:text-primary-focus hover:bg-black/5 dark:hover:bg-white/10"

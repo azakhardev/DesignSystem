@@ -30,7 +30,7 @@ const meta = {
     BreadcrumbMenu,
     BreadcrumbSeparator,
   } as Record<string, React.ComponentType<unknown>>,
-  title: "Components/Breadcrumb",
+  title: "Navigation/Breadcrumb",
 } satisfies Meta<typeof Breadcrumb>;
 
 export default meta;

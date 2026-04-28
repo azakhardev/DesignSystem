@@ -62,7 +62,7 @@ const meta = {
   parameters: {
     layout: "centered",
   },
-  title: "Components/Loaders/Spinner",
+  title: "Feedback/Loaders/Spinner",
 } satisfies Meta<typeof Spinner>;
 
 export default meta;

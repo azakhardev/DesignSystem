@@ -53,7 +53,7 @@ const meta = {
   parameters: {
     layout: "centered",
   },
-  title: "Components/Loaders/Orbital",
+  title: "Feedback/Loaders/Orbital",
 } satisfies Meta<typeof Orbital>;
 
 export default meta;

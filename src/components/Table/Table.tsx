@@ -158,7 +158,7 @@ function TableCell({
             className={cn(
               "absolute left-1/2 top-0 z-10 whitespace-nowrap",
               "pointer-events-none select-none",
-              "px-2 py-1 text-xs font-mono rounded shadow-md",
+              "px-2 py-1 text-xs font-mono rounded-sm shadow-md",
               "bg-surface text-text",
             )}
             exit={{ opacity: 0, x: "-50%", y: -40 }}
@@ -185,7 +185,7 @@ function TableInput({
     <input
       className={cn(
         "w-full bg-inherit placeholder:text-text-secondary hover:bg-surface-subtle",
-        "border-b border-transparent focus-within:outline-none focus-within:border-text-secondary focus-within:border-solid",
+        "border-b border-transparent focus-within:outline-hidden focus-within:border-text-secondary focus-within:border-solid",
         !hasRealPlaceholder &&
           "placeholder-shown:border-dashed placeholder-shown:border-b-border",
         "disabled:opacity-50",

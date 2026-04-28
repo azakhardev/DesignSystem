@@ -46,7 +46,7 @@ const meta = {
     TableInput,
     TableRow,
   } as Record<string, React.ComponentType<unknown>>,
-  title: "Layout/Table",
+  title: "Data Display/Table",
 } satisfies Meta<typeof Table>;
 
 export default meta;

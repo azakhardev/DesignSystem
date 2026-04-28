@@ -20,7 +20,7 @@ const meta = {
   parameters: {
     layout: "centered",
   },
-  title: "Components/Card",
+  title: "Data Display/Card",
 } satisfies Meta<typeof Card>;
 
 export default meta;
@@ -115,7 +115,7 @@ export const WithCustomContent: Story = {
         <div className="flex flex-row justify-between items-center">
           <p>Newsletter</p>
           <button
-            className="px-3 py-1 bg-primary text-on-primary rounded hover:bg-primary-focus transition-colors"
+            className="px-3 py-1 bg-primary text-on-primary rounded-sm hover:bg-primary-focus transition-colors"
             onClick={() => alert("Subscribed!")}
           >
             Subscribe

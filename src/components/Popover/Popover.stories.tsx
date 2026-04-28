@@ -18,7 +18,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "./Popover";
  */
 const meta = {
   argTypes: {
-    children: { table: { disable: true } },
+    children: { disable: true },
     closeDelayDuration: {
       control: "number",
       description:
@@ -43,7 +43,7 @@ const meta = {
     string,
     React.ComponentType<unknown>
   >,
-  title: "Components/Popover",
+  title: "Overlays/Popover",
 } satisfies Meta<typeof Popover>;
 
 export default meta;
@@ -66,7 +66,7 @@ export const HoverMode: Story = {
         <PopoverTrigger asChild>
           <Button variant="secondary">Hover me</Button>
         </PopoverTrigger>
-        <PopoverContent className="w-[280px]" position="bottom">
+        <PopoverContent className="w-70" position="bottom">
           <div className="space-y-2">
             <h4 className="font-medium leading-none">Dimensions</h4>
             <p className="text-sm text-text-secondary">
@@ -78,7 +78,7 @@ export const HoverMode: Story = {
                   Width
                 </label>
                 <input
-                  className="col-span-2 h-8 rounded border px-2 text-sm"
+                  className="col-span-2 h-8 rounded-sm border px-2 text-sm"
                   defaultValue="100%"
                   id="width"
                 />
@@ -88,7 +88,7 @@ export const HoverMode: Story = {
                   Height
                 </label>
                 <input
-                  className="col-span-2 h-8 rounded border px-2 text-sm"
+                  className="col-span-2 h-8 rounded-sm border px-2 text-sm"
                   defaultValue="25px"
                   id="height"
                 />
@@ -119,7 +119,7 @@ export const ClickMode: Story = {
             Open Profile
           </Button>
         </PopoverTrigger>
-        <PopoverContent className="w-[200px]" position="bottom">
+        <PopoverContent className="w-50" position="bottom">
           <div className="flex flex-col gap-2">
             <div className="px-1 pb-2 border-b border-border">
               <h4 className="font-semibold text-sm">John Doe</h4>
@@ -151,7 +151,7 @@ export const Placements: Story = {
       <div className="flex flex-col gap-16 p-8 justify-center items-center">
         <Popover>
           <PopoverTrigger asChild>
-            <Button variant="info">Position: Top</Button>
+            <Button variant="outline">Position: Top</Button>
           </PopoverTrigger>
           <PopoverContent className="text-sm px-3 py-1" position="top">
             I appear above the trigger!
@@ -160,7 +160,7 @@ export const Placements: Story = {
 
         <Popover>
           <PopoverTrigger asChild>
-            <Button variant="info">Position: Bottom</Button>
+            <Button variant="outline">Position: Bottom</Button>
           </PopoverTrigger>
           <PopoverContent className="text-sm px-3 py-1" position="bottom">
             I appear below the trigger!
@@ -169,7 +169,7 @@ export const Placements: Story = {
 
         <Popover>
           <PopoverTrigger asChild>
-            <Button variant="info">Position: Right</Button>
+            <Button variant="outline">Position: Right</Button>
           </PopoverTrigger>
           <PopoverContent className="text-sm px-3 py-1" position="right">
             I appear to the right!
@@ -178,7 +178,7 @@ export const Placements: Story = {
 
         <Popover>
           <PopoverTrigger asChild>
-            <Button variant="info">Position: Left</Button>
+            <Button variant="outline">Position: Left</Button>
           </PopoverTrigger>
           <PopoverContent className="text-sm px-3 py-1" position="left">
             I appear to the left!

@@ -50,7 +50,7 @@ const meta = {
     layout: "centered",
   },
 
-  title: "Components/Loaders/ScreenLoader",
+  title: "Feedback/Loaders/ScreenLoader",
 } satisfies Meta<typeof ScreenLoader>;
 
 export default meta;

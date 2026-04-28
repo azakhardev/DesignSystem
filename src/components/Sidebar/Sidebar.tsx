@@ -1,4 +1,5 @@
-import { Minus } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+import { ChevronDown, ChevronUp, Minus } from "lucide-react";
 import React, {
   createContext,
   useCallback,
@@ -8,8 +9,10 @@ import React, {
 } from "react";
 
 import { useIsMobile } from "../../hooks/useIsMobile";
+import Slot from "../../lib/Slot";
 import { cn } from "../../lib/utils";
 import { Dialog, DialogContent } from "../Dialog";
+import { Tooltip, TooltipContent, TooltipTrigger } from "../Tooltip";
 
 interface SidebarContextType {
   collapsed: boolean;
@@ -220,62 +223,127 @@ function SidebarBody({
   );
 }
 
-interface SidebarItemProps extends React.ComponentProps<"div"> {
-  categoryTitle?: boolean;
+interface SidebarGroupProps extends React.ComponentProps<"div"> {
+  defaultOpen?: boolean;
   icon?: React.ReactNode;
+  title: string;
 }
 
-function SidebarItem({
-  categoryTitle,
+function SidebarGroup({
   children,
   className,
+  defaultOpen,
   icon,
+  title,
   ...props
-}: SidebarItemProps) {
-  const hideWhenCollapsed = "group-data-[collapsed=true]/sidebar:hidden";
-  const showOnlyWhenCollapsed =
-    "hidden group-data-[collapsed=true]/sidebar:block";
+}: SidebarGroupProps) {
+  const [expanded, setExpanded] = useState(defaultOpen);
 
   return (
     <div
-      className={cn(
-        "flex flex-row items-center gap-2 rounded-md p-2 transition-all",
-        "justify-start",
-        !categoryTitle ? "cursor-pointer hover:bg-info-surface" : "mt-2",
-        className,
-      )}
+      className={cn("flex flex-col gap-2 items-start mb-2", className)}
       {...props}
     >
-      {categoryTitle ? (
-        <>
-          <h4
-            className={cn(
-              "font-bold text-lg whitespace-nowrap overflow-hidden",
-              hideWhenCollapsed,
-            )}
+      <button
+        className={cn(
+          "relative flex flex-row gap-1 items-center justify-start w-full font-bold ",
+          "group-data-[collapsed=true]/sidebar:pl-2 group/group-title outline-primary-focus",
+        )}
+        onClick={() => setExpanded((old) => !old)}
+      >
+        {icon ?? (
+          <Minus className="group-data-[collapsed=false]/sidebar:hidden" />
+        )}
+        <h4 className="group-data-[collapsed=true]/sidebar:hidden">{title}</h4>
+        <div
+          className={cn(
+            "absolute right-0 top-1/2 -translate-y-1/2 opacity-0 group-hover/group-title:opacity-100",
+            "transition-all duration-200 pointer-events-none group-data-[collapsed=true]/sidebar:hidden",
+          )}
+        >
+          {expanded ? <ChevronUp /> : <ChevronDown />}
+        </div>
+      </button>
+      <AnimatePresence>
+        {expanded && (
+          <motion.div
+            animate={{
+              height: "auto",
+              opacity: 1,
+            }}
+            className="group-data-[collapsed=false]/sidebar:pl-1 flex flex-col gap-1 w-full overflow-y-hidden"
+            exit={{
+              height: 0,
+              opacity: 0.1,
+            }}
+            initial={{ height: 0, opacity: 0.1 }}
           >
             {children}
-          </h4>
-          <div className={cn(showOnlyWhenCollapsed)}>
-            {icon ?? <Minus strokeWidth={3} />}
-          </div>
-        </>
-      ) : (
-        <>
-          <div className="shrink-0 flex items-center justify-center">
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
+interface SidebarItemProps extends React.ComponentProps<"button"> {
+  /**
+   * Uses React composition capabilities to merge components
+   */
+  asChild?: boolean;
+  /**
+   * Defines an icon of the Item
+   */
+  icon?: React.ReactNode;
+  /**
+   * Title of the item, used for tooltip when sidebar is collapsed
+   */
+  title?: string;
+}
+
+function SidebarItem({
+  asChild,
+  children,
+  className,
+  icon,
+  title,
+  ...props
+}: SidebarItemProps) {
+  const { collapsed } = useSidebarContext();
+
+  const Comp = asChild ? Slot : "button";
+
+  return (
+    <Tooltip closeDelayDuration={50} delayDuration={150}>
+      <TooltipTrigger asChild>
+        <Comp
+          className={cn(
+            "flex flex-row items-center gap-2 rounded-md p-2 transition-all",
+            "justify-start cursor-pointer hover:bg-info-surface",
+            "focus:outline-none focus:bg-info-surface",
+            className,
+          )}
+          {...props}
+        >
+          <div className="shrink-0 flex items-center justify-center group-data-[collapsed=true]/sidebar:text-text/80">
             {icon}
           </div>
+
           <div
             className={cn(
-              "whitespace-nowrap overflow-hidden transition-opacity duration-200",
-              hideWhenCollapsed,
+              "whitespace-nowrap overflow-hidden transition-all duration-300",
+              "group-data-[collapsed=true]/sidebar:w-0 group-data-[collapsed=true]/sidebar:opacity-0",
+              "group-data-[collapsed=false]/sidebar:w-auto group-data-[collapsed=false]/sidebar:opacity-100",
             )}
           >
             {children}
           </div>
-        </>
+        </Comp>
+      </TooltipTrigger>
+      {collapsed && title && (
+        <TooltipContent side="right" sideOffset={12} text={title} />
       )}
-    </div>
+    </Tooltip>
   );
 }
 
@@ -297,17 +365,27 @@ function SidebarFooter({
   );
 }
 
+interface SidebarTriggerProps extends React.ComponentProps<"button"> {
+  /**
+   * Uses React composition capabilities to merge components
+   */
+  asChild?: boolean;
+}
+
 function SidebarTrigger({
+  asChild,
   children,
   className,
   ...props
-}: React.ComponentProps<"button">) {
+}: SidebarTriggerProps) {
   const { toggleSidebar } = useSidebarContext();
 
+  const Comp = asChild ? Slot : "button";
+
   return (
-    <button
+    <Comp
       className={cn(
-        "p-2 rounded border border-border hover:bg-border transition-colors bg-border-subtle",
+        "p-2 rounded-sm border border-border hover:bg-border transition-colors bg-border-subtle",
         className,
       )}
       onClick={() => toggleSidebar()}
@@ -315,7 +393,7 @@ function SidebarTrigger({
       {...props}
     >
       {children}
-    </button>
+    </Comp>
   );
 }
 
@@ -324,8 +402,14 @@ export {
   SidebarBody,
   SidebarContent,
   SidebarFooter,
+  SidebarGroup,
   SidebarHeader,
   SidebarItem,
   SidebarTrigger,
 };
-export type { SidebarContentProps, SidebarProps };
+export type {
+  SidebarContentProps,
+  SidebarGroupProps,
+  SidebarProps,
+  SidebarTriggerProps,
+};

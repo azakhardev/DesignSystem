@@ -214,7 +214,7 @@ export const NativeForm: Story = {
         </div>
 
         <button
-          className="w-full rounded bg-primary px-4 py-2 font-medium text-on-primary hover:bg-primary-focus"
+          className="w-full rounded-sm bg-primary px-4 py-2 font-medium text-on-primary hover:bg-primary-focus"
           type="submit"
         >
           Submit Form

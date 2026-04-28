@@ -65,7 +65,7 @@ const meta = {
     DropdownMenu,
     DropdownTrigger,
   } as Record<string, React.ComponentType<unknown>>,
-  title: "Components/Dropdown",
+  title: "Overlays/Dropdown",
 } satisfies Meta<typeof Dropdown>;
 
 export default meta;

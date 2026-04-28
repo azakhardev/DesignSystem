@@ -24,7 +24,7 @@ const meta = {
   parameters: {
     layout: "centered",
   },
-  title: "Components/Skeleton",
+  title: "Feedback/Skeleton",
 } satisfies Meta<typeof Skeleton>;
 
 export default meta;

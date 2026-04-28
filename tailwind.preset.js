@@ -4,6 +4,20 @@ export default {
   darkMode: "class",
   theme: {
     extend: {
+      keyframes: {
+        pulseCustom: {
+          from: { transform: "translate(-50%, -50%) scale(1)" },
+          to: { transform: "translate(-50%, -50%) scale(2.5)", opacity: "0" },
+        },
+        bgSlide: {
+          from: { "background-position-x": "150%" },
+          to: { "background-position-x": "-50%" },
+        },
+      },
+      animation: {
+        "pulse-custom": "pulseCustom 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        "bg-slide": "bgSlide 3s linear infinite",
+      },
       colors: {
         background: "hsl(var(--app-background) / <alpha-value>)",
         surface: {

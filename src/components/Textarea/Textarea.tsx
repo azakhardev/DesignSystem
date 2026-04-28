@@ -26,12 +26,12 @@ function Textarea({
         aria-invalid={!!errorText}
         className={cn(
           "px-2 py-2 rounded-md border border-border transition-all w-full",
-          "bg-input-background text-text",
-          "focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-1 focus-within:ring-offset-background placeholder:text-text-secondary",
+          "bg-input-background text-text hover:bg-input-hover",
+          "focus-within:outline-hidden focus-within:ring-2 focus-within:ring-offset-1 focus-within:ring-offset-background placeholder:text-text-secondary",
           disabled && "opacity-50 cursor-not-allowed bg-disabled-surface",
           errorText && !disabled
             ? "border-error focus-within:ring-error"
-            : "border-border focus-within:ring-primary-focus",
+            : "border-border focus-within:ring-input-focus",
           className,
         )}
         disabled={disabled}

@@ -10,6 +10,7 @@ import {
 
 import { useIsMobile } from "../../hooks/useIsMobile";
 import { useOnClickOutside } from "../../hooks/useOnClickOutside";
+import Slot from "../../lib/Slot";
 import { cn } from "../../lib/utils";
 
 type SelectContextType = {
@@ -119,6 +120,10 @@ function Select({
 
 interface SelectTriggerProps extends React.ComponentProps<"button"> {
   /**
+   * Uses React composition capabilities to merge components
+   */
+  asChild?: boolean;
+  /**
    * The text displayed inside the trigger when no options are currently selected.
    */
   placeholder?: string;
@@ -131,6 +136,7 @@ interface SelectTriggerProps extends React.ComponentProps<"button"> {
 }
 
 function SelectTrigger({
+  asChild,
   children,
   className,
   placeholder = "Select option",
@@ -138,6 +144,8 @@ function SelectTrigger({
   ...props
 }: SelectTriggerProps) {
   const { onOpenChange, value } = useSelectContext();
+
+  const Comp = asChild ? Slot : "button";
 
   function handleOpen() {
     onOpenChange(true);
@@ -166,9 +174,9 @@ function SelectTrigger({
     }
   }
   return (
-    <button
+    <Comp
       className={cn(
-        "flex min-w-[150px] items-center justify-between p-2 border-border border bg-input-background cursor-pointer rounded focus:outline-none focus:ring-2 focus:ring-input-focus hover:bg-input-focus/60 transition-colors",
+        "flex min-w-37.5 items-center justify-between p-2 border-border border bg-input-background cursor-pointer rounded-sm focus:outline-hidden focus:ring-2 focus:ring-input-focus hover:bg-input-hover transition-colors",
         !hasValue && "text-text-secondary",
         className,
       )}
@@ -179,7 +187,7 @@ function SelectTrigger({
       <span className="truncate">{children ?? displayedContent}</span>
 
       <ChevronDown className="ml-2 opacity-50 text-xs" />
-    </button>
+    </Comp>
   );
 }
 
@@ -249,7 +257,7 @@ function SelectContent({
     <div
       className={cn(
         "bg-input-background border rounded-md border-border overflow-y-auto z-50",
-        "focus:outline-none",
+        "focus:outline-hidden",
         style,
         className,
       )}
@@ -323,7 +331,7 @@ function SelectItem({ children, className, value, ...props }: SelectItemProps) {
       className={cn(
         "cursor-pointer p-1 ",
         "hover:bg-input-hover focus:bg-input-hover",
-        "focus:outline-none focus:ring-2 ring-input-focus",
+        "focus:outline-hidden focus:ring-2 ring-input-focus",
         isSelected && "font-bold text-primary",
         className,
       )}

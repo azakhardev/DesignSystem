@@ -41,7 +41,7 @@ const meta = {
     ProgressLabel,
     ProgressValue,
   } as Record<string, React.ComponentType<unknown>>,
-  title: "Components/Progress",
+  title: "Feedback/Progress",
 } satisfies Meta<typeof Progress>;
 
 export default meta;
@@ -237,7 +237,7 @@ export const CustomStyles: Story = {
       <Progress value={65}>
         <ProgressLabel>Vibrant Gradient</ProgressLabel>
         <ProgressBar className="h-6 rounded-full border-none bg-surface-secondary shadow-inner">
-          <ProgressIndicator className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-full" />
+          <ProgressIndicator className="bg-linear-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-full" />
         </ProgressBar>
         <ProgressValue
           autofill

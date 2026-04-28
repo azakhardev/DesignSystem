@@ -52,7 +52,7 @@ const meta = {
     AccordionItem,
     AccordionTrigger,
   } as Record<string, React.ComponentType<unknown>>,
-  title: "Components/Accordion",
+  title: "Data Display/Accordion",
 } satisfies Meta<typeof Accordion>;
 
 export default meta;
@@ -79,7 +79,7 @@ export const SingleMode: Story = {
     expect(canvas.getByText(/two-factor/i)).toBeInTheDocument();
   },
   render: (args) => (
-    <div className="w-[500px]">
+    <div className="w-125">
       <Accordion {...args}>
         <AccordionItem value="item-1">
           <AccordionHeader>
@@ -123,7 +123,7 @@ export const MultipleMode: Story = {
     expect(canvas.getByText(/download our app/i)).toBeInTheDocument();
   },
   render: () => (
-    <div className="w-[500px]">
+    <div className="w-125">
       <Accordion defaultValue={["faq-1"]} mode="multiple">
         <AccordionItem value="faq-1">
           <AccordionHeader>
@@ -173,7 +173,7 @@ export const NonCollapsible: Story = {
     expect(canvas.getByText(/register your application/i)).toBeInTheDocument();
   },
   render: () => (
-    <div className="w-[500px]">
+    <div className="w-125">
       <p className="mb-4 text-xs text-text-secondary italic underline">
         Try clicking the open item to close it (it won&apos;t work).
       </p>
@@ -209,7 +209,7 @@ export const NonCollapsible: Story = {
  */
 export const TriggerVariations: Story = {
   render: () => (
-    <div className="w-[600px] space-y-8">
+    <div className="w-150 space-y-8">
       <section className="space-y-2">
         <h4 className="text-[10px] font-mono uppercase text-text-secondary">
           1. Full Width Trigger
@@ -284,7 +284,7 @@ export const TriggerVariations: Story = {
  */
 export const CustomIcons: Story = {
   render: () => (
-    <div className="w-[500px]">
+    <div className="w-125">
       <Accordion mode="single">
         <AccordionItem value="custom-1">
           <AccordionHeader>
@@ -323,22 +323,22 @@ export const ExternallyControlled: Story = {
     const [val, setVal] = useState<string>("tab-1");
 
     return (
-      <div className="w-[500px] space-y-4">
+      <div className="w-125 space-y-4">
         <div className="flex gap-2">
           <button
-            className="px-2 py-1 text-xs border rounded bg-surface"
+            className="px-2 py-1 text-xs border rounded-sm bg-surface"
             onClick={() => setVal("tab-1")}
           >
             Open 1
           </button>
           <button
-            className="px-2 py-1 text-xs border rounded bg-surface"
+            className="px-2 py-1 text-xs border rounded-sm bg-surface"
             onClick={() => setVal("tab-2")}
           >
             Open 2
           </button>
           <button
-            className="px-2 py-1 text-xs border rounded bg-surface text-error-text"
+            className="px-2 py-1 text-xs border rounded-sm bg-surface text-error-text"
             onClick={() => setVal("")}
           >
             Close All

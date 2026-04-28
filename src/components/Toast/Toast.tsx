@@ -75,7 +75,7 @@ function Toaster({
     <div
       aria-label="Notifications"
       className={cn(
-        "fixed z-[100] p-4 flex gap-2 pointer-events-none ",
+        "fixed z-100 p-4 flex gap-2 pointer-events-none ",
         positionClasses[position],
       )}
       role="region"

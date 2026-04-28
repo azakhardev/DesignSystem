@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Terminal } from "lucide-react";
 
-import { Alert, AlertMessage,AlertTitle } from "./Alert";
+import { Alert, AlertMessage, AlertTitle } from "./Alert";
 
 /**
  * A distinctive alert component with **absolute positioning** for icons.
@@ -40,7 +40,7 @@ const meta = {
     string,
     React.ComponentType<unknown>
   >,
-  title: "Components/Alert",
+  title: "Feedback/Alert",
 } satisfies Meta<typeof Alert>;
 
 export default meta;

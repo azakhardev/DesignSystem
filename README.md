@@ -4,7 +4,7 @@ A modern, accessible, and strongly typed React Design System built with **Vite**
 
 ![Version](https://img.shields.io/github/package-json/v/azakhardev/DesignSystem/main?label=version&color=blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
-![Progress](https://progress-bar.xyz/60?title=Progress)
+![Progress](https://progress-bar.xyz/75?title=Progress)
 
 ### 🚀 Features
 
@@ -75,19 +75,35 @@ export default {
 **Tailwind v4.0** imports:
 
 ```js
-//Your index.css
+//Your App.css or index.css
 @import "tailwindcss";
+
+//Or try this:
+//@layer theme, base, components, utilities;
+//@import "tailwindcss/theme.css" layer(theme);
+//@import "tailwindcss/utilities.css" layer(utilities);
 
 @import "@artemdev04/design-system/style.css";
 @config "@artemdev04/design-system/tailwind.preset";
 @source "@artemdev04/design-system/dist";
 
 //The rest of your styles
+@theme {
+  --color-avocado: oklch(0.84 0.18 117.33);
+  //...
+}
 ```
 
-> [!CAUTION]
-> Border styles are for now quite buggy - I didn't manage how to change the default border color
-> in Tailwind v4.0 projects, so it will fallback to the gray and override any color.
+```tsx
+//Your App.tsx
+//Previous imports
+import "./App.css";
+import "@artemdev04/design-system/style.css";
+
+function App() {
+  return <div className="flex flex-col bg-background">{/*Children*/}</div>;
+}
+```
 
 ### 🛠 Development
 

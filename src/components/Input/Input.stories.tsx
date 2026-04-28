@@ -132,7 +132,7 @@ export const PasswordInput: Story = {
         suffix={
           <button
             aria-label="show-password"
-            className="focus:outline-none text-text-secondary hover:text-text transition-colors"
+            className="focus:outline-hidden text-text-secondary hover:text-text transition-colors"
             onClick={() => setShowPassword(!showPassword)}
             tabIndex={-1}
             type="button"

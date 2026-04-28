@@ -32,7 +32,7 @@ const meta = {
   parameters: {
     layout: "centered",
   },
-  title: "Components/Separator",
+  title: "Primitives/Separator",
 } satisfies Meta<typeof Separator>;
 
 export default meta;
@@ -44,7 +44,7 @@ export const Horizontal: Story = {
     thickness: 1,
   },
   render: (args) => (
-    <div className="w-[300px] space-y-4 rounded-lg border p-4 shadow-sm">
+    <div className="w-75 space-y-4 rounded-lg border p-4 shadow-xs">
       <div>
         <h4 className="font-medium leading-none">Dimensions</h4>
         <p className="text-sm text-text-secondary">
@@ -85,7 +85,7 @@ export const CustomStyle: Story = {
     thickness: 3,
   },
   render: (args) => (
-    <div className="w-[300px] space-y-4">
+    <div className="w-75 space-y-4">
       <div className="text-center font-bold text-primary">Section Header</div>
       <Separator {...args} />
       <p className="text-sm text-text-secondary">

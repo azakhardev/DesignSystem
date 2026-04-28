@@ -47,7 +47,7 @@ const meta = {
     TabContent,
     TabsList,
   } as Record<string, React.ComponentType<unknown>>,
-  title: "Layout/Tabs",
+  title: "Navigation/Tabs",
 } satisfies Meta<typeof Tabs>;
 
 export default meta;
@@ -154,7 +154,7 @@ export const FullWidth: Story = {
           </Tab>
         </TabsList>
         <TabContent className="pt-4 bg-surface-secondary" value="login">
-          <div className="h-32 rounded flex items-center justify-center">
+          <div className="h-32 rounded-sm flex items-center justify-center">
             Login Form
           </div>
         </TabContent>

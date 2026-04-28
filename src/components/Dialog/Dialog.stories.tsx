@@ -62,7 +62,7 @@ const meta = {
     DialogTrigger,
   } as Record<string, React.ComponentType<unknown>>,
 
-  title: "Layout/Dialog",
+  title: "Overlays/Dialog",
 } satisfies Meta<StoryProps>;
 
 export default meta;
@@ -129,7 +129,7 @@ export const Default: Story = {
 
         <DialogButtons>
           <Button variant="ghost">Cancel</Button>
-          <Button variant="confirm">Confirm Action</Button>
+          <Button variant="success">Confirm Action</Button>
         </DialogButtons>
       </DialogContent>
 
@@ -174,10 +174,10 @@ export const ScrollableContent: Story = {
         </DialogBody>
 
         <DialogButtons className="bg-surface pt-4 border-t border-border">
-          <Button className="w-full sm:w-auto" variant="danger">
+          <Button className="w-full sm:w-auto" variant="destructive">
             Decline
           </Button>
-          <Button className="w-full sm:w-auto" variant="confirm">
+          <Button className="w-full sm:w-auto" variant="success">
             Accept Terms
           </Button>
         </DialogButtons>
@@ -282,7 +282,7 @@ export const EditProfile: Story = {
 
         <DialogButtons>
           <Button variant="ghost">Cancel</Button>
-          <Button variant="confirm">Save Changes</Button>
+          <Button variant="success">Save Changes</Button>
         </DialogButtons>
       </DialogContent>
       <DialogTrigger variant="secondary">Edit Profile</DialogTrigger>

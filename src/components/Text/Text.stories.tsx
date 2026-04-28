@@ -45,7 +45,7 @@ const meta = {
   parameters: {
     layout: "centered",
   },
-  title: "Components/Text",
+  title: "Primitives/Text",
 } satisfies Meta<typeof Text>;
 
 export default meta;

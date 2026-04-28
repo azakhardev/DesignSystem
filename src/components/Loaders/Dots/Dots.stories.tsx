@@ -65,7 +65,7 @@ const meta = {
   parameters: {
     layout: "centered",
   },
-  title: "Components/Loaders/Dots",
+  title: "Feedback/Loaders/Dots",
 } satisfies Meta<typeof Dots>;
 
 export default meta;

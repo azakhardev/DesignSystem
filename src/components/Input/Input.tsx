@@ -28,12 +28,12 @@ function Input({
       <div
         className={cn(
           "flex flex-row items-center gap-2 px-2 py-2 rounded-md border transition-all",
-          "bg-input-background text-text",
-          "focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-1 focus-within:ring-offset-background",
+          "bg-input-background text-text hover:bg-input-hover",
+          "focus-within:outline-hidden focus-within:ring-2 focus-within:ring-offset-1 focus-within:ring-offset-background",
           disabled && "opacity-50 cursor-not-allowed bg-disabled-surface",
           errorText && !disabled
             ? "border-error focus-within:ring-error"
-            : "border-border focus-within:ring-primary-focus",
+            : "border-border focus-within:ring-input-focus",
           className,
         )}
       >
@@ -45,7 +45,7 @@ function Input({
         <input
           aria-describedby={errorText ? errorId : undefined}
           aria-invalid={!!errorText}
-          className={`flex-1 w-full h-full bg-transparent outline-none placeholder:text-text-secondary file:bg-transparent file:border-0 file:text-sm file:font-medium ${disabled && "cursor-not-allowed"}`}
+          className={`flex-1 w-full h-full bg-transparent outline-hidden placeholder:text-text-secondary file:bg-transparent file:border-0 file:text-sm file:font-medium ${disabled && "cursor-not-allowed"}`}
           disabled={disabled}
           id={inputId}
           ref={ref}

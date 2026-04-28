@@ -6,6 +6,7 @@ import { createContext, useCallback, useContext, useState } from "react";
 import { createPortal } from "react-dom";
 
 import { useEscapeKey } from "../../hooks/useEscapeKey";
+import Slot from "../../lib/Slot";
 import { cn } from "../../lib/utils";
 import { Button, type ButtonVariants } from "../Button";
 
@@ -69,9 +70,15 @@ function Dialog({
 }
 
 interface DialogTriggerProps
-  extends React.ComponentProps<"button">, ButtonVariants {}
+  extends React.ComponentProps<"button">, ButtonVariants {
+  /*
+   * Uses React composition capabilities to merge components
+   */
+  asChild?: boolean;
+}
 
 function DialogTrigger({
+  asChild,
   children,
   ref,
   variant,
@@ -79,15 +86,17 @@ function DialogTrigger({
 }: DialogTriggerProps) {
   const { onOpenChange } = useDialogContext();
 
+  const Comp = asChild ? Slot : Button;
+
   return (
-    <Button
+    <Comp
       onClick={() => onOpenChange(true)}
       ref={ref}
       {...props}
       variant={variant}
     >
       {children}
-    </Button>
+    </Comp>
   );
 }
 

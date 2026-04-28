@@ -1,5 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
+  Banknote,
+  ChartColumn,
+  ChartPie,
   Home,
   LogOut,
   PanelLeft,
@@ -14,6 +17,7 @@ import {
   SidebarBody,
   SidebarContent,
   SidebarFooter,
+  SidebarGroup,
   SidebarHeader,
   SidebarItem,
   SidebarTrigger,
@@ -65,6 +69,7 @@ const meta = {
     SidebarBody,
     SidebarContent,
     SidebarFooter,
+    SidebarGroup,
     SidebarHeader,
     SidebarItem,
   } as Record<string, React.ComponentType<unknown>>,
@@ -78,7 +83,7 @@ const DemoSidebarContent = () => (
   <>
     <SidebarHeader>
       <div className="flex items-center gap-2 p-2 text-primary group-data-[collapsed=true]/sidebar:justify-center">
-        <div className="size-8 rounded bg-primary text-on-primary flex items-center justify-center font-bold shrink-0">
+        <div className="size-8 rounded-sm bg-primary text-on-primary flex items-center justify-center font-bold shrink-0">
           A
         </div>
         <div className="font-bold text-lg whitespace-nowrap overflow-hidden group-data-[collapsed=true]/sidebar:hidden transition-all duration-300 opacity-100 group-data-[collapsed=true]/sidebar:opacity-0">
@@ -88,16 +93,28 @@ const DemoSidebarContent = () => (
     </SidebarHeader>
 
     <SidebarBody>
-      <SidebarItem categoryTitle>General</SidebarItem>
-      <SidebarItem icon={<Home />}>Dashboard</SidebarItem>
-      <SidebarItem icon={<User />}>Team Members</SidebarItem>
-      <SidebarItem icon={<Settings />}>Settings</SidebarItem>
+      <SidebarGroup defaultOpen title="General">
+        <SidebarItem icon={<Home />} title="Dashboard">
+          Dashboard
+        </SidebarItem>
+        <SidebarItem icon={<User />}>Team Members</SidebarItem>
+        <SidebarItem icon={<Settings />} title="Settings">
+          Settings
+        </SidebarItem>
+      </SidebarGroup>
+      <SidebarGroup icon={<ChartColumn />} title="Statistics">
+        <SidebarItem icon={<ChartPie />} title="Reports">
+          Reports
+        </SidebarItem>
+        <SidebarItem icon={<Banknote />}>Revenue</SidebarItem>
+      </SidebarGroup>
     </SidebarBody>
 
     <SidebarFooter>
       <SidebarItem
         className="text-error-text mt-auto hover:bg-red-600/30"
         icon={<LogOut />}
+        title="Log out"
       >
         Log out
       </SidebarItem>
@@ -128,7 +145,7 @@ export const LeftPanel: Story = {
     defaultCollapsed: false,
   },
   play: async function ({ canvas, userEvent }) {
-    const toggle = canvas.getByRole("button");
+    const toggle = canvas.getByTestId("trigger");
 
     await userEvent.click(toggle);
 
@@ -150,7 +167,7 @@ export const LeftPanel: Story = {
         </SidebarContent>
         <main className="flex-1 p-8 overflow-auto transition-all duration-300">
           <header className="flex items-center gap-4 mb-6">
-            <SidebarTrigger>
+            <SidebarTrigger data-testid="trigger">
               <PanelLeft />
             </SidebarTrigger>
             <h1 className="text-2xl font-bold text-text">Dashboard</h1>
@@ -181,7 +198,7 @@ export const RightPanel: Story = {
     },
   },
   play: async function ({ canvas, userEvent }) {
-    const toggle = canvas.getByRole("button");
+    const toggle = canvas.getByTestId("trigger");
 
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
 
@@ -197,8 +214,7 @@ export const RightPanel: Story = {
         <main className="flex-1 p-8 overflow-auto mr-0">
           <header className="flex items-center justify-between mb-6">
             <h1 className="text-2xl font-bold text-text">Settings</h1>
-            {/* Trigger placed on the right for context */}
-            <SidebarTrigger>
+            <SidebarTrigger data-testid="trigger">
               <PanelRight />
             </SidebarTrigger>
           </header>

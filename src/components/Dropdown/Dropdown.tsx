@@ -4,6 +4,7 @@ import { createContext, use, useEffect, useRef, useState } from "react";
 
 import { useEscapeKey } from "../../hooks/useEscapeKey";
 import { useOnClickOutside } from "../../hooks/useOnClickOutside";
+import Slot from "../../lib/Slot";
 import { cn } from "../../lib/utils";
 
 type DropdownContextType = {
@@ -86,13 +87,23 @@ function Dropdown({
   );
 }
 
+interface DropdownTriggerProps extends React.ComponentProps<"button"> {
+  /**
+   * Uses React composition capabilities to merge components
+   */
+  asChild?: boolean;
+}
+
 function DropdownTrigger({
+  asChild,
   children,
   className,
   onClick,
   ...props
-}: React.ComponentProps<"button">) {
+}: DropdownTriggerProps) {
   const { onOpenChange, open, triggerAction } = useDropdown();
+
+  const Comp = asChild ? Slot : "button";
 
   function handleClick(ev: React.MouseEvent<HTMLButtonElement>) {
     onClick?.(ev);
@@ -103,7 +114,7 @@ function DropdownTrigger({
   }
 
   return (
-    <button
+    <Comp
       aria-expanded={open}
       aria-haspopup="menu"
       className={cn(
@@ -115,7 +126,7 @@ function DropdownTrigger({
       {...props}
     >
       {children}
-    </button>
+    </Comp>
   );
 }
 
@@ -154,7 +165,7 @@ function DropdownItem<T extends React.ElementType = "button">({
         variant === "checkbox" || variant === "radio" ? active : undefined
       }
       className={cn(
-        "px-2 py-1 gap-2 flex flex-row items-center justify-between text-nowrap group hover:bg-surface-secondary focus:bg-surface-secondary outline-none",
+        "px-2 py-1 gap-2 flex flex-row items-center justify-between text-nowrap group hover:bg-surface-secondary focus:bg-surface-secondary outline-hidden",
         active && "font-bold",
         props.disabled && "opacity-50 cursor-not-allowed",
         className,
@@ -187,7 +198,7 @@ function DropdownItem<T extends React.ElementType = "button">({
 }
 
 const dropdownMenuVariants = cva(
-  "absolute flex flex-col p-1 gap-1 bg-surface rounded border border-border shadow z-20 min-w-max",
+  "absolute flex flex-col p-1 gap-1 bg-surface rounded-sm border border-border shadow-sm z-20 min-w-max",
   {
     defaultVariants: {
       position: "bottom-start",
@@ -282,4 +293,4 @@ function DropdownMenu({
 }
 
 export { Dropdown, DropdownItem, DropdownMenu, DropdownTrigger };
-export type { DropdownItemProps, DropdownProps };
+export type { DropdownItemProps, DropdownProps, DropdownTriggerProps };

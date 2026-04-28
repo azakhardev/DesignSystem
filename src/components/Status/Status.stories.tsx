@@ -29,7 +29,7 @@ const meta = {
   parameters: {
     layout: "centered",
   },
-  title: "Components/Status",
+  title: "Primitives/Status",
 } satisfies Meta<typeof Status>;
 
 export default meta;
