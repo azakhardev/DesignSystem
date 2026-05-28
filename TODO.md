@@ -70,6 +70,7 @@
 - [ ] ImageDialog - Dialog component for displaying images with toolbar options (zoom, save, copy, etc.)
 - [ ] ToolPanel - For selectiong tools/funcitons on hover with stacking ability.
 - [ ] Carousel - Component for dispalying items with auto-scroll or manual scroll.
+- [ ] Canvas - Canvasa with abstract components to use on canvas and triggers.
 
 ### Other: TODO and overall improvements
 
