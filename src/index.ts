@@ -9,6 +9,7 @@ export * from "./components/Callout";
 export * from "./components/Card";
 export * from "./components/Checkbox";
 export * from "./components/Container";
+export * from "./components/Datepicker";
 export * from "./components/Dialog";
 export * from "./components/Dropdown";
 export * from "./components/Group";
