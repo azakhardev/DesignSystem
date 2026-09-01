@@ -70,13 +70,13 @@ function Datepicker({
 }
 
 interface DatepickerTriggerProps extends React.ComponentProps<"button"> {
-  dateFomratter?: (v: string) => string;
+  dateFormatter?: (v: string) => string;
   placeholder?: string;
 }
 
 function DatepickerTrigger({
   className,
-  dateFomratter,
+  dateFormatter,
   onClick,
   placeholder,
   ...props
@@ -88,7 +88,7 @@ function DatepickerTrigger({
     onOpenChange(!open);
   }
 
-  const displayedValue = dateFomratter ? dateFomratter(value) : value;
+  const displayedValue = dateFormatter ? dateFormatter(value) : value;
 
   return (
     <button
@@ -107,7 +107,24 @@ function DatepickerContent() {
 
   if (!open) return null;
 
-  return <div>Datepicer Content</div>;
+  const date = value ? new Date(value) : new Date();
+  const days = getCalendarDays(date.getFullYear(), date.getMonth());
+
+  return (
+    <div className="flex flex-col gap-2 items-center justify-center">
+      <h4>Datepicer Content</h4>
+      <div className=" grid grid-cols-7 grid-rows-6 gap-0.5">
+        {days.map((d) => (
+          <div
+            className="flex items-center justify-center p-0.5 border rounded-xs"
+            key={d.date.toISOString()}
+          >
+            {d.date.getDate()}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }
 
 function getCalendarDays(year: number, month: number) {
