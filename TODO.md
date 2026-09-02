@@ -59,7 +59,8 @@
 ### Phase 4: Advanced Components (Complex Logic)
 
 - [ ] Autocomplete (Whisper Input) – Input with suggestions based on regex or string matching.
-- [ ] Datepicker – Calendar input for date selection.
+- [x] Datepicker – Calendar input for date selection.
+  - [ ] DateRangepicker - Calendar input for date range selection.
 - [x] Calendar – Static or interactive calendar for displaying events/dates.
 - [ ] Range Slider – Number slider with two handles (min/max) or single handle, with stepping and custom labels.
 - [ ] Stepper (Multi-step progress) – Steps connected by lines, dynamically updating based on state.

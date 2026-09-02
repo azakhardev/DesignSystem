@@ -29,10 +29,23 @@ function useCalendar() {
 }
 
 interface CalendarProps {
+  /**
+   * The subcomponents of the Calendar, typically `<CalendarHeader>` and `<CalendarContent>`.
+   */
   children?: React.ReactNode;
+  /**
+   * Callback fired when a date is selected. Passes the date as an ISO string.
+   */
   setValue?: (v: string) => void;
+  /**
+   * The controlled date value of the calendar (expected as an ISO string).
+   */
   value?: string;
-  weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6; // 0 = Sun, 1 = Mon...
+  /**
+   * Defines which day the week starts on. 0 = Sunday, 1 = Monday, etc.
+   * @default 0
+   */
+  weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
 }
 
 function Calendar({
@@ -89,7 +102,13 @@ interface CalendarCellProps extends Omit<
   React.ComponentProps<"button">,
   "value" | "onClick"
 > {
+  /**
+   * The calendar day object containing the native Date and context (date, isToday, isCurrentMonth).
+   */
   day: CalendarDay;
+  /**
+   * Optional callback fired when this specific cell is clicked. Passes the native Date object.
+   */
   onCellClick?: (d: Date) => void;
 }
 
@@ -155,7 +174,7 @@ const YEARS = Array.from({ length: 2104 - 1900 + 1 }, (_, i) => 1900 + i);
 interface CalendarHeaderProps extends React.ComponentProps<"div"> {
   /**
    * Array of 12 strings representing the months of the year.
-   * Defaults to English month names.
+   * @default ["January", "February", ...]
    */
   monthNames?: string[];
 }
@@ -206,7 +225,7 @@ function CalendarHeader({
       {...props}
     >
       {/* === MONTH SELECTOR === */}
-      <div className="flex items-center gap-1">
+      <div className="flex items-center justify-between gap-1 w-37.5">
         <button
           aria-label="Previous month"
           className="flex h-8 w-8 items-center justify-center rounded-md text-text-secondary transition-colors hover:bg-surface-secondary hover:text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
@@ -216,7 +235,6 @@ function CalendarHeader({
           <ChevronLeft />
         </button>
 
-        {/* Dynamic Month Name */}
         <span className="text-center font-medium text-text">
           {monthNames[period.month]}
         </span>
@@ -282,8 +300,21 @@ function CalendarHeader({
 const DEFAULT_DAYS = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
 
 interface CalendarContentProps extends React.ComponentProps<"div"> {
+  /**
+   * A render prop function that allows you to fully customize how each day cell is displayed.
+   */
   cellRenderer?: (day: CalendarDay) => React.ReactNode;
+  /**
+   * Array of 7 strings representing the days of the week.
+   * MUST be provided in standard JS order: Sunday to Saturday.
+   * The component will automatically reorder them based on `weekStartsOn`.
+   * @default ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"]
+   */
   dayNames?: string[];
+  /**
+   * Determines whether the days of the week row is rendered at the top of the grid.
+   * @default true
+   */
   showDaysOfWeek?: boolean;
 }
 
