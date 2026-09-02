@@ -72,6 +72,7 @@
 - [ ] ToolPanel - For selectiong tools/funcitons on hover with stacking ability.
 - [ ] Carousel - Component for dispalying items with auto-scroll or manual scroll.
 - [ ] Canvas - Create canvas and abstract components to use in canvas (eg. Shape, Line, etc...).
+- [ ] Chart - Own custom charts for displaying customisable linear (+area), radial (+donut) or column (+bar) charts.
 
 ### Other: TODO and overall improvements
 
