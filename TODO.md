@@ -58,7 +58,7 @@
 
 ### Phase 4: Advanced Components (Complex Logic)
 
-- [ ] Autocomplete (Whisper Input) – Input with suggestions based on regex or string matching.
+- [x] Autocomplete (Whisper Input) – Input with suggestions based on regex or string matching.
 - [x] Datepicker – Calendar input for date selection.
   - [ ] DateRangepicker - Calendar input for date range selection.
 - [x] Calendar – Static or interactive calendar for displaying events/dates.
