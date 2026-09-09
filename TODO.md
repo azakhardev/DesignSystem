@@ -58,7 +58,7 @@
 
 ### Phase 4: Advanced Components (Complex Logic)
 
-- [ ] Autocomplete (Whisper Input) – Input with suggestions based on regex or string matching.
+- [x] Autocomplete (Whisper Input) – Input with suggestions based on regex or string matching.
 - [x] Datepicker – Calendar input for date selection.
   - [ ] DateRangepicker - Calendar input for date range selection.
 - [x] Calendar – Static or interactive calendar for displaying events/dates.
@@ -72,6 +72,7 @@
 - [ ] ToolPanel - For selectiong tools/funcitons on hover with stacking ability.
 - [ ] Carousel - Component for dispalying items with auto-scroll or manual scroll.
 - [ ] Canvas - Create canvas and abstract components to use in canvas (eg. Shape, Line, etc...).
+- [ ] Chart - Own custom charts for displaying customisable linear (+area), radial (+donut) or column (+bar) charts.
 
 ### Other: TODO and overall improvements
 
