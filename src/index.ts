@@ -2,6 +2,7 @@ import "./index.css";
 
 export * from "./components/Accordion";
 export * from "./components/Alert";
+export * from "./components/Autocomplete";
 export * from "./components/Badge";
 export * from "./components/Breadcrumb";
 export * from "./components/Button";
