@@ -76,18 +76,16 @@ export default {
 
 ```js
 //Your App.css or index.css
+@layer theme, base, design-system, components,  utilities; // Priority least > most, utilities should be last
+
+@import "@artemdev04/design-system/style.css" layer(design-system);
 @import "tailwindcss";
 
-//Or try this:
-//@layer theme, base, components, utilities;
-//@import "tailwindcss/theme.css" layer(theme);
-//@import "tailwindcss/utilities.css" layer(utilities);
-
-@import "@artemdev04/design-system/style.css";
 @config "@artemdev04/design-system/tailwind.preset";
-@source "@artemdev04/design-system/dist";
+@source "@artemdev04/design-system/dist"; //Autocompletes my styles for you
 
-//The rest of your styles
+
+//The rest of your styles, plugins, themes etc.
 @theme {
   --color-avocado: oklch(0.84 0.18 117.33);
   //...
@@ -98,7 +96,7 @@ export default {
 //Your App.tsx
 //Previous imports
 import "./App.css";
-import "@artemdev04/design-system/style.css";
+//import "@artemdev04/design-system/style.css"; - DONT DO IT, Should be managet by layers
 
 function App() {
   return <div className="flex flex-col bg-background">{/*Children*/}</div>;

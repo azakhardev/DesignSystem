@@ -16,6 +16,8 @@
   - [x] Allow Tooltip on `SidebarItem` hover after creating `Tooltip` Component.
   - [x] Make groups expendable + add animations upon clicking.
   - [x] Make SidebarItem focusable and ~~navigatable using keys~~.
+  - [ ] Add isActive for `SidebarItem` Component
+  - [ ] Update storybook, so user can see code used for `LeftPanel` Component in stories
 - [x] Spinner – Loading indicators: Orbital, Classic, Dots and Page Loader.
 - [x] Alert – Static feedback messages: Error, Warning, Info, Success, No Data.
 - [x] Layout primitives - A simple system to constrain width (Container) or handle flexbox layouts (Group or Stack).
@@ -31,6 +33,8 @@
 - [x] Select – Dropdown selection, ideally with Multi-select support.
   - [x] `SelectGroup` - Component for grouping items inside `SelectContent`.
   - [x] Improve hover styling
+  - [ ] Pass object to valueFormatter, isntead of just value (for custom logic for items interaction)
+  - [ ] Add `disabled` property to SelectItem
 - [x] Tabs – Switching between views with animation. Support for horizontal/vertical alignment.
   - [x] Change to Activity component
   - [x] Add support for navigation between tabs with arrows + style focus mode
@@ -52,6 +56,7 @@
 - [x] Accordion – Collapsible content panels. Support for Single (one open at a time) or Multi mode.
 - [x] Progress Bar – Linear indicator (dynamic for loading or static for capacity).
 - [x] Table – Data grid with styling and "copy value" functionality.
+  - [ ] Update header, so it looks more like a SaaS
 - [ ] Empty State – A component to display when data is missing (e.g., "No items found") with an illustration and a CTA button.
 - [x] Callout - Provides presentation of content in a visually distinct manner.
 - [x] KBD - A simple component for displaying keyboard shortcuts.
@@ -73,6 +78,8 @@
 - [ ] Carousel - Component for dispalying items with auto-scroll or manual scroll.
 - [ ] Canvas - Create canvas and abstract components to use in canvas (eg. Shape, Line, etc...).
 - [ ] Chart - Own custom charts for displaying customisable linear (+area), radial (+donut) or column (+bar) charts.
+- [ ] AI Chat - Components fro chatting - dialog winodw, message, response, input, tools etc.
+- [ ] Scrolls - Create scrollable areas (horizontal/vertical) with custom animations & draggable functions
 
 ### Other: TODO and overall improvements
 
