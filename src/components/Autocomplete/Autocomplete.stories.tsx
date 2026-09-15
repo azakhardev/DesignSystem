@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Search, User } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Autocomplete } from "./Autocomplete";
 
@@ -11,6 +11,25 @@ import { Autocomplete } from "./Autocomplete";
  * and custom list item rendering.
  */
 const meta = {
+  // Added argTypes to generate Storybook controls
+  argTypes: {
+    disabled: {
+      control: "boolean",
+      description: "Disables the autocomplete input.",
+    },
+    errorText: {
+      control: "text",
+      description: "Displays an error message below the input.",
+    },
+    placeholder: {
+      control: "text",
+      description: "Placeholder text for the input.",
+    },
+    value: {
+      control: "text",
+      description: "The current search value.",
+    },
+  },
   component: Autocomplete,
   parameters: {
     layout: "centered",
@@ -29,8 +48,17 @@ type Story = StoryObj<typeof meta>;
  * **Keyboard Navigation:** Try typing, then use `ArrowDown`, `ArrowUp`, and `Enter` to select.
  */
 export const StringArray: Story = {
-  render: () => {
-    const [search, setSearch] = useState("");
+  args: {
+    placeholder: "Search fruits...",
+  },
+  render: (args) => {
+    const [search, setSearch] = useState(args.value ?? "");
+
+    useEffect(() => {
+      if (args.value !== undefined) {
+        setSearch(args.value);
+      }
+    }, [args.value]);
 
     const allFruits = [
       "Apple",
@@ -46,8 +74,9 @@ export const StringArray: Story = {
     );
 
     return (
-      <div className="w-[300px] flex flex-col gap-4">
+      <div className="flex w-75 flex-col gap-4">
         <Autocomplete<string>
+          {...args}
           onSearchChange={setSearch}
           onSelectOption={(val) => {
             setSearch(val);
@@ -57,7 +86,6 @@ export const StringArray: Story = {
             alert(`You searched the raw text: "${val}"`);
           }}
           options={filtered}
-          placeholder="Search fruits..."
           value={search}
         />
       </div>
@@ -71,7 +99,10 @@ export const StringArray: Story = {
  * and `label` for the display text.
  */
 export const ObjectArray: Story = {
-  render: () => {
+  args: {
+    placeholder: "Search frameworks...",
+  },
+  render: (args) => {
     const frameworks = [
       { category: "Library", id: "1", label: "React" },
       { category: "Framework", id: "2", label: "Vue" },
@@ -79,22 +110,27 @@ export const ObjectArray: Story = {
       { category: "Compiler", id: "4", label: "Svelte" },
     ];
 
-    const [search, setSearch] = useState("");
+    const [search, setSearch] = useState(args.value ?? "");
+
+    useEffect(() => {
+      if (args.value !== undefined) setSearch(args.value);
+    }, [args.value]);
+
     const filtered = frameworks.filter((f) =>
       f.label.toLowerCase().includes(search.toLowerCase()),
     );
 
     return (
-      <div className="w-[300px]">
+      <div className="w-75">
         <Autocomplete
-          icon={<Search className="w-4 h-4 text-text-secondary" />}
+          {...args}
+          icon={<Search className="h-4 w-4 text-text-secondary" />}
           onSearchChange={setSearch}
           onSelectOption={(val) => setSearch(val.label)}
           onSubmit={(val) => {
             alert(`You searched the raw text: "${val}"`);
           }}
           options={filtered}
-          placeholder="Search frameworks..."
           value={search}
         />
       </div>
@@ -108,8 +144,11 @@ export const ObjectArray: Story = {
  * badges, or secondary text.
  */
 export const CustomRenderer: Story = {
-  render: () => {
-    type UserType = { id: string; name: string; email: string };
+  args: {
+    placeholder: "Search users by name or email...",
+  },
+  render: (args) => {
+    type UserType = { email: string; id: string; name: string };
 
     const users: UserType[] = [
       { email: "alice@example.com", id: "u1", name: "Alice Smith" },
@@ -117,7 +156,12 @@ export const CustomRenderer: Story = {
       { email: "charlie@example.com", id: "u3", name: "Charlie Davis" },
     ];
 
-    const [search, setSearch] = useState("");
+    const [search, setSearch] = useState(args.value ?? "");
+
+    useEffect(() => {
+      if (args.value !== undefined) setSearch(args.value);
+    }, [args.value]);
+
     const filtered = users.filter(
       (u) =>
         u.name.toLowerCase().includes(search.toLowerCase()) ||
@@ -125,22 +169,22 @@ export const CustomRenderer: Story = {
     );
 
     return (
-      <div className="w-[350px]">
+      <div className="w-87.5">
         <Autocomplete<UserType>
+          {...args}
           // Explicitly define how to get the label text if the object doesn't have a `label` property
           getOptionLabel={(user) => user.name}
           onSearchChange={setSearch}
           onSelectOption={(val) => setSearch(val.name)}
           options={filtered}
-          placeholder="Search users by name or email..."
           renderOption={(user) => (
-            <div className="flex items-center gap-3 w-full">
+            <div className="flex w-full items-center gap-3">
               <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/20 text-primary">
                 <User className="h-4 w-4" />
               </div>
-              <div className="flex flex-col flex-1 overflow-hidden">
-                <span className="font-medium truncate">{user.name}</span>
-                <span className="text-xs text-text-secondary truncate">
+              <div className="flex flex-1 flex-col overflow-hidden">
+                <span className="truncate font-medium">{user.name}</span>
+                <span className="truncate text-xs text-text-secondary">
                   {user.email}
                 </span>
               </div>

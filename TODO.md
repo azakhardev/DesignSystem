@@ -67,7 +67,7 @@
 - [x] Datepicker – Calendar input for date selection.
   - [ ] DateRangepicker - Calendar input for date range selection.
 - [x] Calendar – Static or interactive calendar for displaying events/dates.
-- [ ] Range Slider – Number slider with two handles (min/max) or single handle, with stepping and custom labels.
+- [x] Range Slider – Number slider with two handles (min/max) or single handle, with stepping and custom labels.
 - [ ] Stepper (Multi-step progress) – Steps connected by lines, dynamically updating based on state.
 - [ ] Sortable List – List with Drag & Drop reordering capabilities.
 - [ ] Pagination (Pager) – Logic and UI for navigating large datasets.

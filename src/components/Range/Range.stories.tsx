@@ -9,6 +9,7 @@ import {
   RangeSlider,
   type RangeValue,
 } from "./Range";
+
 /**
  * The **Range** component suite provides a highly flexible, accessible, and robust architecture for building any type of slider or range input.
  *
@@ -61,14 +62,13 @@ type Story = StoryObj<typeof meta>;
 export const SingleThumb: Story = {
   args: {
     children: <div>Empty</div>,
-    defaultValues: [{ id: "volume", value: 50 }],
     max: 100,
     min: 0,
     step: 1,
   },
   render: (args) => (
     <div className="flex w-75 items-center gap-4">
-      <Range {...args}>
+      <Range {...args} defaultValues={[{ id: "volume", value: 50 }]}>
         <RangeSlider>
           {/* Add showTooltip to reveal the floating value! */}
           <RangeItem id="volume" showTooltip />
@@ -87,17 +87,14 @@ export const SingleThumb: Story = {
 export const Stepped: Story = {
   args: {
     children: <div>Empty</div>,
-    defaultValues: [],
+    max: 5,
+    min: 1,
+    step: 1,
   },
-  render: () => {
+  render: (args) => {
     return (
       <div className="w-75 pb-4">
-        <Range
-          defaultValues={[{ id: "rating", value: 3 }]}
-          max={5}
-          min={1}
-          step={1}
-        >
+        <Range {...args} defaultValues={[{ id: "rating", value: 3 }]}>
           <RangeSlider showMarks>
             <RangeItem id="rating" showTooltip />
           </RangeSlider>
@@ -115,7 +112,9 @@ export const Stepped: Story = {
 export const Controlled: Story = {
   args: {
     children: <div>Empty</div>,
-    defaultValues: [],
+    max: 100,
+    min: 0,
+    step: 5,
   },
   render: (args) => {
     const [state, setState] = useState<RangeValue[]>([
@@ -131,13 +130,7 @@ export const Controlled: Story = {
           Max: {state.find((s) => s.id === "max")?.value}
         </div>
 
-        <Range
-          max={args.max ?? 100}
-          min={args.min ?? 0}
-          onValueChange={setState}
-          step={args.step ?? 5}
-          values={state}
-        >
+        <Range {...args} onValueChange={setState} values={state}>
           <div className="flex w-100 flex-col gap-6 rounded-lg border border-border bg-surface p-6 shadow-sm">
             <h4 className="font-medium text-text">Select Range</h4>
             <RangeSlider>
@@ -157,8 +150,13 @@ export const Controlled: Story = {
  * This example uses 4 thumbs to represent video trim boundaries and internal chapter markers.
  */
 export const MultiThumb: Story = {
-  args: { children: <div>Empty</div> },
-  render: () => {
+  args: {
+    children: <div>Empty</div>,
+    max: 120, // 2 minutes max
+    min: 0,
+    step: 1,
+  },
+  render: (args) => {
     const [markers, setMarkers] = useState<RangeValue[]>([
       { id: "start", value: 10 },
       { id: "chapter1", value: 35 },
@@ -174,7 +172,7 @@ export const MultiThumb: Story = {
     };
 
     return (
-      <div className="flex w-[500px] flex-col gap-8 rounded-lg border border-border bg-surface p-6 shadow-sm">
+      <div className="flex w-125 flex-col gap-8 rounded-lg border border-border bg-surface p-6 shadow-sm">
         <div>
           <div className="flex items-center gap-2 mb-1">
             <Scissors className="h-5 w-5 text-primary" />
@@ -186,13 +184,7 @@ export const MultiThumb: Story = {
           </p>
         </div>
 
-        <Range
-          max={120} // 2 minutes max
-          min={0}
-          onValueChange={setMarkers}
-          step={1}
-          values={markers}
-        >
+        <Range {...args} onValueChange={setMarkers} values={markers}>
           {/* We can customize the track color to signify the "kept" video portion */}
           <RangeSlider className="my-2" trackColor="var(--primary)">
             {/* Trim Bounds */}
