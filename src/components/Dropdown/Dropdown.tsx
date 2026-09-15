@@ -174,7 +174,7 @@ function DropdownItem<T extends React.ElementType = "button">({
       type={isButton ? "button" : undefined}
       {...props}
     >
-      <div className="flex items-center gap-2">{children}</div>
+      {children}
 
       {showIcon && (
         <div className="flex items-center justify-center w-5 h-5">

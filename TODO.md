@@ -93,3 +93,4 @@
   - [ ] Apply new HSL values to Components with bad contrast and ugly hover states like: ~~Badge~~, _?Button?_, _?Tabs?_
 - [x] Change the structure of the Storybook folders
 - [x] Migrate to Tailwind v4
+- [ ] Disabled styles for all buttons (Dropdown, Select, Items in Popovers, Buttons,...)
