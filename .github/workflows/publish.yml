@@ -11,13 +11,13 @@ jobs:
     steps:
       # 1. Downloads code from repository
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       # 2. Setups Node.js and prepares it for NPM registry
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
-          node-version: "20"
+          node-version: "24"
           registry-url: "https://registry.npmjs.org"
 
       - name: Install dependencies
@@ -29,6 +29,6 @@ jobs:
       # 5. Publish to NPM
       # Token from secrets
       - name: Publish to NPM
-        run: npm publish
+        run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
