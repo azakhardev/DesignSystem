@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Bookmark, Scissors } from "lucide-react";
 import { useState } from "react";
+import { expect } from "storybook/test";
 
 import {
   Range,
@@ -66,6 +67,17 @@ export const SingleThumb: Story = {
     min: 0,
     step: 1,
   },
+  play: async ({ canvas, userEvent }) => {
+    await userEvent.keyboard("${Tab}");
+
+    for (let index = 0; index < 10; index++) {
+      await userEvent.keyboard("${ArrowLeft}");
+    }
+
+    const input = canvas.getByRole("spinbutton");
+
+    expect(input).toHaveValue(40);
+  },
   render: (args) => (
     <div className="flex w-75 items-center gap-4">
       <Range {...args} defaultValues={[{ id: "volume", value: 50 }]}>
@@ -116,6 +128,21 @@ export const Controlled: Story = {
     min: 0,
     step: 5,
   },
+  play: async ({ canvas, userEvent }) => {
+    for (let index = 0; index < 2; index++) {
+      await userEvent.keyboard("${Tab}");
+
+      for (let index = 0; index < 2; index++) {
+        await userEvent.keyboard("${ArrowLeft}");
+      }
+    }
+
+    const min = canvas.getByTestId("min");
+    const max = canvas.getByTestId("max");
+
+    expect(min).toHaveTextContent("Min: 10");
+    expect(max).toHaveTextContent("Max: 70");
+  },
   render: (args) => {
     const [state, setState] = useState<RangeValue[]>([
       { id: "min", value: 20 },
@@ -126,8 +153,13 @@ export const Controlled: Story = {
       <div className="flex flex-col gap-6">
         <div className="rounded-md bg-surface-secondary p-3 text-sm font-mono text-text">
           <strong>Extracted State:</strong> <br />
-          Min: {state.find((s) => s.id === "min")?.value} <br />
-          Max: {state.find((s) => s.id === "max")?.value}
+          <span data-testid="min">
+            Min: {state.find((s) => s.id === "min")?.value}
+          </span>
+          <br />
+          <span data-testid="max">
+            Max: {state.find((s) => s.id === "max")?.value}
+          </span>
         </div>
 
         <Range {...args} onValueChange={setState} values={state}>

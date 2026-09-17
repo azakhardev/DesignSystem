@@ -14,7 +14,7 @@
   bottom: 0.5rem;
   right: 0px;
   width: 2px;
-  background-color: hsl(var(--on-primary));
+  background-color: hsl(var(--text-main));
 }
 
 .table-head:last-child::after {

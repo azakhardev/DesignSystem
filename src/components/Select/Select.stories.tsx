@@ -3,7 +3,13 @@ import { useState } from "react";
 import { expect } from "storybook/test";
 
 import { Label } from "../Label";
-import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger } from "./Select";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+} from "./Select";
 
 /**
  * A highly customizable, accessible, and native-form-ready Select component built using the **Compound Components** pattern.
@@ -136,6 +142,10 @@ export const Multiple: Story = {
 
     expect(trigger).toHaveTextContent(/Apple, Orange/i);
 
+    await userEvent.click(canvas.getByRole("option", { name: /Eggplant/i }));
+
+    expect(trigger).toHaveTextContent(/Apple, Orange/i);
+
     await userEvent.keyboard("{Escape}");
 
     expect(content).not.toBeInTheDocument();
@@ -157,7 +167,9 @@ export const Multiple: Story = {
             <SelectItem value="peach">Peach 🍑</SelectItem>
             <SelectItem value="mango">Mango 🥭</SelectItem>
             <SelectItem value="strawberry">Strawberry 🍓</SelectItem>
-            <SelectItem value="eggplant">Eggplant 🍆</SelectItem>
+            <SelectItem disabled value="eggplant">
+              Eggplant 🍆
+            </SelectItem>
           </SelectContent>
         </Select>
       </div>

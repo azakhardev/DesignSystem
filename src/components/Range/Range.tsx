@@ -256,7 +256,9 @@ function RangeItem({
       aria-valuemin={min}
       aria-valuenow={value}
       className={cn(
-        "absolute top-1/2 flex h-5 w-5 -translate-x-1/2 -translate-y-1/2 cursor-grab items-center justify-center rounded-full border border-border bg-surface shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary active:cursor-grabbing",
+        "flex h-5.5 w-5.5 items-center justify-center rounded-full border border-border-strong bg-surface shadow-sm ",
+        "absolute top-1/2 -translate-x-1/2 -translate-y-1/2 cursor-grab transition-colors",
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary active:cursor-grabbing",
         className,
       )}
       onBlur={() => setIsHovered(false)}
