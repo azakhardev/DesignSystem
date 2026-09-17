@@ -61,7 +61,7 @@ export const Default: Story = {
     stripped: false,
   },
   render: (args) => (
-    <div className="w-[800px]">
+    <div className="w-200">
       <Table {...args}>
         <TableHeader>
           <TableHead>Invoice ID</TableHead>
@@ -107,7 +107,7 @@ export const StripedCustomColors: Story = {
     },
   },
   render: (args) => (
-    <div className="w-[800px]">
+    <div className="w-200">
       <Table {...args}>
         <TableHeader>
           <TableHead>Employee</TableHead>
@@ -150,7 +150,7 @@ export const CopyableCells: Story = {
     stripped: true,
   },
   render: (args) => (
-    <div className="w-[800px]">
+    <div className="w-200">
       <Table {...args}>
         <TableHeader>
           <TableHead>Server Name</TableHead>
@@ -188,7 +188,7 @@ export const InlineEditing: Story = {
     stripped: false,
   },
   render: (args) => (
-    <div className="w-[800px]">
+    <div className="w-200">
       <Table {...args}>
         <TableHeader>
           <TableHead>Key</TableHead>

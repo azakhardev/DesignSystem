@@ -296,6 +296,10 @@ interface SidebarItemProps extends React.ComponentProps<"button"> {
    */
   icon?: React.ReactNode;
   /**
+   * Determines if current item is active (e.g. user is on this tab)
+   */
+  isActive?: boolean;
+  /**
    * Title of the item, used for tooltip when sidebar is collapsed
    */
   title?: string;
@@ -306,6 +310,7 @@ function SidebarItem({
   children,
   className,
   icon,
+  isActive,
   title,
   ...props
 }: SidebarItemProps) {
@@ -321,6 +326,7 @@ function SidebarItem({
             "flex flex-row items-center gap-2 rounded-md p-2 transition-all",
             "justify-start cursor-pointer hover:bg-info-surface",
             "focus:outline-none focus:bg-info-surface",
+            isActive && "border border-info-border bg-info-surface",
             className,
           )}
           {...props}

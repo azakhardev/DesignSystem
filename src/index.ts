@@ -22,6 +22,7 @@ export * from "./components/Loaders";
 export * from "./components/Popover";
 export * from "./components/Progress";
 export * from "./components/Radio";
+export * from "./components/Range";
 export * from "./components/Select";
 export * from "./components/Separator";
 export * from "./components/Sidebar";

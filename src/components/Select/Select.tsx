@@ -293,12 +293,22 @@ function SelectGroup({
 
 interface SelectItemProps extends React.ComponentProps<"div"> {
   /**
+   * Determines, if the select item is disabled.
+   */
+  disabled?: boolean;
+  /**
    * Value of the SelectItem that will be passed to the select value handler
    */
   value: string;
 }
 
-function SelectItem({ children, className, value, ...props }: SelectItemProps) {
+function SelectItem({
+  children,
+  className,
+  disabled,
+  value,
+  ...props
+}: SelectItemProps) {
   const {
     mode,
     onOpenChange,
@@ -307,6 +317,7 @@ function SelectItem({ children, className, value, ...props }: SelectItemProps) {
   } = useSelectContext();
 
   function handleSelect() {
+    if (disabled) return;
     onSelect(value);
 
     if (mode === "single") {
@@ -316,6 +327,7 @@ function SelectItem({ children, className, value, ...props }: SelectItemProps) {
 
   function handleKeyDown(ev: React.KeyboardEvent<HTMLDivElement>) {
     if (ev.key === "Enter" || ev.key === " ") {
+      if (disabled) return;
       ev.preventDefault();
       handleSelect();
     }
@@ -327,12 +339,15 @@ function SelectItem({ children, className, value, ...props }: SelectItemProps) {
 
   return (
     <div
+      aria-disabled={disabled}
       aria-selected={isSelected}
       className={cn(
         "cursor-pointer p-1 ",
         "hover:bg-input-hover focus:bg-input-hover",
         "focus:outline-hidden focus:ring-2 ring-input-focus",
         isSelected && "font-bold text-primary",
+        disabled &&
+          "bg-disabled-surface text-disabled-text hover:bg-disabled-surface cursor-not-allowed",
         className,
       )}
       data-value={value}

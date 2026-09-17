@@ -16,6 +16,8 @@
   - [x] Allow Tooltip on `SidebarItem` hover after creating `Tooltip` Component.
   - [x] Make groups expendable + add animations upon clicking.
   - [x] Make SidebarItem focusable and ~~navigatable using keys~~.
+  - [x] Add isActive for `SidebarItem` Component
+  - [x] Update storybook, so user can see code used for `DemoSidebarContent` Component in stories
 - [x] Spinner – Loading indicators: Orbital, Classic, Dots and Page Loader.
 - [x] Alert – Static feedback messages: Error, Warning, Info, Success, No Data.
 - [x] Layout primitives - A simple system to constrain width (Container) or handle flexbox layouts (Group or Stack).
@@ -31,6 +33,8 @@
 - [x] Select – Dropdown selection, ideally with Multi-select support.
   - [x] `SelectGroup` - Component for grouping items inside `SelectContent`.
   - [x] Improve hover styling
+  - [ ] Pass object to the Select and its valueFormatter, isntead of just string (for custom logic for items interaction)
+  - [x] Add `disabled` property to SelectItem
 - [x] Tabs – Switching between views with animation. Support for horizontal/vertical alignment.
   - [x] Change to Activity component
   - [x] Add support for navigation between tabs with arrows + style focus mode
@@ -52,6 +56,7 @@
 - [x] Accordion – Collapsible content panels. Support for Single (one open at a time) or Multi mode.
 - [x] Progress Bar – Linear indicator (dynamic for loading or static for capacity).
 - [x] Table – Data grid with styling and "copy value" functionality.
+  - [x] Update header, so it looks more like a SaaS
 - [ ] Empty State – A component to display when data is missing (e.g., "No items found") with an illustration and a CTA button.
 - [x] Callout - Provides presentation of content in a visually distinct manner.
 - [x] KBD - A simple component for displaying keyboard shortcuts.
@@ -62,7 +67,7 @@
 - [x] Datepicker – Calendar input for date selection.
   - [ ] DateRangepicker - Calendar input for date range selection.
 - [x] Calendar – Static or interactive calendar for displaying events/dates.
-- [ ] Range Slider – Number slider with two handles (min/max) or single handle, with stepping and custom labels.
+- [x] Range Slider – Number slider with two handles (min/max) or single handle, with stepping and custom labels.
 - [ ] Stepper (Multi-step progress) – Steps connected by lines, dynamically updating based on state.
 - [ ] Sortable List – List with Drag & Drop reordering capabilities.
 - [ ] Pagination (Pager) – Logic and UI for navigating large datasets.
@@ -73,6 +78,8 @@
 - [ ] Carousel - Component for dispalying items with auto-scroll or manual scroll.
 - [ ] Canvas - Create canvas and abstract components to use in canvas (eg. Shape, Line, etc...).
 - [ ] Chart - Own custom charts for displaying customisable linear (+area), radial (+donut) or column (+bar) charts.
+- [ ] AI Chat - Components fro chatting - dialog winodw, message, response, input, tools etc.
+- [ ] Scrolls - Create scrollable areas (horizontal/vertical) with custom animations & draggable functions (e.g. for carousel etc)
 
 ### Other: TODO and overall improvements
 
@@ -86,3 +93,4 @@
   - [ ] Apply new HSL values to Components with bad contrast and ugly hover states like: ~~Badge~~, _?Button?_, _?Tabs?_
 - [x] Change the structure of the Storybook folders
 - [x] Migrate to Tailwind v4
+- [ ] Disabled styles for all buttons (Dropdown, Select, Items in Popovers, Buttons,...)

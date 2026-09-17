@@ -53,7 +53,7 @@ function TableHeader({
   ...props
 }: React.ComponentProps<"thead">) {
   return (
-    <thead className={cn("bg-primary", className)} {...props}>
+    <thead className={cn("bg-disabled-border text-text", className)} {...props}>
       {children}
     </thead>
   );
@@ -67,7 +67,7 @@ function TableHead({
   return (
     <th
       className={cn(
-        "relative text-start font-bold px-2.5 py-1.5 text-on-primary",
+        "relative text-start font-bold px-2.5 py-1.5",
         styles["table-head"],
         className,
       )}

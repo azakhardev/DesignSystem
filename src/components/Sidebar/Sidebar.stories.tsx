@@ -268,3 +268,69 @@ export const Playground: Story = {
     </div>
   ),
 };
+
+/**
+ * This is the Demo code that was previously used for the stories as `DemoSidebarContent` Component.
+ *
+ * **You can now freely inspect its code.**
+ */
+export const DemoSidebarContentStory: Story = {
+  render: (args) => {
+    return (
+      <Sidebar {...args}>
+        <SidebarContent
+          dialogProps={{ className: "p-0 border-0", closeButton: true }}
+        >
+          <SidebarHeader>
+            <div className="flex items-center gap-2 p-2 text-primary group-data-[collapsed=true]/sidebar:justify-center">
+              <div className="size-8 rounded-sm bg-primary text-on-primary flex items-center justify-center font-bold shrink-0">
+                A
+              </div>
+              <div className="font-bold text-lg whitespace-nowrap overflow-hidden group-data-[collapsed=true]/sidebar:hidden transition-all duration-300 opacity-100 group-data-[collapsed=true]/sidebar:opacity-0">
+                My Design System
+              </div>
+            </div>
+          </SidebarHeader>
+
+          <SidebarBody>
+            <SidebarGroup defaultOpen title="General">
+              <SidebarItem icon={<Home />} title="Dashboard">
+                Dashboard
+              </SidebarItem>
+              <SidebarItem icon={<User />}>Team Members</SidebarItem>
+              <SidebarItem icon={<Settings />} title="Settings">
+                Settings
+              </SidebarItem>
+            </SidebarGroup>
+            <SidebarGroup icon={<ChartColumn />} title="Statistics">
+              <SidebarItem icon={<ChartPie />} title="Reports">
+                Reports
+              </SidebarItem>
+              <SidebarItem icon={<Banknote />}>Revenue</SidebarItem>
+            </SidebarGroup>
+          </SidebarBody>
+
+          <SidebarFooter>
+            <SidebarItem
+              className="text-error-text mt-auto hover:bg-red-600/30"
+              icon={<LogOut />}
+              title="Log out"
+            >
+              Log out
+            </SidebarItem>
+            <div className="border-t border-border my-2" />
+            <SidebarItem
+              className="mt-auto hover:bg-transparent cursor-default"
+              icon={<User />}
+            >
+              <div className="flex flex-col text-sm text-left">
+                <span className="font-bold">John Doe</span>
+                <span className="text-xs text-muted-foreground">Admin</span>
+              </div>
+            </SidebarItem>
+          </SidebarFooter>
+        </SidebarContent>
+      </Sidebar>
+    );
+  },
+};

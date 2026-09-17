@@ -17,7 +17,30 @@ import { Datepicker, DatepickerContent, DatepickerTrigger } from "./Datepicker";
  * By default, `DatepickerContent` renders a standard calendar, but you can override this by
  * passing your own `<Calendar>` as children.
  */
+
 const meta = {
+  argTypes: {
+    className: {
+      control: "text",
+      description:
+        "Additional CSS classes to apply to the root Datepicker wrapper.",
+    },
+    defaultValue: {
+      control: "text",
+      description:
+        "The initial date value for the uncontrolled state (expected as an ISO string).",
+    },
+    onValueChange: {
+      action: "onValueChange",
+      description:
+        "Callback fired when a date is selected. Passes the date as an ISO string.",
+    },
+    value: {
+      control: "text",
+      description:
+        "The controlled date value of the datepicker (expected as an ISO string).",
+    },
+  },
   component: Datepicker,
   parameters: {
     layout: "centered",
@@ -25,12 +48,12 @@ const meta = {
   subcomponents: {
     DatepickerContent,
     DatepickerTrigger,
-  } as Record<string, React.ComponentType<unknown>>,
+  } as Record<string, React.ComponentType>,
   title: "Form/Datepicker",
-} satisfies Meta<typeof Datepicker>;
+} satisfies Meta;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj;
 
 /**
  * ### Basic Usage
