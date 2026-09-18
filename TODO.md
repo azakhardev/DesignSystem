@@ -57,7 +57,7 @@
 - [x] Progress Bar – Linear indicator (dynamic for loading or static for capacity).
 - [x] Table – Data grid with styling and "copy value" functionality.
   - [x] Update header, so it looks more like a SaaS
-- [ ] Empty State – A component to display when data is missing (e.g., "No items found") with an illustration and a CTA button.
+- [x] Empty State – A component to display when data is missing (e.g., "No items found") with an illustration and a CTA button.
 - [x] Callout - Provides presentation of content in a visually distinct manner.
 - [x] KBD - A simple component for displaying keyboard shortcuts.
 

@@ -16,6 +16,7 @@ export * from "./components/Container";
 export * from "./components/Datepicker";
 export * from "./components/Dialog";
 export * from "./components/Dropdown";
+export * from "./components/EmptyState";
 export * from "./components/Group";
 export * from "./components/Icon";
 export * from "./components/Input";

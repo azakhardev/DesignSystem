@@ -63,7 +63,7 @@ export const Colors: Story = {
     color: "default",
     size: "md",
   },
-  render: (args) => (
+  render: () => (
     <div className="flex items-center gap-4 rounded-lg border border-border bg-surface p-6 shadow-sm">
       <Icon as={Info} color="info" size="lg" />
       <Icon as={CheckCircle2} color="success" size="lg" />
