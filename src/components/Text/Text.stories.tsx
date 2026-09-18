@@ -37,7 +37,7 @@ const meta = {
   // Wraps every story in this file with provided div
   decorators: [
     (Story) => (
-      <div className="max-w-[500px] border-2 border-dashed border-slate-300 p-4">
+      <div className="max-w-125 border-2 border-dashed border-slate-300 p-4">
         <Story />
       </div>
     ),

@@ -72,7 +72,7 @@
 - [ ] Sortable List – List with Drag & Drop reordering capabilities.
 - [ ] Pagination (Pager) – Logic and UI for navigating large datasets.
 - [x] Code Block – Syntax highlighting and formatting for code snippets.
-- [ ] Avatar – Profile picture component with fallbacks (initials or generic icon) if the image fails to load.
+- [x] Avatar – Profile picture component with fallbacks (initials or generic icon) if the image fails to load.
 - [ ] ImageDialog - Dialog component for displaying images with toolbar options (zoom, save, copy, etc.)
 - [ ] ToolPanel - For selectiong tools/funcitons on hover with stacking ability.
 - [ ] Carousel - Component for dispalying items with auto-scroll or manual scroll.
