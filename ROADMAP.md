@@ -35,7 +35,7 @@ _Goal: Automate quality checks and prepare release workflow._
 - [x] Complete Components from Phase 1 in TODO list
 - [x] Migrate to `ref` as Props and `React.ComponentProps`
 - [x] Properly setup linting
-- [ ] ~~Migrate to Tailwind CSS v4.0?~~
+- [x] ~~Migrate to Tailwind CSS v4.0?~~ - Migrated in 2.0.0 release
 - [x] Check the Storybook documentation.
 - [x] Finalization of API (So the props wont change, hopefully).
 - [x] Configure testing through Storybook
@@ -77,7 +77,7 @@ npm version minor -m "chore: bump version to %s"
 
 #### 3. Push and Publish
 
-Push the commits and tags to GitHub. This will trigger the CI/CD pipeline which automatically publishes the package to npm (if the tests pass).
+Push the commits and tags to GitHub. Then create new Release - this will trigger the CI/CD pipeline which automatically publishes the package to npm (if the tests pass).
 
 ```bash
 git push --follow-tags

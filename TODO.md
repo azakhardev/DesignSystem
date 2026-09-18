@@ -41,7 +41,7 @@
 - [x] Breadcrumbs – For navigation hierarchy and URL destructurization.
 - [x] Dropdown Menu – Action menu lists (often used inside buttons).
 - [x] Divider (Separator) – Visual separation of content.
-- [ ] Icon Wrapper – A standardized component to render icons (SVG) with consistent sizing and coloring props.
+- [x] Icon Wrapper – A standardized component to render icons (SVG) with consistent sizing and coloring props.
 
 ### Phase 3: Feedback & Data Display
 
@@ -57,7 +57,7 @@
 - [x] Progress Bar – Linear indicator (dynamic for loading or static for capacity).
 - [x] Table – Data grid with styling and "copy value" functionality.
   - [x] Update header, so it looks more like a SaaS
-- [ ] Empty State – A component to display when data is missing (e.g., "No items found") with an illustration and a CTA button.
+- [x] Empty State – A component to display when data is missing (e.g., "No items found") with an illustration and a CTA button.
 - [x] Callout - Provides presentation of content in a visually distinct manner.
 - [x] KBD - A simple component for displaying keyboard shortcuts.
 
@@ -71,15 +71,16 @@
 - [ ] Stepper (Multi-step progress) – Steps connected by lines, dynamically updating based on state.
 - [ ] Sortable List – List with Drag & Drop reordering capabilities.
 - [ ] Pagination (Pager) – Logic and UI for navigating large datasets.
-- [ ] Code Block – Syntax highlighting and formatting for code snippets.
-- [ ] Avatar – Profile picture component with fallbacks (initials or generic icon) if the image fails to load.
+- [x] Code Block – Syntax highlighting and formatting for code snippets.
+- [x] Avatar – Profile picture component with fallbacks (initials or generic icon) if the image fails to load.
 - [ ] ImageDialog - Dialog component for displaying images with toolbar options (zoom, save, copy, etc.)
 - [ ] ToolPanel - For selectiong tools/funcitons on hover with stacking ability.
 - [ ] Carousel - Component for dispalying items with auto-scroll or manual scroll.
 - [ ] Canvas - Create canvas and abstract components to use in canvas (eg. Shape, Line, etc...).
 - [ ] Chart - Own custom charts for displaying customisable linear (+area), radial (+donut) or column (+bar) charts.
-- [ ] AI Chat - Components fro chatting - dialog winodw, message, response, input, tools etc.
+- [ ] AI Chat - Components for chatting - dialog winodw, message, response, input, tools etc.
 - [ ] Scrolls - Create scrollable areas (horizontal/vertical) with custom animations & draggable functions (e.g. for carousel etc)
+- [ ] Drag & Drop - Ability drag and drop items - DropArea and DragItem Components + mode selection (default, files)
 
 ### Other: TODO and overall improvements
 
