@@ -71,15 +71,16 @@
 - [ ] Stepper (Multi-step progress) – Steps connected by lines, dynamically updating based on state.
 - [ ] Sortable List – List with Drag & Drop reordering capabilities.
 - [ ] Pagination (Pager) – Logic and UI for navigating large datasets.
-- [ ] Code Block – Syntax highlighting and formatting for code snippets.
+- [x] Code Block – Syntax highlighting and formatting for code snippets.
 - [ ] Avatar – Profile picture component with fallbacks (initials or generic icon) if the image fails to load.
 - [ ] ImageDialog - Dialog component for displaying images with toolbar options (zoom, save, copy, etc.)
 - [ ] ToolPanel - For selectiong tools/funcitons on hover with stacking ability.
 - [ ] Carousel - Component for dispalying items with auto-scroll or manual scroll.
 - [ ] Canvas - Create canvas and abstract components to use in canvas (eg. Shape, Line, etc...).
 - [ ] Chart - Own custom charts for displaying customisable linear (+area), radial (+donut) or column (+bar) charts.
-- [ ] AI Chat - Components fro chatting - dialog winodw, message, response, input, tools etc.
+- [ ] AI Chat - Components for chatting - dialog winodw, message, response, input, tools etc.
 - [ ] Scrolls - Create scrollable areas (horizontal/vertical) with custom animations & draggable functions (e.g. for carousel etc)
+- [ ] Drag & Drop - Ability drag and drop items - DropArea and DragItem Components + mode selection (default, files)
 
 ### Other: TODO and overall improvements
 
