@@ -31,6 +31,7 @@ export * from "./components/Select";
 export * from "./components/Separator";
 export * from "./components/Sidebar";
 export * from "./components/Skeleton";
+export * from "./components/SortableList";
 export * from "./components/Stack";
 export * from "./components/Status";
 export * from "./components/Switch";
