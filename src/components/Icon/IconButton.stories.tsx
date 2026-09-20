@@ -50,7 +50,7 @@ export const Variants: Story = {
     size: "md",
     variant: "default",
   },
-  render: (args) => (
+  render: () => (
     <div className="flex items-center gap-4">
       <IconButton aria-label="More options" variant="ghost">
         <Icon as={MoreHorizontal} size="md" />
@@ -74,7 +74,7 @@ export const Sizes: Story = {
     size: "md",
     variant: "default",
   },
-  render: (args) => (
+  render: () => (
     <div className="flex items-end gap-4">
       <IconButton aria-label="Small action" size="xs" variant="outline">
         <Icon as={Download} size="xs" />
