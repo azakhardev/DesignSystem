@@ -24,7 +24,7 @@ const meta = {
     string,
     React.ComponentType<unknown>
   >,
-  title: "Data Display/FileDrop",
+  title: "Form/FileDrop",
 } satisfies Meta<typeof FileDrop>;
 
 export default meta;

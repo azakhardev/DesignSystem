@@ -132,11 +132,6 @@ function FileDrop({
   );
 }
 
-/**
- * A single row representing a selected/uploaded file. Purely presentational
- * — pass `onRemove` to wire up your own removal logic, and `status` to
- * reflect upload progress/results you're tracking elsewhere.
- */
 interface FileListItemProps extends React.ComponentProps<"div"> {
   /** An optional slot for icon buttons (Delete, Download, Copy Link, etc.) */
   actions?: React.ReactNode;
