@@ -1,19 +1,7 @@
-import { UploadCloud } from "lucide-react";
 import React, { useRef, useState } from "react";
 
 import { cn } from "../../lib/utils";
 
-/**
- * A drop zone for files. Handles the browser-API plumbing needed for
- * drag-over visuals and click-to-browse (native DnD events, the counter
- * needed to keep hover state correct with nested children, the hidden
- * file input). You own everything about what happens *with* the files —
- * validation, upload, previews — via `onFilesSelected`.
- *
- * `state` lets you reflect the result of your own validation/upload logic
- * back into the visuals (e.g. set `"error"` if a dropped file fails a
- * type check you perform in `onFilesSelected`).
- */
 interface FileDropProps extends Omit<React.ComponentProps<"div">, "onDrop"> {
   /** Forwarded to the hidden `<input type="file" accept>`. Does not filter drops. */
   accept?: string;
@@ -21,6 +9,8 @@ interface FileDropProps extends Omit<React.ComponentProps<"div">, "onDrop"> {
   disabled?: boolean;
   /** Optional secondary line under the label. */
   helperText?: string;
+  /** Icon to be displayed above of the texts. */
+  icon?: React.ReactNode;
   /** Primary label text. */
   label?: string;
   /** Whether multiple files can be selected/dropped at once. Defaults to true. */
@@ -36,6 +26,7 @@ function FileDrop({
   className,
   disabled,
   helperText,
+  icon,
   label = "Drop files here, or click to browse",
   multiple = true,
   onFilesSelected,
@@ -71,12 +62,12 @@ function FileDrop({
   }
 
   function handleDragOver(event: React.DragEvent) {
-    // Required: a dragover with no preventDefault tells the browser
+    // Required: Else a dragover with no preventDefault tells the browser
     // "this isn't a valid drop target" and it will reject the drop.
     event.preventDefault();
   }
 
-  const handleDrop = (event: React.DragEvent) => {
+  function handleDrop(event: React.DragEvent) {
     event.preventDefault();
     dragCounter.current = 0;
     setIsDraggingOver(false);
@@ -84,21 +75,21 @@ function FileDrop({
 
     const files = Array.from(event.dataTransfer.files);
     if (files.length > 0) onFilesSelected(files);
-  };
+  }
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
     const files = event.target.files ? Array.from(event.target.files) : [];
     if (files.length > 0) onFilesSelected(files);
     // reset so selecting the exact same file again still fires onChange
     event.target.value = "";
-  };
+  }
 
-  const handleKeyDown = (event: React.KeyboardEvent) => {
+  function handleKeyDown(event: React.KeyboardEvent) {
     if (event.key === "Enter" || event.key === " ") {
       event.preventDefault();
       openPicker();
     }
-  };
+  }
 
   return (
     <div
@@ -132,7 +123,7 @@ function FileDrop({
         ref={inputRef}
         type="file"
       />
-      <UploadCloud className="h-8 w-8 text-text-secondary" />
+      {icon}
       <p className="text-sm font-medium text-text">{label}</p>
       {helperText && (
         <p className="text-xs text-text-secondary">{helperText}</p>
@@ -147,12 +138,18 @@ function FileDrop({
  * reflect upload progress/results you're tracking elsewhere.
  */
 interface FileListItemProps extends React.ComponentProps<"div"> {
+  /** An optional slot for icon buttons (Delete, Download, Copy Link, etc.) */
+  actions?: React.ReactNode;
+  /** The file object to display (or a mock object with name/size for existing files) */
   file: File;
+  /** Action for removing freshly added File */
   onRemove?: () => void;
+  /** Status of the upload */
   status?: "error" | "pending" | "success";
 }
 
 function FileListItem({
+  actions,
   className,
   file,
   onRemove,
@@ -174,15 +171,20 @@ function FileListItem({
           {(file.size / 1024).toFixed(1)} KB
         </span>
       </div>
-      {onRemove && (
-        <button
-          aria-label={`Remove ${file.name}`}
-          className="shrink-0 text-xs font-medium text-text-secondary hover:text-error-text"
-          onClick={onRemove}
-          type="button"
-        >
-          Remove
-        </button>
+      {(actions || onRemove) && (
+        <div className="flex shrink-0 items-center gap-2">
+          {actions}
+          {onRemove && (
+            <button
+              aria-label={`Remove ${file.name}`}
+              className="shrink-0 text-xs font-medium text-text-secondary hover:text-error-text focus:outline-none focus:text-error-text focus:underline"
+              onClick={onRemove}
+              type="button"
+            >
+              Remove
+            </button>
+          )}
+        </div>
       )}
     </div>
   );
