@@ -69,7 +69,7 @@
 - [x] Calendar – Static or interactive calendar for displaying events/dates.
 - [x] Range Slider – Number slider with two handles (min/max) or single handle, with stepping and custom labels.
 - [ ] Stepper (Multi-step progress) – Steps connected by lines, dynamically updating based on state.
-- [ ] Sortable List – List with Drag & Drop reordering capabilities.
+- [x] Sortable List – List with Drag & Drop reordering capabilities.
 - [ ] Pagination (Pager) – Logic and UI for navigating large datasets.
 - [x] Code Block – Syntax highlighting and formatting for code snippets.
 - [x] Avatar – Profile picture component with fallbacks (initials or generic icon) if the image fails to load.
@@ -80,7 +80,7 @@
 - [ ] Chart - Own custom charts for displaying customisable linear (+area), radial (+donut) or column (+bar) charts.
 - [ ] AI Chat - Components for chatting - dialog winodw, message, response, input, tools etc.
 - [ ] Scrolls - Create scrollable areas (horizontal/vertical) with custom animations & draggable functions (e.g. for carousel etc)
-- [ ] Drag & Drop - Ability drag and drop items - DropArea and DragItem Components + mode selection (default, files)
+- [x] Drag & Drop - Ability drag and drop items - DropArea and DragItem Components + mode selection (default, files)
 
 ### Other: TODO and overall improvements
 
