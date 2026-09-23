@@ -64,13 +64,14 @@
 ### Phase 4: Advanced Components (Complex Logic)
 
 - [x] Autocomplete (Whisper Input) – Input with suggestions based on regex or string matching.
+  - [ ] Multi-choice autocomplete (saves results in pills, that can be removed).
 - [x] Datepicker – Calendar input for date selection.
   - [ ] DateRangepicker - Calendar input for date range selection.
 - [x] Calendar – Static or interactive calendar for displaying events/dates.
 - [x] Range Slider – Number slider with two handles (min/max) or single handle, with stepping and custom labels.
 - [ ] Stepper (Multi-step progress) – Steps connected by lines, dynamically updating based on state.
 - [x] Sortable List – List with Drag & Drop reordering capabilities.
-- [ ] Pagination (Pager) – Logic and UI for navigating large datasets.
+- [x] Pagination (Pager) – Logic and UI for navigating large datasets.
 - [x] Code Block – Syntax highlighting and formatting for code snippets.
 - [x] Avatar – Profile picture component with fallbacks (initials or generic icon) if the image fails to load.
 - [ ] ImageDialog - Dialog component for displaying images with toolbar options (zoom, save, copy, etc.)
