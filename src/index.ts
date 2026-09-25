@@ -37,6 +37,7 @@ export * from "./components/Skeleton";
 export * from "./components/SortableList";
 export * from "./components/Stack";
 export * from "./components/Status";
+export * from "./components/Stepper";
 export * from "./components/Switch";
 export * from "./components/Table";
 export * from "./components/Tabs";
