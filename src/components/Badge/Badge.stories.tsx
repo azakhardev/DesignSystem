@@ -25,6 +25,12 @@ const meta = {
       description: "Additional CSS classes for custom styling",
       table: { category: "Target" },
     },
+    dot: {
+      control: "boolean",
+      description:
+        "Small colored dot rendered before the content — an alternative to `icon` for simple status badges.",
+      table: { category: "Appearance" },
+    },
     icon: {
       control: false,
       description: "Optional icon displayed before the text",

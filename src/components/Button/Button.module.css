@@ -58,12 +58,6 @@
 .ripple {
   position: relative;
   overflow: hidden;
-  transition: all 0.4s;
-}
-
-.ripple:active {
-  background-size: 100%;
-  transition: all 0s;
 }
 
 .ripple::after {
@@ -73,11 +67,11 @@
   left: 50%;
   width: 5px;
   height: 5px;
-  background: rgba(0, 0, 0, 0.2);
+  background: currentColor;
   opacity: 0;
-  border-radius: 100%;
-  transform: scale(1, 1) translate(-50%);
-  transform-origin: 50% 50%;
+  border-radius: 9999px;
+  transform: translate(-50%, -50%) scale(0);
+  transform-origin: center;
 }
 
 .ripple:active::after {
@@ -86,11 +80,17 @@
 
 @keyframes ripple {
   0% {
-    transform: scale(0, 0);
-    opacity: 0.5;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0.35;
   }
   100% {
-    transform: scale(40, 40);
+    transform: translate(-50%, -50%) scale(40);
     opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ripple::after {
+    display: none;
   }
 }
