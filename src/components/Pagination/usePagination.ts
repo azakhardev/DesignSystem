@@ -1,5 +1,7 @@
 import { useMemo } from "react";
 
+import { useIsMobile } from "../../hooks/useIsMobile";
+
 export const DOTS = "...";
 
 interface UsePaginationProps {
@@ -15,7 +17,12 @@ export function usePagination({
   siblingCount = 1,
   totalCount,
 }: UsePaginationProps) {
+  const isMobile = useIsMobile();
+
   return useMemo(() => {
+    if (isMobile) {
+      return [currentPage];
+    }
     const totalPageCount = Math.ceil(totalCount / pageSize);
 
     // Helper to generate an array of numbers
@@ -69,5 +76,5 @@ export function usePagination({
     }
 
     return [];
-  }, [totalCount, pageSize, siblingCount, currentPage]);
+  }, [totalCount, pageSize, siblingCount, currentPage, isMobile]);
 }

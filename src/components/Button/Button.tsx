@@ -17,15 +17,33 @@ const buttonVariants = cva(
     "disabled:bg-disabled-surface disabled:border-disabled-border disabled:text-disabled-text disabled:cursor-default disabled:hover:scale-100 disabled:active:scale-100 disabled:cursor-not-allowed",
   ],
   {
+    compoundVariants: [
+      {
+        className: "rounded-none px-0 py-0",
+        shape: "pill",
+        variant: "link",
+      },
+      {
+        className: "text-text-surface",
+        effect: "animated",
+      },
+    ],
     defaultVariants: {
+      effect: "none",
+      shape: "default",
       variant: "primary",
     },
     variants: {
+      effect: {
+        animated: styles.animatedButton,
+        none: "",
+        ripple: styles.ripple,
+      },
+      shape: {
+        default: "",
+        pill: "rounded-full px-5",
+      },
       variant: {
-        animated: cn(
-          "border-transparent rounded-full text-text-surface",
-          styles.animatedButton,
-        ),
         destructive:
           "bg-error text-white shadow-xs hover:bg-error-focus active:scale-95",
         ghost:
@@ -33,13 +51,12 @@ const buttonVariants = cva(
         link: "bg-transparent border-none shadow-none text-primary underline-offset-4 hover:underline px-0 py-0 h-auto",
         outline: "border-info text-info shadow-none disabled:bg-transparent",
         primary: "bg-primary hover:bg-primary-focus",
-        ripple: cn(
-          "bg-surface text-on-surface border-none shadow-md hover:shadow-lg",
-          styles.ripple,
-        ),
         secondary: "bg-secondary hover:bg-secondary-focus",
+        soft: "bg-primary-surface border-primary-border text-primary-text shadow-none hover:bg-primary-surface/70",
         success:
           "bg-success border-success-border text-white hover:shadow-[0_0_15px_rgba(var(--success-rgb),0.4)]",
+        warning:
+          "bg-warning border-warning-border text-white hover:bg-warning-focus",
       },
     },
   },
@@ -57,9 +74,11 @@ function Button({
   asChild,
   children,
   className,
+  effect,
   loading,
   loadingText,
   ref,
+  shape,
   variant,
   ...props
 }: ButtonProps) {
@@ -67,7 +86,7 @@ function Button({
 
   return (
     <Comp
-      className={cn(buttonVariants({ variant }), className)}
+      className={cn(buttonVariants({ effect, shape, variant }), className)}
       disabled={loading}
       ref={ref}
       {...props}

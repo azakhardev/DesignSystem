@@ -7,7 +7,10 @@ function Pagination({ className, ...props }: React.ComponentProps<"nav">) {
   return (
     <nav
       aria-label="pagination"
-      className={cn("mx-auto flex w-full justify-center", className)}
+      className={cn(
+        "mx-auto flex w-full justify-center items-center",
+        className,
+      )}
       role="navigation"
       {...props}
     />
@@ -16,16 +19,59 @@ function Pagination({ className, ...props }: React.ComponentProps<"nav">) {
 
 function PaginationContent({
   className,
+  onKeyDown,
   ...props
 }: React.ComponentProps<"ul">) {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLUListElement>) => {
+    if (
+      e.target instanceof HTMLInputElement ||
+      e.target instanceof HTMLSelectElement
+    ) {
+      return;
+    }
+
+    if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
+      e.preventDefault();
+
+      const focusableElements = Array.from(
+        e.currentTarget.querySelectorAll(
+          'button:not([disabled]), a[href], input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])',
+        ),
+      ) as HTMLElement[];
+
+      if (focusableElements.length === 0) return;
+
+      const currentIndex = focusableElements.indexOf(
+        document.activeElement as HTMLElement,
+      );
+
+      if (currentIndex !== -1) {
+        let nextIndex = currentIndex;
+
+        if (e.key === "ArrowLeft") {
+          nextIndex =
+            currentIndex > 0 ? currentIndex - 1 : focusableElements.length - 1;
+        } else if (e.key === "ArrowRight") {
+          nextIndex =
+            currentIndex < focusableElements.length - 1 ? currentIndex + 1 : 0;
+        }
+
+        focusableElements[nextIndex]?.focus();
+      }
+    }
+
+    onKeyDown?.(e);
+  };
+
   return (
+    // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
     <ul
       className={cn("flex flex-row items-center gap-1", className)}
+      onKeyDown={handleKeyDown}
       {...props}
     />
   );
 }
-
 function PaginationItem({ className, ...props }: React.ComponentProps<"li">) {
   return <li className={cn("", className)} {...props} />;
 }
@@ -37,7 +83,6 @@ export interface PaginationLinkProps extends React.ComponentProps<"button"> {
   isActive?: boolean;
 }
 
-//TODO: Add navigation using keyborad arrows
 function PaginationLink({
   className,
   isActive,
@@ -59,35 +104,15 @@ function PaginationLink({
   );
 }
 
-function PaginationPrevious({
+function PaginationNavButton({
   className,
   ...props
 }: React.ComponentProps<typeof PaginationLink>) {
   return (
     <PaginationLink
-      aria-label="Go to previous page"
-      className={cn("w-auto gap-1 pl-2.5 pr-3", className)}
+      className={cn("w-auto gap-1 px-3", className)}
       {...props}
-    >
-      <ChevronLeft className="h-4 w-4" />
-      <span>Previous</span>
-    </PaginationLink>
-  );
-}
-
-function PaginationNext({
-  className,
-  ...props
-}: React.ComponentProps<typeof PaginationLink>) {
-  return (
-    <PaginationLink
-      aria-label="Go to next page"
-      className={cn("w-auto gap-1 pl-3 pr-2.5", className)}
-      {...props}
-    >
-      <span>Next</span>
-      <ChevronRight className="h-4 w-4" />
-    </PaginationLink>
+    ></PaginationLink>
   );
 }
 
@@ -156,6 +181,10 @@ export interface PaginationPageSizeProps extends Omit<
    */
   options?: number[];
   /**
+   * Text to display before select
+   */
+  text?: string;
+  /**
    * The currently selected page size.
    */
   value: number;
@@ -165,6 +194,7 @@ function PaginationPageSize({
   className,
   onChange,
   options = [10, 20, 50, 100],
+  text = "Rows per page",
   value,
   ...props
 }: PaginationPageSizeProps) {
@@ -175,7 +205,7 @@ function PaginationPageSize({
         className,
       )}
     >
-      <span>Rows per page</span>
+      <span>{text}</span>
       <select
         className="h-8 rounded-md border border-border bg-surface px-2 py-1 text-text outline-none transition-colors focus-visible:ring-2 focus-visible:ring-border focus-visible:ring-offset-1 focus-visible:ring-offset-background"
         onChange={(e) => onChange(Number(e.target.value))}
@@ -201,6 +231,10 @@ export interface PaginationGoToProps extends Omit<
    */
   onChange: (page: number) => void;
   /**
+   * Text to display before the input
+   */
+  text?: string;
+  /**
    * The total number of available pages, used to restrict the maximum input value.
    */
   totalPages: number;
@@ -209,6 +243,7 @@ export interface PaginationGoToProps extends Omit<
 function PaginationGoTo({
   className,
   onChange,
+  text = "Go to",
   totalPages,
   ...props
 }: PaginationGoToProps) {
@@ -228,7 +263,7 @@ function PaginationGoTo({
         className,
       )}
     >
-      <span>Go to</span>
+      <span>{text}</span>
       <input
         className="h-8 w-12 rounded-md border border-border bg-surface px-2 py-1 text-center text-text outline-none transition-colors focus-visible:ring-2 focus-visible:ring-border focus-visible:ring-offset-1 focus-visible:ring-offset-background"
         max={totalPages}
@@ -249,7 +284,6 @@ export {
   PaginationGoTo,
   PaginationItem,
   PaginationLink,
-  PaginationNext,
+  PaginationNavButton,
   PaginationPageSize,
-  PaginationPrevious,
 };
