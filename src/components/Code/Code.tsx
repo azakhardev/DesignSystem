@@ -65,7 +65,7 @@ function CodeBlock({
   return (
     <div
       className={cn(
-        "group relative overflow-hidden rounded-lg border border-border bg-[#1E1E1E]",
+        "group relative min-w-0 overflow-hidden rounded-lg border border-border bg-[#1E1E1E]",
         className,
       )}
       {...props}
@@ -92,12 +92,19 @@ function CodeBlock({
       )}
 
       <Highlight code={code.trim()} language={language} theme={themes.vsDark}>
-        {({ className, getLineProps, getTokenProps, style, tokens }) => (
+        {({
+          className: prismClassName,
+          getLineProps,
+          getTokenProps,
+          style,
+          tokens,
+        }) => (
           <pre
             className={cn(
               "overflow-x-auto p-4 text-sm font-mono",
               "[scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
-              className,
+              "w-0 min-w-full",
+              prismClassName,
             )}
             style={style}
           >

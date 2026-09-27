@@ -108,8 +108,20 @@ console.log(greeting);`,
     theme: themes.github, // Imported from prism-react-renderer
   },
   render: (args) => (
-    <div className="w-125">
+    <div>
       <CodeBlock {...args} className="bg-white border-gray-200" />
+    </div>
+  ),
+};
+
+export const LongLineOverflow: Story = {
+  args: {
+    code: `const hugeConfig = { owner: "azakhardev", projectNumber: 5, includeArchived: true, note: "This is a deliberately very long single line of code meant to stress-test horizontal overflow behavior inside a narrow flex or grid parent container without wrapping onto multiple lines so we can confirm the fix actually works as expected here." };`,
+    language: "typescript",
+  },
+  render: (args) => (
+    <div className="w-500">
+      <CodeBlock {...args} />
     </div>
   ),
 };
