@@ -83,6 +83,7 @@
 - [ ] AI Chat - Components for chatting - dialog winodw, message, response, input, tools etc.
 - [ ] Scrolls - Create scrollable areas (horizontal/vertical) with custom animations & draggable functions (e.g. for carousel etc)
 - [x] Drag & Drop - Ability drag and drop items - DropArea and DragItem Components + mode selection (default, files)
+  - [ ] Make draggable from any place, not only dragNdrop area
 
 ### Other: TODO and overall improvements
 
