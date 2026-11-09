@@ -98,3 +98,4 @@
 - [x] Change the structure of the Storybook folders
 - [x] Migrate to Tailwind v4
 - [ ] Disabled styles for all buttons (Dropdown, Select, Items in Popovers, Buttons,...)
+- [ ] Contrast Theme - Add contrast theme with special color tokens for people with special needs (Also implement to storybook select)
