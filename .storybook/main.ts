@@ -6,11 +6,15 @@ const config: StorybookConfig = {
     "@storybook/addon-themes",
     "@storybook/addon-docs",
     "@storybook/addon-vitest",
-    "@storybook/addon-a11y"
+    "@storybook/addon-a11y",
+    "@storybook/addon-mcp",
   ],
   framework: "@storybook/react-vite",
   docs: {
     defaultName: "Documentation",
+  },
+  features: {
+    componentsManifest: true,
   },
 };
 

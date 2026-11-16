@@ -103,6 +103,43 @@ function App() {
 }
 ```
 
+### 🤖 MCP Server
+
+This repository includes a local **Model Context Protocol** server powered by `@storybook/addon-mcp`. It allows AI assistants to inspect component APIs, TypeScript props, and usage examples directly from your running local instance.
+
+1. Start the local development environment:
+
+```bash
+npm run dev
+```
+
+2. Connect your MCP client using Streamable HTTP transport at:
+
+```text
+http://127.0.0.1:6006/mcp
+```
+
+Example MCP client configuration:
+
+```json
+{
+  "mcpServers": {
+    "artem-design-system": {
+      "type": "http",
+      "url": "[http://127.0.0.1:6006/mcp](http://127.0.0.1:6006/mcp)"
+    }
+  }
+}
+```
+
+You can also inspect and test the available tools (`list-all-documentation`, `get-documentation`) locally via MCP Inspector:
+
+```bash
+npx @modelcontextprotocol/inspector
+```
+
+Then just add new server with `streamable-http` Transport property and `http://127.0.0.1:6006/mcp` URL
+
 ### 🛠 Development
 
 Clone the repository and install dependencies:
