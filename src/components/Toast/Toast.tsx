@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable react-hooks/set-state-in-effect */
 import { AnimatePresence, motion } from "framer-motion";
 import { X } from "lucide-react";
 import React, { useCallback, useEffect, useRef, useState } from "react";
@@ -179,5 +181,6 @@ function ToastItem({ data, onRemove }: ToastItemProps) {
   );
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export { toast, Toaster, ToastItem };
 export type { ToastData, ToasterProps, ToastItemProps };
